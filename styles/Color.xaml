@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Resala_App.styles">
+    <!-- Start Colors -->
+    <Color x:Key="ControlLightColor">White</Color>
+    <Color x:Key="DisabledControlLightColor">#E4E4E4</Color>
+    <Color x:Key="ControlDarkColor">#000000</Color>
+    <Color x:Key="ControlBorderColor">#E4E4E4</Color>
+
+
+    <Color x:Key="yellow">#FFFFCC</Color>
+    <Color x:Key="blue">#0068FF</Color>
+    <Color x:Key="lightRed">#FFE9ED</Color>
+    <Color x:Key="green">#6CDB52</Color>
+    <Color x:Key="white">#FFFFFF</Color>
+    <!-- End Colors -->
+
+    <!-- Start Brush -->
+    <SolidColorBrush x:Key="LoginBackgroud">#F3F6FF</SolidColorBrush>
+    <SolidColorBrush x:Key="ControlLightBrush">White</SolidColorBrush>
+    <SolidColorBrush x:Key="ControlBorderBrush">#E4E4E4</SolidColorBrush>
+
+    <!-- End Brush -->
+</ResourceDictionary>
