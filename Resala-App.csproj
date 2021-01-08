@@ -70,6 +70,28 @@
     <Compile Include="Controls\LoginBlock.xaml.cs">
       <DependentUpon>LoginBlock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Domains\Action.cs" />
+    <Compile Include="Domains\Address.cs" />
+    <Compile Include="Domains\AttendanceStatus.cs" />
+    <Compile Include="Domains\AttendStatus.cs" />
+    <Compile Include="Domains\BranchesEvent.cs" />
+    <Compile Include="Domains\CallResult.cs" />
+    <Compile Include="Domains\Calls.cs" />
+    <Compile Include="Domains\CallType.cs" />
+    <Compile Include="Domains\Capital.cs" />
+    <Compile Include="Domains\Committee.cs" />
+    <Compile Include="Domains\Event.cs" />
+    <Compile Include="Domains\EventResult.cs" />
+    <Compile Include="Domains\PreviousCommittee.cs" />
+    <Compile Include="Domains\Privilege.cs" />
+    <Compile Include="Domains\PrivilegeAction.cs" />
+    <Compile Include="Domains\ResposibleVolunteerKpi.cs" />
+    <Compile Include="Domains\Role.cs" />
+    <Compile Include="Domains\User.cs" />
+    <Compile Include="Domains\Volunteer.cs" />
+    <Compile Include="Domains\VolunteerKpi.cs" />
+    <Compile Include="Domains\VolunteerPrivileges.cs" />
+    <Compile Include="Domains\VolunteerStatus.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -120,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="APIs\" />
-    <Folder Include="Domains\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
   </ItemGroup>
