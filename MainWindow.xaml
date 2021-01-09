@@ -18,7 +18,6 @@
             <RowDefinition Height="401*"/>
             <RowDefinition Height="54*"/>
         </Grid.RowDefinitions>
-
-        <Controls:LoginBlock x:Name="login" Grid.Column="1" Grid.Row="1" Width="Auto" Height="Auto"/>
+        <Controls:LoginBlock x:Name="login" Grid.Column="1" Grid.Row="1" Width="Auto" Height="auto" />
     </Grid>
 </Window>

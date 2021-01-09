@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="/Styles/Color.xaml"/>
                 <ResourceDictionary Source="/Styles/UsernametextBox.xaml"/>
                 <ResourceDictionary Source="/Styles/PasswordTextbox.xaml"/>
+                <ResourceDictionary Source="/Styles/LoginButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -19,6 +19,7 @@
     <SolidColorBrush x:Key="LoginBackgroud">#F3F6FF</SolidColorBrush>
     <SolidColorBrush x:Key="ControlLightBrush">White</SolidColorBrush>
     <SolidColorBrush x:Key="ControlBorderBrush">#E4E4E4</SolidColorBrush>
+    <SolidColorBrush x:Key="BlueButton">#0068FF</SolidColorBrush>
 
     <!-- End Brush -->
 </ResourceDictionary>

@@ -98,7 +98,7 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
 
-                        <Button Grid.Row="1" FontSize="20">
+                        <Button Grid.Row="1" FontSize="20" Style="{StaticResource LoginButton}" >
                             تسجيل الدخول
                         </Button>
                     </Grid>
