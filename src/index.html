@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ResalaApp</title>
+  <base href="./">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <div class="d-flex justify-content-end pe-3 w-100" style="position: fixed; top: 0px; z-index: 300; height: 40px;">
+    <div class="w-100" style="-webkit-app-region: drag;"></div>
+    <div id="min" class="m-2"><img width="20" src="assets/Icons/dash.svg" ></div>
+    <div id="max" class="m-2"><img width="20" src="assets/Icons/minimize-maximize.svg" ></div>
+    <divd id="close" class="m-2"><img width="20" src="assets/Icons/close.svg"></div>
+  </div>
+    <div class="main">
+      <div class="scrollFix">
+        <app-root></app-root>
+      </div>
+    </div>
+  <script src="../titlebar.js"></script>
+</body>
+</html>

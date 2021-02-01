@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="minimize_maximize" data-name="minimize/maximize" fill="#fff" stroke="#0068ff" stroke-width="6">
+    <rect width="30" height="30" rx="7" stroke="none"/>
+    <rect x="3" y="3" width="24" height="24" rx="4" fill="none"/>
+  </g>
+</svg>

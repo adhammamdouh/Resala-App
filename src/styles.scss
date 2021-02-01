@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+@import "src/styles.framework/input.scss";
+
+@font-face {
+    font-family: "arabicFont";
+    src: url(./assets/Fonts/ArabicFont.ttf);
+}
+@font-face {
+    font-family: "arabicFont";
+    src: url(./assets/Fonts/ArabicFontHeavy.ttf);
+    font-weight: bold;
+}
+.arabicFont{
+    font-family: "arabicFont" !important;
+}
+.arabicFontBold{
+    font-family: "arabicFont" !important;
+    font-weight: bold;
+    margin-bottom: -15px;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $blue; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $blue; 
+  }
+  img {
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+  }
+  body{
+      background: transparent !important;
+     /*  background-color: black !important; //Development Mode */
+  }
+  .main{
+      background-color: white !important;
+      width: 100%;
+      height: 100vh;
+      border-radius: 47px;
+      overflow: hidden;
+  }
+  .scrollFix{
+    overflow-y: auto;
+    width: 100%;
+    height: calc(100vh - 40px);
+    margin-top: 40px;
+  }

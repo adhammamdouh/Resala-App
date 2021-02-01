@@ -1,0 +1,58 @@
+@import "../../../../styles.framework/colors.scss";
+.profileContainer{
+    .img{
+        width: 63px;
+        height: 63px;
+        border-radius: 50%;
+    }
+    .username{
+        color: $darkGray;
+        font-size: 20px;
+    }
+}
+.menuItem{
+    text-align: right;
+    .menuText{
+        font-size: 20px;
+    }
+    .iconContainer{
+        display: inline-block;
+        width: 58px;
+        height: 50px;
+        background-color: white;
+        display: inline-flex;
+        justify-content: center;
+        border-radius: 12px;
+        svg{
+            stroke: $gray;
+            align-self: center;
+        }
+    }
+    .menuName{
+        color: $gray;
+    }
+}
+.menuItem:hover{
+    .iconContainer{
+        background-color: $blue;
+        box-shadow: 0px 6px 6px $iconShadowColor;
+    }
+    svg{
+        stroke: white !important;
+    }
+    .menuName{
+        color: $blue;
+    }
+}
+.activeTab{
+    .iconContainer{
+        background-color: $blue;
+        box-shadow: 0px 6px 6px $iconShadowColor;
+    }
+    svg{
+        stroke: white !important;
+    }
+    .menuName{
+        color: $blue;
+    }
+}

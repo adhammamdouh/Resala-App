@@ -1,0 +1,46 @@
+@import "../../../styles.framework/colors.scss";
+
+.inputsContainer{
+    background-color: $loginBackgroundColor;
+    border-radius: 47px;
+}
+.loginTitle{
+    color: $blue;
+}
+.loginInput{
+    font-size: 20px;
+}
+.svg{
+    position: absolute;
+    top: 0px;
+}
+.passwordContainer{
+    position: relative;
+    &::after{
+        display: block;
+        content: ' ';
+        position: absolute;
+        background-image: url('../../../assets/Icons/password.svg');
+        background-size: 75% 75%;
+        height: 39px;
+        width: 39px;
+        background-repeat: no-repeat;
+        top: 20%;
+        left: 5%;
+    }
+}
+.usernameContainer{
+    position: relative;
+    &::after{
+        display: block;
+        content: ' ';
+        position: absolute;
+        background-image: url('../../../assets/Icons/user.svg');
+        background-size: 75% 75%;
+        height: 39px;
+        width: 39px;
+        background-repeat: no-repeat;
+        top: 20%;
+        left: 5%;
+    }
+}

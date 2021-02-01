@@ -1,0 +1,14 @@
+@import "/src/styles.framework/colors.scss";
+
+$inputBorderStyle : solid 3px $inputBorderColor; 
+
+.inputStyle{
+    border: $inputBorderStyle !important;
+    &:focus{
+        border: $inputBorderStyle !important;
+        box-shadow: none !important;
+    } 
+    &:hover{
+        border: $inputBorderStyle !important;
+    }
+}
