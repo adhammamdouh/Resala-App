@@ -7,6 +7,7 @@ import { DashboardComponent } from './components/shared/dashboard/dashboard.comp
 import { SideNavComponent } from './components/shared/side-nav/side-nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GridComponent } from './components/grid/grid.component';
+import { NormalAlertComponent } from './Components/shared/normal-alert/normal-alert.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { GridComponent } from './components/grid/grid.component';
     LoginComponent,
     DashboardComponent,
     SideNavComponent,
-    GridComponent
+    GridComponent,
+    NormalAlertComponent
   ],
   imports: [
     BrowserModule,

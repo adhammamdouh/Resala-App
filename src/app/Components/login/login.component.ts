@@ -21,11 +21,16 @@ export class LoginComponent implements OnInit {
     this.submitAttempt = true;
     if (this.loginForm.valid){
       this.loading = true;
-      this.requestMethodService.postRequest("login",{"username":this.loginForm.controls.username.value, "password": this.loginForm.controls.password.value},{})
+      this.requestMethodService.postRequest("login",
+      {
+        "username": this.loginForm.controls.username.value,
+        "password": this.loginForm.controls.password.value
+      },
+      {})
       .subscribe((res:any)=>{
+        console.log("dsfdsf");
       }, (error)=>{
         this.loading = false;
-        //SHOW MODAL
       })
     }
   }

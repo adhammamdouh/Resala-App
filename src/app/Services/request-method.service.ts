@@ -9,9 +9,9 @@ export class RequestMethodService {
   constructor(private http: HttpClient) { }
 
   postRequest(url,object, headers){
-    return this.http.post(this.rootUrl+url,object,headers)
+    return this.http.post(this.rootUrl + url, object, headers)
   }
   getRequest(url, headers){
-    return this.http.get(this.rootUrl+url, headers);
+    return this.http.get(this.rootUrl + url, headers);
   }
 }

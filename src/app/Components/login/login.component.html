@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center align-items-center h-100">
     <div class="inputsContainer w-75 h-75">
-        <div class="row h-100" *ngIf="!loading">
+        <div class="row h-100">
             <div class="col-6 justify-content-center d-flex align-items-center">
                 <img class="img-fluid mt-5" src="assets/Images/Resala.png">
             </div>
@@ -15,7 +15,7 @@
                     <div class="row justify-content-end text-danger" *ngIf="this.loginForm.controls.username.invalid && (this.loginForm.controls.username.touched || submitAttempt)">برجاء التأكد من اسم المستخدم</div>
                     <div class="mb-4"></div>
                     <div class="row passwordContainer">
-                        <input dir="rtl" formControlName="password" type="password" class="form-control inputStyle loginInput text-end ps-5" placeholder="ادخل كلمة السر">                   
+                        <input dir="rtl" formControlName="password" type="password" class="form-control inputStyle loginInput text-end ps-5" placeholder="ادخل كلمة السر">
                     </div>
                     <div class="row justify-content-end text-danger" *ngIf="this.loginForm.controls.password.invalid && (this.loginForm.controls.password.touched || submitAttempt)">برجاء التأكد من كلمة السر</div>
                     <div class="mb-4"></div>
