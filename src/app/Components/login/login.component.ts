@@ -17,16 +17,15 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', Validators.required)
     })
   }
-  changeState(){
-    this.loading = true;
+  onSubmit(){
     this.submitAttempt = true;
     if (this.loginForm.valid){
-      debugger;
-      this.requestMethodService.postRequest("login",{"username":this.loginForm.controls.username.value, "password": this.loginForm.controls.password.value},{}).subscribe((res:any)=>{
-        
+      this.loading = true;
+      this.requestMethodService.postRequest("login",{"username":this.loginForm.controls.username.value, "password": this.loginForm.controls.password.value},{})
+      .subscribe((res:any)=>{
       }, (error)=>{
-        this.loginForm.reset();
         this.loading = false;
+        //SHOW MODAL
       })
     }
   }

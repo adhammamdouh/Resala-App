@@ -44,3 +44,16 @@
         left: 5%;
     }
 }
+.loadingScreen{
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(48, 48, 48, 0.438);
+}
+.loadingContainer{
+    border-radius: 12px;
+    padding: 12px;
+}

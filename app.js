@@ -27,7 +27,7 @@ function initWindow() {
       slashes: true
     })
   );
-  
+  /* appWindow.webContents.openDevTools() */ //DEV TOOLS HERE!!!
   appWindow.on('closed', function () {
     appWindow = null
   })

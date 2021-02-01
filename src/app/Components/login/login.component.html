@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center align-items-center vh-100">
+<div class="d-flex justify-content-center align-items-center h-100">
     <div class="inputsContainer w-75 h-75">
         <div class="row h-100" *ngIf="!loading">
             <div class="col-6 justify-content-center d-flex align-items-center">
@@ -15,20 +15,22 @@
                     <div class="row justify-content-end text-danger" *ngIf="this.loginForm.controls.username.invalid && (this.loginForm.controls.username.touched || submitAttempt)">برجاء التأكد من اسم المستخدم</div>
                     <div class="mb-4"></div>
                     <div class="row passwordContainer">
-                        <input formControlName="password" type="password" class="form-control inputStyle loginInput text-end ps-5" placeholder="ادخل كلمة السر">                   
+                        <input dir="rtl" formControlName="password" type="password" class="form-control inputStyle loginInput text-end ps-5" placeholder="ادخل كلمة السر">                   
                     </div>
                     <div class="row justify-content-end text-danger" *ngIf="this.loginForm.controls.password.invalid && (this.loginForm.controls.password.touched || submitAttempt)">برجاء التأكد من كلمة السر</div>
                     <div class="mb-4"></div>
                     <div class="row">
-                        <button (click)="changeState()" class="btn btn-primary btn-lg">تسجيل الدخول</button>
+                        <button (click)="onSubmit()" class="btn btn-primary btn-lg">تسجيل الدخول</button>
                     </div>
                 </form>
             </div>
         </div>
-        <div class="row h-100" *ngIf="loading">
-            <div class="col d-flex align-items-center justify-content-center">
-                <img width="300" height="300" src="assets/Images/Loading.gif">
-            </div>
+    </div>
+</div>
+<div class="loadingScreen" *ngIf="loading">
+    <div class="col d-flex h-100 align-items-center justify-content-center">
+        <div class="bg-light loadingContainer">
+            <img width="300" height="300" src="assets/Images/Loading.gif">
         </div>
     </div>
 </div>
