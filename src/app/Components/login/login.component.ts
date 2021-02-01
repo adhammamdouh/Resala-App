@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
     })
   }
   onSubmit(){
-    this.submitAttempt = true;
-    if (this.loginForm.valid){
+    //this.submitAttempt = true;
+    /*if (this.loginForm.valid){
       this.loading = true;
       this.requestMethodService.postRequest("login",
       {
@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit {
       }, (error)=>{
         this.loading = false;
       })
-    }
+    }*/
+    var myModel = document.getElementById('exampleModal');
+    debugger;
   }
 }
