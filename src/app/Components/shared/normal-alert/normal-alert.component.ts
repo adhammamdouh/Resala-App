@@ -14,5 +14,4 @@ export class NormalAlertComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

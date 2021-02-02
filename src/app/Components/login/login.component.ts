@@ -35,8 +35,11 @@ export class LoginComponent implements OnInit {
         this.loading = false;
       })
     }*/
-    var myModel = new bootstrap.Modal(document.getElementById('exampleModal'), {keyboard: false});
-    //debugger;
+    this.showModal();
+  }
+  showModal(){
+    var myModel = new bootstrap.Modal(document.getElementById('normalModal'), {keyboard: false});
+    debugger;
     myModel.show();
   }
 }
