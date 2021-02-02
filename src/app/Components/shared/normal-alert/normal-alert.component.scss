@@ -1,3 +1,5 @@
+@import "src/styles.framework/properties.scss";
+
 .fade-scale {
    /*  transform: scale(0); */
     opacity: 0;
@@ -5,8 +7,12 @@
     -o-transition: all .25s linear;
     transition: all .25s linear;
   }
-  
+
   .show {
     opacity: 1;
     /* transform: scale(1); */
   }
+
+.modal-window {
+  border-radius: $windowBorderRadius;
+}

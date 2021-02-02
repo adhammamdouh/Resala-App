@@ -38,8 +38,8 @@ export class LoginComponent implements OnInit {
     this.showModal();
   }
   showModal(){
-    var myModel = new bootstrap.Modal(document.getElementById('normalModal'), {keyboard: false});
-    debugger;
+    var myModel = new bootstrap.Modal(document.getElementById('normalModal'));
+    //debugger;
     myModel.show();
   }
 }
