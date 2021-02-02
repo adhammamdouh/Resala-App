@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RequestMethodService } from 'src/app/Services/request-method.service';
+import * as bootstrap from 'bootstrap';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,7 +35,8 @@ export class LoginComponent implements OnInit {
         this.loading = false;
       })
     }*/
-    var myModel = document.getElementById('exampleModal');
-    debugger;
+    var myModel = new bootstrap.Modal(document.getElementById('exampleModal'), {keyboard: false});
+    //debugger;
+    myModel.show();
   }
 }
