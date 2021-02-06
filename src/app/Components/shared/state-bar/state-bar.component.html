@@ -1,0 +1,3 @@
+<div class="stateContainer d-flex" dir="rtl">
+    <button *ngFor="let state of states let i = index" class="stateButton arabicFont col" [ngClass]="{'activeState': active == i}" (click)="changeState(i)">{{state}}</button>
+</div>

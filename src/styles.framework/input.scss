@@ -1,5 +1,5 @@
 @import "/src/styles.framework/colors.scss";
-
+@import "/src/styles.framework/properties.scss";
 $inputBorderStyle : solid 3px $inputBorderColor; 
 
 .inputStyle{
@@ -11,4 +11,27 @@ $inputBorderStyle : solid 3px $inputBorderColor;
     &:hover{
         border: $inputBorderStyle !important;
     }
+}
+.searchInput{
+    border-radius: $searchBorderRadius;
+    border: 1px $blue solid;
+    width: 100%;
+    height: 46px;
+    font-size: 20px;
+    box-sizing: border-box;
+    padding-left: 55px;
+    padding-right: 20px;
+    direction: rtl;
+    &:focus{
+        outline: none;
+    }
+}
+.sortingButton{
+    border-radius: $sortingButtonRadius;
+    background-color: $gray;
+    border: none;
+    width: 144px;
+    font-size: 24px;
+    color: white;
+    display: block;
 }

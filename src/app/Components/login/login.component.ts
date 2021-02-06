@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         this.loading = false;
       })
     }*/
-    this.showModal();
+    this.loading = true;
   }
   showModal(){
     var myModel = new bootstrap.Modal(document.getElementById('normalModal'));

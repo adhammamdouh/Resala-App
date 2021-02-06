@@ -1,0 +1,28 @@
+@import "../../../../styles.framework/properties.scss";
+@import "../../../../styles.framework/colors.scss";
+.stateButton{
+    font-size: 23px;
+    border: none;
+    background-color: transparent;
+    color: $grayFontColor;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-bottom: 0px;
+    &:focus{
+        outline: none;
+    }
+}
+.stateContainer{
+    border-radius: $searchBorderRadius;
+    border: $blue solid 1px;
+    overflow: hidden;
+    display: inline-block;
+}
+.activeState{
+    background-color: $blue;
+    color: white;
+}
+.stateButton:not(:first-child):not(:last-child){
+    border-left: solid 1px $blue;
+    border-right: solid 1px $blue;
+}

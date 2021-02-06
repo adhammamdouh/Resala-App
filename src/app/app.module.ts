@@ -6,8 +6,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/shared/dashboard/dashboard.component';
 import { SideNavComponent } from './components/shared/side-nav/side-nav.component';
 import { HttpClientModule } from '@angular/common/http';
-import { GridComponent } from './components/grid/grid.component';
+import { GridComponent } from './components/shared/grid/grid.component';
 import { NormalAlertComponent } from './components/shared/normal-alert/normal-alert.component';
+import { VolunteerCardComponent } from './components/volunteer-card/volunteer-card.component';
+import { SearchComponent } from './components/shared/search/search.component';
+import { StateBarComponent } from './components/shared/state-bar/state-bar.component';
+import { FormComponent } from './components/shared/form/form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { NormalAlertComponent } from './components/shared/normal-alert/normal-al
     DashboardComponent,
     SideNavComponent,
     GridComponent,
-    NormalAlertComponent
+    NormalAlertComponent,
+    VolunteerCardComponent,
+    SearchComponent,
+    StateBarComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

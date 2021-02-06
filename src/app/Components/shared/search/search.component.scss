@@ -1,0 +1,13 @@
+@import "../../../../styles.framework/properties.scss";
+@import "../../../../styles.framework/colors.scss";
+.searchContainer{
+    width: 100%;
+    height: 46px;
+    position: relative;
+}
+.searchIcon{
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    cursor: pointer !important;
+}

@@ -1,0 +1,25 @@
+@import "../../../../styles.framework/colors.scss";
+@import "../../../../styles.framework/properties.scss";
+.gridContainer{
+    width: 510px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 28px;
+    background-color: $loginBackgroundColor;
+    border-radius: $windowBorderRadius;
+    overflow: hidden;
+}
+.innerGridContainer{
+    overflow-y: auto;
+    padding-right: 10px;
+}
+button{
+    &:focus{
+        outline: none;
+    }
+}
+@media only screen and (max-width: 1173px) {
+    .gridContainer{
+        width: 300px !important;
+    }
+}

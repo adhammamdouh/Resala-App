@@ -1,0 +1,21 @@
+@import "../../../../styles.framework/properties.scss";
+@import "../../../../styles.framework/colors.scss";
+@import "../../../../styles.framework/input.scss";
+.head{
+    border-top-left-radius: $windowBorderRadius;
+    border-top-right-radius: $windowBorderRadius;
+    overflow-y: auto;
+    height: 82px;
+    background-color: $blue;
+    display: flex;
+    align-items: center;
+    
+}
+.title{
+    font-size: 25px;
+    color: white;
+}
+.mainContainer{
+    padding-left: 20px;
+    overflow: hidden;
+}
