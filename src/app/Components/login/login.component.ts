@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RequestMethodService } from 'src/app/Services/request-method.service';
 import * as bootstrap from 'bootstrap';
-
+import { AlertService } from 'src/app/Services/alert.service';
+import { AlertType } from 'src/app/Enums/alert-type.enum';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,8 +13,11 @@ export class LoginComponent implements OnInit {
   loading:boolean = false;
   loginForm:FormGroup;
   submitAttempt:boolean = false;
-  constructor(private requestMethodService:RequestMethodService) { }
+  alertType = AlertType.OneButton;
+  alertMessage = "برجاء التأكد من اسم المستخدم و كلمة السر"
+  constructor(private requestMethodService:RequestMethodService, private alertService: AlertService) { }
   ngOnInit(): void {
+    
     this.loginForm = new FormGroup({
       username: new FormControl('',Validators.required),
       password: new FormControl('', Validators.required)
@@ -35,11 +39,6 @@ export class LoginComponent implements OnInit {
         this.loading = false;
       })
     }*/
-    this.loading = true;
-  }
-  showModal(){
-    var myModel = new bootstrap.Modal(document.getElementById('normalModal'));
-    //debugger;
-    myModel.show();
+    this.alertService.showModal();
   }
 }

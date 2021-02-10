@@ -12,6 +12,8 @@ import { VolunteerCardComponent } from './components/volunteer-card/volunteer-ca
 import { SearchComponent } from './components/shared/search/search.component';
 import { StateBarComponent } from './components/shared/state-bar/state-bar.component';
 import { FormComponent } from './components/shared/form/form.component';
+import { AlertService } from './Services/alert.service';
+import { EventCardComponent } from './components/event-card/event-card.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +26,15 @@ import { FormComponent } from './components/shared/form/form.component';
     VolunteerCardComponent,
     SearchComponent,
     StateBarComponent,
-    FormComponent
+    FormComponent,
+    EventCardComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

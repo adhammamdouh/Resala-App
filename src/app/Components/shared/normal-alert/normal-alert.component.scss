@@ -1,5 +1,6 @@
 @import "src/styles.framework/properties.scss";
-
+@import "src/styles.framework/colors.scss";
+@import "src/styles.framework/input.scss";
 .fade-scale {
    /*  transform: scale(0); */
     opacity: 0;
@@ -15,4 +16,16 @@
 
 .modal-window {
   border-radius: $windowBorderRadius;
+}
+
+.modal-header {
+  border: none !important;
+}
+
+.modal-footer {
+  border: none !important;
+}
+
+.modal-window{
+  background: $redWarning;
 }

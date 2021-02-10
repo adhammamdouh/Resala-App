@@ -35,3 +35,9 @@ $inputBorderStyle : solid 3px $inputBorderColor;
     color: white;
     display: block;
 }
+.modalButton{
+    border-radius: $modalButtonBorderRadius;
+    background-color: $yellow;
+    border: none;
+    color: black;
+}

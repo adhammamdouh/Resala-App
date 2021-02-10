@@ -1,15 +1,18 @@
-<div #mainModel class="modal fade-scale" id="normalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade-scale" id="normalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content modal-window">
       <div class="modal-header d-flex justify-content-center">
         <h5 class="modal-title" id="exampleModalLabel">تحذير</h5>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body text-center">
+        {{alertBody}}
       </div>
-      <div class="modal-footer d-flex flex-row-reverse flex-nowrap">
-        <button type="button" class="btn btn-secondary w-50" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary w-50">Save changes</button>
+      <div class="modal-footer d-flex flex-row-reverse justify-content-center flex-nowrap" *ngIf="alertType == 0">
+        <button type="button" class="btn btn-secondary w-50 modalButton" data-bs-dismiss="modal">موافق</button>
+      </div>
+      <div class="modal-footer d-flex flex-row-reverse flex-nowrap p-4" *ngIf="alertType == 1">
+        <button type="button" class="btn btn-primary w-50 modalButton" data-bs-dismiss="modal" (click)="onClickYes()">نعم</button>
+        <button type="button" class="btn btn-secondary w-50 modalButton" data-bs-dismiss="modal">لا</button>
       </div>
     </div>
   </div>

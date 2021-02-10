@@ -1,5 +1,5 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import * as bootstrap from 'bootstrap';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AlertType } from 'src/app/Enums/alert-type.enum';
 
 @Component({
   selector: 'app-normal-alert',
@@ -8,22 +8,18 @@ import * as bootstrap from 'bootstrap';
 })
 
 export class NormalAlertComponent implements OnInit {
-  @ViewChild('mainModel', {read: ElementRef}) mainModell: ElementRef;
-
-  //@Input() alertType: string;
-
+  @Input() alertType: AlertType;
+  @Input() alertBody: string;
+  @Output() onAcceptance = new EventEmitter<any>();
+  
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
-  closeModel() {
-    /*var myModel = new bootstrap.Modal(document.getElementById('normalModal'));
-    debugger;
-    console.log(this.mainModell.nativeElement.className);
-    this.mainModell.nativeElement.className = this.mainModell.nativeElement.className.replace('show', '');
-    myModel.hide();
-    console.log(this.mainModell.nativeElement.className);
-    //this.mainModell.nativeElement.style.Display*/
+  onClickYes(){
+    this.onAcceptance.emit();
   }
+
 }
