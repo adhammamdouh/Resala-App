@@ -2,10 +2,9 @@
 @import "../../../styles.framework/properties.scss";
 .containerCard{
     width: 100%;
-    height: 64px;
+    height: $cardHeight;
     background-color: $gray;
     border-radius: $cardBorderRadius;
-    font-size: $CardFontSize;
     color: white;
     display: flex;
     align-items: center;
