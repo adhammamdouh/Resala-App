@@ -2,9 +2,9 @@
 @import "../../../styles.framework/properties.scss";
 .containerCard{
     width: 100%;
-    height: $cardHeight;
+    height: var(--card-height);
     background-color: $gray;
-    border-radius: $cardBorderRadius;
+    border-radius: var(--card-border-radius);
     color: white;
     display: flex;
     align-items: center;

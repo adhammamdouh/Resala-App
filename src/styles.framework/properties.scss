@@ -1,7 +1,81 @@
-$windowBorderRadius: 47px;
-$cardBorderRadius: 7px;
-$cardFontSize: 34px;
-$searchBorderRadius: 32px;
-$sortingButtonRadius: 18px;
-$modalButtonBorderRadius: 13px;
-$cardHeight: 64px;
+:root {
+  @media only screen
+  and (min-width: 800px)
+  and (max-width: 1173px) {
+
+    --window-border-radius: 47px;
+    --card-border-radius: 7px;
+    --search-border-radius: 32px;
+    --sorting-button-radius: 18px;
+    --modal-button-border-radius: 13px;
+    --card-height: 64px;
+
+    /* start grid */
+    --grid-width: 400px;
+    /* end grid */
+
+    /* start fonts */
+    --h1: 37px;
+    --h2: 34px;
+    --h3: 18px;
+    --h4: 20px;
+    --h5: 18px;
+    --h6: 16px;
+    --h7: 10px;
+    /* end fonts */
+
+}
+
+@media only screen
+  and (min-width: 1174px)
+  and (max-width: 1546px) {
+
+    --window-border-radius: 47px;
+    --card-border-radius: 7px;
+    --search-border-radius: 32px;
+    --sorting-button-radius: 18px;
+    --modal-button-border-radius: 13px;
+    --card-height: 64px;
+
+    /* start grid */
+    --grid-width: 400px;
+    /* end grid */
+
+    /* start fonts */
+    --h1: 37px;
+    --h2: 34px;
+    --h3: 22px;
+    --h4: 20px;
+    --h5: 18px;
+    --h6: 16px;
+    --h7: 10px;
+    /* end fonts */
+
+}
+
+@media only screen
+  and (min-width: 1547px){
+
+    --window-border-radius: 47px;
+    --card-border-radius: 7px;
+    --search-border-radius: 32px;
+    --sorting-button-radius: 18px;
+    --modal-button-border-radius: 13px;
+    --card-height: 64px;
+
+    /* start grid */
+    --grid-width: 500px;
+    /* end grid */
+
+    /* start fonts */
+    --h1: 37px;
+    --h2: 34px;
+    --h3: 27px;
+    --h4: 20px;
+    --h5: 18px;
+    --h6: 16px;
+    --h7: 10px;
+    /* end fonts */
+
+}
+}

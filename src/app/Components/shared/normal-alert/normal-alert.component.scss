@@ -15,7 +15,7 @@
   }
 
 .modal-window {
-  border-radius: $windowBorderRadius;
+  border-radius: var(--window-border-radius);
 }
 
 .modal-header {

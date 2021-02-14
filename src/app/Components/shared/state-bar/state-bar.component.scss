@@ -13,7 +13,7 @@
     }
 }
 .stateContainer{
-    border-radius: $searchBorderRadius;
+    border-radius: var(--search-border-radius);
     border: $blue solid 1px;
     overflow: hidden;
     display: inline-block;

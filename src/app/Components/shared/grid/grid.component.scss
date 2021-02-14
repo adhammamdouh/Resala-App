@@ -1,12 +1,12 @@
 @import "../../../../styles.framework/colors.scss";
 @import "../../../../styles.framework/properties.scss";
 .gridContainer{
-    width: 510px;
+    width: var(--grid-width);
     height: 100%;
     box-sizing: border-box;
     padding: 28px;
     background-color: $loginBackgroundColor;
-    border-radius: $windowBorderRadius;
+    border-radius: var(--window-border-radius);
     overflow: hidden;
 }
 .innerGridContainer{
@@ -16,10 +16,5 @@
 button{
     &:focus{
         outline: none;
-    }
-}
-@media only screen and (max-width: 1173px) {
-    .gridContainer{
-        width: 300px !important;
     }
 }

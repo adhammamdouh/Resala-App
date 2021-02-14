@@ -2,14 +2,14 @@
 @import "../../../../styles.framework/colors.scss";
 @import "../../../../styles.framework/input.scss";
 .head{
-    border-top-left-radius: $windowBorderRadius;
-    border-top-right-radius: $windowBorderRadius;
+    border-top-left-radius: var(--window-border-radius);
+    border-top-right-radius: var(--window-border-radius);
     overflow-y: auto;
     height: 82px;
     background-color: $blue;
     display: flex;
     align-items: center;
-    
+
 }
 .title{
     font-size: 25px;

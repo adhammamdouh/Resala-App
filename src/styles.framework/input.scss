@@ -1,19 +1,19 @@
 @import "/src/styles.framework/colors.scss";
 @import "/src/styles.framework/properties.scss";
-$inputBorderStyle : solid 3px $inputBorderColor; 
+$inputBorderStyle : solid 3px $inputBorderColor;
 
 .inputStyle{
     border: $inputBorderStyle !important;
     &:focus{
         border: $inputBorderStyle !important;
         box-shadow: none !important;
-    } 
+    }
     &:hover{
         border: $inputBorderStyle !important;
     }
 }
 .searchInput{
-    border-radius: $searchBorderRadius;
+    border-radius: var(--search-border-radius);
     border: 1px $blue solid;
     width: 100%;
     height: 46px;
@@ -27,7 +27,7 @@ $inputBorderStyle : solid 3px $inputBorderColor;
     }
 }
 .sortingButton{
-    border-radius: $sortingButtonRadius;
+    border-radius: var(--sorting-button-radius);
     background-color: $gray;
     border: none;
     width: 144px;
@@ -36,7 +36,7 @@ $inputBorderStyle : solid 3px $inputBorderColor;
     display: block;
 }
 .modalButton{
-    border-radius: $modalButtonBorderRadius;
+    border-radius: var(--modal-button-border-radius);
     background-color: $yellow;
     border: none;
     color: black;
