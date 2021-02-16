@@ -1,11 +1,179 @@
-<div class="mainContainer w-100 h-100 ">
+<div class="mainContainer w-100 h-100">
     <div class="head pe-4" dir="rtl">
         <div class="title arabicFont">بيانات المتطوع</div>
     </div>
-    <div class="innerContainer w-100 h-100" dir="rtl">
+    <div class="innerContainer w-100" dir="rtl">
         <div class="row">
-            <div class="col-md-3 col-12">
-                <input type="text" class="inputStyle" placeholder="اسم المتطوع"/>
+            <div class="col-md-4 col-12">
+                <div class="mt-2">
+                    <label for="name" class="form-label arabicFontBold inputsBlueLabel">الأسم</label>
+                    <input type="text" class="form-control inputStyle" id="name">
+                    <div class="form-text text-danger">برجاء التأكد من الاسم</div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div class="mt-2">
+                    <label for="nickName" class="form-label arabicFontBold inputsBlueLabel">الأسم المستعار</label>
+                    <input type="text" class="form-control inputStyle" id="nickName">
+                    <div class="form-text text-danger">برجاء التأكد من الاسم المستعار</div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div class="mt-2">
+                    <label for="DOB" class="form-label arabicFontBold inputsBlueLabel">تاريخ الميلاد</label>
+                    <input type="date" dir="rtl" class="form-control inputStyle" id="DOB">
+                    <div class="form-text text-danger">برجاء التأكد من تاريخ الميلاد</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="mt-2">
+                    <label for="nationalId" class="form-label arabicFontBold inputsBlueLabel">الرقم القومي</label>
+                    <input type="text" class="form-control inputStyle" id="nationalId">
+                    <div class="form-text text-danger">برجاء التأكد من الرقم القومي</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="mt-2">
+                    <label for="sex" class="form-label arabicFontBold inputsBlueLabel">النوع</label>
+                    <select id="sex" class="selectStyle inputStyle">
+                        <option value="1">ذكر</option>
+                        <option value="2">انثي</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mt-2">
+                    <label for="university" class="form-label arabicFontBold inputsBlueLabel">الجامعة</label>
+                    <input type="text" class="form-control inputStyle" id="university">
+                    <div class="form-text text-danger">برجاء التأكد من الجامعة</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mt-2">
+                    <label for="faculty" class="form-label arabicFontBold inputsBlueLabel">الكلية</label>
+                    <input type="text" class="form-control inputStyle" id="faculty">
+                    <div class="form-text text-danger">برجاء التأكد من الكلية</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="mt-2">
+                    <label for="phone" class="form-label arabicFontBold inputsBlueLabel">رقم الهاتف</label>
+                    <input type="text" class="form-control inputStyle" id="phone">
+                    <div class="form-text text-danger">برجاء التأكد من رقم الهاتف</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">تاريخ الانضمام</label>
+                    <input type="date" class="form-control inputStyle" id="joinedDate">
+                    <div class="form-text text-danger">برجاء التأكد من تاريخ الانضمام</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">العمر</label>
+                    <input type="number" class="form-control inputStyle" id="joinedDate">
+                    <div class="form-text text-danger">برجاء التأكد من العمر</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">تي شيرت</label>
+                    <select id="sex" class="selectStyle inputStyle">
+                        <option value="1">نعم</option>
+                        <option value="2">لا</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">الفرع</label>
+                    <select id="sex" class="selectStyle inputStyle">
+                        <option value="1">المعادي</option>
+                        <option value="2">حلوان</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">رقم الشقة</label>
+                    <input type="number" class="form-control inputStyle" id="joinedDate">
+                    <div class="form-text text-danger">برجاء التأكد من رقم الشقة</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">رقم العمارة</label>
+                    <input type="number" class="form-control inputStyle" id="joinedDate">
+                    <div class="form-text text-danger">برجاء التأكد من رقم العمارة</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">اسم الشارع</label>
+                    <input type="text" class="form-control inputStyle" id="joinedDate">
+                    <div class="form-text text-danger">برجاء التأكد من اسم الشارع</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">اسم الحي</label>
+                    <input type="text" class="form-control inputStyle" id="joinedDate">
+                    <div class="form-text text-danger">برجاء التأكد من اسم الحي</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+               <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">اسم المحافظة</label>
+                    <input type="text" class="form-control inputStyle" id="joinedDate">
+                    <div class="form-text text-danger">برجاء التأكد من اسم المحافظة</div>
+               </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mt-2">
+                    <label for="comments" class="form-label arabicFontBold inputsBlueLabel">تعليقات</label>
+                    <textarea class="form-control inputStyle" style="resize: none;" id="comments" rows="7"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">مرات الحضور</label>
+                    <input type="text" class="form-control inputStyle" id="joinedDate">
+                    <div class="form-text text-danger">برجاء التأكد من مرات الحضور</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">عدد المكالمات</label>
+                    <input type="text" class="form-control inputStyle" id="joinedDate">
+                    <div class="form-text text-danger">برجاء التأكد من عدد المكالمات</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">عدد الرد</label>
+                    <input type="text" class="form-control inputStyle" id="joinedDate">
+                    <div class="form-text text-danger">برجاء التأكد من عدد الرد</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mt-2">
+                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">عدد التأكيد</label>
+                    <input type="text" class="form-control inputStyle" id="joinedDate">
+                    <div class="form-text text-danger">برجاء التأكد من عدد التأكيد</div>
+                </div>
             </div>
         </div>
     </div>

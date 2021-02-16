@@ -12,6 +12,33 @@ $inputBorderStyle : solid 3px $inputBorderColor;
         border: $inputBorderStyle !important;
     }
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.selectStyle{
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    background-image: url('../assets/Icons/DropdownArrow.svg');
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-position-x: 10px;
+    border-radius: 0.25rem;
+    &:focus{
+        border: $inputBorderStyle !important;
+        box-shadow: none !important;
+        outline:none;
+    }
+    &:hover{
+        border: $inputBorderStyle !important;
+    }
+}
+.inputsBlueLabel{
+    color: $blue !important;
+}
 .searchInput{
     border-radius: var(--search-border-radius);
     border: 1px $blue solid;
