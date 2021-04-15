@@ -16,6 +16,7 @@ import { AlertService } from './Services/alert.service';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { Ng2FittextModule } from "ng2-fittext";
 import { CallCardComponent } from './components/shared/call-card/call-card.component';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CallCardComponent } from './components/shared/call-card/call-card.compo
     StateBarComponent,
     FormComponent,
     EventCardComponent,
-    CallCardComponent
+    CallCardComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
