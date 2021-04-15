@@ -18,6 +18,8 @@
 .mainContainer{
     padding-left: 20px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 .innerContainer{
     box-sizing: border-box;

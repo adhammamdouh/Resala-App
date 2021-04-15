@@ -1,0 +1,55 @@
+@import "../../../../styles.framework/properties.scss";
+@import "../../../../styles.framework/colors.scss";
+@import "../../../../styles.framework/input.scss";
+
+.upperContainer {
+  border-width: 3px;
+  border-radius: 25px;
+  border-style: solid;
+  box-sizing: border-box;
+}
+
+.active {
+  border-color: $green;
+
+  &  .cardNumberContainer {
+    background-color: $green;
+  }
+}
+
+.inFocus {
+  border-color: $red;
+
+  &  .cardNumberContainer {
+    background-color: $red;
+  }
+}
+
+.completed {
+  border-color: $blue;
+
+  &  .cardNumberContainer {
+    background-color: $blue;
+  }
+}
+
+.cardNumberContainer {
+  border-width: 3px;
+  border-radius: 0 0 25px 25px;
+  border-style: solid;
+  width: fit-content;
+  color: $white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cardNumber {
+  font-size: 44px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.cardCount {
+  font-size: 16;
+}
