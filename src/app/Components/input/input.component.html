@@ -1,0 +1,9 @@
+<form [formGroup]="inputProperties.formGroup">
+    <label [fittext]="true" [maxFontSize]="18" [modelToWatch]="inputProperties.label" for="input" 
+        class="form-label customLabel arabicFontBold inputsBlueLabel">{{inputProperties.label}}</label>
+    <input [readonly]="inputProperties.disabled" [formControlName]="inputProperties.formControlName"
+        [placeholder]="inputProperties.placeHolder" [type]="inputProperties.type" class="form-control inputStyle"
+        id="input">
+    <div *ngIf="this.inputProperties.formGroup.invalid && this.inputProperties.formGroup.controls[inputProperties.formControlName].dirty"
+        class="form-text text-danger">{{inputProperties.errorMessage}}</div>
+</form>

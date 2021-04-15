@@ -15,6 +15,7 @@ import { FormComponent } from './components/shared/form/form.component';
 import { AlertService } from './Services/alert.service';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import {Ng2FittextModule} from "ng2-fittext";
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {Ng2FittextModule} from "ng2-fittext";
     SearchComponent,
     StateBarComponent,
     FormComponent,
-    EventCardComponent
+    EventCardComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
