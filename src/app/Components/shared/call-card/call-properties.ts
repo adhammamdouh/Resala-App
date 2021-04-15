@@ -8,7 +8,7 @@ export class CallProperties {
   public birthDate: Date;
   public callResult: string; //TODO
   public eventAttend: string; //TODO
-  public Notes: string;
+  public notes: string;
   public callNumber: number = 5;
   public totalCallsCount: number = 25;
 }

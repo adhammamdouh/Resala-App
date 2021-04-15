@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CallStatus } from 'src/app/Enums/call-status.enum';
 import InputProperties from '../../input/inputProperties';
+import { CallProperties } from '../call-card/call-properties';
 
 @Component({
   selector: 'app-form',
@@ -20,10 +22,22 @@ export class FormComponent implements OnInit {
     label: "الاسم الجامد زوحليقة",
     disabled: true
   }
+
+  callItem: CallProperties = {
+    name:'',
+    birthDate: new Date(),
+    callNumber: 1,
+    callStatus: CallStatus.active,
+    totalCallsCount: 1,
+    callResult: '',
+    eventAttend: '',
+    notes: '',
+    phoneNumber: '',
+  }
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
 }
