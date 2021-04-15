@@ -1,0 +1,15 @@
+<div class="selectBoxContainer">
+    <label [fittext]="true" [maxFontSize]="18"  for="input" 
+        class="form-label customLabel arabicFontBold inputsBlueLabel">النوع</label>
+    <div class="selectBoxHead form-control inputStyle" (focusout)="closeList()" (click)="openList()"><img [ngClass]="{'icon': open === false , 'iconRotated' : open === true }" class="iconRotated" src="assets/Icons/DropdownArrow.svg"/>ذكر</div>
+    <div [style.display]="open?'block':'none'" class="selectBoxList inputStyle" >
+        <div class="selectBoxItem px-2">لول</div>
+        <div class="selectBoxItem px-2">ههه لول</div>
+        <div class="selectBoxItem px-2">ههه لول</div>
+        <div class="selectBoxItem px-2">ههه لول</div>
+        <div class="selectBoxItem px-2">ههه لول</div>
+        <div class="selectBoxItem px-2">ههه لول</div>
+        <div class="selectBoxItem px-2">ههه لول</div>
+        <div class="selectBoxItem px-2">ههه لول</div>
+    </div>
+</div>
