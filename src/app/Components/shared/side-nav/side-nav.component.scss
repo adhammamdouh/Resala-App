@@ -7,13 +7,13 @@
     }
     .username{
         color: $darkGray;
-        font-size: 20px;
+        font-size: var(--h4);
     }
 }
 .menuItem{
     text-align: right;
     .menuText{
-        font-size: 20px;
+        font-size: var(--h4);
         box-sizing: border-box;
         padding-top: 15px;
     }
@@ -57,4 +57,15 @@
     .menuName{
         color: $blue;
     }
+}
+
+.itemsContainer{
+    margin: 0px 15px;
+}
+
+
+@media only screen and (max-width: 1148px) {
+    .menuText{
+        display: none;
+    }    
 }

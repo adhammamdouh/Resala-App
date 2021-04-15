@@ -24,6 +24,7 @@
     "@popperjs/core": "^2.6.0",
     "bootstrap": "^5.0.0-beta1",
     "custom-electron-titlebar": "^3.2.6",
+    "ng2-fittext": "^1.2.12",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

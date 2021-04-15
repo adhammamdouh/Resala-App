@@ -14,6 +14,7 @@ import { StateBarComponent } from './components/shared/state-bar/state-bar.compo
 import { FormComponent } from './components/shared/form/form.component';
 import { AlertService } from './Services/alert.service';
 import { EventCardComponent } from './components/event-card/event-card.component';
+import {Ng2FittextModule} from "ng2-fittext";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EventCardComponent } from './components/event-card/event-card.component
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2FittextModule
   ],
   providers: [AlertService],
   bootstrap: [AppComponent]

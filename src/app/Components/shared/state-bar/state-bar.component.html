@@ -1,3 +1,6 @@
 <div class="stateContainer d-flex" dir="rtl">
-    <button *ngFor="let state of states let i = index" class="stateButton arabicFont col" [ngClass]="{'activeState': active == i}" (click)="changeState(i)">{{state}}</button>
+    <div *ngFor="let state of states let i = index" class="stateButton arabicFont text-center col d-flex justify-content-center align-items-center"
+        [ngClass]="{'activeState': active == i}" (click)="changeState(i)">
+        <div class="px-2" [fittext]="true" [minFontSize]="10" [maxFontSize]="22" [activateOnResize]="true">{{state}}</div>
+    </div>
 </div>

@@ -1,7 +1,7 @@
 @import "../../../../styles.framework/properties.scss";
 @import "../../../../styles.framework/colors.scss";
 .stateButton{
-    font-size: 23px;
+    font-size: var(--h3);
     border: none;
     background-color: transparent;
     color: $grayFontColor;
@@ -16,7 +16,6 @@
     border-radius: var(--search-border-radius);
     border: $blue solid 1px;
     overflow: hidden;
-    display: inline-block;
 }
 .activeState{
     background-color: $blue;

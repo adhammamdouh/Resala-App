@@ -10,9 +10,9 @@ function initWindow() {
     width: 1000,
     height: 800,
     minHeight: 600,
-    minWidth: 800,
+    minWidth: 940,
     frame:false,
-    transparent: true,
+    
     webPreferences: {
       nodeIntegration: true,
       "webSecurity":false,

@@ -2,7 +2,7 @@
 @import "../../../styles.framework/properties.scss";
 .containerCard{
     width: 100%;
-    height: var(--card-height);
+    padding: 10px;
     background-color: $gray;
     border-radius: var(--card-border-radius);
     color: white;
