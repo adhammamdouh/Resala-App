@@ -1,3 +1,56 @@
-.eventCard{
-    width: 100%;
+@import "../../../styles.framework/properties.scss";
+@import "../../../styles.framework/colors.scss";
+@import "../../../styles.framework/input.scss";
+
+.upperContainer {
+  width: 100%;
+  background-color: $gray;
+  border-radius: var(--card-border-radius);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: 0.2s all ease-in-out;
+  cursor: pointer;
+  &:hover{
+      transform: translate(-10px);
+  }
 }
+
+.dateCard {
+  background-color: $white;
+  height: 100%;
+  border-radius: var(--card-border-radius);
+  width: fit-content;
+  color: #000000;
+}
+
+.day {
+  font-size: 44px;
+  line-height: 1.1;
+  font-weight: bold;
+}
+
+.month {
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.year {
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.header {
+  font-size: var(--h5);
+  font-weight: bold;
+  white-space: break-spaces;
+}
+
+.description {
+  font-size: var(--h7);
+  white-space: break-spaces;
+}
+
