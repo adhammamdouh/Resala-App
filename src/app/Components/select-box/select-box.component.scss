@@ -1,0 +1,41 @@
+@import '../../../styles.framework/colors.scss';
+.selectBoxHead{
+    position: relative;
+}
+.icon{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translate(0,-50%);
+    transition: all 0.2s ease-in-out;
+}
+.selectBoxContainer{
+    position: relative;
+}
+.iconRotated{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translate(0,-50%) rotate(180deg);
+    transition: all 0.2s ease-in-out;
+}
+.selectBoxList{
+    position: absolute;
+    width: 100%;
+    top: 90px;
+    overflow: hidden;
+    transition: 0.2s all ease-in-out;
+    background: white;
+    border-radius: 5px;
+}
+.selectBoxItem{
+    border-bottom: solid 3px $inputBorderColor;
+    padding: 10px;
+    &:last-child{
+        border-bottom: none;
+    }
+    &:hover{
+        background: $blue;
+        color: white;
+    }
+}

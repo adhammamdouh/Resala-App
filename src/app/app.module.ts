@@ -17,6 +17,7 @@ import { EventCardComponent } from './components/event-card/event-card.component
 import { Ng2FittextModule } from "ng2-fittext";
 import { CallCardComponent } from './components/shared/call-card/call-card.component';
 import { InputComponent } from './components/input/input.component';
+import { SelectBoxComponent } from './components/select-box/select-box.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { InputComponent } from './components/input/input.component';
     FormComponent,
     EventCardComponent,
     CallCardComponent,
-    InputComponent
+    InputComponent,
+    SelectBoxComponent
   ],
   imports: [
     BrowserModule,

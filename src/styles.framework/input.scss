@@ -1,7 +1,6 @@
 @import "/src/styles.framework/colors.scss";
 @import "/src/styles.framework/properties.scss";
 $inputBorderStyle : solid 3px $inputBorderColor;
-
 .inputStyle{
     border: $inputBorderStyle !important;
     &:focus{
