@@ -1,4 +1,4 @@
-import { FormGroup, Validator } from "@angular/forms";
+import { FormGroup} from "@angular/forms";
 
 export default interface InputProperties {
     type:string;
