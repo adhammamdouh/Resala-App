@@ -8,6 +8,8 @@
     background-color: $loginBackgroundColor;
     border-radius: var(--window-border-radius);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 .innerGridContainer{
     overflow-y: auto;

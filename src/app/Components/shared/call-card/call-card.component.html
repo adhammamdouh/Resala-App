@@ -45,10 +45,13 @@
       [ngClass]="{'active': properties.callStatus === callStatus.active,
                   'inFocus': properties.callStatus === callStatus.inFocus,
                   'completed': properties.callStatus === callStatus.completed}" style="top: -9px;">
-      <span class="cardNumber">{{properties.callNumber}}</span>
-      <span>{{properties.totalCallsCount}}/</span>
+        <span class="cardNumber">{{properties.callNumber}}</span>
+        <span>{{properties.totalCallsCount}}/</span>
       </div>
-      <div class="w-100 h-100 d-flex align-items-end justify-content-center">
+      <div class="w-100 h-100 d-flex flex-column align-items-end justify-content-between">
+        <div class="callType w-100 text-center">
+          دعوة
+        </div>
         <button class="btn btn-primary w-100">تسجيل</button>
         <div *ngIf="isSubmitting" class="spinner-grow" role="status"></div>
       </div>

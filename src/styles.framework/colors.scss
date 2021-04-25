@@ -10,3 +10,16 @@ $redWarning: #FFE9ED;
 $green: #0F996D;
 $red: #F44336;
 $white: #FFFFFF;
+$darkYellow: #C6D447;
+
+.bgSuccess {
+  background-color: $green;
+}
+
+.bgWarning {
+  background-color: $darkYellow;
+}
+
+.bgDanger {
+  background-color: $red;
+}
