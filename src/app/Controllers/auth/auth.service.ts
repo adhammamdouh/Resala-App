@@ -19,7 +19,12 @@ export class AuthService {
   }
 
   authorize(user:User){
-    this.httpClient.post(APILinks.baseURL+APILinks.login, user);
+    this.httpClient.post(APILinks.baseURL+APILinks.login, user).subscribe((data)=>{
+      console.log(data);
+    }, (err)=>{
+      console.log('error');
+      console.log(err);
+    });
   }
 
 }
