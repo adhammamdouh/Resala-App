@@ -16,25 +16,35 @@ export class LoginComponent implements OnInit {
   loading:boolean = false;
   loginForm:FormGroup;
   submitAttempt:boolean = false;
-  alertType = AlertType.error;
-  alertMessage = "برجاء التأكد من اسم المستخدم و كلمة السر"
+  user: User = {
+    username: '',
+    password: ''
+  }
   constructor(
     private requestMethodService:RequestMethodService,
     private alertService: AlertService,
     private authService:AuthService,
     private alertHandler: AlertHandlerService) { }
   ngOnInit(): void {
-    let user:User = {
-      username:'test',
-      password: 'test'
-    }
-    this.authService.authorize(user);
     this.loginForm = new FormGroup({
-      username: new FormControl('',Validators.required),
-      password: new FormControl('', Validators.required)
+      username: new FormControl('',[Validators.required,
+                                      Validators.minLength(5)]),
+      password: new FormControl('', [Validators.required,
+                                      Validators.minLength(8),
+                                      Validators.maxLength(32)])
     })
   }
-  onSubmit(){
+  onSubmit() {
+    if(this.loginForm.invalid) {
+      this.alertHandler.handleError({error: 'برجاء التأكد من اسم المستخدم وكلمة السر', statues: 404});
+      return;
+    }
+
+    this.user = {
+      username: this.loginForm.controls.username.value,
+      password: this.loginForm.controls.password.value
+    }
+    this.authService.authorize(this.user);
     //this.submitAttempt = true;
     /*if (this.loginForm.valid){
       this.loading = true;
@@ -51,6 +61,5 @@ export class LoginComponent implements OnInit {
       })
     }*/
     //this.alertService.showModal();
-    this.alertHandler.handleError('');
   }
 }
