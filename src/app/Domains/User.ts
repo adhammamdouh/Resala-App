@@ -1,9 +1,4 @@
-export class User {
+export default interface User {
     username:string;
     password:string;
-    headers = { 'Authorization': 'Bearer '};
-    
-    login(){
-        
-    }
 }
