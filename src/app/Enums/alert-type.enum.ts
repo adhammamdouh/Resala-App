@@ -1,4 +1,5 @@
 export enum AlertType {
-  OneButton,
-  TwoButtons
+  error,
+  confirmation,
+  warning
 }

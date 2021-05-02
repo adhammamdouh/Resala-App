@@ -15,11 +15,11 @@ export class LoginComponent implements OnInit {
   loading:boolean = false;
   loginForm:FormGroup;
   submitAttempt:boolean = false;
-  alertType = AlertType.OneButton;
+  alertType = AlertType.error;
   alertMessage = "برجاء التأكد من اسم المستخدم و كلمة السر"
   constructor(
-    private requestMethodService:RequestMethodService, 
-    private alertService: AlertService, 
+    private requestMethodService:RequestMethodService,
+    private alertService: AlertService,
     private authService:AuthService) { }
   ngOnInit(): void {
     let user:User = {

@@ -34,7 +34,7 @@ import { SelectBoxComponent } from './components/select-box/select-box.component
     EventCardComponent,
     CallCardComponent,
     InputComponent,
-    SelectBoxComponent
+    SelectBoxComponent,
   ],
   imports: [
     BrowserModule,
