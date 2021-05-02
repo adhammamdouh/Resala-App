@@ -9,14 +9,17 @@ import { AlertService } from 'src/app/Services/alert.service';
 export class AlertHandlerService {
   private alertType = AlertType.error;
   private alertMessage = "برجاء التأكد من اسم المستخدم و كلمة السر"
-  private Buttons: AlertButton[] = [{
-                                    name: 'btn1',
-                                    handler: () => {console.log('11')}
-                                    },
-                                    {
-                                    name: 'btn2',
-                                    handler: () => {console.log('333')}
-                                    }]
+  private Buttons: AlertButton[] =
+    [
+      {
+        name: 'btn1',
+        handler: function (){ console.log('333') }
+      },
+      {
+        name: 'btn2',
+        handler: function (){ console.log('333') }
+      }
+    ]
   constructor(private alertService: AlertService) { }
 
   handleError(error) {

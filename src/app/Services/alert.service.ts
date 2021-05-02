@@ -14,7 +14,7 @@ export class AlertService {
   constructor() { }
 
   showModal(alertBody, alertType, alertButtons){
-    this.alertButtons = alertBody;
+    this.alertBody = alertBody;
     this.alertType = alertType;
     this.alertButtons = alertButtons;
 
