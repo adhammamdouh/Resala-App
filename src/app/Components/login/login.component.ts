@@ -6,6 +6,7 @@ import { AlertService } from 'src/app/Services/alert.service';
 import { AlertType } from 'src/app/Enums/alert-type.enum';
 import { AuthService } from 'src/app/Controllers/auth/auth.service';
 import User from 'src/app/Domains/User';
+import { AlertHandlerService } from 'src/app/Controllers/alertHandler/alert-handler.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private requestMethodService:RequestMethodService,
     private alertService: AlertService,
-    private authService:AuthService) { }
+    private authService:AuthService,
+    private alertHandler: AlertHandlerService) { }
   ngOnInit(): void {
     let user:User = {
       username:'test',
@@ -48,6 +50,7 @@ export class LoginComponent implements OnInit {
         this.loading = false;
       })
     }*/
-    this.alertService.showModal();
+    //this.alertService.showModal();
+    this.alertHandler.handleError('');
   }
 }

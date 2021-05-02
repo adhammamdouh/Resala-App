@@ -1,4 +1,4 @@
 export class AlertButton {
   public name:string = '';
-  public handle: any;
+  public handler: any;
 }

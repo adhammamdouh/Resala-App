@@ -9,16 +9,19 @@
       <div class="modal-body text-center">
         {{alertBody}}
       </div>
-      <div class="modal-footer d-flex flex-row-reverse justify-content-center flex-nowrap" *ngIf="alertType == 0">
-        <button type="button" class="btn btn-secondary w-50 modalButton" data-bs-dismiss="modal">موافق</button>
+      <div class="modal-footer d-flex flex-row-reverse justify-content-center flex-nowrap">
+        <button *ngFor="let btn of alertButtons"
+        type="button"
+        class="btn btn-secondary w-50 modalButton"
+        data-bs-dismiss="modal" (click)="btn.handler">{{btn.name}}</button>
       </div>
-      <div class="modal-footer d-flex flex-row-reverse flex-nowrap p-4" *ngIf="alertType == 1">
+      <!--<div class="modal-footer d-flex flex-row-reverse flex-nowrap p-4" *ngIf="alertType == 1">
         <button type="button" class="btn btn-primary w-50 modalButton" data-bs-dismiss="modal" (click)="onClickYes()">نعم</button>
         <button type="button" class="btn btn-secondary w-50 modalButton" data-bs-dismiss="modal">لا</button>
       </div>
       <div class="modal-footer d-flex flex-row-reverse flex-nowrap p-4" *ngIf="alertType == 0 && alertType == 2">
         <button type="button" class="btn btn-secondary w-50 modalButton" data-bs-dismiss="modal">موافق</button>
-      </div>
+      </div>-->
     </div>
   </div>
 </div>
