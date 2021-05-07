@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  eventsIcon = '../../assets/icon/events.svg';
+  volunteersIcon = '../../assets/icon/volunteers.svg';
   constructor() {}
 
 }

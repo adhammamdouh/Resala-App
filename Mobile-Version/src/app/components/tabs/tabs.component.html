@@ -1,0 +1,14 @@
+<ion-grid>
+  <ion-row class="position-relative">
+    <ion-col *ngFor="let tab of tabProperties; let i = index"
+    class="text-center"
+    size="{{tabSize}}"
+    (click)="tabClicked(i)" style="z-index: 999;">
+      <ion-label class="white" >
+        {{tab.name}}
+      </ion-label>
+    </ion-col>
+    <ion-col #bg class="position-absolute h-100 rounded-pill flattingBack" offset="{{bgOffset}}" size="{{tabSize}}">
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -1,0 +1,14 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-grid class="shadow-sm">
+    <ion-row class="position-relative">
+      <ion-col style="z-index: 999" size="12">
+        <ion-icon [src]="leftArrow" (click)="goBack()"></ion-icon>
+      </ion-col>
+      <ion-col style="z-index: 998" class="position-absolute text-center" size="12">
+        <ion-label>
+          {{title}}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
