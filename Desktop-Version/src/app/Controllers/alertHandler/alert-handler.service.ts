@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AlertButton } from 'src/app/Components/shared/normal-alert/alert-button';
 import { AlertType } from 'src/app/Enums/alert-type.enum';
+import { StatusCode } from 'src/app/Enums/status-code.enum';
 import { AlertService } from 'src/app/Services/alert.service';
 
 @Injectable({
@@ -23,14 +24,19 @@ export class AlertHandlerService {
   constructor(private alertService: AlertService) { }
 
   handleError(error) {
-    this.alertService.showModal('test', AlertType.warning, this.Buttons);
-    //console.log(error);
-    //this.
-    /*let gg = document.getElementById('dynamic-html');
-    gg.innerHTML = '<app-normal-alert [alertType]="' + this.alertType + '" [alertBody]="' + this.alertMessage + '"></app-normal-alert>'
-    /*document.getElementById('app-root').innerHTML.concat(
-    '<app-normal-alert [alertType]="' + this.alertType + '" [alertBody]="' + this.alertMessage + '"></app-normal-alert>')*
-    console.log(gg);
-    //alert.show();*/
+    const btns = this.getErrorButtons(error.statues);
+
+    this.alertService.showModal(error.error,
+      AlertType.error,
+      btns );
+  }
+
+  getErrorButtons(code) {
+    switch(code) {
+      case StatusCode.notFound:
+        return [{name: 'موافق', handler: function (){ console.log('button clicked')}}]
+      case StatusCode.success:
+        return [{name: 'موافق', handler: function (){ console.log('button clicked')}}]
+    }
   }
 }
