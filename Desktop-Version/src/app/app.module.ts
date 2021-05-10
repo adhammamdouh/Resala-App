@@ -18,6 +18,9 @@ import { Ng2FittextModule } from "ng2-fittext";
 import { CallCardComponent } from './components/shared/call-card/call-card.component';
 import { InputComponent } from './components/input/input.component';
 import { SelectBoxComponent } from './components/select-box/select-box.component';
+import { TextareaComponent } from './components/textarea/textarea.component';
+import { VolunteersFormComponent } from './components/shared/volunteers-form/volunteers-form.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -35,12 +38,15 @@ import { SelectBoxComponent } from './components/select-box/select-box.component
     CallCardComponent,
     InputComponent,
     SelectBoxComponent,
+    TextareaComponent,
+    VolunteersFormComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    Ng2FittextModule
+    Ng2FittextModule,
+    AppRoutingModule
   ],
   providers: [AlertService],
   bootstrap: [AppComponent]

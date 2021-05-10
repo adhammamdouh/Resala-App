@@ -1,0 +1,4 @@
+<form [formGroup]="textAreaProperties.formGroup">
+    <label for="comments"  class="form-label customLabel arabicFontBold inputsBlueLabel">{{textAreaProperties.label}}</label>
+    <textarea [placeholder]="textAreaProperties.placeHolder" [readonly]="textAreaProperties.disabled" [formControlName]="textAreaProperties.formControlName" class="form-control inputStyle" style="resize: none;" id="comments" rows="7"></textarea>
+</form>

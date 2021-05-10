@@ -4,61 +4,61 @@
     </div>
     <div class="innerContainer w-100" dir="rtl">
         <div class="row">
-            <div class="col-md-4 col-12">
+            <div class="col-sm-4">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.name"></app-input>
                 </div>
             </div>
-            <div class="col-md-4 col-12">
+            <div class="col-sm-4">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.nickName"></app-input>
                 </div>
             </div>
-            <div class="col-md-4 col-12">
+            <div class="col-sm-4">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.birthDate"></app-input>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-sm-6 col-xl-4">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.nationalID"></app-input>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-6 col-xl-4">
                 <div class="mt-2">
                     <app-select-box [selectBoxProperties]='volunteerForm.gender'></app-select-box>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-6 col-xl-4">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.university"></app-input>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-6 col-xl-12">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.faculty"></app-input>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-sm-6 col-xl-4">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.phoneNumber"></app-input>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-6 col-xl-4">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.joiningDate"></app-input>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-6 col-xl-4">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.age"></app-input>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-6 col-xl-12">
                 <div class="mt-2">
                     <app-select-box [selectBoxProperties]='volunteerForm.tShirt'></app-select-box>
                 </div>
@@ -72,73 +72,36 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-sm-6">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.apartmentNumber"></app-input>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-6">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.buildingNumber"></app-input>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-6">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.streetName"></app-input>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-6">
                 <div class="mt-2">
                     <app-input [inputProperties]="volunteerForm.neighborhoodName"></app-input>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-12">
                <div class="mt-2">
                     <app-select-box [selectBoxProperties]="volunteerForm.governorate"></app-select-box>
                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <div class="mt-2">
-                    <app-textarea [textAreaProperties]="volunteerForm.comments"></app-textarea>
-                </div>
+            <div class="mt-2">
+                <app-textarea [textAreaProperties]="volunteerForm.comments"></app-textarea>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="mt-2">
-                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">مرات الحضور</label>
-                    <input type="text" class="form-control inputStyle" id="joinedDate">
-                    <div class="form-text text-danger">برجاء التأكد من مرات الحضور</div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="mt-2">
-                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">عدد المكالمات</label>
-                    <input type="text" class="form-control inputStyle" id="joinedDate">
-                    <div class="form-text text-danger">برجاء التأكد من عدد المكالمات</div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="mt-2">
-                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">عدد الرد</label>
-                    <input type="text" class="form-control inputStyle" id="joinedDate">
-                    <div class="form-text text-danger">برجاء التأكد من عدد الرد</div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="mt-2">
-                    <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">عدد التأكيد</label>
-                    <input type="text" class="form-control inputStyle" id="joinedDate">
-                    <div class="form-text text-danger">برجاء التأكد من عدد التأكيد</div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <app-call-card [properties]="callItem"></app-call-card>
-          </div>
         </div>
     </div>
 </div>

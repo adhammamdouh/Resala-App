@@ -11,6 +11,6 @@ export class InputComponent implements OnInit {
   @Input() inputProperties:InputProperties;
   constructor() { }
   ngOnInit(): void {
-
+    
   }
 }
