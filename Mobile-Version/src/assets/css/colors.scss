@@ -1,0 +1,38 @@
+:root {
+  --input-border-color: #E4E4E4;
+  --input-background-color: #F3F6FF;
+  --blue: #0068FF;
+  --dark-gray: #5A5A5A;
+  --gray: #C2C7DB;
+  --icon-shadow-color: #BCD6FC;
+  --gray-font-color: #676868;
+  --yellow: #FFFFCC;
+  --red-warning: #FFE9ED;
+  --green: #0F996D;
+  --red: #F44336;
+  --white: #FFFFFF;
+  --dark-yellow: #C6D447;
+}
+
+
+.bgSuccess {
+  background-color: var(--green);
+}
+
+.bgWarning {
+  background-color: var(--dark-yellow);
+}
+
+.bgDanger {
+  background-color: var(--red);
+}
+
+.white {
+  color: var(--white);
+  --color: var(--white)
+}
+
+.bgWhite {
+  background-color: var(--white);
+  --background: var(--white)
+}
