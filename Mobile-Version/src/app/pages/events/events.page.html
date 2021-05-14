@@ -2,5 +2,12 @@
 
 <ion-content>
   <app-search-bar></app-search-bar>
-  <app-tabs [tabProperties]="tabProperties"></app-tabs>
+  <app-tabs [tabProperties]="tabProperties" ></app-tabs>
+  <app-event-card (click)="openEventData($event)" [index]="0"></app-event-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

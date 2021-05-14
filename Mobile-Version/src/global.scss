@@ -24,4 +24,34 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-@import "assets/css/colors.scss"
+@import "assets/css/colors.scss";
+@import "assets/css/common.scss";
+@import "assets/css/factors.scss";
+
+ion-content {
+    background-color: #F6F6F6;
+    --background: #F6F6F6;
+    --padding-top: 0.5em;
+    --padding-start: 0.5em;
+    --padding-end: 0.5em;
+    --padding-bottom: 0.2em;
+}
+
+ion-fab-button {
+    --background: var(--blue);
+}
+
+.my-custom-class {
+    --height: 80%;
+    --border-radius: var(--card-corner-radius) var(--card-corner-radius) 0px 0px;
+    transition: all 2ms ease-in-out;
+    //top: initial;
+    //min-height: initial;
+}
+
+.modal-wrapper.sc-ion-modal-ios {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    position: absolute;
+    bottom: 0;
+}

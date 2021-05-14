@@ -1,0 +1,73 @@
+/*.card {
+    background-color: #C2C7DB;
+    border-radius: var(--card-corner-radius);
+}
+
+.date {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: var(--card-corner-radius);
+}
+
+.kpi {
+    border-radius: var(--card-corner-radius);
+    text-align: center;
+    font-weight: bold;
+}*/
+
+.card {
+    width: 100%;
+    background-color: var(--gray);
+    border-radius: var(--card-corner-radius);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+}
+  
+.dateCard {
+    background-color: white;
+    height: 100%;
+    border-radius: var(--card-corner-radius);
+    width: fit-content;
+    color: #000000;
+}
+
+.day {
+    font-size: 44px;
+    line-height: 1.1;
+    font-weight: bold;
+}
+
+.month {
+    font-size: 16px;
+    line-height: 1.1;
+}
+
+.year {
+    font-size: 16px;
+    line-height: 1.1;
+}
+
+.header {
+    font-size: 18px;
+    font-weight: bold;
+    white-space: break-spaces;
+}
+
+.description {
+    font-size: 10px;
+    white-space: break-spaces;
+}
+
+.kpi {
+    border-radius: 9px;
+    text-align: center;
+    padding: 3px;
+    font-weight: bold;
+    font-size: 16px;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TabProperty } from 'src/app/components/tabs/tab-property';
 
 @Component({
@@ -7,10 +8,14 @@ import { TabProperty } from 'src/app/components/tabs/tab-property';
   styleUrls: ['./events.page.scss'],
 })
 export class EventsPage implements OnInit {
-  tabProperties:TabProperty[] = [{name: 'tab 1', index: 0}, {name: 'tab 2', index: 1}]
-  constructor() { }
+  tabProperties:TabProperty[] = [{name: 'القادمة', index: 0}, {name: 'السابقة', index: 1}]
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  openEventData(index) {
+    this.router.navigate(['event-data'])
   }
 
 }
