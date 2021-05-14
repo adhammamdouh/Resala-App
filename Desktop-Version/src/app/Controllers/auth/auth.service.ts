@@ -9,7 +9,7 @@ import { AlertHandlerService } from '../alertHandler/alert-handler.service';
 })
 export class AuthService {
 
-  constructor(private httpClient:HttpClient,
+  constructor(private httpClient:HttpClient, 
               private AlertService: AlertHandlerService) { }
 
   setToken(token):void{

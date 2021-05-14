@@ -6,12 +6,13 @@ import selectBoxProperties from '../../select-box/SelectBoxProperties';
 import { CallProperties } from '../call-card/call-properties';
 import * as bootstrap from 'bootstrap';
 import VolunteerForm from '../../../SharedData/volunteerForm'
+
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  selector: 'app-volunteers-form',
+  templateUrl: './volunteers-form.component.html',
+  styleUrls: ['./volunteers-form.component.scss']
 })
-export class FormComponent implements OnInit {
+export class VolunteersFormComponent implements OnInit {
 
   formTest = new FormGroup({
     sex: new FormControl('', [Validators.required])
@@ -58,4 +59,7 @@ export class FormComponent implements OnInit {
       return new bootstrap.Popover(popoverTriggerEl)
     })
   }
+
 }
+
+

@@ -19,6 +19,7 @@ function initWindow() {
       enableRemoteModule: true
     }
   })
+  
   // Electron Build Path
   appWindow.loadURL(
     url.format({
@@ -31,6 +32,7 @@ function initWindow() {
   appWindow.on('closed', function () {
     appWindow = null
   })
+  appWindow.webContents.openDevTools()
 }
 
 
