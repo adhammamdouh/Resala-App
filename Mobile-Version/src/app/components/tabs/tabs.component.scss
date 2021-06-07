@@ -1,4 +1,15 @@
 .flattingBack {
     transition: all 0.5ms ease-in-out;
     background-color: var(--blue);
+    .selected {
+
+    }
+}
+
+.tabItem {
+    color: var(--black);
+}
+.selected {
+    color: var(--white);
+    background-color: var(--blue);
 }

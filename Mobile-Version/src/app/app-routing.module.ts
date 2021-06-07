@@ -19,6 +19,14 @@ const routes: Routes = [
     path: 'volunteers',
     loadChildren: () => import('./pages/volunteers/volunteers.module').then( m => m.VolunteersPageModule)
   },
+  {
+    path: 'event-data',
+    loadChildren: () => import('./pages/event-data/event-data.module').then( m => m.EventDataPageModule)
+  },
+  {
+    path: 'calls',
+    loadChildren: () => import('./pages/calls/calls.module').then( m => m.CallsPageModule)
+  },
 ];
 
 @NgModule({

@@ -8,18 +8,24 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { VolunteerCardComponent } from './volunteer-card/volunteer-card.component';
 import { EventCardComponent } from './event-card/event-card.component';
+import { CallsContainerComponent } from './calls-container/calls-container.component';
+import { CallsButtonComponent } from './calls-button/calls-button.component';
 
 @NgModule({
   declarations: [TitleBarComponent,
                 SearchBarComponent,
                 TabsComponent,
                 VolunteerCardComponent,
-                EventCardComponent],
+                EventCardComponent,
+                CallsContainerComponent,
+                CallsButtonComponent],
   exports: [TitleBarComponent,
             SearchBarComponent,
             TabsComponent,
             VolunteerCardComponent,
-            EventCardComponent],
+            EventCardComponent,
+            CallsContainerComponent,
+            CallsButtonComponent],
   imports: [IonicModule.forRoot(), CommonModule]
 })
 
