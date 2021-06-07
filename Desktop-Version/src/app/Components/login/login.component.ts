@@ -1,65 +1,66 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { RequestMethodService } from 'src/app/Services/request-method.service';
-import * as bootstrap from 'bootstrap';
-import { AlertService } from 'src/app/Services/alert.service';
-import { AlertType } from 'src/app/Enums/alert-type.enum';
 import { AuthService } from 'src/app/Controllers/auth/auth.service';
 import User from 'src/app/Domains/User';
 import { AlertHandlerService } from 'src/app/Controllers/alertHandler/alert-handler.service';
+import AlertButton from '../shared/normal-alert/alert-button';
+import { FormService } from 'src/app/Services/form.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
-  loading:boolean = false;
-  loginForm:FormGroup;
-  submitAttempt:boolean = false;
-  user: User = {
-    username: '',
-    password: ''
-  }
+
+  loading: boolean = false;
+  loginForm: FormGroup;
+
   constructor(
-    private requestMethodService:RequestMethodService,
-    private alertService: AlertService,
-    private authService:AuthService,
-    private alertHandler: AlertHandlerService) { }
+    private authService: AuthService,
+    private alertHandler: AlertHandlerService,
+    private formService: FormService) { }
+  
   ngOnInit(): void {
+    this.initializeForm();
+  }
+  
+  onSubmit():void {
+    if (this.loginForm.invalid) {
+      this.displayLoginError();
+    } else {
+      this.authService.authorize(this.getUserData());
+      this.loading = true;
+    }
+  }
+
+  initializeForm():void{
     this.loginForm = new FormGroup({
-      username: new FormControl('',[Validators.required,
-                                      Validators.minLength(5)]),
+      username: new FormControl('', [Validators.required,
+      Validators.minLength(5)]),
       password: new FormControl('', [Validators.required,
-                                      Validators.minLength(8),
-                                      Validators.maxLength(32)])
+      Validators.minLength(8),
+      Validators.maxLength(32)])
     })
   }
-  onSubmit() {
-    if(this.loginForm.invalid) {
-      this.alertHandler.handleError({error: 'برجاء التأكد من اسم المستخدم وكلمة السر', statues: 404});
-      return;
-    }
 
-    this.user = {
+  displayLoginError(){
+    let alertButtons:AlertButton[] = [
+      {
+        name: 'موافق',
+        handler: ()=>{}
+      }
+    ]
+    this.alertHandler.displayError("برجاء التاكد من اسم المستخدم و كلمة السر", alertButtons);
+  }
+
+  getUserData():User{
+    let user:User = {
       username: this.loginForm.controls.username.value,
       password: this.loginForm.controls.password.value
     }
-    this.authService.authorize(this.user);
-    //this.submitAttempt = true;
-    /*if (this.loginForm.valid){
-      this.loading = true;
-      this.requestMethodService.postRequest("login",
-      {
-        "username": this.loginForm.controls.username.value,
-        "password": this.loginForm.controls.password.value
-      },
-      {})
-      .subscribe((res:any)=>{
-        console.log("dsfdsf");
-      }, (error)=>{
-        this.loading = false;
-      })
-    }*/
-    //this.alertService.showModal();
+    return user;
   }
+
 }

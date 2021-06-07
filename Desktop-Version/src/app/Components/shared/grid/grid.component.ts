@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-grid',
@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class GridComponent implements OnInit {
   statesText = ["نشط", "طلب ارشيف", "غير نشط"];
   constructor() { }
-  
   ngOnInit(): void {
+  
   }
 
   onSwitchingState(state){

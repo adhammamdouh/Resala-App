@@ -10,10 +10,8 @@
         {{alertService.alertBody}}
       </div>
       <div class="modal-footer d-flex flex-row-reverse justify-content-center flex-nowrap">
-        <button *ngFor="let btn of alertService.alertButtons"
-        type="button"
-        class="btn btn-secondary w-50 modalButton"
-        data-bs-dismiss="modal" (click)="btn.handler()">{{btn.name}}</button>
+        <button *ngFor="let btn of alertService.alertButtons" type="button" class="btn btn-secondary w-50 modalButton"
+          data-bs-dismiss="modal" (click)="btn.handler()">{{btn.name}}</button>
       </div>
       <!--<div class="modal-footer d-flex flex-row-reverse flex-nowrap p-4" *ngIf="alertType == 1">
         <button type="button" class="btn btn-primary w-50 modalButton" data-bs-dismiss="modal" (click)="onClickYes()">نعم</button>

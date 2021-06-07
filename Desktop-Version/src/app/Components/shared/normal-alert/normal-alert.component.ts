@@ -13,7 +13,6 @@ export class NormalAlertComponent implements OnInit {
   alertType: AlertType;
   alertBody: string;
   alertButtons: AlertButton[];
-  @Output() onAcceptance = new EventEmitter<any>();
 
   constructor(public alertService: AlertService) { }
 
@@ -23,8 +22,5 @@ export class NormalAlertComponent implements OnInit {
     this.alertButtons = this.alertService.alertButtons;
   }
 
-  onClickYes(){
-    this.onAcceptance.emit();
-  }
 
 }

@@ -21,6 +21,7 @@ import { SelectBoxComponent } from './components/select-box/select-box.component
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { VolunteersFormComponent } from './components/shared/volunteers-form/volunteers-form.component';
 import { AppRoutingModule } from './app-routing.module';
+import { VolunteersDashboardComponent } from './components/volunteers-dashboard/volunteers-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AppRoutingModule } from './app-routing.module';
     InputComponent,
     SelectBoxComponent,
     TextareaComponent,
-    VolunteersFormComponent
+    VolunteersFormComponent,
+    VolunteersDashboardComponent
   ],
   imports: [
     BrowserModule,

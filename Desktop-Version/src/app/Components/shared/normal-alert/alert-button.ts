@@ -1,4 +1,4 @@
-export class AlertButton {
-  public name:string = '';
-  public handler: any;
+export default interface AlertButton {
+  name:string;
+  handler:any;
 }
