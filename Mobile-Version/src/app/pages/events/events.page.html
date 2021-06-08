@@ -6,7 +6,7 @@
   <app-event-card (click)="openEventData($event)" [index]="0"></app-event-card>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button (click)="copy()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
