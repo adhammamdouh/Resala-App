@@ -1,0 +1,27 @@
+:root {
+    --h1: 24px;
+    --h2: 22px;
+    --h3: 18px;
+    --h4: 16px;
+    --h5: 15px;
+}
+
+.fontH1 {
+    font-size: var(--h1);
+}
+
+.fontH2 {
+    font-size: var(--h2);
+}
+
+.fontH3 {
+    font-size: var(--h3);
+}
+
+.fontH4 {
+    font-size: var(--h4);
+}
+
+.fontH5 {
+    font-size: var(--h5);
+}

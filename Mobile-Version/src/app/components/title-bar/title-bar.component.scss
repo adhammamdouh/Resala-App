@@ -1,4 +1,10 @@
-.backIcon {
-  //color: black;
-  //background-color: black;
+
+
+.title-bar {
+  height: var(--default-height);
+  background-color: var(--header-default-background);
+  border-radius: 0 0 var(--default-border-radius) var(--default-border-radius);
+}
+.title-label {
+  color: var(--light-gray);
 }

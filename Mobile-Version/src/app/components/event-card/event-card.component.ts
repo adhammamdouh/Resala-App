@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { directions, SwappableElement } from 'src/app/classes/SwappingClass/swappable-element';
 import { EventProperties } from './event-properties';
 
 @Component({
@@ -6,16 +7,45 @@ import { EventProperties } from './event-properties';
   templateUrl: './event-card.component.html',
   styleUrls: ['./event-card.component.scss'],
 })
-export class EventCardComponent implements OnInit {
+export class EventCardComponent implements OnInit, AfterViewInit {
+  waveIcon = '../../assets/icon/wave.svg'
+  @ViewChild('eventCard', {read: ElementRef}) eventCard: ElementRef;
+
   @Input() property: EventProperties;
   @Input() index: number;
-  @Output() click: EventEmitter<number> = new EventEmitter();
-  constructor() { }
+  @Output() onSwap: EventEmitter<number> = new EventEmitter();
+
+  swappableElement: SwappableElement = new SwappableElement();
+  isSwapping: boolean = false;
+
+  constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {}
 
-  clickCard() {
-    this.click.emit(this.index);
-  }
+  ngAfterViewInit() {
+    this.swappableElement.applySwapGesture(this.eventCard, directions.horizontal, 0.5, 0, -15);
+    this.swappableElement.onSwapCompelete.subscribe((msg) => {
+      //console.log(this.index, msg);
+      this.onSwap.emit(this.index);
+      //this.isSwapping = true;
+      this.cd.detectChanges();
+      //console.log(this.isSwapping)
+    })
 
+    this.swappableElement.onSwapStart.subscribe((msg) => {
+      //console.log('asdfkdsaljf')
+      this.isSwapping = true;
+      this.cd.detectChanges();
+      //console.log(this.isSwapping)
+
+    })
+
+    this.swappableElement.onSwapReset.subscribe((msg) => {
+      this.isSwapping = false;
+      this.cd.detectChanges();
+    })
+  }
+  clickCard() {
+  }
+  
 }

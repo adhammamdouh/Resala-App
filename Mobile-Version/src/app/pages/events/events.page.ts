@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { TabProperty } from 'src/app/components/tabs/tab-property';
+import { AlertHandlerService } from 'src/app/services/AlertHandlerService/alert-handler.service';
 
 @Component({
   selector: 'app-events',
@@ -9,11 +10,13 @@ import { TabProperty } from 'src/app/components/tabs/tab-property';
   styleUrls: ['./events.page.scss'],
 })
 export class EventsPage implements OnInit {
-  tabProperties:TabProperty[] = [{name: 'القادمة', index: 0}, {name: 'السابقة', index: 1}]
+  tabProperties:TabProperty[] = [{name: 'TABS.upcoming', index: 0}, {name: 'TABS.pervious', index: 1}]
   constructor(private router: Router,
-              private clipboard: Clipboard) { }
+              private clipboard: Clipboard,
+              private alertHandler: AlertHandlerService) { }
 
   ngOnInit() {
+    this.alertHandler.displayAlert("");
   }
 
   openEventData(index) {
@@ -22,7 +25,7 @@ export class EventsPage implements OnInit {
 
   copy() {
     this.clipboard.copy('Clip Board Copy From Ionic Project');
-    console.log('hmmmmmmmmmm');
+    //console.log('hmmmmmmmmmm');
   }
 
 }

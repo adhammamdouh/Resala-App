@@ -1,0 +1,10 @@
+.inputBorder {
+    border: 2px solid var(--input-border-color);
+    background-color: var(--header-default-background);
+    border-radius: var(--default-border-radius);
+    height: var(--default-height);
+}
+
+.inputBox {
+    color: var(--light-gray);
+}

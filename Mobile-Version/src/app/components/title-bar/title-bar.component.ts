@@ -11,7 +11,7 @@ export class TitleBarComponent implements OnInit {
   leftArrow = '../../assets/icon/arrows/left-arrow.svg'
 
   @Input() title: string = '';
-  @Input() showCloseIcon: boolean = true;
+  @Input() showBackIcon: boolean = false;
   
   constructor(private navCtrl: NavController,) { }
 

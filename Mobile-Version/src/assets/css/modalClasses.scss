@@ -1,0 +1,14 @@
+.modalContainer {
+    --height: 80%;
+    --border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+    transition: all 2ms ease-in-out;
+}
+
+.modalContainer .modal-wrapper {
+    border-radius: var(--default-border-radius) var(--default-border-radius) 0 0;
+    background-color: var(--background-default);
+}
+
+.modalContainer .modal-shadow {
+    display: none;
+}

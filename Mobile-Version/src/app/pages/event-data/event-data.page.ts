@@ -19,7 +19,7 @@ export class EventDataPage implements OnInit {
     console.log('swap')
     const modal = await this.modalController.create({
       component: CallsPage,
-      cssClass: 'my-custom-class',
+      cssClass: 'modalContainer',
       mode: 'ios',
       swipeToClose: true,
       /*componentProps: {

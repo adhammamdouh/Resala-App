@@ -1,0 +1,25 @@
+.alertContainer .alert-wrapper {
+    background-color: var(--background-default);
+    border: 2px solid var(--default-border-color);
+}
+
+.alertContainer .alert-title {
+    color: var(--light-gray);
+}
+
+
+.alertContainer .alert-sub-title {
+    color: var(--light-gray);
+}
+
+.alertContainer .alert-message {
+    color: white;
+}
+
+.alertContainer .alert-button {
+    border-color: var(--default-border-color);
+}
+
+ion-backdrop {
+    opacity: 0;
+}

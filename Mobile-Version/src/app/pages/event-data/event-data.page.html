@@ -1,4 +1,9 @@
-<app-title-bar [title]="'eventTitleHere'"></app-title-bar>
+<!--<app-title-bar [title]="'eventTitleHere'" [showBackIcon]="true"></app-title-bar>-->
+<ion-header>
+  <app-title-bar [title]="'test'" [showBackIcon]="true"></app-title-bar>
+  <!--<app-event-data-collector-header></app-event-data-collector-header>-->
+</ion-header>
 <ion-content>
+  <app-event-data-collector-header></app-event-data-collector-header>
   <app-calls-button (swapCompleted)="openCallsModel()" [reset]="callsModelOpened"></app-calls-button>
 </ion-content>

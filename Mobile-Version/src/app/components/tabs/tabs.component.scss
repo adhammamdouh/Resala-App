@@ -1,15 +1,17 @@
 .flattingBack {
     transition: all 0.5ms ease-in-out;
     background-color: var(--blue);
-    .selected {
 
-    }
 }
 
 .tabItem {
-    color: var(--black);
+    color: var(--light-gray);
+    font-weight: bold;
+    //border-radius: var(--default-border-radius);
 }
 .selected {
-    color: var(--white);
-    background-color: var(--blue);
+    color: var(--dark-green);
+    //background-color: var(--container-background);
+    //border-radius: var(--default-border-radius) var(--default-border-radius) 0 0;
+    border-bottom: 2px solid var(--dark-green);
 }

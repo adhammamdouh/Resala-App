@@ -1,0 +1,33 @@
+{
+    "LOGIN": {
+        "username": "اسم المستخدم",
+        "password": "كلمة السر"
+    },
+    "VOLUNTER": {
+
+    },
+    "EVENTS": {
+
+    },
+    "TABS": {
+        "volunteer": "متطوعين",
+        "event": "أحداث",
+        "upcoming": "القادمة",
+        "pervious": "السابقة"
+    },
+    "ُEVENTPAGEDATA": {
+        "from": "من",
+        "to": "الي",
+        "shareable": "قابل للمشاركة"
+    },
+    "CALLCARD": {
+        "name": "الاسم",
+        "phone": "رقم الهاتف",
+        "date": "تاريخ الميلاد",
+        "result": "نتيجة المكالمة",
+        "attendance": "حضور القافلة",
+        "notes": "ملاحظات",
+        "submit": "تسجيل",
+        "edit": "تعديل"
+    }
+}

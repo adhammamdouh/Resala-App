@@ -1,11 +1,11 @@
 <ion-grid *ngIf="tabProperties" class="max-width">
   <ion-row dir="rtl" class="position-relative">
     <ion-col *ngFor="let tab of tabProperties; let i = index"
-    class="text-center tabItem rounded-pill"
+    class="text-center tabItem"
     size="{{tabSize}}"
     (click)="tabClicked(i)" [ngClass]="{'selected': tab.index === selectedTab.index}" style="z-index: 999;">
       <ion-label>
-        {{tab.name}}
+        {{tab.name | translate}}
       </ion-label>
     </ion-col>
     <!--<ion-col #bg class="position-absolute h-100 rounded-pill flattingBack" offset="{{bgOffset}}" size="{{tabSize}}">

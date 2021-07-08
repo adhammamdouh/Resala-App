@@ -1,17 +1,27 @@
 :root {
-  --input-border-color: #E4E4E4;
+  --default-border-color: #9ea3a9;
   --input-background-color: #F3F6FF;
-  --blue: #0068FF;
-  --dark-gray: #5A5A5A;
+  --blue: #150485;
   --gray: #C2C7DB;
   --icon-shadow-color: #BCD6FC;
   --gray-font-color: #676868;
   --yellow: #FFFFCC;
   --red-warning: #FFE9ED;
-  --green: #0F996D;
-  --red: #F44336;
+  --green: #519872;
+  --red: #DA0037;
   --white: #FFFFFF;
-  --dark-yellow: #C6D447;
+  --dark-yellow: #C6D4477a;
+
+  --search-background: #323739;
+  --background-default: #131c21;
+  --description-default: rgba(241, 241, 242, 0.63);
+  --light-gray: #9ea3a9;
+  --dark-green: #02af9c;
+  --header-default-background: #232d36;
+  --container-background: #3a454e;
+  --button-background: #1D3E53;
+  --button-background-active: #33586e;
+  --dark-blue: #023047;
 }
 
 

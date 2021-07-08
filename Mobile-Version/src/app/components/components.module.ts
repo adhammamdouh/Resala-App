@@ -8,8 +8,13 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { VolunteerCardComponent } from './volunteer-card/volunteer-card.component';
 import { EventCardComponent } from './event-card/event-card.component';
-import { CallsContainerComponent } from './calls-container/calls-container.component';
 import { CallsButtonComponent } from './calls-button/calls-button.component';
+import { InputComponent } from './input/input.component';
+import { ButtonComponent } from './button/button.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { EventDataCollectorHeaderComponent } from './event-data-collector-header/event-data-collector-header.component';
+import { MainPageBarComponent } from './main-page-bar/main-page-bar.component';
+import { CallCardComponent } from './call-card/call-card.component';
 
 @NgModule({
   declarations: [TitleBarComponent,
@@ -17,16 +22,26 @@ import { CallsButtonComponent } from './calls-button/calls-button.component';
                 TabsComponent,
                 VolunteerCardComponent,
                 EventCardComponent,
-                CallsContainerComponent,
-                CallsButtonComponent],
+                CallsButtonComponent,
+                InputComponent,
+                ButtonComponent,
+                EventDataCollectorHeaderComponent,
+                MainPageBarComponent,
+                CallCardComponent
+              ],
   exports: [TitleBarComponent,
             SearchBarComponent,
             TabsComponent,
             VolunteerCardComponent,
             EventCardComponent,
-            CallsContainerComponent,
-            CallsButtonComponent],
-  imports: [IonicModule.forRoot(), CommonModule]
+            CallsButtonComponent,
+            InputComponent,
+            ButtonComponent,
+            EventDataCollectorHeaderComponent,
+            MainPageBarComponent,
+            CallCardComponent
+          ],
+  imports: [IonicModule.forRoot(), CommonModule, FormsModule, TranslateModule]
 })
 
 export class CustomComponents {

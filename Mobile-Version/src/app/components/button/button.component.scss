@@ -1,0 +1,8 @@
+.button {
+    height: var(--default-height);
+    max-width: var(--max-width);
+    --border-radius: var(--default-border-radius) !important;
+    --background: var(--button-background);
+    --background-activated: var(--button-background-active);
+    --color: var(--light-gray);
+}

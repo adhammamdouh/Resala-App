@@ -25,3 +25,14 @@
 #container a {
   text-decoration: none;
 }
+
+.tabBar {
+  border-radius: var(--default-border-radius);
+  --background: var(--header-default-background) !important;
+}
+
+.tabBtn {
+  --color-selected: var(--dark-green) !important;
+  --color: var(--light-gray) !important;
+  --background: var(--header-default-background) !important;
+}

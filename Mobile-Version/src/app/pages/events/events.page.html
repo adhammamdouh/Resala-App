@@ -1,13 +1,27 @@
-<app-title-bar [title]="'home'"></app-title-bar>
+<ion-header class="ion-no-border">
+  <!--<app-title-bar [title]="'TABS.event' | translate"></app-title-bar>-->
+  <app-main-page-bar [tabProperties]="tabProperties" [title]="'أحداث'"></app-main-page-bar>
+</ion-header>
 
 <ion-content>
-  <app-search-bar></app-search-bar>
-  <app-tabs [tabProperties]="tabProperties" ></app-tabs>
-  <app-event-card (click)="openEventData($event)" [index]="0"></app-event-card>
+  <!--<app-search-bar></app-search-bar>
+  <app-tabs [tabProperties]="tabProperties" ></app-tabs>-->
+  <app-event-card (onSwap)="openEventData($event)" [index]="0"></app-event-card>
+  <app-event-card (onSwap)="openEventData($event)" [index]="1"></app-event-card>
+  <app-event-card (onSwap)="openEventData($event)" [index]="1"></app-event-card>
+  <app-event-card (onSwap)="openEventData($event)" [index]="1"></app-event-card>
+  <app-event-card (onSwap)="openEventData($event)" [index]="1"></app-event-card>
+  <app-event-card (onSwap)="openEventData($event)" [index]="1"></app-event-card>
+  <app-event-card (onSwap)="openEventData($event)" [index]="1"></app-event-card>
+  <app-event-card (onSwap)="openEventData($event)" [index]="1"></app-event-card>
+  <app-event-card (onSwap)="openEventData($event)" [index]="1"></app-event-card>
+  <app-event-card (onSwap)="openEventData($event)" [index]="1"></app-event-card>
+  <app-event-card (onSwap)="openEventData($event)" [index]="1"></app-event-card>
+  <app-event-card (onSwap)="openEventData($event)" [index]="1"></app-event-card>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <!--<ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="copy()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab>-->
 </ion-content>

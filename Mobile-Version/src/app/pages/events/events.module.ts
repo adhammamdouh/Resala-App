@@ -8,6 +8,7 @@ import { EventsPageRoutingModule } from './events-routing.module';
 
 import { EventsPage } from './events.page';
 import { CustomComponents } from 'src/app/components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { CustomComponents } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     CustomComponents,
-    EventsPageRoutingModule
+    EventsPageRoutingModule,
+    TranslateModule
   ],
   declarations: [EventsPage]
 })

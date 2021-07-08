@@ -1,26 +1,25 @@
 /*.card {
     background-color: #C2C7DB;
-    border-radius: var(--card-corner-radius);
+    border-radius: var(--border-radius);
 }
 
 .date {
     display: flex;
     align-items: center;
     background-color: white;
-    border-radius: var(--card-corner-radius);
+    border-radius: var(--border-radius);
 }
 
 .kpi {
-    border-radius: var(--card-corner-radius);
+    border-radius: var(--border-radius);
     text-align: center;
     font-weight: bold;
 }*/
 
 .card {
     width: 100%;
-    background-color: var(--gray);
-    border-radius: var(--card-corner-radius);
-    color: white;
+    background-color: var(--background-default);//var(--gray);
+    border-radius: var(--default-border-radius);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,13 +27,25 @@
     overflow: hidden;
     cursor: pointer;
 }
+
+.activeCard {
+    background-color: var(--dark-blue);
+    color: white;
+}
+
   
 .dateCard {
-    background-color: white;
+    background-color: transparent;//var(--gray);
     height: 100%;
-    border-radius: var(--card-corner-radius);
+    border-radius: var(--default-border-radius);
+    //border: 2px solid var(--default-border-color);
     width: fit-content;
-    color: #000000;
+    color: var(--dark-green);
+}
+
+.activeDateCard {
+    //background-color: white;
+    color: white;
 }
 
 .day {
@@ -57,11 +68,13 @@
     font-size: 18px;
     font-weight: bold;
     white-space: break-spaces;
+    color: rgba(241, 241, 242, 0.92);
 }
 
 .description {
-    font-size: 10px;
+    font-size: 14px;
     white-space: break-spaces;
+    color: var(--description-default);
 }
 
 .kpi {
@@ -70,4 +83,13 @@
     padding: 3px;
     font-weight: bold;
     font-size: 16px;
+    color: white;//var(--light-gray)
 }
+
+.box {
+    width: 500px; 
+    height: 100px;  
+    border: solid 5px #000;
+    border-color: transparent transparent transparent #000;
+    border-radius: 50%/100px;
+  }

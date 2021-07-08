@@ -1,3 +1,66 @@
 .max-width {
-    max-width: 600px;
+    max-width: var(--max-width);
+}
+
+.min-height {
+    min-height: var(--min-height);
+}
+
+.max-component-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.margin-h {
+    margin-top: var(--default-margin);
+    margin-bottom: var(--default-margin);
+}
+
+.border-1 {
+    height: 1px;
+    border-bottom: 1px solid var(--blue);
+}
+
+.rotatable-icon {
+    transition-duration: 500ms;
+}
+
+.rotated-180 {
+    transform: rotate(-180deg);
+}
+
+.rotated--180 {
+    transform: rotate(180deg);
+}
+
+/*.screen-container {
+    --background
+}*/
+
+
+.headingIcon {
+    color: var(--light-gray);
+    width: 25px;
+    height: 25px;
+}
+
+.defaultIcon {
+    color: var(--light-gray);
+}
+
+.iconContainer {
+    width: 35px !important;
+    height: 35px !important;
+    background-color: var(--container-background) !important;
+}
+
+.defaultLabel {
+    color: var(--light-gray)
+}
+
+.h-margin {
+    margin-left: var(--default-margin-padding);;
+    margin-right: var(--default-margin-padding);;
 }

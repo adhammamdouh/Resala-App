@@ -1,3 +1,11 @@
 :root {
-    --card-corner-radius: 16px;
+    --default-border-radius: 12px;
+    --default-height: 44px;
+    --min-height: 44px; 
+    --default-margin: 0.25rem;
+
+    --default-margin-padding: 0.5em;
+
+    /* max sizes */
+    --max-width: 450px;
 }

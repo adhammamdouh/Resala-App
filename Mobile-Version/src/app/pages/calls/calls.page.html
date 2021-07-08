@@ -1,9 +1,9 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title (click)="headerClicked()">calls</ion-title>
+<ion-header class="ion-no-padding">
+  <ion-toolbar class="ion-no-border">
+    <app-title-bar [title]="'calls'"></app-title-bar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <app-call-card></app-call-card>
 </ion-content>

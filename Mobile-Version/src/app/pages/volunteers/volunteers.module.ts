@@ -8,6 +8,7 @@ import { VolunteersPageRoutingModule } from './volunteers-routing.module';
 
 import { VolunteersPage } from './volunteers.page';
 import { CustomComponents } from 'src/app/components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { CustomComponents } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     CustomComponents,
-    VolunteersPageRoutingModule
+    VolunteersPageRoutingModule,
+    TranslateModule
   ],
   declarations: [VolunteersPage]
 })

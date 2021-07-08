@@ -1,3 +1,19 @@
-<p>
-  input works!
-</p>
+<ion-grid class="max-component-container ion-no-padding margin-h" dir="rtl">
+    <ion-row>
+        <ion-col>
+            {{inputProperties.title | translate}}
+        </ion-col>
+    </ion-row>
+    <ion-row class="inputBorder max-width w-100 p-2">
+        <ion-col class="ion-no-padding">
+            <ion-input class="w-100 ion-no-padding inputBox fontH4" 
+            [(ngModel)]="inputProperties.value"
+            [placeholder]="inputProperties.placeholder | translate"
+            (ionChange)="onChange()" ></ion-input>
+        </ion-col>
+        <ion-col size="auto"
+            class="d-flex flex-column align-items-center justify-content-center">
+            <ion-icon [src]="inputProperties.iconSrc"></ion-icon>
+        </ion-col>
+    </ion-row>
+</ion-grid>
