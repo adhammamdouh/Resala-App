@@ -4,26 +4,28 @@
 
 <ion-content>
   <ion-grid class="p-1" dir="rtl">
-    <form [formGroup]="volunteerFormAtt.volunteerForm" (ngSubmit)="isAddForm ? addVolunteer() : editVolunteer()">
-      <ion-row>
+    <form 
+      class="d-flex flex-column justify-content-center align-items-center"
+      [formGroup]="volunteerFormAtt.volunteerForm" (ngSubmit)="isAddForm ? addVolunteer() : editVolunteer()">
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="volunteerFormAtt.fullname"></app-input>
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="volunteerFormAtt.nickName"></app-input>
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="volunteerFormAtt.birthDate"></app-input>
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="volunteerFormAtt.nationalID"></app-input>
         </ion-col>
@@ -33,31 +35,31 @@
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="volunteerFormAtt.university"></app-input>
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="volunteerFormAtt.faculty"></app-input>
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="volunteerFormAtt.phoneNumber"></app-input>
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="volunteerFormAtt.joiningDate"></app-input>
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="volunteerFormAtt.age"></app-input>
         </ion-col>
@@ -66,13 +68,13 @@
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1 d-flex flex-column justify-content-center">
           <app-select-box [selectBoxProperties]="volunteerFormAtt.branch"></app-select-box>
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="volunteerFormAtt.apartmentNumber"></app-input>
         </ion-col>
@@ -81,7 +83,7 @@
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="volunteerFormAtt.streetName"></app-input>
         </ion-col>
@@ -93,13 +95,13 @@
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-text-area [(inputProperties)]="volunteerFormAtt.comments"></app-text-area>
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-button [label]="'fdjslkafjdlks'" [type]="'submit'" [disabled]="volunteerFormAtt.volunteerForm.invalid"></app-button>
         </ion-col>

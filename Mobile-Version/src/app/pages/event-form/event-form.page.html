@@ -3,5 +3,57 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid class="p-1" dir="rtl">
+    <form class="d-flex flex-column justify-content-center align-items-center"
+      [formGroup]="eventFormAtt.eventForm" (ngSubmit)="isAddForm ? addEvent() : editEvent()">
+      <ion-row class="max-width w-100">
+        <ion-col class="p-1">
+          <app-input [(inputProperties)]="eventFormAtt.name"></app-input>
+        </ion-col>
+      </ion-row>
 
+      <ion-row class="max-width w-100">
+        <ion-col class="p-1">
+          <app-select-box [selectBoxProperties]="eventFormAtt.hasCalls"></app-select-box>
+        </ion-col>
+        <ion-col class="p-1">
+          <app-select-box [selectBoxProperties]="eventFormAtt.shareable"></app-select-box>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="max-width w-100">
+        <ion-col class="p-1">
+          <app-input [(inputProperties)]="eventFormAtt.from"></app-input>
+        </ion-col>
+        <ion-col class="p-1">
+          <app-input [(inputProperties)]="eventFormAtt.to"></app-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="max-width w-100">
+        <ion-col class="p-1">
+          <app-input [(inputProperties)]="eventFormAtt.callsStartDate"></app-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="max-width w-100">
+        <ion-col class="p-1">
+          <app-text-area [(inputProperties)]="eventFormAtt.description"></app-text-area>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="max-width w-100">
+        <ion-col class="p-1">
+          <app-text-area [(inputProperties)]="eventFormAtt.script"></app-text-area>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="max-width w-100">
+        <ion-col class="p-1">
+          <app-button [label]="'fdjslkafjdlks'" [type]="'submit'" [disabled]="eventFormAtt.eventForm.invalid"></app-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+  
 </ion-content>

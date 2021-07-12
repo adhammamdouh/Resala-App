@@ -20,4 +20,8 @@ export class InputComponent implements OnInit {
     this.inputPropertiesChange.emit(this.inputProperties);
   }
 
+  isInvalidInput() {
+    return this.inputProperties.formController.formGroup.get(this.inputProperties.formController.formControllerName).invalid;
+  }
+
 }

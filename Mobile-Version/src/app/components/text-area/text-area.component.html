@@ -1,25 +1,57 @@
-<ion-grid class="max-component-container ion-no-padding margin-h" dir="rtl">
-  <ion-row class="inputBorder max-width w-100 ps-2 pe-2">
-      <ion-col class="ion-no-padding">
-          <ion-grid class="ion-no-border ion-no-padding ion-no-margin defaultLabel fontH4 h-auto inputContainer" lines="none">
-            <ion-row>
-              <ion-col>
-                <ion-label class="fontH5 pt-1 pb-1"  [ngClass]="{'focused': focused }">{{inputProperties.title | translate}}</ion-label>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-textarea class="w-100 ion-no-padding inputBox fontH4" 
-                [(ngModel)]="inputProperties.value"
-                [placeholder]="inputProperties.placeholder | translate"
-                (ionChange)="onChange()"
-                mode="ios" 
-                (ionFocus)="onTextFocus(true)"
-                (ionBlur)="onTextFocus(false)"
-                rows="3"></ion-textarea>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-      </ion-col>
-  </ion-row>
-</ion-grid>
+<form *ngIf="inputProperties.formController; else inputNoForm" [formGroup]="inputProperties.formController.formGroup">
+  <ion-grid class="max-component-container ion-no-padding margin-h" dir="rtl">
+    <ion-row 
+      class="inputBorder max-width w-100 ps-2 pe-2"
+      [ngClass]="{'invalidInput': isInvalidInput()}">
+        <ion-col class="ion-no-padding">
+            <ion-grid class="ion-no-border ion-no-padding ion-no-margin defaultLabel fontH4 h-auto inputContainer" lines="none">
+              <ion-row>
+                <ion-col>
+                  <ion-label class="fontH5 pt-1 pb-1"  [ngClass]="{'focused': focused }">{{inputProperties.title | translate}}</ion-label>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-textarea class="w-100 ion-no-padding inputBox fontH4" 
+                  [placeholder]="inputProperties.placeholder | translate"
+                  [formControlName]="inputProperties.formController.formControllerName"
+                  (ionChange)="onChange()"
+                  mode="ios" 
+                  (ionFocus)="onTextFocus(true)"
+                  (ionBlur)="onTextFocus(false)"
+                  rows="3"></ion-textarea>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+<ng-template #inputNoForm>
+  <ion-grid class="max-component-container ion-no-padding margin-h" dir="rtl">
+    <ion-row class="inputBorder max-width w-100 ps-2 pe-2">
+        <ion-col class="ion-no-padding">
+            <ion-grid class="ion-no-border ion-no-padding ion-no-margin defaultLabel fontH4 h-auto inputContainer" lines="none">
+              <ion-row>
+                <ion-col>
+                  <ion-label class="fontH5 pt-1 pb-1"  [ngClass]="{'focused': focused }">{{inputProperties.title | translate}}</ion-label>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-textarea class="w-100 ion-no-padding inputBox fontH4" 
+                  [(ngModel)]="inputProperties.value"
+                  [placeholder]="inputProperties.placeholder | translate"
+                  (ionChange)="onChange()"
+                  mode="ios" 
+                  (ionFocus)="onTextFocus(true)"
+                  (ionBlur)="onTextFocus(false)"
+                  rows="3"></ion-textarea>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</ng-template>

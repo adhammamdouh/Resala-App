@@ -110,6 +110,16 @@
         "governorate": "اسم المحافظة",
         "comments": "تعليقات"
     },
+    "EVENT_FORM": {
+        "name": "اسم الحدث",
+        "hasCalls": "يحتوي مكالمات",
+        "shareable": "قابل للمشاركة",
+        "from": "من",
+        "to": "الي",
+        "callsStartDate": "موعد بدء المكالمات",
+        "description": "وصف الحدث",
+        "script": "نص الحدث"
+    },
     "PLACEHOLDER": {
         "typeHere": "أكتب هنا ..."
     }

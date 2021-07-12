@@ -26,4 +26,8 @@ export class TextAreaComponent implements OnInit {
     this.focused = status;
   }
 
+  isInvalidInput() {
+    return this.inputProperties.formController.formGroup.get(this.inputProperties.formController.formControllerName).invalid;
+  }
+
 }

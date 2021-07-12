@@ -50,6 +50,9 @@ export enum governorates {
     newValley = 27
 }
 
+export enum accessRights {
+    
+}
 
 export interface textValue {
     text: string,

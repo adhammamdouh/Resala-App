@@ -3,7 +3,7 @@
         dir="rtl">
         <ion-row 
             class="inputBorder max-width w-100 ps-2 pe-2"
-            [ngClass]="{'invalidInput': inputProperties.formController.formGroup.get(inputProperties.formController.formControllerName).invalid}">
+            [ngClass]="{'invalidInput': isInvalidInput()}">
             <ion-col class="ion-no-padding">
                 <ion-item 
                     class="ion-no-border ion-no-padding ion-no-margin defaultLabel fontH4 h-auto inputContainer" lines="none">

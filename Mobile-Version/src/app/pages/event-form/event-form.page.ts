@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventForm } from './event-form';
 
 @Component({
   selector: 'app-event-form',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-form.page.scss'],
 })
 export class EventFormPage implements OnInit {
+  eventFormAtt: EventForm = new EventForm();
+  isAddForm: boolean = true;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  addEvent() {
+
+  }
+  
+  editEvent() {
+
+  }
 }
