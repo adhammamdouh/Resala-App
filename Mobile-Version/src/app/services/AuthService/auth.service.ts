@@ -4,14 +4,17 @@ import { RestfulAPIHandlerService } from '../RestfulAPIHandler/restful-apihandle
 import * as service from 'src/app/data/services.json';
 import { Response } from 'src/app/domains/response';
 import { Router } from '@angular/router';
+import { PrivilegeHandlerService } from '../PrivilegeService/privilege-handler.service';
+import Volunteer from 'src/app/domains/Volunteer/Volunteer';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
-  user = 5;
   constructor(private restfulAPI: RestfulAPIHandlerService,
-              private router: Router) { }
+              private router: Router,
+              private privilegeHandler: PrivilegeHandlerService) { }
 
   login(username, password) {
     this.restfulAPI.post(
@@ -21,9 +24,11 @@ export class AuthService {
   }
 
   onLoginSuccess(respones: any) {
-    console.log("inlogin", respones);
-    console.log(this.user);
-    //this.router.navigate(['home']);
+    const volunteer: Volunteer = respones;
+    console.log("inlogin", volunteer);
+
+    this.privilegeHandler.fillRoles(volunteer.privileges);
+    this.router.navigate(['home']);
   }
 
   onLoginFail(respones: any) {

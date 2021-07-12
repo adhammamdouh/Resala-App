@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { accessRights } from 'src/app/data/general-data.enum';
+import { PrivilegeHandlerService } from 'src/app/services/PrivilegeService/privilege-handler.service';
 import { EventForm } from './event-form';
 
 @Component({
@@ -10,7 +12,7 @@ export class EventFormPage implements OnInit {
   eventFormAtt: EventForm = new EventForm();
   isAddForm: boolean = true;
 
-  constructor() { }
+  constructor(private privilegeHandler: PrivilegeHandlerService) { }
 
   ngOnInit() {
   }
@@ -18,7 +20,7 @@ export class EventFormPage implements OnInit {
   addEvent() {
 
   }
-  
+
   editEvent() {
 
   }
