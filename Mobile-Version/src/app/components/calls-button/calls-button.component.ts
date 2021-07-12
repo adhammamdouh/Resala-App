@@ -12,7 +12,6 @@ export class CallsButtonComponent implements OnInit, AfterViewInit {
   @ViewChild('imgIcon', {read: ElementRef}) btn: ElementRef;
   maxbelow = 5;
   maxabove = -20;
-  absBottomRange = 20;
   callIcon = '../../assets/icon/call.png'
   
   @Input() reset: boolean = false;
@@ -34,7 +33,6 @@ export class CallsButtonComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.swappableElement.applySwapGesture(this.btn, directions.vertical, 0.5, this.maxbelow, this.maxabove);
     this.swappableElement.onSwapCompelete.subscribe((msg: boolean) => {
-      console.log("msg button 1", msg);
       this.swapCompleted.emit(msg);
     })  
   }

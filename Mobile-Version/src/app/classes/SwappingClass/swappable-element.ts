@@ -12,27 +12,29 @@ export class SwappableElement {
     private minimumValue: number = 0;
     private maximumValue: number = 0;
     private swapDuration: number = 0.5;
-  
+    private resetAfterComplete: boolean = true;
     public onSwapCompelete: EventEmitter<boolean> = new EventEmitter<boolean>();
     public onSwapStart: EventEmitter<boolean> = new EventEmitter<boolean>();
     public onSwapReset: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor() { }
   
-    applySwapGesture(element: any, direction: directions, duration: number, minimumValue: number, maximumValue: number) {
+    applySwapGesture(element: any, direction: directions, duration: number, minimumValue: number, maximumValue: number, resetAfterComplete: boolean = true) {
         this.element = element;
         this.direction = direction;
         this.minimumValue = minimumValue;
         this.maximumValue = maximumValue;
         this.swapDuration = duration;
-  
+        this.resetAfterComplete = resetAfterComplete;
+
         let lastDelta = 0;
         const gesture = createGesture({
           el: this.element.nativeElement,
           gestureName: 'swap-gesture',
           gesturePriority: 300,
           threshold: 3,
-          blurOnStart: true,
+          //blurOnStart: true,
+          direction: this.getGestureDirection(direction),
           onStart: ev => {
             this.onSwapStart.emit(true);
             this.element.nativeElement.style.transitionDuration  = '';
@@ -100,7 +102,7 @@ export class SwappableElement {
       buttonSwapped() {
         this.retransform(this.direction, this.maximumValue, this.swapDuration);
         this.onSwapCompelete.emit(true);
-        this.reset()
+        if(this.resetAfterComplete) this.reset()
       }
   
       getCurrentPosition(direction: directions, matrix) {
@@ -118,6 +120,15 @@ export class SwappableElement {
             return ev.deltaX;
           case directions.vertical:
             return ev.deltaY;
+        }
+      }
+
+      getGestureDirection(direction: directions) {
+         switch(direction) {
+          case directions.horizontal:
+            return 'x';
+          case directions.vertical:
+            return 'y';
         }
       }
 }

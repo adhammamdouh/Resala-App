@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { PopoverItemProperties } from 'src/app/components/popover/popover-item-properties';
+import { PopoverItemsType } from 'src/app/components/popover/popover-items-type.enum';
 import { CallsPage } from '../calls/calls.page';
 
 @Component({
@@ -9,7 +11,9 @@ import { CallsPage } from '../calls/calls.page';
 })
 export class EventDataPage implements OnInit {
   callsModelOpened: boolean = false;
-
+  popoverItemsProperties: PopoverItemProperties[] = [{ name: 'POPOVER.edit', navigationPageName: '', type: PopoverItemsType.edit},
+                                                     { name: 'POPOVER.assignCalls', navigationPageName: '', type: PopoverItemsType.assignCalls},
+                                                     { name: 'POPOVER.archive', navigationPageName: '', type: PopoverItemsType.archive}]
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {
@@ -22,20 +26,28 @@ export class EventDataPage implements OnInit {
       cssClass: 'modalContainer',
       mode: 'ios',
       swipeToClose: true,
-      /*componentProps: {
-        'firstName': 'Douglas',
-        'lastName': 'Adams',
-        'middleInitial': 'N'
-      }*/
-      
     });
     this.callsModelOpened = true;
+
     await modal.present();
 
     await modal.onDidDismiss().then(() => {
       this.callsModelOpened = false;
-      console.log('dimiss', this.callsModelOpened);
     })
+  }
+
+  onSelectPopoverItem(ev) {
+    switch(ev) {
+      case PopoverItemsType.edit:
+
+        break;
+      case PopoverItemsType.archive:
+
+        break;
+      case PopoverItemsType.assignCalls:
+
+        break;
+    }
   }
 
 }

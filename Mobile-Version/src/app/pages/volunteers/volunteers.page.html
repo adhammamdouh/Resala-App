@@ -1,5 +1,16 @@
-<app-title-bar [title]="'TABS.volunteer' | translate"></app-title-bar>
-
+<ion-header class="ion-no-border">
+    <!--<app-title-bar [title]="'TABS.event' | translate"></app-title-bar>-->
+    <app-main-page-bar 
+        [(tabProperties)]="tabProperties"
+        [title]="'TABS.volunteers' | translate"
+        [addButtonNavigationPageName]="addButtonNavigationPageName"></app-main-page-bar>
+  </ion-header>
 <ion-content>
+    <app-volunteer-card *ngIf="tabProperties.selectedTabIndex === 0" (onSwap)="openVolunteerData($event)"></app-volunteer-card>
 
+    <div *ngIf="tabProperties.selectedTabIndex === 1">
+        <app-volunteer-card ></app-volunteer-card>
+        <app-volunteer-card ></app-volunteer-card>
+
+    </div>
 </ion-content>

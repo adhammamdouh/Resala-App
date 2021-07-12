@@ -1,9 +1,32 @@
-<!--<app-title-bar [title]="'eventTitleHere'" [showBackIcon]="true"></app-title-bar>-->
-<ion-header>
-  <app-title-bar [title]="'test'" [showBackIcon]="true"></app-title-bar>
-  <!--<app-event-data-collector-header></app-event-data-collector-header>-->
-</ion-header>
-<ion-content>
+<ion-header class="ion-no-border">
+  <app-title-bar 
+    [title]="'test'" 
+    [showBackIcon]="true"
+    [popoverItemsProperties]="popoverItemsProperties"
+    (onSelectPopoverItem)="onSelectPopoverItem($event)"></app-title-bar>
   <app-event-data-collector-header></app-event-data-collector-header>
+</ion-header>
+
+<ion-content>
+  <app-event-data-collector-body></app-event-data-collector-body>
   <app-calls-button (swapCompleted)="openCallsModel()" [reset]="callsModelOpened"></app-calls-button>
+  <ion-fab horizontal="start" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark">
+      <ion-icon md="caret-up" ios="chevron-up-circle-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-google"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

@@ -25,11 +25,7 @@ export class EventCardComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.swappableElement.applySwapGesture(this.eventCard, directions.horizontal, 0.5, 0, -15);
     this.swappableElement.onSwapCompelete.subscribe((msg) => {
-      //console.log(this.index, msg);
       this.onSwap.emit(this.index);
-      //this.isSwapping = true;
-      this.cd.detectChanges();
-      //console.log(this.isSwapping)
     })
 
     this.swappableElement.onSwapStart.subscribe((msg) => {

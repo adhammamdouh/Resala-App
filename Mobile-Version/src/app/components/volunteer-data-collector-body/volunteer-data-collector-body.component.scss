@@ -1,0 +1,15 @@
+.gridContainer {
+    background-color: var(--header-default-background);
+    border-radius: var(--default-border-radius);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.backgroundWave {
+    max-height: 10px;
+}
+
+.headerContainer {
+    background-color: var(--header-default-background-dark);
+    border-radius: var(--default-border-radius);
+}

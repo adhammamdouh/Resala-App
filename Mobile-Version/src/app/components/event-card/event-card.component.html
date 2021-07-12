@@ -6,7 +6,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid #eventCard class="card upperContainer p-2 max-width shadow" (click)="clickCard()" 
+  <ion-grid #eventCard class="card upperContainer pt-2 pb-2 ps-2 max-width shadow ion-no-padding" (click)="clickCard()" 
   [ngClass]="{'activeCard': isSwapping}"
   data-bs-toggle="collapse" 
   [attr.data-bs-target]="'#collapseExample' + index" 
@@ -14,6 +14,9 @@
   [attr.aria-controls]="'collapseExample' + index"
   style="z-index: 200;">
     <ion-row class="w-100 h-100" dir="rtl">
+      <ion-col class="d-flex flex-column justify-content-center align-items-center ion-no-padding" size="auto">
+        <ion-icon name="chevron-back-outline" class="defaultIcon greenIcon"></ion-icon>
+      </ion-col>
       <ion-col class="ion-no-padding d-flex flex-column justify-content-around ms-1">
         <ion-row class="ion-no-padding">
           <ion-col class="ion-no-padding">
@@ -43,15 +46,13 @@
         </ion-row>
       </ion-col>
     
-      <ion-row class="d-flex flex-column align-items-center justify-content-around ">
-        <ion-col class="dateCard" size="12" [ngClass]="{'activeDateCard': isSwapping}">
-          <div class="h-100 d-flex flex-column justify-content-center">
-            <ion-row class="day align-self-center"><ion-label>15</ion-label></ion-row>
-            <ion-row class="month align-self-center"><ion-label>jan</ion-label></ion-row>
-            <ion-row class="year align-self-center"><ion-label>2020</ion-label></ion-row>
-          </div>
-        </ion-col>
-      </ion-row>
+      <ion-col class="d-flex flex-column align-items-center justify-content-around dateCard" size="auto" [ngClass]="{'activeDateCard': isSwapping}">
+        <div class="h-100 d-flex flex-column justify-content-center">
+          <ion-row class="day align-self-center"><ion-label>15</ion-label></ion-row>
+          <ion-row class="month align-self-center"><ion-label>jan</ion-label></ion-row>
+          <ion-row class="year align-self-center"><ion-label>2020</ion-label></ion-row>
+        </div>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </div>

@@ -1,10 +1,24 @@
 .inputBorder {
-    border: 2px solid var(--input-border-color);
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--header-default-background);
     background-color: var(--header-default-background);
     border-radius: var(--default-border-radius);
-    height: var(--default-height);
+    //height: var(--default-height);
 }
 
 .inputBox {
     color: var(--light-gray);
+}
+
+.inputContainer {
+    --background: transparent;
+}
+
+.inputContainer.item-has-focus > ion-label{
+    color: var(--dark-green) !important;
+}
+
+.invalidInput {
+    border-color: var(--red);
 }

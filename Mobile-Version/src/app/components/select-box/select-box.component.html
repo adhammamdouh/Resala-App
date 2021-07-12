@@ -1,0 +1,16 @@
+<div class="selectBoxContainer upperContainer"
+  dir="rtl" >
+  <ion-label 
+      class="defaultLabel fontH4 pe-2">{{selectBoxProperties.label | translate}}</ion-label>
+  <div class="selectBoxHead form-control innerContainer" (click)="toggleList()">
+      <ion-icon [ngClass]="{'icon': open === false , 'iconRotated' : open === true }" 
+      class="iconRotated" name="chevron-down-outline" style="color: white;"></ion-icon>
+      <!--<ion-icon name="chevron-down-outline"></ion-icon>-->
+      <ion-label class="defaultLabel fontH4">{{selectedOption.text | translate}}</ion-label>
+  </div>
+  <div [style.display]="open ? 'block' : 'none'" class="selectBoxList selectList" >
+      <div class="p-2 m-1 innerContainer selectItem" *ngFor="let option of selectBoxProperties.options" (click)="changeSelection(option)">
+        <ion-label class="defaultLabel fontH4" [ngClass]="{'selectedItem' : option.value === selectedOption.value}">{{option.text | translate}}</ion-label>
+      </div>
+  </div>
+</div>

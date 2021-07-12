@@ -1,0 +1,12 @@
+<ion-header class="ion-no-border">
+  <app-title-bar 
+    [title]="'test'"
+    [showBackIcon]="true"
+    [popoverItemsProperties]="popoverItemsProperties"
+    (onSelectPopoverItem)="onSelectPopoverItem($event)"></app-title-bar>
+  <app-volunteer-data-collector-header></app-volunteer-data-collector-header>
+</ion-header>
+
+<ion-content>
+  <app-volunteer-data-collector-body></app-volunteer-data-collector-body>
+</ion-content>

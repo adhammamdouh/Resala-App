@@ -9,31 +9,21 @@ import { TabProperty } from './tab-property';
 export class TabsComponent implements OnInit {
   tabSize = 12;
   bgOffset = 0;
-  @Input() tabProperties: TabProperty[] = [{name: 'tab1', index: 0}, {name: 'tab2', index: 1}]
-  @Input() selectedTab: TabProperty;
-  @Output() selectedTabChange: EventEmitter<TabProperty> = new EventEmitter();
+  @Input() tabProperties: TabProperty = {selectedTabIndex: 0, tabs: [{name: 'tab1', index: 0}, {name: 'tab2', index: 1}] }
+  @Output() tabPropertiesChange: EventEmitter<TabProperty> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-    this.generateTabSize();
-    if(this.selectedTab === undefined || this.selectedTab === null) {
-      this.selectedTab = (this.tabProperties.length > 1) ? this.tabProperties[0] : {name: '', index: 0};
-    }
-  }
-
-  generateTabSize() {
-    const proplength = this.tabProperties.length;
-    if(proplength != 0) {
-      const newTabSize = 12/proplength;
-      this.tabSize = newTabSize > 1 ? Math.floor(newTabSize) : Math.ceil(newTabSize);
+    if(this.tabProperties.selectedTabIndex === undefined || this.tabProperties.selectedTabIndex === null) {
+      this.tabProperties.selectedTabIndex = (this.tabProperties.tabs.length > 1) ? this.tabProperties[0] : {name: '', index: 0};
     }
   }
 
   tabClicked(index) {
     //this.bgOffset = index * this.tabSize;
-    this.selectedTab = this.tabProperties[index];
-    this.selectedTabChange.emit(this.selectedTab);
+    this.tabProperties.selectedTabIndex = this.tabProperties.tabs[index].index;
+    this.tabPropertiesChange.emit(this.tabProperties);
   }
 
 }

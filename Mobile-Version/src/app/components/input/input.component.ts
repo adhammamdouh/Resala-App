@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormController } from '../form-controller';
 import { InputProperties } from './input-properties';
 
 @Component({
@@ -8,7 +9,7 @@ import { InputProperties } from './input-properties';
 })
 export class InputComponent implements OnInit {
   @Input() placeholder: string = '';
-  @Input() inputProperties: InputProperties = {placeholder: '', value: '', iconSrc: '', title: ''};
+  @Input() inputProperties: InputProperties;
   @Output() inputPropertiesChange: EventEmitter<InputProperties> = new EventEmitter();
 
   constructor() { }

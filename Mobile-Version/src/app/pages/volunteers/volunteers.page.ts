@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TabProperty } from 'src/app/components/tabs/tab-property';
 
 @Component({
   selector: 'app-volunteers',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./volunteers.page.scss'],
 })
 export class VolunteersPage implements OnInit {
-
-  constructor() { }
+  tabProperties:TabProperty = { selectedTabIndex: 0, 
+                                tabs: [{name: 'TABS.active', index: 0}, {name: 'TABS.inactive', index: 1}, {name: 'TABS.archive', index: 2}]}
+  
+  addButtonNavigationPageName: string = 'volunteer-form';
+  
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  openVolunteerData(index) {
+    this.router.navigate(['volunteer-data'])
   }
 
 }

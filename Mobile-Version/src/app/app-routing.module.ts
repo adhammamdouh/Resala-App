@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -30,6 +30,18 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'volunteer-data',
+    loadChildren: () => import('./pages/volunteer-data/volunteer-data.module').then( m => m.VolunteerDataPageModule)
+  },
+  {
+    path: 'event-form',
+    loadChildren: () => import('./pages/event-form/event-form.module').then( m => m.EventFormPageModule)
+  },
+  {
+    path: 'volunteer-form',
+    loadChildren: () => import('./pages/volunteer-form/volunteer-form.module').then( m => m.VolunteerFormPageModule)
   },
 ];
 

@@ -1,171 +1,97 @@
-<ion-grid class="cardContainer ion-no-padding active" dir="rtl">
-  <ion-row>
-    <!--"CALLCARD": {
-        "name": "الاسم",
-        "phone": "رقم الهاتف",
-        "date": "تاريخ الميلاد",
-        "result": "نتيجة المكالمة",
-        "attendance": "حضور القافلة",
-        "notes": "ملاحظات",
-        "submit": "تسجيل",
-        "edit": "تعديل"
-    }-->
-    <ion-col class="cornerBorder cornerBorderActive" size="auto">
-      <div  
-        *ngIf="showLoading"
-        class="d-flex flex-column align-items-center justify-content-center">
-        <div class="spinner-grow" style="width: 8px; height: 8px;"></div>
-        <div class="spinner-grow" style="width: 8px; height: 8px;"></div>
-        <div class="spinner-grow" style="width: 8px; height: 8px;"></div>
-      </div>
-    </ion-col>
+<div class="position-relative mt-1 mbt-1" dir="rtl">
+  <ion-grid class="position-absolute ion-no-padding h-100 d-flex flex-column justify-content-center align-items-start" style="z-index: 99;">
+    <ion-row class="h-100 d-flex flex-column align-items-center justify-content-center">
+      <ion-col class="d-flex flex-column align-items-center justify-content-center callButton" (click)="callVolunteer()">
+        <ion-icon name="call-outline" style="color: white;"></ion-icon>
+      </ion-col>
+      <!--<ion-col class="d-flex flex-column align-items-center justify-content-center callButton">
+        <ion-icon name="copy-outline" style="color: white;"></ion-icon>
+      </ion-col>-->
+    </ion-row>
+  </ion-grid>
 
-    <ion-col>
-      
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-label class="defaultLabel fontH4">
-              <!--<ion-label>
-                {{'CALLCARD.name' | translate}} :
-              </ion-label>-->
-              <ion-label>
-                adham mamdouh mohamed
-              </ion-label>
-            </ion-label>
-          </ion-col>
-
-          <ion-col size="auto">
-            <ion-label class="defaultLabel fontH4" (click)="goToCallsDialog()">
-              01100024081
-            </ion-label>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col>
-            <ion-button class="h-auto">
-              <ion-label class="defaultLabel fontH4">{{'CALLCARD.edit' | translate}}</ion-label>
-            </ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button class="h-auto">
-              <ion-label class="defaultLabel fontH4">{{'CALLCARD.submit' | translate}}</ion-label>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-
-      </ion-grid>
-
-    </ion-col>
-  </ion-row>
+  <ion-grid #callCard class="position-relative cardContainer ion-no-padding" [ngClass]="{'completed': callProperties.status === callStatus.submitted}" style="z-index: 100;">
+    <ion-row>
+      <ion-col 
+        class="cornerBorder" 
+        [ngClass]="{'cornerBorderCompleted': callProperties.status === callStatus.submitted}" size="auto"
+        type="button" 
+        data-bs-toggle="collapse" 
+        [attr.data-bs-target]="'#call' + callProperties.id" 
+        aria-expanded="false" 
+        [attr.aria-controls]="'call' + callProperties.id">
+        <div  
+          *ngIf="showLoading"
+          class="d-flex flex-column align-items-center justify-content-center">
+          <div class="spinner-grow" style="width: 8px; height: 8px;"></div>
+          <div class="spinner-grow" style="width: 8px; height: 8px;"></div>
+          <div class="spinner-grow" style="width: 8px; height: 8px;"></div>
+        </div>
+      </ion-col>
   
-</ion-grid>
-
-<ion-grid class="cardContainer ion-no-padding " dir="rtl">
-  <ion-row>
-    <!--"CALLCARD": {
-        "name": "الاسم",
-        "phone": "رقم الهاتف",
-        "date": "تاريخ الميلاد",
-        "result": "نتيجة المكالمة",
-        "attendance": "حضور القافلة",
-        "notes": "ملاحظات",
-        "submit": "تسجيل",
-        "edit": "تعديل"
-    }-->
-    <ion-col class="cornerBorder " size="auto">
-      <div  
-        *ngIf="showLoading"
-        class="d-flex flex-column align-items-center justify-content-center">
-        <div class="spinner-grow" style="width: 8px; height: 8px;"></div>
-        <div class="spinner-grow" style="width: 8px; height: 8px;"></div>
-        <div class="spinner-grow" style="width: 8px; height: 8px;"></div>
-      </div>
-    </ion-col>
-
-    <ion-col>
-      
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-label class="defaultLabel">
-              <ion-label>
-                {{'CALLCARD.name' | translate}} :
+      <ion-col>
+        
+        <ion-grid>
+          <ion-row 
+            type="button" 
+            data-bs-toggle="collapse" 
+            [attr.data-bs-target]="'#call' + callProperties.id" 
+            aria-expanded="false" 
+            [attr.aria-controls]="'call' + callProperties.id"> <!---->
+            <ion-col>
+              <ion-label class="defaultLabel fontH4">
+                <ion-label (click)="showclose()" >
+                  ادغم ممدىك
+                </ion-label>
               </ion-label>
-              <ion-label>
-                adham mamdouh mohamed
-              </ion-label>
-            </ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            edit
-          </ion-col>
-          <ion-col>
-            <ion-button class="h-auto">
-              <ion-label class="defaultLabel">{{'CALLCARD.submit' | translate}}</ion-label>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
-    </ion-col>
-  </ion-row>
+            </ion-col>
   
-</ion-grid>
-
-<ion-grid class="cardContainer ion-no-padding completed" dir="rtl">
-  <ion-row>
-    <!--"CALLCARD": {
-        "name": "الاسم",
-        "phone": "رقم الهاتف",
-        "date": "تاريخ الميلاد",
-        "result": "نتيجة المكالمة",
-        "attendance": "حضور القافلة",
-        "notes": "ملاحظات",
-        "submit": "تسجيل",
-        "edit": "تعديل"
-    }-->
-    <ion-col class="cornerBorder cornerBorderCompleted" size="auto">
-      <div  
-        *ngIf="showLoading"
-        class="d-flex flex-column align-items-center justify-content-center">
-        <div class="spinner-grow" style="width: 8px; height: 8px;"></div>
-        <div class="spinner-grow" style="width: 8px; height: 8px;"></div>
-        <div class="spinner-grow" style="width: 8px; height: 8px;"></div>
-      </div>
-    </ion-col>
-
-    <ion-col>
-      
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-label class="defaultLabel">
-              <ion-label>
-                {{'CALLCARD.name' | translate}} :
+            <ion-col size="auto">
+              <ion-label class="defaultLabel fontH4" (click)="copyToClipboard()">
+                01100024081
               </ion-label>
-              <ion-label>
-                adham mamdouh mohamed
-              </ion-label>
-            </ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            edit
-          </ion-col>
-          <ion-col>
-            <ion-button class="h-auto">
-              <ion-label class="defaultLabel">{{'CALLCARD.submit' | translate}}</ion-label>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
-    </ion-col>
-  </ion-row>
+            </ion-col>
+          </ion-row>
+          
+          <div  class="collapse" [attr.id]="'call' + callProperties.id"> <!--*ngIf="show"-->
+            <ion-row class="pb-1">
+              <ion-col class="ps-1">
+                <app-select-box [selectBoxProperties]="inputTest"></app-select-box>
+              </ion-col>
+              <ion-col class="pe-1">
+                <app-select-box [selectBoxProperties]="inputTest"></app-select-box>
+              </ion-col>
+            </ion-row>
   
-</ion-grid>
+            <ion-row>
+              <ion-col>
+                <app-text-area [(inputProperties)]="notesProperties"></app-text-area>
+              </ion-col>
+              
+            </ion-row>
+    
+            <ion-row>
+              <ion-col *ngIf="callProperties.callType === callType.feedback">
+                <ion-button class="callCardBtn p-1 ion-no-margin" (click)="onEdit()">
+                  <ion-label class="defaultLabel fontH4"><ion-label class="defaultLabel fonth4">{{'CALLCARD.edit' | translate}}</ion-label></ion-label>
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button 
+                  class="callCardBtn p-1 ion-no-margin" 
+                  [disabled]="callProperties.status === callStatus.submitted"
+                  (click)="onSubmit()">
+                  <ion-label class="defaultLabel fontH4"><ion-label class="defaultLabel fonth4">{{'CALLCARD.submit' | translate}}</ion-label></ion-label>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </div>
+  
+        </ion-grid>
+  
+      </ion-col>
+    </ion-row>
+    
+  </ion-grid>
+  
+</div>

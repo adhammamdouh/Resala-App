@@ -1,0 +1,17 @@
+.popoverContainer .popover-viewport {
+    --background: var(--background-default);
+    background-color: var(--background-default);
+}
+
+.popoverContainer .popover-content {
+    --background: var(--background-default) !important;
+    background-color: var(--background-default) !important;
+    border: 1px solid var(--light-gray) !important;
+}
+
+.popover-translucent.sc-ion-popover-ios-h .popover-content.sc-ion-popover-ios, .popover-translucent.sc-ion-popover-ios-h .popover-arrow.sc-ion-popover-ios::after {
+    background: var(--background-default) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border: 1px solid var(--light-gray) !important;
+}

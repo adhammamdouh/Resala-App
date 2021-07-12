@@ -5,6 +5,7 @@
     border-style: solid;
     border-radius: var(--default-border-radius);
     border-color: var(--blue);
+    background-color: var(--background-default-dark);
 }
 
 .cornerBorder {
@@ -15,7 +16,6 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-
 }
 
 .cornerBorderActive {
@@ -32,4 +32,21 @@
 
 .completed {
     border-color: var(--green);
+}
+
+.callButton {
+    border-radius: var(--default-border-radius);
+    width: 40px;
+    height: 100%;
+    background-color: var(--green);
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.callCardBtn {
+    width: 100%;
+    --border-radius: var(--default-border-radius) !important;
+    --background: var(--button-background);
+    --background-activated: var(--button-background-active);
+    --color: var(--light-gray);
 }

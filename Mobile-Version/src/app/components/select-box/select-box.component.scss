@@ -1,0 +1,62 @@
+.selectBoxHead{
+    position: relative;
+}
+.icon{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translate(0,-50%);
+    transition: all 0.2s ease-in-out;
+}
+.selectBoxContainer{
+    position: relative;
+}
+.iconRotated{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translate(0,-50%) rotate(180deg);
+    transition: all 0.2s ease-in-out;
+}
+.selectBoxList{
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    top: 70px;
+    overflow: hidden;
+    transition: 0.2s all ease-in-out;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid var(--light-gray);
+    background-color: var(--header-default-background) !important;
+    border-radius: var(--default-border-radius) !important;
+    overflow-y: scroll;
+    max-height: 200px;
+}
+.selectBoxItem{
+    border-bottom: solid 3px var(--light-gray);
+    padding: 10px;
+    &:last-child{
+        border-bottom: none;
+    }
+    &:hover{
+        background: var(--blue);
+        color: white;
+    }
+}
+
+.upperContainer {
+    background-color: var(--header-default-background) !important;
+    border-radius: var(--default-border-radius) !important;
+}
+
+.innerContainer {
+    background-color: var(--header-default-background-dark) !important;
+    border-radius: var(--default-border-radius) !important;
+    border-color: var(--light-gray);
+}
+
+.selectedItem {
+    --color: var(--dark-green);
+    color: var(--dark-green);
+}

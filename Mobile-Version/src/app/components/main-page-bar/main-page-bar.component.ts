@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { TabProperty } from '../tabs/tab-property';
 
 @Component({
@@ -7,11 +8,13 @@ import { TabProperty } from '../tabs/tab-property';
   styleUrls: ['./main-page-bar.component.scss'],
 })
 export class MainPageBarComponent implements OnInit {
-  @Input() tabProperties: TabProperty[] = []
+  @Input() tabProperties: TabProperty;
   @Input() title: string = '';
+  @Input() addButtonNavigationPageName: string = '';
+  @Output() tabPropertiesChange: EventEmitter<TabProperty> = new EventEmitter();
 
   showSearch = false;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 
@@ -21,6 +24,10 @@ export class MainPageBarComponent implements OnInit {
 
   onSearchBackClick() {
     this.showSearch = false;
+  }
+
+  goToAddForm() {
+    this.router.navigate([this.addButtonNavigationPageName]);
   }
 
 }

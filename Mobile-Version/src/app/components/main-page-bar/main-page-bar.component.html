@@ -12,11 +12,11 @@
         (click)="onSearchClick()">
         <ion-icon name="search-outline" class="headingIcon"></ion-icon>
       </ion-col>
-      <ion-col class="d-flex flex-column align-items-center justify-content-center iconContainer rounded-circle m-1" size="auto">
+      <ion-col class="d-flex flex-column align-items-center justify-content-center iconContainer rounded-circle m-1" size="auto" (click)="goToAddForm()">
         <ion-icon name="add-circle-outline" class="headingIcon"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-grid>
   <app-search-bar *ngIf="showSearch" (onBackClick)="onSearchBackClick()"></app-search-bar>
-  <app-tabs *ngIf="!showSearch" [tabProperties]="tabProperties" ></app-tabs>
+  <app-tabs *ngIf="!showSearch" [(tabProperties)]="tabProperties"></app-tabs>
 </div>

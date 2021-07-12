@@ -10,15 +10,21 @@
 
     },
     "TABS": {
-        "volunteer": "متطوعين",
-        "event": "أحداث",
+        "volunteers": "متطوعين",
+        "events": "أحداث",
         "upcoming": "القادمة",
-        "pervious": "السابقة"
+        "pervious": "السابقة",
+        "active": "نشط",
+        "inactive": "غير نشط",
+        "archive": "طلب ارشيف"
     },
     "ُEVENTPAGEDATA": {
         "from": "من",
         "to": "الي",
-        "shareable": "قابل للمشاركة"
+        "shareable": "قابل للمشاركة",
+        "startDate": "موعد بدء المكالمات",
+        "description": "وصف الحدث",
+        "eventText": "نص الحدث"
     },
     "CALLCARD": {
         "name": "الاسم",
@@ -29,5 +35,82 @@
         "notes": "ملاحظات",
         "submit": "تسجيل",
         "edit": "تعديل"
+    },
+    "COPIDEDTOCLIPBOARD": "تم نسخ",
+    "POPOVER": {
+        "archive": "أرشيف",
+        "edit": "تعديل البيانات",
+        "assignCalls": "توزيع المكالمات"
+    },
+    "GENDER": {
+        "male": "ذكر",
+        "female": "أنثي"
+    },
+    "BRANCHES": {
+        "maadi": "المعادى",
+        "helwan": "حلوان",
+        "masrElGdeda": "مصر الجديدة",
+        "nasrCity": "مدينة نصر",
+        "alex": "الاسكندرية",
+        "fesal": "فيصل",
+        "october": "اكتوبر",
+        "mohandsen": "المهندسين"
+    },
+    "GOVERNORATES": {
+        "cairo": "القاهرة",
+        "alex": "الاسكندرية",
+        "giza": "الجيزة",
+        "aswan": "اسوان",
+        "asyut": "اسيوط",
+        "beheira": "البحيرة",
+        "ismailia": "الإسماعيلية",
+        "luxor": "الأقصر",
+        "redSea": "البحر الأحمر",
+        "beniSuef": "بني سويف",
+        "portSaid": "بورسعيد",
+        "southSinai": "جنوب سيناء",
+        "dakahlia": "الدقهلية",
+        "damietta": "دمياط",
+        "sohag": "سوهاج",
+        "suez": "السويس",
+        "sharqia": "الشرقية",
+        "northSinai": "شمال سيناء",
+        "gharbia": "الغربية",
+        "faiyum": "الفيوم",
+        "qalyubia": "القليوبية",
+        "qena": "قنا",
+        "kafrElSheikh": "كفر الشيخ",
+        "matruh": "مطروح",
+        "monufia": "المنوفية",
+        "minya": "المنيا",
+        "newValley": "الوادي الجديد"
+    },
+    "ANSWERS": {
+        "yes": "نعم",
+        "no": "لا",
+        "ok": "موافق"
+    },
+    "VOLUNTEER_FORM": {
+        "name": "الاسم",
+        "nickName": "الاسم المستعار",
+        "birthDate": "تاريخ الميلاد",
+        "nationalID": "الرقم القومي",
+        "gender": "النوع",
+        "university": "الجامعة",
+        "faculty": "الكلية",
+        "phoneNumber": "رقم الهاتف",
+        "joiningDate": "تاريخ الانضمام",
+        "age": "العمر",
+        "tShirt": "تي شرت",
+        "branch": "الفرع",
+        "apartmentNumber": "رقم الشقة",
+        "buildingNumber": "رقم المنزل",
+        "streetName": "اسم الشارع",
+        "neighborhoodName": "اسم الحي",
+        "governorate": "اسم المحافظة",
+        "comments": "تعليقات"
+    },
+    "PLACEHOLDER": {
+        "typeHere": "أكتب هنا ..."
     }
 }
