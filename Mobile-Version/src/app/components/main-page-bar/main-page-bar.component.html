@@ -1,6 +1,11 @@
 <div class="barContainer shadow mt-2" >
   <ion-grid *ngIf="!showSearch">
     <ion-row dir="rtl">
+      <ion-col 
+        size="auto" 
+        class="d-flex flex-column align-items-center justify-content-center iconContainer rounded-circle m-1" >
+        <ion-icon name="menu" class="headingIcon" (click)="toggleMenu()"></ion-icon>
+      </ion-col>
       <ion-col class="d-flex flex-column align-items-start">
         <ion-label class="title fontH1">
           {{title}}
@@ -12,7 +17,11 @@
         (click)="onSearchClick()">
         <ion-icon name="search-outline" class="headingIcon"></ion-icon>
       </ion-col>
-      <ion-col class="d-flex flex-column align-items-center justify-content-center iconContainer rounded-circle m-1" size="auto" (click)="goToAddForm()">
+      <ion-col 
+        *ngIf="showAddButton"
+        class="d-flex flex-column align-items-center justify-content-center iconContainer rounded-circle m-1" 
+        size="auto" 
+        (click)="goToAddForm()">
         <ion-icon name="add-circle-outline" class="headingIcon"></ion-icon>
       </ion-col>
     </ion-row>

@@ -21,14 +21,14 @@
         <ion-row class="ion-no-padding">
           <ion-col class="ion-no-padding">
             <ion-label class="header">
-              قافلة الكومبو لقرية السنة القديمة
+              {{event.name}}
             </ion-label>
           </ion-col>
         </ion-row>
         <ion-row class="ion-no-padding" >
           <ion-col class="ion-no-padding d-flex flex-column justify-content-center">
             <ion-text class="description">
-              <span>(اطعام فقط) + (تكملة إعادة استكشاف) dasf lkdsj ldaskj flksdj l adlksfjlkd asldfjdksajf</span><span class="collapse" [attr.id]="'collapseExample' + index">dasj flk djslk; fjlskda jflkdj s;flkajsdklfjdaslk; jflkdasjfl;asdjfl;ksdajfl sd;j fa;sd fjlkda saflk; jdlsaf jlk;as jdflkda jsl;kfjds;la kfjalk;dsf j;</span>
+              <span>{{event.description}}</span><span class="collapse" [attr.id]="'collapseExample' + index"></span>
             </ion-text>
           </ion-col>
         </ion-row>

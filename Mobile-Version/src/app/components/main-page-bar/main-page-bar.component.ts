@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { TabProperty } from '../tabs/tab-property';
 
 @Component({
@@ -11,10 +12,12 @@ export class MainPageBarComponent implements OnInit {
   @Input() tabProperties: TabProperty;
   @Input() title: string = '';
   @Input() addButtonNavigationPageName: string = '';
+  @Input() showAddButton: boolean = false;
   @Output() tabPropertiesChange: EventEmitter<TabProperty> = new EventEmitter();
 
   showSearch = false;
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private menu: MenuController) { }
 
   ngOnInit() {}
 
@@ -28,6 +31,10 @@ export class MainPageBarComponent implements OnInit {
 
   goToAddForm() {
     this.router.navigate([this.addButtonNavigationPageName]);
+  }
+
+  toggleMenu() {
+    this.menu.toggle();
   }
 
 }

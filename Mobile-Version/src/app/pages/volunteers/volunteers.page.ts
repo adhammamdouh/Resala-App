@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TabProperty } from 'src/app/components/tabs/tab-property';
+import { PrivilegeHandlerService } from 'src/app/services/PrivilegeService/privilege-handler.service';
+import { VolunteerCRUDService } from 'src/app/services/VolunteerCRUD/volunteer-crud.service';
+
+export enum volunteerTabs {
+  active = 0,
+  inactive = 1,
+  archive = 2
+}
 
 @Component({
   selector: 'app-volunteers',
@@ -8,14 +16,21 @@ import { TabProperty } from 'src/app/components/tabs/tab-property';
   styleUrls: ['./volunteers.page.scss'],
 })
 export class VolunteersPage implements OnInit {
-  tabProperties:TabProperty = { selectedTabIndex: 0, 
-                                tabs: [{name: 'TABS.active', index: 0}, {name: 'TABS.inactive', index: 1}, {name: 'TABS.archive', index: 2}]}
+  volunteerTabsTemp = volunteerTabs;
+  tabProperties:TabProperty = { selectedTabIndex: volunteerTabs.active, 
+                                tabs: [{name: 'TABS.active', index: volunteerTabs.active}, {name: 'TABS.inactive', index: volunteerTabs.inactive}]}
+  
   
   addButtonNavigationPageName: string = 'volunteer-form';
   
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              public privilegeHandler: PrivilegeHandlerService,
+              public volunteerCRUD: VolunteerCRUDService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    if(this.privilegeHandler.isShowRequestToArchiveValid())
+      this.tabProperties.tabs.push({name: 'TABS.archive', index: volunteerTabs.archive});
+    await this.volunteerCRUD.getActiveVolunteers();
   }
 
   openVolunteerData(index) {

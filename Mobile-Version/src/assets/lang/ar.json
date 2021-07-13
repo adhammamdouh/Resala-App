@@ -91,7 +91,9 @@
         "ok": "موافق"
     },
     "VOLUNTEER_FORM": {
-        "name": "الاسم",
+        "firstname": "الاسم الاول",
+        "middlename": "الاسم الاوسط",
+        "lastname": "الاسم الاخير",
         "nickName": "الاسم المستعار",
         "birthDate": "تاريخ الميلاد",
         "nationalID": "الرقم القومي",
@@ -122,5 +124,11 @@
     },
     "PLACEHOLDER": {
         "typeHere": "أكتب هنا ..."
+    },
+    "LOADING": {
+        "message": "من فضلك انتظر ..."
+    },
+    "MENU": {
+        "logout": "تسجيل الخروج"
     }
 }

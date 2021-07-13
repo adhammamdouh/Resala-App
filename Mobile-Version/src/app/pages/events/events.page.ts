@@ -4,6 +4,13 @@ import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { ToastController } from '@ionic/angular';
 import { TabProperty } from 'src/app/components/tabs/tab-property';
 import { AlertHandlerService } from 'src/app/services/AlertHandlerService/alert-handler.service';
+import { EventCRUDService } from 'src/app/services/EventCRUD/event-crud.service';
+import { PrivilegeHandlerService } from 'src/app/services/PrivilegeService/privilege-handler.service';
+
+export enum eventTabs {
+  previous = 0,
+  upcoming = 1,
+}
 
 @Component({
   selector: 'app-events',
@@ -11,15 +18,20 @@ import { AlertHandlerService } from 'src/app/services/AlertHandlerService/alert-
   styleUrls: ['./events.page.scss'],
 })
 export class EventsPage implements OnInit {
-  tabProperties:TabProperty = {selectedTabIndex: 0, tabs: [{name: 'TABS.upcoming', index: 0}, {name: 'TABS.pervious', index: 1}]}
+  eventTabsTemp = eventTabs;
+  tabProperties:TabProperty = {selectedTabIndex: eventTabs.upcoming, 
+                              tabs: [{name: 'TABS.upcoming', index: eventTabs.upcoming}, {name: 'TABS.pervious', index: eventTabs.previous}]}
   addButtonNavigationPageName: string = 'event-form';
   
   constructor(private router: Router,
               private clipboard: Clipboard,
-              private alertHandler: AlertHandlerService,) { }
+              private alertHandler: AlertHandlerService,
+              public privilegeHandler: PrivilegeHandlerService,
+              public eventCRUD: EventCRUDService) { }
 
   ngOnInit() {
     //this.alertHandler.displayAlert("");
+    this.eventCRUD.getAllEvents();
   }
 
   openEventData(index) {

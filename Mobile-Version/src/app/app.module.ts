@@ -12,6 +12,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/lang/', '.json');
@@ -26,6 +27,7 @@ export function createTranslateLoader(http: HttpClient) {
             HttpClientModule,
             FormsModule,
             ReactiveFormsModule,
+            IonicStorageModule.forRoot(),
             TranslateModule.forRoot({
               loader: {
                 provide: TranslateLoader,

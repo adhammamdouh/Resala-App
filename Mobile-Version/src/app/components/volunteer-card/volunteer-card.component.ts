@@ -1,5 +1,7 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { directions, SwappableElement } from 'src/app/classes/SwappingClass/swappable-element';
+import { gender } from 'src/app/data/general-data.enum';
+import Volunteer from 'src/app/domains/Volunteer/Volunteer';
 
 @Component({
   selector: 'app-volunteer-card',
@@ -8,11 +10,12 @@ import { directions, SwappableElement } from 'src/app/classes/SwappingClass/swap
 })
 export class VolunteerCardComponent implements OnInit, AfterViewInit {
   @ViewChild('volunteerCard', {read: ElementRef}) volunteerCard: ElementRef;
+  @Input() volunteer: Volunteer;
+  @Output() onSwap: EventEmitter<number> = new EventEmitter();
   
   swappableElement: SwappableElement = new SwappableElement();
   isSwapping: boolean = false;
-
-  @Output() onSwap: EventEmitter<number> = new EventEmitter();
+  gender = gender;
   
   constructor(private cd: ChangeDetectorRef) { }
 

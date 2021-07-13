@@ -5,7 +5,9 @@ import { options } from "src/app/data/general-data.enum"
 
 export class VolunteerForm {
     volunteerForm = new FormGroup({
-        fullname: new FormControl('', [Validators.required]),
+        firstname: new FormControl('', [Validators.required]),
+        middlename: new FormControl('', [Validators.required]),
+        lastname: new FormControl('', [Validators.required]),
         nickName: new FormControl('', [Validators.required]),
         birthDate: new FormControl('', [Validators.required]),
         nationalID: new FormControl('', [Validators.required, Validators.maxLength(14), Validators.minLength(14)]),
@@ -22,17 +24,35 @@ export class VolunteerForm {
         streetName: new FormControl('', [Validators.required]),
         neighborhoodName: new FormControl('', [Validators.required]),
         governorate: new FormControl('', [Validators.required]),
-        comments: new FormControl('')
+        //comments: new FormControl('')
     })
       
-    fullname: InputProperties = {placeholder: 'PLACEHOLDER.typeHere', 
+    firstname: InputProperties = {placeholder: 'PLACEHOLDER.typeHere', 
                                                 value: '', 
                                                 iconSrc: '', 
-                                                title: 'VOLUNTEER_FORM.name', 
+                                                title: 'VOLUNTEER_FORM.firstname', 
                                                 hasIcon: false, 
                                                 type: 'text',
                                                 disabled: false,
-                                                formController: {formGroup: this.volunteerForm, formControllerName: 'fullname'}}
+                                                formController: {formGroup: this.volunteerForm, formControllerName: 'firstname'}}
+
+    middlename: InputProperties = {placeholder: 'PLACEHOLDER.typeHere', 
+                                                value: '', 
+                                                iconSrc: '', 
+                                                title: 'VOLUNTEER_FORM.middlename', 
+                                                hasIcon: false, 
+                                                type: 'text',
+                                                disabled: false,
+                                                formController: {formGroup: this.volunteerForm, formControllerName: 'middlename'}}
+
+    lastname: InputProperties = {placeholder: 'PLACEHOLDER.typeHere', 
+                                                value: '', 
+                                                iconSrc: '', 
+                                                title: 'VOLUNTEER_FORM.lastname', 
+                                                hasIcon: false, 
+                                                type: 'text',
+                                                disabled: false,
+                                                formController: {formGroup: this.volunteerForm, formControllerName: 'lastname'}}
                                                 
 
     nickName:InputProperties = {placeholder: 'PLACEHOLDER.typeHere', 
@@ -172,13 +192,13 @@ export class VolunteerForm {
                                         formController: {formGroup: this.volunteerForm, formControllerName: 'governorate'}}
 
       
-    public comments: InputProperties = { placeholder: 'PLACEHOLDER.typeHere', 
+    /*public comments: InputProperties = { placeholder: 'PLACEHOLDER.typeHere', 
                                             value: '', 
                                             iconSrc: '', 
                                             title: 'VOLUNTEER_FORM.comments', 
                                             hasIcon: false, 
                                             type: 'text',
                                             disabled: false,
-                                            formController: {formGroup: this.volunteerForm, formControllerName: 'neighborhoodName'}}
+                                            formController: {formGroup: this.volunteerForm, formControllerName: 'neighborhoodName'}}*/
     
 }

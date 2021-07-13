@@ -14,23 +14,24 @@
     [attr.data-bs-target]="'#collapseExample' + '1'" 
     aria-expanded="false" 
     [attr.aria-controls]="'collapseExample' + '1'"
-    style="z-index: 200;">
+    style="z-index: 200;"
+    dir="rtl">
     <ion-row class="w-100 h-100" dir="rtl">
       <ion-col class="d-flex flex-column justify-content-center align-items-center ion-no-padding" size="auto">
-        <ion-icon name="chevron-back-outline" class="defaultIcon"></ion-icon>
+        <ion-icon name="chevron-back-outline" class="defaultIcon greenIcon"></ion-icon>
       </ion-col>
       <ion-col class="ion-no-padding d-flex flex-column justify-content-around ms-1">
         <ion-row class="ion-no-padding">
           <ion-col class="ion-no-padding">
             <ion-label class="header">
-              محمد مصطفي
+              {{volunteer.firstName}} {{volunteer.midName}} {{volunteer.lastName}}
             </ion-label>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-label class="defaultLabel fontH4">
-              المعادي
+              {{volunteer.branch.name}}
             </ion-label>
           </ion-col>
         </ion-row>
@@ -43,21 +44,27 @@
         </ion-row>
       </ion-col>
 
-      <ion-col class="d-flex flex-column align-items-center justify-content-around" size="auto">
+      <ion-col 
+        *ngIf="volunteer.gender === gender.male"
+        class="d-flex flex-column align-items-center justify-content-around" 
+        size="auto">
         <ion-icon class="defaultIcon headingIcon" [name]="isSwapping ? 'man' : 'man-outline'"></ion-icon>
       </ion-col>
-      <!--<ion-col class="d-flex flex-column align-items-center justify-content-around" size="auto">
+      <ion-col
+        *ngIf="volunteer.gender === gender.female"
+        class="d-flex flex-column align-items-center justify-content-around" 
+        size="auto">
         <ion-icon class="defaultIcon headingIcon" [name]="isSwapping ? 'woman' : 'woman-outline'"></ion-icon>
-      </ion-col>-->
+      </ion-col>
 
       <ion-col 
         class="d-flex flex-column align-items-center justify-content-around dateCard" 
         size="auto"
         [ngClass]="{'activeDateCard': isSwapping}">
         <div class="h-100 d-flex flex-column justify-content-center">
-          <ion-row class="day align-self-center"><ion-label>15</ion-label></ion-row>
-          <ion-row class="month align-self-center"><ion-label>jan</ion-label></ion-row>
-          <ion-row class="year align-self-center"><ion-label>2020</ion-label></ion-row>
+          <ion-row class="day align-self-center"><ion-label>{{volunteer.joinDate | date: 'dd'}}</ion-label></ion-row>
+          <ion-row class="month align-self-center"><ion-label>{{volunteer.joinDate | date: 'MM'}}</ion-label></ion-row>
+          <ion-row class="year align-self-center"><ion-label>{{volunteer.joinDate | date: 'YYYY'}}</ion-label></ion-row>
         </div>
       </ion-col>
     </ion-row>

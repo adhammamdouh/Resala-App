@@ -1,4 +1,6 @@
 {
     "baseUrl": "https://resala-core.azurewebsites.net/",
-    "login": "login"
+    "login": "login",
+    "getAllVolunteers": "volunteer/getAll",
+    "getAllByStatus": "volunteer/getAllByState"
 }

@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { directions, SwappableElement } from 'src/app/classes/SwappingClass/swappable-element';
+import ResalaEvent from 'src/app/domains/ResalaEvent/ResalaEvent';
 import { EventProperties } from './event-properties';
 
 @Component({
@@ -13,6 +14,7 @@ export class EventCardComponent implements OnInit, AfterViewInit {
 
   @Input() property: EventProperties;
   @Input() index: number;
+  @Input() event: ResalaEvent
   @Output() onSwap: EventEmitter<number> = new EventEmitter();
 
   swappableElement: SwappableElement = new SwappableElement();

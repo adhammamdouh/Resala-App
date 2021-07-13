@@ -27,5 +27,6 @@ export default interface Volunteer{
     networkType:NetworkType;
     role:Role;
     privileges:Privilege[];
+    gender: number;
     //eventAttendances:Array<EventAttendance>[];
 }

@@ -1,3 +1,57 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay" side="end" swipeGesture="false">
+      <ion-content>
+        <ion-grid 
+          dir="rtl"
+          class="ion-no-padding pt-2"> <!---->
+          <div 
+            class="menu-header p-2"
+            *ngIf="auth.user">
+            <ion-row> <!--{{auth.user.firstName}} {{auth.user.lastName}} -->
+              <ion-col>
+
+                <!-- first name + middle name + last name -->
+                <ion-row>
+                  <ion-col>
+                    {{auth.user.firstName}} {{auth.user.midName}} {{auth.user.lastName}}
+                  </ion-col>
+                </ion-row>
+
+                <!-- committe role-->
+                <ion-row>
+                  <ion-col>
+                    {{auth.user.role.name}}
+                  </ion-col>
+                </ion-row>
+
+                <!-- current committe -->
+                <ion-row>
+                  <ion-col>
+                    committe
+                  </ion-col>
+                </ion-row>
+
+              </ion-col>
+              <ion-col 
+                class="d-flex flex-column justify-content-center"
+                size="auto">
+                {{auth.user.branch.name}}
+              </ion-col>
+            </ion-row>
+          </div>
+
+          <ion-row class="menu-item mt-2 p-2">
+            <ion-col class="d-flex flex-column justify-content-center">
+              {{'MENU.logout' | translate }}
+            </ion-col>
+            <ion-col size="auto" class="defaultIcon d-flex flex-column justify-content-center">
+              <ion-icon name="log-out-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

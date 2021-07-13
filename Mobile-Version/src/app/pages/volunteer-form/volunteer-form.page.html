@@ -9,7 +9,13 @@
       [formGroup]="volunteerFormAtt.volunteerForm" (ngSubmit)="isAddForm ? addVolunteer() : editVolunteer()">
       <ion-row class="max-width w-100">
         <ion-col class="p-1">
-          <app-input [(inputProperties)]="volunteerFormAtt.fullname"></app-input>
+          <app-input [(inputProperties)]="volunteerFormAtt.firstname"></app-input>
+        </ion-col>
+        <ion-col class="p-1">
+          <app-input [(inputProperties)]="volunteerFormAtt.middlename"></app-input>
+        </ion-col>
+        <ion-col class="p-1">
+          <app-input [(inputProperties)]="volunteerFormAtt.lastname"></app-input>
         </ion-col>
       </ion-row>
 
@@ -92,12 +98,6 @@
         </ion-col>
         <ion-col class="p-1 d-flex flex-column justify-content-center">
           <app-select-box [selectBoxProperties]="volunteerFormAtt.governorate"></app-select-box>
-        </ion-col>
-      </ion-row>
-
-      <ion-row class="max-width w-100">
-        <ion-col class="p-1">
-          <app-text-area [(inputProperties)]="volunteerFormAtt.comments"></app-text-area>
         </ion-col>
       </ion-row>
 

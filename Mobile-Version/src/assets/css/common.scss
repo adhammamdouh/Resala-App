@@ -64,3 +64,18 @@
     margin-left: var(--default-margin-padding);;
     margin-right: var(--default-margin-padding);;
 }
+
+.menu-header {
+    border-radius: var(--default-border-radius);
+    background-color: var(--header-default-background-dark);
+    color: var(--light-gray);
+}
+
+.menu-item {
+    border-radius: var(--default-border-radius);
+    background-color: var(--header-default-background-dark);
+    color: var(--light-gray);
+    border-width: 1px;
+    border-color: var(--default-border-color);
+    border-style: solid;
+}
