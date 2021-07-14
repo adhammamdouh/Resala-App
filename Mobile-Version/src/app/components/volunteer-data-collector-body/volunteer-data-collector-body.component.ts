@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import Volunteer from 'src/app/domains/Volunteer/Volunteer';
 
 @Component({
   selector: 'app-volunteer-data-collector-body',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./volunteer-data-collector-body.component.scss'],
 })
 export class VolunteerDataCollectorBodyComponent implements OnInit {
-
+  @Input() volunteer: Volunteer;
+  
   constructor() { }
 
   ngOnInit() {}

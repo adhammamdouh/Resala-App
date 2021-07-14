@@ -1,4 +1,6 @@
-<div class="headerContainer shadow-lg">
+<div 
+  *ngIf="event"
+  class="headerContainer shadow-lg">
   
   <ion-grid dir="rtl">
     <ion-row>
@@ -8,7 +10,7 @@
             {{'ُEVENTPAGEDATA.from' | translate}} :
           </ion-label>
           <ion-label>
-            
+            {{event.fromDate | date: 'hh:mm dd-MM-yyyy' }}
           </ion-label>
         </ion-label>
         
@@ -19,7 +21,7 @@
             {{'ُEVENTPAGEDATA.to' | translate}} :
           </ion-label>
           <ion-label>
-
+            {{event.toDate | date: 'hh:mm dd-MM-yyyy' }}
           </ion-label>
         </ion-label>
       </ion-col>
@@ -34,26 +36,25 @@
                 {{'ُEVENTPAGEDATA.shareable' | translate}} :
               </ion-label>
               <ion-label>
-
+                {{(event.shareable ? 'ANSWERS.yes' : 'ANSWERS.no') | translate}}
               </ion-label>
             </ion-label>
           </ion-col>
         </ion-row>
         <ion-row>
-          
           <ion-col>
             <ion-label class="defaultLabel fontH2">
-              قافلة الكومبو لقرية السنة القديمة
+              {{event.name}}
             </ion-label>
           </ion-col>
         </ion-row>
-        <ion-row>
+        <!--<ion-row>
           <ion-col>
             <ion-label class="defaultLabel fontH5">
-              (اطعام فقط) + (تكملة إعادة استكشاف)
+              {{event.description}}
             </ion-label>
           </ion-col>
-        </ion-row>
+        </ion-row>-->
       </ion-col>
     </ion-row>
     

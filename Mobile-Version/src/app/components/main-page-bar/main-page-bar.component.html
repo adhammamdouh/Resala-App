@@ -26,6 +26,9 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <app-search-bar *ngIf="showSearch" (onBackClick)="onSearchBackClick()"></app-search-bar>
+  <app-search-bar 
+    *ngIf="showSearch" 
+    (onSearch)="onSearching($event)"
+    (onBackClick)="onSearchBackClick()"></app-search-bar>
   <app-tabs *ngIf="!showSearch" [(tabProperties)]="tabProperties"></app-tabs>
 </div>

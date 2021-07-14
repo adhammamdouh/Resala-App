@@ -16,7 +16,7 @@ export class VolunteerForm {
         faculty: new FormControl('', [Validators.required]),
         phoneNumber: new FormControl('', [Validators.required]),
         joiningDate: new FormControl('', [Validators.required]),
-        age: new FormControl('', [Validators.required]),
+        //age: new FormControl('', [Validators.required]),
         tShirt: new FormControl('', [Validators.required]),
         branch: new FormControl('', [Validators.required]),
         apartmentNumber: new FormControl('', [Validators.required]),
@@ -127,15 +127,14 @@ export class VolunteerForm {
                                         disabled: false,
                                         formController: {formGroup: this.volunteerForm, formControllerName: 'joiningDate'}}
 
-    age:InputProperties = { placeholder: 'PLACEHOLDER.typeHere', 
+    /*age:InputProperties = { placeholder: 'PLACEHOLDER.typeHere', 
                         value: '', 
                         iconSrc: '', 
                         title: 'VOLUNTEER_FORM.age', 
                         hasIcon: false, 
                         type: 'text',
                         disabled: false,
-                        formController: {formGroup: this.volunteerForm, formControllerName: 'age'}}
-
+                        formController: {formGroup: this.volunteerForm, formControllerName: 'age'}}*/
     tShirt:selectBoxProperties = { defaultValueIndex: 0, 
                                 label: 'VOLUNTEER_FORM.tShirt', 
                                 options: options.answers,

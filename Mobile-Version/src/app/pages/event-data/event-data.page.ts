@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { PopoverItemProperties } from 'src/app/components/popover/popover-item-properties';
 import { PopoverItemsType } from 'src/app/components/popover/popover-items-type.enum';
+import ResalaEvent from 'src/app/domains/ResalaEvent/ResalaEvent';
 import { PrivilegeHandlerService } from 'src/app/services/PrivilegeService/privilege-handler.service';
 import { CallsPage } from '../calls/calls.page';
 
@@ -13,19 +15,20 @@ import { CallsPage } from '../calls/calls.page';
 export class EventDataPage implements OnInit {
   callsModelOpened: boolean = false;
   popoverItemsProperties: PopoverItemProperties[];
+  event: ResalaEvent;
   constructor(private modalController: ModalController,
-              public privilegeHandler: PrivilegeHandlerService) { }
+              public privilegeHandler: PrivilegeHandlerService,
+              private route: ActivatedRoute) { 
+
+                this.route.queryParams.subscribe(params => {
+                  this.event = JSON.parse(params["event"]);
+                });
+                
+              }
 
   ngOnInit() {
     this.preparePopover();
   }
-
-  /*ROLE_ARCHIVE_EVENT, 
-  ROLE_COMPLETE_EVENT,
-  ROLE_UPDATE_EVENT,
-  ROLE_GET_ASSIGNED_CALLS,    
-  ROLE_SUBMIT_ASSIGNED_CALLS, 
-  ROLE_ASSIGN_CALLS*/
 
   async openCallsModel() {
     console.log('swap')

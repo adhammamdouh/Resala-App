@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { TabProperty } from 'src/app/components/tabs/tab-property';
 import { PrivilegeHandlerService } from 'src/app/services/PrivilegeService/privilege-handler.service';
 import { VolunteerCRUDService } from 'src/app/services/VolunteerCRUD/volunteer-crud.service';
@@ -23,9 +24,10 @@ export class VolunteersPage implements OnInit {
   
   addButtonNavigationPageName: string = 'volunteer-form';
   
-  constructor(private router: Router,
+  constructor(private navCtrl: NavController,
               public privilegeHandler: PrivilegeHandlerService,
-              public volunteerCRUD: VolunteerCRUDService) { }
+              public volunteerCRUD: VolunteerCRUDService,
+              private zone: NgZone) { }
 
   async ngOnInit() {
     if(this.privilegeHandler.isShowRequestToArchiveValid())
@@ -33,8 +35,28 @@ export class VolunteersPage implements OnInit {
     await this.volunteerCRUD.getActiveVolunteers();
   }
 
-  openVolunteerData(index) {
-    this.router.navigate(['volunteer-data'])
+  openVolunteerData(volunteer) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        volunteer: JSON.stringify(volunteer),
+      }
+    };
+    this.zone.run(async () => {
+      await this.navCtrl.navigateForward(['volunteer-data'], navigationExtras);
+    })
+    //this.router.navigate(['volunteer-data'])
+  }
+
+  async refreshVolunteers(ev) {
+    await this.volunteerCRUD.refresh(ev);
+  }
+
+  searchVolunteers(ev) {
+    this.volunteerCRUD.search(ev);
+  }
+
+  completeVolunteersSearching() {
+    this.volunteerCRUD.search('', true);
   }
 
 }

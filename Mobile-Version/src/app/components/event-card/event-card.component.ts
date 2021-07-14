@@ -13,9 +13,9 @@ export class EventCardComponent implements OnInit, AfterViewInit {
   @ViewChild('eventCard', {read: ElementRef}) eventCard: ElementRef;
 
   @Input() property: EventProperties;
-  @Input() index: number;
+  @Input() index: Number;
   @Input() event: ResalaEvent
-  @Output() onSwap: EventEmitter<number> = new EventEmitter();
+  @Output() onSwap: EventEmitter<Number> = new EventEmitter();
 
   swappableElement: SwappableElement = new SwappableElement();
   isSwapping: boolean = false;

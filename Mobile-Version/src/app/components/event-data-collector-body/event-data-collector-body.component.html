@@ -1,4 +1,7 @@
-<div class="headerContainer shadow-lg mt-2 hasCallButton">
+<div 
+  *ngIf="event"
+  class="headerContainer shadow-lg mt-2" 
+  [ngClass]="{'hasCallButton': privilegeHandler.isGetAssignedCallsValid()}">
   
   <ion-grid dir="rtl">
     <ion-row>
@@ -8,7 +11,7 @@
             {{'ُEVENTPAGEDATA.startDate' | translate}} :
           </ion-label>
           <ion-label>
-            
+            {{event.callsStartTime | date: 'hh:mm dd-MM-yyyy'}}
           </ion-label>
         </ion-label>
       </ion-col>
@@ -29,19 +32,7 @@
         <ion-row class="gridContainer">
           <ion-col>
             <ion-label class="defaultLabel fontH4">
-              fdagdsgdlaskhfkldshaf
-              daslkkfhdskahf
-              fadskhflksdhflkasdhf
-              adhsfkladshflkhadsfldsh
-              fhadsfhdasfhlasfhdl
-              ashdf
-              adshfklasdhfl
-              ahsdlfkhdaslkfh
-              sdhfl
-              ahdsflkhasdfh
-              lashdfl
-              adshfklasdhflashdflksadhflkasdhfhas
-              fhadsfhdasfhlasfhdlsafhdslkhf
+              {{event.description}}
             </ion-label>
           </ion-col>
         </ion-row>
@@ -57,37 +48,7 @@
         <ion-row class="gridContainer">
           <ion-col>
             <ion-label class="defaultLabel fontH4">
-              fdagdsgdlaskhfkldshaf
-              daslkkfhdskahf
-              fadskhflksdhflkasdhf
-              adhsfkladshflkhadsfldsh
-              fhadsfhdasfhlasfhdl
-              ashdf
-              adshfklasdhfl
-              ahsdlfkhdaslkfh
-              sdhfl
-              ahdsflkhasdfh
-              lashdfl
-              adshfklasdhflashdflksadhflkasdhfhas
-              fhadsfhdasfhlasfhdlsafhdslkhffdfgsfdljgkldsag
-              dlaghh
-              sdghlkadhglkdshglkdashkghakdhfklsajfdsk;jfkldsjalfkjdlksafjkldjsafklhdakl;fhkasdfjkl;sjklfhdasjkfhklsdahflkdsjaflkhdsklfhlaskdhflkdsahfkl;daslkkfhdskahfdashflkdsafdsaf
-              dkasfhlkdshfal
-              fdasfhdlksahfl
-              sjklfhdasjkfhklsdahflkdsjaflkhdsklfhlaskdhflkdsahfklshdklf
-              hashdfl
-              ashdf
-              kahdflk
-              ashdflkashdflkajsdklfjdaslkhgklajdfkldshlaf
-              dsafhdakslfhlksdjflk
-              ajsdflkasjlkdfhadfh
-              dshfl
-              ashdf
-              hsdlfk
-              dhsalkfjdslkafjlasfdhkadshflkdashfl
-              fhdakljfldskjafkldhsfa
-              lkdahfkldsjfkldsjaf
-
+              {{event.script}}
             </ion-label>
           </ion-col>
         </ion-row>

@@ -1,202 +1,189 @@
-<div class="headerContainer shadow-lg mt-2">
+<div 
+  *ngIf="volunteer"
+  class="headerContainer shadow-lg mt-2">
   
   <ion-grid dir="rtl">
-    
     <ion-row class="gridContainer">
       <ion-col>
         <ion-label class="defaultLabel fontH4">
-          {{'ُEVENTPAGEDATA.startDate' | translate}}
+          {{'VOLUNTEERPAGEDATA.nickname' | translate}}
         </ion-label>
       </ion-col>
       <ion-col class="d-flex flex-column text-start">
         <ion-label class="defaultLabel fontH4">
-          dsf
+          {{volunteer.nickName}}
         </ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row class="gridContainer">
       <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.nationalId' | translate}}
         </ion-label>
       </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
-        </ion-label>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="gridContainer">
-      <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          {{volunteer.nationalId}}
         </ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row class="gridContainer">
       <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.gender' | translate}}
         </ion-label>
       </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
-        </ion-label>
-      </ion-col>
-    </ion-row>
-
-
-    <ion-row class="gridContainer">
-      <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          {{volunteer.gender}}
         </ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row class="gridContainer">
       <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.university' | translate}}
         </ion-label>
       </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
-        </ion-label>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="gridContainer">
-      <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          {{volunteer.university}}
         </ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row class="gridContainer">
       <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.faculty' | translate}}
         </ion-label>
       </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
-        </ion-label>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="gridContainer">
-      <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          {{volunteer.faculty}}
         </ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row class="gridContainer">
       <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.phoneNumber' | translate}}
         </ion-label>
       </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
-        </ion-label>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="gridContainer">
-      <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          {{volunteer.phoneNumber}}
         </ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row class="gridContainer">
       <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.joiningDate' | translate}}
         </ion-label>
       </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
-        </ion-label>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="gridContainer">
-      <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          {{volunteer.joinDate}}
         </ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row class="gridContainer">
       <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.tShirt' | translate}}
         </ion-label>
       </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          {{volunteer.tShirt}}
         </ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row class="gridContainer">
       <ion-col>
-        <ion-label class="defaultLabel FontH4">
-          {{'ُEVENTPAGEDATA.description' | translate}}
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.age' | translate}}
         </ion-label>
       </ion-col>
-      <ion-col>
-        <ion-label class="defaultLabel fontH4 d-flex flex-column text-start">
-
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          
         </ion-label>
       </ion-col>
     </ion-row>
-    
+
+    <ion-row class="gridContainer">
+      <ion-col>
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.apartmentNumber' | translate}}
+        </ion-label>
+      </ion-col>
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          {{volunteer.address.apartmentNumber}}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="gridContainer">
+      <ion-col>
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.buildingNumber' | translate}}
+        </ion-label>
+      </ion-col>
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          {{volunteer.address.buildingNumber}}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="gridContainer">
+      <ion-col>
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.streetName' | translate}}
+        </ion-label>
+      </ion-col>
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          {{volunteer.address.streetName}}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="gridContainer">
+      <ion-col>
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.neighborhoodName' | translate}}
+        </ion-label>
+      </ion-col>
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          {{volunteer.address.regionName}}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="gridContainer">
+      <ion-col>
+        <ion-label class="defaultLabel fontH4">
+          {{'VOLUNTEERPAGEDATA.governorate' | translate}}
+        </ion-label>
+      </ion-col>
+      <ion-col class="d-flex flex-column text-start">
+        <ion-label class="defaultLabel fontH4">
+          {{volunteer.address.capital.name}}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
 </div>

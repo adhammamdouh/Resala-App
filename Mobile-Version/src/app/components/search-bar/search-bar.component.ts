@@ -8,6 +8,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
 export class SearchBarComponent implements OnInit, AfterViewInit {
 
   @Output() onBackClick: EventEmitter<boolean> = new EventEmitter();
+  @Output() onSearch: EventEmitter<string> = new EventEmitter();
 
   searchIcon = '../../assets/icon/search.svg'
   arrowDown = '../../assets/icon/arrows/down-arrow.svg'
@@ -28,6 +29,10 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
 
   onClick() {
     this.onBackClick.emit(true);
+  }
+
+  onSearching(ev) {
+    this.onSearch.emit(ev.target.value);
   }
 
 }

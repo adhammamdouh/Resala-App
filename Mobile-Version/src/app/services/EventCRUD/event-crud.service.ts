@@ -14,10 +14,10 @@ export class EventCRUDService {
   constructor(private restfulAPI: RestfulAPIHandlerService,
               private privilegeHandler: PrivilegeHandlerService) { }
 
-  async refresh() {
-    this.getAllEvents();
+  async refresh(event = null) {
+    this.getAllEvents(event);
   }
-  async getAllEvents() {
+  async getAllEvents(event = null) {
     const url = service.baseUrl + 'event/getAll'
       //(this.privilegeHandler.isGetByStatusPrivilegeValid() ? 'volunteer/getAllByBranch/1' : '');
     //console.log(url)
@@ -28,6 +28,8 @@ export class EventCRUDService {
       this.events = res.message;
       console.log(res)
       console.log(this.events);
+
+      //if(event) event.target.complete();
     })
   }
 }

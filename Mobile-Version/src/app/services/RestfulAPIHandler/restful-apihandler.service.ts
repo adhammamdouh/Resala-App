@@ -13,8 +13,6 @@ export class RestfulAPIHandlerService {
               private storage: Storage) { }
 
   async get(url) {
-    
-
     return this.http.get(url, await this.getHttpHeaders());
   }
 

@@ -7,12 +7,12 @@
     </ion-row>
   </ion-grid>
   <ion-grid #eventCard class="card upperContainer pt-2 pb-2 ps-2 max-width shadow ion-no-padding" (click)="clickCard()" 
-  [ngClass]="{'activeCard': isSwapping}"
-  data-bs-toggle="collapse" 
-  [attr.data-bs-target]="'#collapseExample' + index" 
-  aria-expanded="false" 
-  [attr.aria-controls]="'collapseExample' + index"
-  style="z-index: 200;">
+    [ngClass]="{'activeCard': isSwapping}"
+    data-bs-toggle="collapse" 
+    [attr.data-bs-target]="'#collapseExample' + index" 
+    aria-expanded="false" 
+    [attr.aria-controls]="'collapseExample' + index"
+    style="z-index: 200;">
     <ion-row class="w-100 h-100" dir="rtl">
       <ion-col class="d-flex flex-column justify-content-center align-items-center ion-no-padding" size="auto">
         <ion-icon name="chevron-back-outline" class="defaultIcon greenIcon"></ion-icon>
@@ -48,9 +48,9 @@
     
       <ion-col class="d-flex flex-column align-items-center justify-content-around dateCard" size="auto" [ngClass]="{'activeDateCard': isSwapping}">
         <div class="h-100 d-flex flex-column justify-content-center">
-          <ion-row class="day align-self-center"><ion-label>15</ion-label></ion-row>
-          <ion-row class="month align-self-center"><ion-label>jan</ion-label></ion-row>
-          <ion-row class="year align-self-center"><ion-label>2020</ion-label></ion-row>
+          <ion-row class="day align-self-center"><ion-label>{{event.fromDate | date: 'dd'}}</ion-label></ion-row>
+          <ion-row class="month align-self-center"><ion-label>{{event.fromDate | date: 'MM'}}</ion-label></ion-row>
+          <ion-row class="year align-self-center"><ion-label>{{event.fromDate | date: 'yyyy'}}</ion-label></ion-row>
         </div>
       </ion-col>
     </ion-row>

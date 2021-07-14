@@ -8,6 +8,7 @@ import { CallsPageRoutingModule } from './calls-routing.module';
 
 import { CallsPage } from './calls.page';
 import { CustomComponents } from 'src/app/components/components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { CustomComponents } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     CallsPageRoutingModule,
-    CustomComponents
+    CustomComponents,
+    TranslateModule
   ],
   declarations: [CallsPage]
 })

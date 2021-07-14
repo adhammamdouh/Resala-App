@@ -4,27 +4,33 @@
         [(tabProperties)]="tabProperties"
         [title]="'TABS.volunteers' | translate"
         [addButtonNavigationPageName]="addButtonNavigationPageName"
-        [showAddButton]="privilegeHandler.isCreateVolunteerValid()"></app-main-page-bar>
+        [showAddButton]="privilegeHandler.isCreateVolunteerValid()"
+        (onSearch)="searchVolunteers($event)"
+        (onSearchComplete)="completeVolunteersSearching()"></app-main-page-bar>
   </ion-header>
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="refreshVolunteers($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
     <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.active">
         <app-volunteer-card 
             *ngFor="let volunteer of volunteerCRUD.volunteers"
             [volunteer]="volunteer"
-            (onSwap)="openVolunteerData($event)"></app-volunteer-card>
+            (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
     </div>
 
     <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.inactive">
         <app-volunteer-card 
             *ngFor="let volunteer of volunteerCRUD.volunteers"
             [volunteer]="volunteer"
-            (onSwap)="openVolunteerData($event)"></app-volunteer-card>
+            (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
     </div >
         
     <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.archive">
         <app-volunteer-card 
         *ngFor="let volunteer of volunteerCRUD.volunteers"
         [volunteer]="volunteer"
-        (onSwap)="openVolunteerData($event)"></app-volunteer-card>
+        (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
     </div>
 </ion-content>

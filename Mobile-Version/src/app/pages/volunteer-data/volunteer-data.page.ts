@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PopoverItemProperties } from 'src/app/components/popover/popover-item-properties';
 import { PopoverItemsType } from 'src/app/components/popover/popover-items-type.enum';
 import { accessRights, AccessRightsRolls } from 'src/app/data/general-data.enum';
+import Volunteer from 'src/app/domains/Volunteer/Volunteer';
 import { PrivilegeHandlerService } from 'src/app/services/PrivilegeService/privilege-handler.service';
 
 @Component({
@@ -13,9 +14,14 @@ import { PrivilegeHandlerService } from 'src/app/services/PrivilegeService/privi
 export class VolunteerDataPage implements OnInit {
   accessRights = accessRights
   popoverItemsProperties: PopoverItemProperties[];
-
+  volunteer: Volunteer
   constructor(private router: Router,
-              private privilegeHandler: PrivilegeHandlerService) { }
+              private privilegeHandler: PrivilegeHandlerService,
+              private route: ActivatedRoute) {
+                this.route.queryParams.subscribe(params => {
+                  this.volunteer = JSON.parse(params["volunteer"]);
+                });
+               }
 
   ngOnInit() {
     this.checkEditRight();

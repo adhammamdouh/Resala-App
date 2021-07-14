@@ -38,8 +38,9 @@ export class CallCardComponent implements OnInit, AfterViewInit {
   show = false;
 
   formTest = new FormGroup({
-    sex: new FormControl('', [Validators.required])
+    gender: new FormControl('', [Validators.required])
   })
+
   inputTest: selectBoxProperties = {
     label: 'النوع',
     defaultValueIndex: 0,
@@ -47,6 +48,17 @@ export class CallCardComponent implements OnInit, AfterViewInit {
     options: options.gender,
     formController: {formGroup: this.formTest, formControllerName: 'gender'}
   };
+
+  callForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    hasCalls: new FormControl('', [Validators.required]),
+    shareable: new FormControl('', [Validators.required]),
+    from: new FormControl('', [Validators.required]),
+    to: new FormControl('', [Validators.required]),
+    callsStartDate: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    script: new FormControl('', [Validators.required])
+})
   
   constructor(private alertHandler: AlertHandlerService,
               private callNumber: CallNumber,

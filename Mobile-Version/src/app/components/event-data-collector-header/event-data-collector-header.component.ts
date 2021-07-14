@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import ResalaEvent from 'src/app/domains/ResalaEvent/ResalaEvent';
 
 @Component({
   selector: 'app-event-data-collector-header',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-data-collector-header.component.scss'],
 })
 export class EventDataCollectorHeaderComponent implements OnInit {
+  @Input() event: ResalaEvent;
+
   wave = '../../assets/icon/wave.svg';
   
   constructor() { }

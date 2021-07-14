@@ -1,13 +1,16 @@
 <ion-header class="ion-no-border">
   <app-title-bar 
-    [title]="'test'" 
+    [title]="'HEADERS.event'" 
     [showBackIcon]="true"
     [popoverItemsProperties]="popoverItemsProperties"
     (onSelectPopoverItem)="onSelectPopoverItem($event)"></app-title-bar>
-  <app-event-data-collector-header></app-event-data-collector-header>
+  <app-event-data-collector-header [event]="event"></app-event-data-collector-header>
 </ion-header>
 
 <ion-content>
-  <app-event-data-collector-body></app-event-data-collector-body>
-  <app-calls-button *ngIf="privilegeHandler.isGetAssignedCallsValid()" (swapCompleted)="openCallsModel()" [reset]="callsModelOpened"></app-calls-button>
+  <app-event-data-collector-body [event]="event"></app-event-data-collector-body>
+  <app-calls-button 
+    *ngIf="privilegeHandler.isGetAssignedCallsValid()"
+    (swapCompleted)="openCallsModel()"
+    [reset]="callsModelOpened"></app-calls-button>
 </ion-content>

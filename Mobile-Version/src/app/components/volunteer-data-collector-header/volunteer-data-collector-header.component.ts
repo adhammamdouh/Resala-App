@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import Volunteer from 'src/app/domains/Volunteer/Volunteer';
 
 @Component({
   selector: 'app-volunteer-data-collector-header',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./volunteer-data-collector-header.component.scss'],
 })
 export class VolunteerDataCollectorHeaderComponent implements OnInit {
+  @Input() volunteer: Volunteer;
 
   constructor() { }
 

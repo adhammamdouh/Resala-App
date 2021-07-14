@@ -33,6 +33,7 @@
 @import "assets/css/toastClasses.scss";
 @import "assets/css/popoverClasses.scss";
 @import "assets/css/loadingClasses.scss";
+@import "assets/css/callsModalClasses.scss";
 
 ion-content, ion-header {
     background-color: var(--background-default);
@@ -59,11 +60,4 @@ ion-fab-button {
     //top: initial;
     //min-height: initial;
 }*/
-
-.modal-wrapper.sc-ion-modal-ios {
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-    position: absolute;
-    bottom: 0;
-}
 

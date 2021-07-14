@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { InputProperties } from 'src/app/components/input/input-properties';
+import { VolunteerCRUDService } from 'src/app/services/VolunteerCRUD/volunteer-crud.service';
 import { VolunteerForm } from './volunteer-form';
 
 @Component({
@@ -12,15 +13,13 @@ export class VolunteerFormPage implements OnInit {
   volunteerFormAtt: VolunteerForm = new VolunteerForm();
   isAddForm: boolean = true;
 
-  constructor() { }
+  constructor(private volunteerCRUD: VolunteerCRUDService) { }
 
   ngOnInit() {
   }
 
   addVolunteer() {
-    console.log('dsfdas')
-    this.volunteerFormAtt.volunteerForm.get('fullname').markAsTouched();
-    console.log(this.volunteerFormAtt.volunteerForm.get('fullname').valid)
+    this.volunteerCRUD.generateVolunteerObjFromForm(this.volunteerFormAtt.volunteerForm);
   }
 
   editVolunteer() {

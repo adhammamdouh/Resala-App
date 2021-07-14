@@ -14,6 +14,8 @@ export class MainPageBarComponent implements OnInit {
   @Input() addButtonNavigationPageName: string = '';
   @Input() showAddButton: boolean = false;
   @Output() tabPropertiesChange: EventEmitter<TabProperty> = new EventEmitter();
+  @Output() onSearch: EventEmitter<string> = new EventEmitter();
+  @Output() onSearchComplete: EventEmitter<boolean> = new EventEmitter();
 
   showSearch = false;
   constructor(private router: Router,
@@ -27,6 +29,11 @@ export class MainPageBarComponent implements OnInit {
 
   onSearchBackClick() {
     this.showSearch = false;
+    this.onSearchComplete.emit(true);
+  }
+
+  onSearching(ev) {
+    this.onSearch.emit(ev);
   }
 
   goToAddForm() {

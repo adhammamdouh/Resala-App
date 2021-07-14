@@ -3,12 +3,6 @@
         "username": "اسم المستخدم",
         "password": "كلمة السر"
     },
-    "VOLUNTER": {
-
-    },
-    "EVENTS": {
-
-    },
     "TABS": {
         "volunteers": "متطوعين",
         "events": "أحداث",
@@ -26,6 +20,25 @@
         "description": "وصف الحدث",
         "eventText": "نص الحدث"
     },
+    "VOLUNTEERPAGEDATA": {
+        "name": "الاسم",
+        "nickname": "الاسم المستعار",
+        "birthDate": "تاريخ الميلاد",
+        "nationalId": "الرقم القومي",
+        "gender": "النوع",
+        "university": "الجامعة",
+        "faculty": "الكلية",
+        "phoneNumber": "رقم الهاتف",
+        "joiningDate": "تاريخ الانضمام",
+        "age": "العمر",
+        "tShirt": "تي شرت",
+        "branch": "الفرع",
+        "apartmentNumber": "رقم الشقة",
+        "buildingNumber": "رقم المنزل",
+        "streetName": "اسم الشارع",
+        "neighborhoodName": "اسم الحي",
+        "governorate": "اسم المحافظة"
+    },
     "CALLCARD": {
         "name": "الاسم",
         "phone": "رقم الهاتف",
@@ -40,7 +53,8 @@
     "POPOVER": {
         "archive": "أرشيف",
         "edit": "تعديل البيانات",
-        "assignCalls": "توزيع المكالمات"
+        "assignCalls": "توزيع المكالمات",
+        "completeEvent": "اتمام الحدث"
     },
     "GENDER": {
         "male": "ذكر",
@@ -130,5 +144,9 @@
     },
     "MENU": {
         "logout": "تسجيل الخروج"
+    },
+    "HEADERS": {
+        "event": "حدث",
+        "volunteer": "متطوع"
     }
 }
