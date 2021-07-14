@@ -57,8 +57,8 @@ export interface textValue {
 
 
 export class options {
-    public static answers: textValue[] = [{text: 'ANSWERS.yes', value: answers.yes},
-                                          {text: 'ANSWERS.no', value: answers.no}];
+    public static answers: textValue[] = [{text: 'ANSWERS.yes', value: true},
+                                          {text: 'ANSWERS.no', value: false}];
 
     public static ok: textValue[] = [{text: 'ANSWERS.ok', value: answers.ok}];
 

@@ -32,7 +32,11 @@ export class VolunteersPage implements OnInit {
   async ngOnInit() {
     if(this.privilegeHandler.isShowRequestToArchiveValid())
       this.tabProperties.tabs.push({name: 'TABS.archive', index: volunteerTabs.archive});
+    
     await this.volunteerCRUD.getActiveVolunteers();
+    await this.volunteerCRUD.getInactiveVolunteers();
+    await this.volunteerCRUD.getRequestToArchiveVolunteers();
+
   }
 
   openVolunteerData(volunteer) {
@@ -52,11 +56,11 @@ export class VolunteersPage implements OnInit {
   }
 
   searchVolunteers(ev) {
-    this.volunteerCRUD.search(ev);
+    //this.volunteerCRUD.search(ev);
   }
 
   completeVolunteersSearching() {
-    this.volunteerCRUD.search('', true);
+    //this.volunteerCRUD.search('', true);
   }
 
 }

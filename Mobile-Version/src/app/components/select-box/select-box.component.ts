@@ -31,6 +31,7 @@ export class SelectBoxComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.selectBoxProperties.formController.formGroup.controls[this.selectBoxProperties.formController.formControllerName].value)
     if(this.selectBoxProperties.selectedItemValue != null)
       for(let i = 0 ; i < this.selectBoxProperties.options.length; ++i) {
         if(this.selectBoxProperties.selectedItemValue === this.selectBoxProperties.options[i].value) {

@@ -4,7 +4,7 @@ import SelectBoxOption from "./selectBoxOption";
 
 export default interface selectBoxProperties{
     defaultValueIndex: number;
-    selectedItemValue: number;
+    selectedItemValue: any;
     options:SelectBoxOption[];
     label:string;
     formController: FormController;

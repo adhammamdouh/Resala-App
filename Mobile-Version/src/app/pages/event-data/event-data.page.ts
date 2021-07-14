@@ -64,19 +64,31 @@ export class EventDataPage implements OnInit {
   preparePopover() {
     if(this.privilegeHandler.isArchiveEventValid()) {
       if(!this.popoverItemsProperties) this.popoverItemsProperties = []
-      this.popoverItemsProperties.push({ name: 'POPOVER.archive', navigationPageName: '', type: PopoverItemsType.archive});
+      this.popoverItemsProperties.push({ name: 'POPOVER.archive',
+                                         navigationPageName: '',
+                                         navigationExtras: null,
+                                         type: PopoverItemsType.archive});
     }
     if(this.privilegeHandler.isCompleteEventValid()) {
       if(!this.popoverItemsProperties) this.popoverItemsProperties = []
-      this.popoverItemsProperties.push({ name: 'POPOVER.completeEvent', navigationPageName: '', type: PopoverItemsType.archive});
+      this.popoverItemsProperties.push({ name: 'POPOVER.completeEvent', 
+                                         navigationPageName: '',
+                                         navigationExtras: null,
+                                         type: PopoverItemsType.archive});
     }
     if(this.privilegeHandler.isUpdateEventValid()) {
       if(!this.popoverItemsProperties) this.popoverItemsProperties = []
-      this.popoverItemsProperties.push({ name: 'POPOVER.edit', navigationPageName: '', type: PopoverItemsType.edit});
+      this.popoverItemsProperties.push({ name: 'POPOVER.edit', 
+                                         navigationPageName: '', 
+                                         navigationExtras: null,
+                                         type: PopoverItemsType.edit});
     }
     if(this.privilegeHandler.isAssignCallsValid()) {
       if(!this.popoverItemsProperties) this.popoverItemsProperties = []
-      this.popoverItemsProperties.push({ name: 'POPOVER.assignCalls', navigationPageName: '', type: PopoverItemsType.assignCalls})
+      this.popoverItemsProperties.push({ name: 'POPOVER.assignCalls', 
+                                         navigationPageName: '', 
+                                         navigationExtras: null,
+                                         type: PopoverItemsType.assignCalls})
     }
   }
 

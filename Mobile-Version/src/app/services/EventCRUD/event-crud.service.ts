@@ -5,31 +5,47 @@ import { RestfulAPIHandlerService } from '../RestfulAPIHandler/restful-apihandle
 import * as service from 'src/app/data/services.json';
 import { Response } from 'src/app/domains/response';
 
+export enum EventStatus {
+  active = 1,
+  archive = 2,
+  completed = 3,
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class EventCRUDService {
-  events: ResalaEvent[] = [];
+  activeEvents: ResalaEvent[] = [];
+  completedEvents: ResalaEvent[] = [];
 
   constructor(private restfulAPI: RestfulAPIHandlerService,
               private privilegeHandler: PrivilegeHandlerService) { }
 
   async refresh(event = null) {
-    this.getAllEvents(event);
+    //this.getActiveEvents(event);
   }
-  async getAllEvents(event = null) {
-    const url = service.baseUrl + 'event/getAll'
-      //(this.privilegeHandler.isGetByStatusPrivilegeValid() ? 'volunteer/getAllByBranch/1' : '');
-    //console.log(url)
-      //+ '/' + Status.active;
+
+  async getActiveEvents(event = null) {
+    if(!this.privilegeHandler.isGetByEventStatusPrivilegeValid()) return;
+    const url = service.baseUrl + 'event/getAllByState/' + EventStatus.active;
+
     const res = await this.restfulAPI.get(url);
 
     res.subscribe((res: Response) => {
-      this.events = res.message;
-      console.log(res)
-      console.log(this.events);
+      this.activeEvents = res.message;
+      console.log(this.activeEvents);
+    })
+  }
 
-      //if(event) event.target.complete();
+  async getCompleteEvents(event = null) {
+    if(!this.privilegeHandler.isGetByEventStatusPrivilegeValid()) return;
+    const url = service.baseUrl + 'event/getAllByState/' + EventStatus.completed;
+
+    const res = await this.restfulAPI.get(url);
+
+    res.subscribe((res: Response) => {
+      this.completedEvents = res.message;
+      console.log(this.completedEvents);
     })
   }
 }

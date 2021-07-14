@@ -14,7 +14,9 @@ export class InputComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.inputProperties);
+  }
 
   onChange() {
     this.inputPropertiesChange.emit(this.inputProperties);

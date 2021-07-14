@@ -3,7 +3,7 @@ import { FormController } from "../form-controller";
 export interface InputProperties {
     placeholder: string;
     iconSrc: string;
-    value: string;
+    value: any;
     title: string;
     hasIcon: boolean;
     type: string;

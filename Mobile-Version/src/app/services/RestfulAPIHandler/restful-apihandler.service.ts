@@ -12,23 +12,35 @@ export class RestfulAPIHandlerService {
   constructor(private http: HttpClient,
               private storage: Storage) { }
 
-  async get(url) {
-    return this.http.get(url, await this.getHttpHeaders());
+  async get(url, token = true) {
+    return this.http.get(url, await this.getHttpHeaders(token));
   }
 
-  async post(url, body) {
-    return this.http.post(url, body, await this.getHttpHeaders());
+  async post(url, body, token = true) {
+    return this.http.post(url, body, await this.getHttpHeaders(token));
   }
 
-  async getHttpHeaders() {
+  async put(url, body, token = true) {
+    return this.http.put(url, body, await this.getHttpHeaders(token));
+  }
+
+  async getHttpHeaders(tokenRequired: boolean) {
     const token = await this.storage.get(keys.TOKEN);
-    return {
-      headers: new HttpHeaders(
+    let headers 
+    if(tokenRequired) {
+      headers = new HttpHeaders(
         {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`
-        }
-      )
+        })
+    }
+    else 
+      headers = new HttpHeaders(
+                    {
+                      'Content-Type': 'application/json',
+                    })
+    return {
+      headers: headers
     }
   }
 }

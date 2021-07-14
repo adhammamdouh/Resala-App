@@ -16,7 +16,9 @@ export enum Status {
   providedIn: 'root'
 })
 export class VolunteerCRUDService {
-  public volunteers: Volunteer[] = [];
+  public activeVolunteers: Volunteer[] = [];
+  public inactiveVolunteers: Volunteer[] = [];
+  public requestToVolunteers: Volunteer[] = []
   private volunteersTemp: Volunteer[] = [];
 
   constructor(private restfulAPI: RestfulAPIHandlerService,
@@ -26,7 +28,7 @@ export class VolunteerCRUDService {
     this.getActiveVolunteers(event);
   }
 
-  search(value, complete = false) {
+  /*search(value, complete = false) {
     if(complete) this.volunteers = this.volunteersTemp;
     
     else {
@@ -39,30 +41,79 @@ export class VolunteerCRUDService {
           this.volunteers.push(currentVolunteer);
       }
     }
-  }
+  }*/
 
   getVolunteerFullName(volunteer: Volunteer) {
     return volunteer.firstName + ' ' + volunteer.midName + ' ' + volunteer.lastName;
   }
 
   async getActiveVolunteers(event = null) {
-    const url = service.baseUrl + 'volunteer/getAllByBranch/1'
-      //(this.privilegeHandler.isGetByStatusPrivilegeValid() ? 'volunteer/getAllByBranch/1' : '');
-    //console.log(url)
-      //+ '/' + Status.active;
+    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid()) return;
+    const url = service.baseUrl + 'volunteer/getAllByState/' + Status.active;
+
     const res = await this.restfulAPI.get(url);
 
     res.subscribe((res: Response) => {
-      this.volunteersTemp = this.volunteers = res.message;
-      console.log(this.volunteers);
+      this.volunteersTemp = this.activeVolunteers = res.message;
+      console.log("active", this.activeVolunteers);
 
-      //if refreshing complete it.
+      if(event) event.target.complete();
+    })
+  }
+
+  async getInactiveVolunteers(event = null) {
+    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid()) return;
+    const url = service.baseUrl + 'volunteer/getAllByState/' + Status.archive;
+
+    const res = await this.restfulAPI.get(url);
+
+    res.subscribe((res: Response) => {
+      this.inactiveVolunteers = res.message;
+      console.log("in", this.inactiveVolunteers);
+
+      if(event) event.target.complete();
+    })
+  }
+
+  async getRequestToArchiveVolunteers(event = null) {
+    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid() && !this.privilegeHandler.isShowRequestToArchiveValid()) return;
+
+    const url = service.baseUrl + 'volunteer/getAllByState/' + Status.requestToArchive;
+    const res = await this.restfulAPI.get(url);
+
+    res.subscribe((res: Response) => {
+      this.requestToVolunteers = res.message;
+      console.log("request", this.requestToVolunteers);
+      console.log("var", this.requestToVolunteers);
       if(event) event.target.complete();
     })
   }
 
   async createVolunteer(form: FormGroup) {
+    if(!this.privilegeHandler.isCreateVolunteerValid()) return;
 
+    const volunteer = this.generateVolunteerObjFromForm(form);
+    const url = service.baseUrl + 'volunteer/add';
+
+    const res = await this.restfulAPI.post(url, [volunteer]);
+
+    res.subscribe((res: Response) => {
+      this.requestToVolunteers = res.message;
+      console.log("add", this.requestToVolunteers);
+    })
+  }
+
+  async updateVolunteer(volunteer: Volunteer) {
+    if(!this.privilegeHandler.isUpdateVolunteerValid()) return;
+
+    const url = service.baseUrl + 'volunteer/update';
+
+    console.log(volunteer);
+    const res = await this.restfulAPI.put(url, volunteer);
+    res.subscribe((res: Response) => {
+      this.requestToVolunteers = res.message;
+      console.log("edit", this.requestToVolunteers);
+    })
   }
 
   generateVolunteerObjFromForm(form: FormGroup) {
@@ -99,6 +150,6 @@ export class VolunteerCRUDService {
       
       }
 
-    console.log(volunteer);
+    return volunteer;
   }
 }

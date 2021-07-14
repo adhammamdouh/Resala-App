@@ -6,7 +6,7 @@
   <ion-grid class="p-1" dir="rtl">
     <form 
       class="d-flex flex-column justify-content-center align-items-center"
-      [formGroup]="volunteerFormAtt.volunteerForm" (ngSubmit)="isAddForm ? addVolunteer() : editVolunteer()">
+      [formGroup]="volunteerFormAtt.volunteerForm" (ngSubmit)="mode === 'add' ? addVolunteer() : editVolunteer()">
       <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="volunteerFormAtt.firstname"></app-input>
@@ -100,7 +100,16 @@
 
       <ion-row class="max-width w-100">
         <ion-col class="p-1">
-          <app-button [label]="'fdjslkafjdlks'" [type]="'submit'" [disabled]="volunteerFormAtt.volunteerForm.invalid"></app-button>
+          <app-button 
+            [label]="'VOLUNTEER_FORM.edit'" 
+            [type]="'submit'" 
+            [disabled]="volunteerFormAtt.volunteerForm.invalid"
+            *ngIf="mode === 'edit'"></app-button>
+          <app-button 
+            [label]="'VOLUNTEER_FORM.add'" 
+            [type]="'submit'" 
+            [disabled]="volunteerFormAtt.volunteerForm.invalid"
+            *ngIf="mode === 'add'"></app-button>
         </ion-col>
       </ion-row>
     </form>

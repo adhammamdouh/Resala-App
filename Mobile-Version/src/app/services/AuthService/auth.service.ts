@@ -30,7 +30,7 @@ export class AuthService {
     await this.loadingHandler.presentLoading();
     const res = await this.restfulAPI.post(
       service.baseUrl + service.login, 
-      {username: username, password: password});
+      {username: username, password: password}, false);
 
     res.subscribe((res) => {this.onLoginSuccess(res)}, (res) => { this.onLoginFail(res) });
   }
@@ -43,7 +43,6 @@ export class AuthService {
     await this.storage.set(keys.USER, this.user);
 
     this.privilegeHandler.fillRoles(this.user.privileges);
-    this.volunteerCRUD.getActiveVolunteers();
 
     await this.router.navigate(['home']);
     await this.loadingHandler.dismissLoading();

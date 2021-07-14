@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { TabProperty } from '../tabs/tab-property';
 
@@ -37,7 +37,12 @@ export class MainPageBarComponent implements OnInit {
   }
 
   goToAddForm() {
-    this.router.navigate([this.addButtonNavigationPageName]);
+    const navigationExtras: NavigationExtras =  {
+                                                  queryParams: {
+                                                    mode: JSON.stringify('add'),
+                                                  }
+                                                };
+    this.router.navigate([this.addButtonNavigationPageName], navigationExtras);
   }
 
   toggleMenu() {

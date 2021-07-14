@@ -2,6 +2,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms"
 import { InputProperties } from "src/app/components/input/input-properties"
 import selectBoxProperties from "src/app/components/select-box/selectBoxProperties"
 import { options } from "src/app/data/general-data.enum"
+import Volunteer from "src/app/domains/Volunteer/Volunteer"
 
 export class VolunteerForm {
     volunteerForm = new FormGroup({
@@ -200,4 +201,53 @@ export class VolunteerForm {
                                             disabled: false,
                                             formController: {formGroup: this.volunteerForm, formControllerName: 'neighborhoodName'}}*/
     
+    constructor(volunteer: Volunteer = null) {
+        if(volunteer) {
+            this.volunteerForm.controls['firstname'].setValue(volunteer.firstName);
+            this.volunteerForm.controls['middlename'].setValue(volunteer.midName);
+            this.volunteerForm.controls['lastname'].setValue(volunteer.lastName);
+            this.volunteerForm.controls['nickName'].setValue(volunteer.nickName);
+            this.volunteerForm.controls['birthDate'].setValue(volunteer.birthDate);
+            this.volunteerForm.controls['nationalID'].setValue(volunteer.nationalId);
+            this.volunteerForm.controls['gender'].setValue(volunteer.gender);
+            this.volunteerForm.controls['university'].setValue(volunteer.university);
+            this.volunteerForm.controls['faculty'].setValue(volunteer.faculty);
+            this.volunteerForm.controls['phoneNumber'].setValue(volunteer.phoneNumber);
+            this.volunteerForm.controls['joiningDate'].setValue(volunteer.joinDate);
+            this.volunteerForm.controls['tShirt'].setValue(volunteer.tShirt);
+            this.volunteerForm.controls['branch'].setValue(volunteer.branch);
+            this.volunteerForm.controls['apartmentNumber'].setValue(volunteer.address.apartmentNumber);
+            this.volunteerForm.controls['buildingNumber'].setValue(volunteer.address.buildingNumber);
+            this.volunteerForm.controls['streetName'].setValue(volunteer.address.streetName);
+            this.volunteerForm.controls['neighborhoodName'].setValue(volunteer.address.regionName);
+            this.volunteerForm.controls['governorate'].setValue(volunteer.address.capital.id);
+            this.tShirt.selectedItemValue = volunteer.tShirt;
+            this.gender.selectedItemValue = volunteer.gender;
+            this.branch.selectedItemValue = volunteer.branch.id;
+            this.governorate.selectedItemValue = volunteer.address.capital.id;
+        }
+    }
+
+    updateVolunteerData(volunteer: Volunteer) {
+        volunteer.firstName = this.volunteerForm.controls['firstname'].value;
+        volunteer.midName = this.volunteerForm.controls['middlename'].value;
+        volunteer.lastName = this.volunteerForm.controls['lastname'].value;
+        volunteer.nickName = this.volunteerForm.controls['nickName'].value;
+        volunteer.birthDate = this.volunteerForm.controls['birthDate'].value;
+        volunteer.nationalId = this.volunteerForm.controls['nationalID'].value;
+        volunteer.gender = this.volunteerForm.controls['gender'].value;
+        volunteer.university = this.volunteerForm.controls['university'].value;
+        volunteer.faculty = this.volunteerForm.controls['faculty'].value;
+        volunteer.phoneNumber = this.volunteerForm.controls['phoneNumber'].value;
+        volunteer.joinDate = this.volunteerForm.controls['joiningDate'].value;
+        volunteer.tShirt = this.volunteerForm.controls['tShirt'].value;
+        volunteer.branch.id = this.volunteerForm.controls['branch'].value;
+        volunteer.address.apartmentNumber = this.volunteerForm.controls['apartmentNumber'].value;
+        volunteer.address.buildingNumber = this.volunteerForm.controls['buildingNumber'].value;
+        volunteer.address.streetName = this.volunteerForm.controls['streetName'].value;
+        volunteer.address.regionName = this.volunteerForm.controls['neighborhoodName'].value;
+        volunteer.address.capital.id = this.volunteerForm.controls['governorate'].value;
+
+        return volunteer;
+    }  
 }

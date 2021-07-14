@@ -30,8 +30,9 @@ export class EventsPage implements OnInit {
               public privilegeHandler: PrivilegeHandlerService,
               public eventCRUD: EventCRUDService) { }
 
-  ngOnInit() {
-    this.eventCRUD.getAllEvents();
+  async ngOnInit() {
+    await this.eventCRUD.getActiveEvents();
+    await this.eventCRUD.getCompleteEvents();
   }
 
   openEventData(event) {

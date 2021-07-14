@@ -38,11 +38,18 @@ export class PrivilegeHandlerService {
     }*/
   }
 
-  isGetByStatusPrivilegeValid() {
+  isGetByVolunteersStatusPrivilegeValid() {
     return (this.roles[accessRights.ROLE_GET_ALL_VOLUNTEERS_BY_STATUS] || 
       this.roles[accessRights.ROLE_GET_ALL_VOLUNTEERS_PUBLIC_INFO_BY_STATUS] || 
       this.roles[accessRights.ROLE_GET_ALL_VOLUNTEERS_BY_STATUS_AND_MY_BRANCH] || 
       this.roles[accessRights.ROLE_GET_ALL_VOLUNTEERS_PUBLIC_INFO_BY_STATUS_AND_MY_BRANCH])
+  }
+
+  isGetByEventStatusPrivilegeValid() {
+    return (this.roles[accessRights.ROLE_GET_All_EVENTS_BY_STATE] ||
+            this.roles[accessRights.ROLE_GET_All_SHAREABLE_EVENTS_BY_STATE] ||
+            this.roles[accessRights.ROLE_GET_All_EVENTS_BY_STATE_AND_MY_BRANCH] ||
+            this.roles[accessRights.ROLE_GET_All_SHAREABLE_EVENTS_BY_STATE_AND_MY_BRANCH])
   }
 
   isCreateVolunteerValid() {
@@ -87,5 +94,9 @@ export class PrivilegeHandlerService {
 
   isAssignCallsValid() {
     return this.roles[accessRights.ROLE_ASSIGN_CALLS];
+  }
+
+  isUpdateVolunteerValid() {
+    return this.roles[accessRights.ROLE_UPDATE_VOLUNTEER]
   }
 }

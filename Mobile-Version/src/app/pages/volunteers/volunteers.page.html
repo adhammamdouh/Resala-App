@@ -15,21 +15,21 @@
 
     <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.active">
         <app-volunteer-card 
-            *ngFor="let volunteer of volunteerCRUD.volunteers"
+            *ngFor="let volunteer of volunteerCRUD.activeVolunteers"
             [volunteer]="volunteer"
             (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
     </div>
 
     <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.inactive">
         <app-volunteer-card 
-            *ngFor="let volunteer of volunteerCRUD.volunteers"
+            *ngFor="let volunteer of volunteerCRUD.inactiveVolunteers"
             [volunteer]="volunteer"
             (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
     </div >
         
     <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.archive">
         <app-volunteer-card 
-        *ngFor="let volunteer of volunteerCRUD.volunteers"
+        *ngFor="let volunteer of volunteerCRUD.requestToVolunteers"
         [volunteer]="volunteer"
         (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
     </div>
