@@ -11,6 +11,5 @@
   <app-event-data-collector-body [event]="event"></app-event-data-collector-body>
   <app-calls-button 
     *ngIf="privilegeHandler.isGetAssignedCallsValid()"
-    (swapCompleted)="openCallsModel()"
-    [reset]="callsModelOpened"></app-calls-button>
+    (swapCompleted)="openCallsModal()"></app-calls-button>
 </ion-content>

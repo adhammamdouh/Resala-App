@@ -70,4 +70,8 @@ export class SelectBoxComponent implements OnInit {
     this.open? this.closeList() : this.openList();
   }
 
+  trackItems(index: number, itemObject: any) {
+    return itemObject.value;
+  }
+
 }

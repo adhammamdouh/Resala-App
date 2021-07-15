@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <app-title-bar [title]="'EVENT_ATTENDANCE.volunteerAttendance'"></app-title-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid dir="rtl">
+    <ion-row>
+      <ion-col>
+        <app-input [(inputProperties)]="phoneNumber" [showLetterCounter]="true"></app-input>
+      </ion-col>
+      <ion-col class="d-flex flex-column align-items-center justify-content-center" size="auto">
+        <app-button [label]="'EVENT_ATTENDANCE.search'" (click)="searchVolunteerByPhoneNumber()"></app-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="answerContainer">
+      <ion-col *ngIf="volunteerFound === searchStatus.found">
+
+        <ion-row>
+          <ion-col>
+            <ion-label class="defaultLabel fontH4">
+              {{'EVENT_ATTENDANCE.name' | translate}}
+            </ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label class="defaultLabel fontH4">
+
+            </ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label class="defaultLabel fontH4">
+              {{'EVENT_ATTENDANCE.birthDate' | translate}}
+            </ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label class="defaultLabel fontH4">
+
+            </ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label class="defaultLabel fontH4">
+              {{'EVENT_ATTENDANCE.branch' | translate}}
+            </ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label class="defaultLabel fontH4">
+
+            </ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <app-button [label]="'EVENT_ATTENDANCE.submit'">
+            </app-button>
+          </ion-col>
+        </ion-row>
+        
+      </ion-col>
+
+      <ion-col *ngIf="volunteerFound === searchStatus.notFound">
+        <ion-row>
+          <ion-col class="d-flex flex-column justify-content-center align-items-center">
+            <ion-label class="defaultLabel fontH4">
+              {{'EVENT_ATTENDANCE.pleaseAddVolunteerFirst' | translate}}
+            </ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <app-button [label]="'EVENT_ATTENDANCE.add'">
+            </app-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    
+  </ion-grid>
+</ion-content>

@@ -4,6 +4,7 @@ import { PrivilegeHandlerService } from '../PrivilegeService/privilege-handler.s
 import { RestfulAPIHandlerService } from '../RestfulAPIHandler/restful-apihandler.service';
 import * as service from 'src/app/data/services.json';
 import { Response } from 'src/app/domains/response';
+import { Observable } from 'rxjs';
 
 export enum EventStatus {
   active = 1,
@@ -22,7 +23,7 @@ export class EventCRUDService {
               private privilegeHandler: PrivilegeHandlerService) { }
 
   async refresh(event = null) {
-    //this.getActiveEvents(event);
+    this.getActiveEvents(event);
   }
 
   async getActiveEvents(event = null) {
@@ -48,4 +49,8 @@ export class EventCRUDService {
       console.log(this.completedEvents);
     })
   }
+
+  /*archiveEvent(event: ResalaEvent) {
+    
+  }*/
 }

@@ -53,4 +53,8 @@ export class CallsPage implements OnInit {
     }
   }
 
+  trackItems(index: number, itemObject: any) {
+    return itemObject.id;
+  }
+
 }

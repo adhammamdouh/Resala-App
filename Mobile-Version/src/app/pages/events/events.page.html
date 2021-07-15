@@ -13,13 +13,13 @@
 
   <div *ngIf="tabProperties.selectedTabIndex === eventTabsTemp.previous">
     <app-event-card 
-      *ngFor="let event of eventCRUD.completedEvents"
+      *ngFor="let event of eventCRUD.completedEvents; trackBy:trackItems"
       [event]="event" (onSwap)="openEventData(event)" [index]="event.id"></app-event-card>
   </div>
 
   <div *ngIf="tabProperties.selectedTabIndex === eventTabsTemp.upcoming">
     <app-event-card 
-      *ngFor="let event of eventCRUD.activeEvents"
+      *ngFor="let event of eventCRUD.activeEvents; trackBy:trackItems"
       [event]="event" (onSwap)="openEventData(event)" [index]="event.id"></app-event-card>
   </div>
 

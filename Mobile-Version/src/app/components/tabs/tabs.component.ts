@@ -26,4 +26,8 @@ export class TabsComponent implements OnInit {
     this.tabPropertiesChange.emit(this.tabProperties);
   }
 
+  trackItems(index: number, itemObject: any) {
+    return itemObject.index;
+  }
+
 }

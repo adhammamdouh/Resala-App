@@ -9,7 +9,7 @@
       <ion-label class="defaultLabel fontH4">{{selectedOption.text | translate}}</ion-label>
   </div>
   <div [style.display]="open ? 'block' : 'none'" class="selectBoxList selectList" >
-      <div class="p-2 m-1 innerContainer selectItem" *ngFor="let option of selectBoxProperties.options" (click)="changeSelection(option)">
+      <div class="p-2 m-1 innerContainer selectItem" *ngFor="let option of selectBoxProperties.options; trackBy:trackItems" (click)="changeSelection(option)">
         <ion-label class="defaultLabel fontH4" [ngClass]="{'selectedItem' : option.value === selectedOption.value}">{{option.text | translate}}</ion-label>
       </div>
   </div>

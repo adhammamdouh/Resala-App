@@ -2,6 +2,7 @@ import Address from "../Address/Address";
 import Branch from "../Branch";
 import NetworkType from "../Call/NetworkType";
 import VolunteerKPI from "../KPI/VolunteerKPI";
+import Organization from "../Organization";
 import Privilege from "../Privilege/Privilege";
 import User from "../User";
 import Role from "./Role";
@@ -19,8 +20,8 @@ export default interface Volunteer{
     phoneNumber:string;
     joinDate:Date;
     birthDate:Date;
-    tShirt:boolean;
-    miniCamp:Date;
+    tShirt:number; //new
+    miniCamp:boolean; //new
     volunteerKPI:VolunteerKPI;
     user:User;
     branch:Branch;
@@ -28,5 +29,8 @@ export default interface Volunteer{
     role:Role;
     privileges:Privilege[];
     gender: number;
+    organization: Organization; //new
+    educationLevel: string; //new
+    comments: string; //new
     //eventAttendances:Array<EventAttendance>[];
 }

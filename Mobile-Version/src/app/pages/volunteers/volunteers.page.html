@@ -6,30 +6,31 @@
         [addButtonNavigationPageName]="addButtonNavigationPageName"
         [showAddButton]="privilegeHandler.isCreateVolunteerValid()"
         (onSearch)="searchVolunteers($event)"
-        (onSearchComplete)="completeVolunteersSearching()"></app-main-page-bar>
+        (onSearchComplete)="completeVolunteersSearching()"
+        (onSearchStart)="onSearchStart($event)"></app-main-page-bar>
   </ion-header>
 <ion-content>
-    <ion-refresher slot="fixed" (ionRefresh)="refreshVolunteers($event)">
+    <ion-refresher slot="fixed" (ionRefresh)="refreshVolunteers($event, tabProperties.selectedTabIndex)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
 
     <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.active">
         <app-volunteer-card 
-            *ngFor="let volunteer of volunteerCRUD.activeVolunteers"
+            *ngFor="let volunteer of volunteerCRUD.activeVolunteers; trackBy:trackItems"
             [volunteer]="volunteer"
             (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
     </div>
 
     <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.inactive">
         <app-volunteer-card 
-            *ngFor="let volunteer of volunteerCRUD.inactiveVolunteers"
+            *ngFor="let volunteer of volunteerCRUD.inactiveVolunteers; trackBy:trackItems"
             [volunteer]="volunteer"
             (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
     </div >
         
     <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.archive">
         <app-volunteer-card 
-        *ngFor="let volunteer of volunteerCRUD.requestToVolunteers"
+        *ngFor="let volunteer of volunteerCRUD.requestToVolunteers; trackBy:trackItems"
         [volunteer]="volunteer"
         (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
     </div>

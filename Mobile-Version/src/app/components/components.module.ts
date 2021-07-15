@@ -21,6 +21,8 @@ import { SelectBoxComponent } from './select-box/select-box.component';
 import { PopoverComponent } from './popover/popover.component';
 import { VolunteerDataCollectorHeaderComponent } from './volunteer-data-collector-header/volunteer-data-collector-header.component';
 import { VolunteerDataCollectorBodyComponent } from './volunteer-data-collector-body/volunteer-data-collector-body.component';
+import { AssignCallsComponent } from './assign-calls/assign-calls.component';
+import { EventAttendanceComponent } from './event-attendance/event-attendance.component';
 
 @NgModule({
   declarations: [TitleBarComponent,
@@ -39,7 +41,9 @@ import { VolunteerDataCollectorBodyComponent } from './volunteer-data-collector-
                 SelectBoxComponent,
                 PopoverComponent,
                 VolunteerDataCollectorHeaderComponent,
-                VolunteerDataCollectorBodyComponent
+                VolunteerDataCollectorBodyComponent,
+                AssignCallsComponent,
+                EventAttendanceComponent
               ],
   exports: [TitleBarComponent,
             SearchBarComponent,
@@ -57,7 +61,10 @@ import { VolunteerDataCollectorBodyComponent } from './volunteer-data-collector-
             SelectBoxComponent,
             PopoverComponent,
             VolunteerDataCollectorHeaderComponent,
-            VolunteerDataCollectorBodyComponent
+            VolunteerDataCollectorBodyComponent,
+            AssignCallsComponent,
+            EventAttendanceComponent,
+            
           ],
   imports: [IonicModule.forRoot(), CommonModule, FormsModule, TranslateModule, ReactiveFormsModule]
 })

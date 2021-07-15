@@ -5,6 +5,7 @@ import { PrivilegeHandlerService } from '../PrivilegeService/privilege-handler.s
 import { Response } from 'src/app/domains/response';
 import { FormGroup } from '@angular/forms';
 import Volunteer from 'src/app/domains/Volunteer/Volunteer';
+import { volunteerTabs } from 'src/app/pages/volunteers/volunteers.page';
 
 export enum Status {
   active = 1,
@@ -24,69 +25,79 @@ export class VolunteerCRUDService {
   constructor(private restfulAPI: RestfulAPIHandlerService,
               private privilegeHandler: PrivilegeHandlerService) { }
 
-  async refresh(event = null) {
-    this.getActiveVolunteers(event);
+  async refresh(event = null, tab: volunteerTabs) {
+    switch(tab) {
+      case volunteerTabs.active:
+        await this.getActiveVolunteers(event);
+        break;
+      case volunteerTabs.inactive:
+        await this.getInactiveVolunteers(event);
+        break;
+      case volunteerTabs.archive:
+        await this.getRequestToArchiveVolunteers(event);
+        break;
+    }
   }
 
-  /*search(value, complete = false) {
-    if(complete) this.volunteers = this.volunteersTemp;
-    
+  copyListToTemp(volunteerList: Volunteer[]) {
+    this.volunteersTemp = volunteerList;
+  }
+
+  search(value, volunteerList: Volunteer[], complete = false) {
+    if(complete) volunteerList = this.volunteersTemp;
     else {
-      this.volunteers = [];
+      volunteerList = [];
       for(let i = 0 ; i < this.volunteersTemp.length ; ++i) {
         const currentVolunteer = this.volunteersTemp[i];
         if(this.getVolunteerFullName(currentVolunteer).includes(value)) 
-          this.volunteers.push(currentVolunteer);
+          volunteerList.push(currentVolunteer);
         else if(currentVolunteer.branch.name.includes(value))
-          this.volunteers.push(currentVolunteer);
+          volunteerList.push(currentVolunteer);
       }
     }
-  }*/
+  }
 
   getVolunteerFullName(volunteer: Volunteer) {
     return volunteer.firstName + ' ' + volunteer.midName + ' ' + volunteer.lastName;
   }
 
   async getActiveVolunteers(event = null) {
-    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid()) return;
+    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid()) { this.closeRefresher(event); return};
     const url = service.baseUrl + 'volunteer/getAllByState/' + Status.active;
 
     const res = await this.restfulAPI.get(url);
 
     res.subscribe((res: Response) => {
       this.volunteersTemp = this.activeVolunteers = res.message;
-      console.log("active", this.activeVolunteers);
+      this.closeRefresher(event);
+    });
 
-      if(event) event.target.complete();
-    })
   }
 
   async getInactiveVolunteers(event = null) {
-    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid()) return;
+    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid()) { this.closeRefresher(event); return};
     const url = service.baseUrl + 'volunteer/getAllByState/' + Status.archive;
 
     const res = await this.restfulAPI.get(url);
 
     res.subscribe((res: Response) => {
       this.inactiveVolunteers = res.message;
-      console.log("in", this.inactiveVolunteers);
+    });
 
-      if(event) event.target.complete();
-    })
+    this.closeRefresher(event);
   }
 
   async getRequestToArchiveVolunteers(event = null) {
-    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid() && !this.privilegeHandler.isShowRequestToArchiveValid()) return;
+    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid() && !this.privilegeHandler.isShowRequestToArchiveValid()) { this.closeRefresher(event); return};
 
     const url = service.baseUrl + 'volunteer/getAllByState/' + Status.requestToArchive;
     const res = await this.restfulAPI.get(url);
 
     res.subscribe((res: Response) => {
       this.requestToVolunteers = res.message;
-      console.log("request", this.requestToVolunteers);
-      console.log("var", this.requestToVolunteers);
-      if(event) event.target.complete();
-    })
+    });
+
+    this.closeRefresher(event);
   }
 
   async createVolunteer(form: FormGroup) {
@@ -99,7 +110,6 @@ export class VolunteerCRUDService {
 
     res.subscribe((res: Response) => {
       this.requestToVolunteers = res.message;
-      console.log("add", this.requestToVolunteers);
     })
   }
 
@@ -108,11 +118,9 @@ export class VolunteerCRUDService {
 
     const url = service.baseUrl + 'volunteer/update';
 
-    console.log(volunteer);
     const res = await this.restfulAPI.put(url, volunteer);
     res.subscribe((res: Response) => {
       this.requestToVolunteers = res.message;
-      console.log("edit", this.requestToVolunteers);
     })
   }
 
@@ -147,9 +155,16 @@ export class VolunteerCRUDService {
                 additionalInfo: '',
                 capital: { id: form.get('governorate').value, name: ''},
                 },
-      
+      educationLevel: null,
+      organization: null,
+      comments: null
       }
 
     return volunteer;
+  }
+
+  private closeRefresher(event = null) {
+    
+    if(event) {event.target.complete();}
   }
 }

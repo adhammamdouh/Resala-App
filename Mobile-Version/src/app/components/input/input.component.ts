@@ -9,6 +9,7 @@ import { InputProperties } from './input-properties';
 })
 export class InputComponent implements OnInit {
   @Input() placeholder: string = '';
+  @Input() showLetterCounter: boolean = false;
   @Input() inputProperties: InputProperties;
   @Output() inputPropertiesChange: EventEmitter<InputProperties> = new EventEmitter();
 

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <app-title-bar [title]="'ASSIGN_CALLS.distributeCalls'"></app-title-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-margin h-100">
+    <ion-row *ngFor="let networkType of networkTypes" class="w-100">
+      <ion-col>
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <app-select-box [selectBoxProperties]="selectBoxes[0]"></app-select-box>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

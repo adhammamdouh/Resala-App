@@ -31,5 +31,6 @@ export class AppComponent implements OnInit {
   async initializeApp() {
     this.langService.setInitialAppLanguage('ar');
     await this.storage.create();
+    await this.auth.loadUser();
   }
 }

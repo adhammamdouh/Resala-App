@@ -1,6 +1,6 @@
 <ion-grid *ngIf="tabProperties" class="max-width">
   <ion-row dir="rtl" class="position-relative">
-    <ion-col *ngFor="let tab of tabProperties.tabs; let i = index"
+    <ion-col *ngFor="let tab of tabProperties.tabs; let i = index; trackBy:trackItems"
     class="text-center tabItem"
     (click)="tabClicked(i)" [ngClass]="{'selected': tab.index === tabProperties.selectedTabIndex}" style="z-index: 999;">
       <ion-label>

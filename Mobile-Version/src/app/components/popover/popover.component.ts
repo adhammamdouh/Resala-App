@@ -21,4 +21,8 @@ export class PopoverComponent implements OnInit {
     // this.router.navigate([navigationPageName]);
   }
 
+  trackItems(index: number, itemObject: any) {
+    return itemObject.type;
+  }
+
 }

@@ -1,4 +1,4 @@
 export default interface NetworkType{
-    id:Number;
-    name:String;
+    id:number;
+    name:string;
 }

@@ -61,4 +61,8 @@ export class EventsPage implements OnInit {
   completeVolunteersSearching() {
     //this.eventCRUD.search('', true);
   }
+  
+  trackItems(index: number, itemObject: any) {
+    return itemObject.id;
+  }
 }

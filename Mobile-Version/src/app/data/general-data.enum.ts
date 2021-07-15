@@ -20,6 +20,13 @@ export enum gender {
     female = 1,
 }
 
+export enum networkType {
+    etisalat = 1,
+    vodafone = 2,
+    orange = 3,
+    we = 4
+}
+
 export enum governorates {
     cairo = 1,
     alex = 2,
@@ -59,6 +66,10 @@ export interface textValue {
 export class options {
     public static answers: textValue[] = [{text: 'ANSWERS.yes', value: true},
                                           {text: 'ANSWERS.no', value: false}];
+    
+    public static tShirt: textValue[] = [{text: 'TESHIRT.has', value: 0},
+                                         {text: 'TESHIRT.doesnotHas', value: 1},
+                                         {text: 'TESHIRT.need', value: 2}]
 
     public static ok: textValue[] = [{text: 'ANSWERS.ok', value: answers.ok}];
 

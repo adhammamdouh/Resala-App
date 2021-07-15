@@ -22,6 +22,14 @@
                 class="d-flex flex-column align-items-center justify-content-center defaultIcon">
                 <ion-icon [src]="inputProperties.iconSrc"></ion-icon>
             </ion-col>
+            <ion-col 
+                *ngIf="showLetterCounter"
+                size="auto" 
+                class="d-flex flex-column align-items-center justify-content-center">
+                <ion-label class="defaultLabel fountH5">
+                    {{inputProperties.value.length}}
+                </ion-label>
+            </ion-col>
         </ion-row>
     </ion-grid>
 </form>
@@ -45,6 +53,14 @@
                 size="auto"
                 class="d-flex flex-column align-items-center justify-content-center defaultIcon">
                 <ion-icon [src]="inputProperties.iconSrc"></ion-icon>
+            </ion-col>
+            <ion-col 
+                *ngIf="showLetterCounter"
+                size="auto" 
+                class="d-flex flex-column align-items-center justify-content-center">
+                <ion-label class="defaultLabel fountH5">
+                    {{inputProperties.value.length}}
+                </ion-label>
             </ion-col>
         </ion-row>
     </ion-grid>

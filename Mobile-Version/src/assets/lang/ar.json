@@ -55,7 +55,8 @@
         "archive": "أرشيف",
         "edit": "تعديل البيانات",
         "assignCalls": "توزيع المكالمات",
-        "completeEvent": "اتمام الحدث"
+        "completeEvent": "اتمام الحدث",
+        "submitVolunteersAttendance": "تسجيل حضور المتطوعين"
     },
     "GENDER": {
         "male": "ذكر",
@@ -151,5 +152,16 @@
     "HEADERS": {
         "event": "حدث",
         "volunteer": "متطوع"
+    },
+    "EVENT_ATTENDANCE": {
+        "search": "بحث",
+        "phoneNumber": "رقم الهاتف",
+        "name": "الاسم",
+        "branch": "الفرع",
+        "birthDate":"تاريخ الميلاد",
+        "add": "اضافة",
+        "volunteerAttendance": "حضور المتطوعين",
+        "pleaseAddVolunteerFirst": "من فضلك قم باضافة المتطوع اولا!",
+        "submit": "تسجيل"
     }
 }

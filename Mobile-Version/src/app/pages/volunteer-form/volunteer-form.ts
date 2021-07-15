@@ -138,7 +138,7 @@ export class VolunteerForm {
                         formController: {formGroup: this.volunteerForm, formControllerName: 'age'}}*/
     tShirt:selectBoxProperties = { defaultValueIndex: 0, 
                                 label: 'VOLUNTEER_FORM.tShirt', 
-                                options: options.answers,
+                                options: options.tShirt,
                                 selectedItemValue: null,
                                 formController: {formGroup: this.volunteerForm, formControllerName: 'tShirt'}}
 
@@ -247,7 +247,7 @@ export class VolunteerForm {
         volunteer.address.streetName = this.volunteerForm.controls['streetName'].value;
         volunteer.address.regionName = this.volunteerForm.controls['neighborhoodName'].value;
         volunteer.address.capital.id = this.volunteerForm.controls['governorate'].value;
-
+        console.log(volunteer);
         return volunteer;
     }  
 }

@@ -51,16 +51,55 @@ export class VolunteersPage implements OnInit {
     //this.router.navigate(['volunteer-data'])
   }
 
-  async refreshVolunteers(ev) {
-    await this.volunteerCRUD.refresh(ev);
+  async refreshVolunteers(ev, tab: volunteerTabs) {
+    this.volunteerCRUD.refresh(ev, tab);
+    //ev.target.complete();
   }
 
+  /*onSearchStart(ev: TabProperty) {
+    switch(ev.selectedTabIndex) {
+      case volunteerTabs.active:
+        this.volunteerCRUD.copyListToTemp(this.volunteerCRUD.activeVolunteers);
+        break;
+      case volunteerTabs.inactive:
+        this.volunteerCRUD.copyListToTemp(this.volunteerCRUD.inactiveVolunteers);
+        break;
+      case volunteerTabs.archive:
+        this.volunteerCRUD.copyListToTemp(this.volunteerCRUD.requestToVolunteers);
+        break;
+    }
+  }
+
+  //value, volunteerList: Volunteer[], tab: volunteerTabs, complete = false
   searchVolunteers(ev) {
-    //this.volunteerCRUD.search(ev);
+    switch(this.tabProperties.selectedTabIndex) {
+      case volunteerTabs.active:
+        this.volunteerCRUD.search(ev, this.volunteerCRUD.activeVolunteers);
+        break;
+      case volunteerTabs.inactive:
+        this.volunteerCRUD.search(ev, this.volunteerCRUD.inactiveVolunteers);
+        break;
+      case volunteerTabs.archive:
+        this.volunteerCRUD.search(ev, this.volunteerCRUD.requestToVolunteers);
+        break;
+    }
   }
 
   completeVolunteersSearching() {
-    //this.volunteerCRUD.search('', true);
+    switch(this.tabProperties.selectedTabIndex) {
+      case volunteerTabs.active:
+        this.volunteerCRUD.search('', this.volunteerCRUD.activeVolunteers, true);
+        break;
+      case volunteerTabs.inactive:
+        this.volunteerCRUD.search('', this.volunteerCRUD.inactiveVolunteers, true);
+        break;
+      case volunteerTabs.archive:
+        this.volunteerCRUD.search('', this.volunteerCRUD.requestToVolunteers, true);
+        break;
+    }
+  }*/
+  
+  trackItems(index: number, itemObject: any) {
+    return itemObject.id;
   }
-
 }

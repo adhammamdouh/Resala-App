@@ -25,7 +25,13 @@ export class AuthService {
               private volunteerCRUD: VolunteerCRUDService,
               private loadingHandler: LoadingHandlerService,
               private storage: Storage) { }
-
+  
+  async loadUser() {
+    const user: Volunteer = await this.storage.get(keys.USER)
+    console.log(user);
+    this.privilegeHandler.fillRoles(user.privileges);
+  }
+  
   async login(username, password) {
     await this.loadingHandler.presentLoading();
     const res = await this.restfulAPI.post(
@@ -36,12 +42,13 @@ export class AuthService {
   }
 
   async onLoginSuccess(respones: any) {
-    this.user = respones.message.volunteer;
+    console.log(respones);
+    this.user = respones.message.user;
     this.token = respones.message.token;
     
     await this.storage.set(keys.TOKEN, this.token);
     await this.storage.set(keys.USER, this.user);
-
+    console.log(this.user);
     this.privilegeHandler.fillRoles(this.user.privileges);
 
     await this.router.navigate(['home']);

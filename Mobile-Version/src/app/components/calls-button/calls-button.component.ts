@@ -14,19 +14,12 @@ export class CallsButtonComponent implements OnInit, AfterViewInit {
   maxabove = -20;
   callIcon = '../../assets/icon/call.png'
   
-  @Input() reset: boolean = false;
   @Output() swapCompleted: EventEmitter<boolean> = new EventEmitter()
 
   swappableElement: SwappableElement = new SwappableElement();
   constructor() { }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if(changes.reset.currentValue === true
-      && changes.reset.currentValue != changes.reset.previousValue) {
-        //this.resetBtn();
-    }
-    // changes.prop contains the old and the new value...
-  }
+  ngOnChanges(changes: SimpleChanges) {}
 
   ngOnInit() {}
 

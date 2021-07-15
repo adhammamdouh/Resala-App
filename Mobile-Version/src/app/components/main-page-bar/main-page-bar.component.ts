@@ -14,6 +14,7 @@ export class MainPageBarComponent implements OnInit {
   @Input() addButtonNavigationPageName: string = '';
   @Input() showAddButton: boolean = false;
   @Output() tabPropertiesChange: EventEmitter<TabProperty> = new EventEmitter();
+  @Output() onSearchStart: EventEmitter<TabProperty> = new EventEmitter();
   @Output() onSearch: EventEmitter<string> = new EventEmitter();
   @Output() onSearchComplete: EventEmitter<boolean> = new EventEmitter();
 

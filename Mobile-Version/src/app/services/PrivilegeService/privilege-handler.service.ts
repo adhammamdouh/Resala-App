@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 import { accessRights, AccessRightsRolls,  } from 'src/app/data/general-data.enum';
 import Privilege from 'src/app/domains/Privilege/Privilege';
+import * as keys from 'src/app/data/keys.json';
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +10,16 @@ import Privilege from 'src/app/domains/Privilege/Privilege';
 export class PrivilegeHandlerService {
   roles: boolean[] = [];
 
-  constructor() { 
+  constructor(private storage: Storage) { 
     /*for(let i = 0 ; i < AccessRightsRolls.accessRightsStr.length ; ++i) {
       console.log(accessRights[AccessRightsRolls.accessRightsStr[i]]);
       //this.roles[accessRights[Privilege.accessRightsStr[i]]] = true;
       console.log(this.roles[accessRights[AccessRightsRolls.accessRightsStr[i]]]);
     }*/
   }
+  
+  fillRoles(privilege: Privilege[] = []) {
 
-  fillRoles(privilege: Privilege[]) {
-    console.log('filling');
     for(let i = 0 ; i < privilege.length ; ++i) {
       for( let k = 0 ; k < privilege[i].actions.length; ++k) {
         for(let j = 0; j < AccessRightsRolls.accessRightsStr.length ;++j) {
@@ -98,5 +100,9 @@ export class PrivilegeHandlerService {
 
   isUpdateVolunteerValid() {
     return this.roles[accessRights.ROLE_UPDATE_VOLUNTEER]
+  }
+
+  isMakeVolunteerAttendance() {
+    return this.roles[accessRights.ROLE_MAKE_EVENT_ATTENDANCE_TO_VOLUNTEER];
   }
 }
