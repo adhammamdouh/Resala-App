@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as bootstrap from 'bootstrap';
-import { AlertButton } from '../Components/shared/normal-alert/alert-button';
+import AlertButton from '../Components/shared/normal-alert/alert-button';
 import { AlertType } from '../Enums/alert-type.enum';
 
 @Injectable({
@@ -8,16 +8,15 @@ import { AlertType } from '../Enums/alert-type.enum';
 })
 export class AlertService {
   public alertBody: string;
-  public alertType: AlertType;
+  public header: string;
   public alertButtons: AlertButton[];
 
   constructor() { }
 
-  showModal(alertBody, alertType, alertButtons){
+  showModal(alertBody, header, alertButtons){
     this.alertBody = alertBody;
-    this.alertType = alertType;
+    this.header = header;
     this.alertButtons = alertButtons;
-
     var myModal = new bootstrap.Modal(document.getElementById('normalModal'));
     myModal.show();
   }

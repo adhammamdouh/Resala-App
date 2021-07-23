@@ -1,9 +1,10 @@
 {
-    "baseURL": "https://resala-core-308422.nw.r.appspot.com/",
+    "baseURL": "https://resala-core.azurewebsites.net/",
     "login": "login",
     "volunteer": {
+        "volunteer": "volunteer/",
         "getAllByBranchid": "getAllByBranch/",
-        "getAllByBranch": "getAllByBranch",
+        "getAllByBranch": "getAllByBranch/",
         "getAllPublicInfoByBranchid": "getAllPublicInfoByBranch/",
         "getAllPublicInfoByBranch": "getAllPublicInfoByBranch",
         "getArchivedByBranchid": "getArchivedByBranch/",
@@ -13,24 +14,25 @@
         "getActiveByBranchid": "getActiveByBranch/",
         "getActiveByBranch": "getActiveByBranch",
         "getActivePublicInfoByBranchid": "getActivePublicInfoByBranch/",
-        "getActivePublicInfoByBranch": "getActivePublicInfoByBranch",
+        "getActivePublicInfoByBranch": "getActivePublicInfoByBranch/",
         "getRequestedToArchiveByBranchid": "getRequestedToArchiveByBranch/",
-        "getRequestedToArchiveByBranch": "getRequestedToArchiveByBranch",
+        "getRequestedToArchiveByBranch": "getRequestedToArchiveByBranch/",
         "getRequestedToArchivePublicInfoByBranchid": "getRequestedToArchivePublicInfoByBranch/",
-        "getRequestedToArchivePublicInfoByBranch": "getRequestedToArchivePublicInfoByBranch",
-        "requestToArchive": "requestToArchive",
-        "acceptToArchive": "acceptToArchive",
-        "declineToArchive": "declineToArchive",
-        "getAll": "getAll",
+        "getRequestedToArchivePublicInfoByBranch": "getRequestedToArchivePublicInfoByBranch/",
+        "requestToArchive": "requestToArchive/",
+        "acceptToArchive": "acceptToArchive/",
+        "declineToArchive": "declineToArchive/",
+        "getAll": "getAll/",
         "getAllPublicInfo": "getAllPublicInfo",
         "getAllActive": "getAllActive",
         "getAllActivePublicInfo": "getAllActivePublicInfo",
-        "getAllRequestedToArchive": "getAllRequestedToArchive",
+        "getAllRequestedToArchive": "getAllRequestedToArchive/",
         "getAllRequestedToArchivePublicInfo": "getAllRequestedToArchivePublicInfo",
         "getAllArchived": "getAllArchived",
         "getAllArchivedPublicInfo": "getAllArchivedPublicInfo",
         "update": "update",
-        "add": "add"
+        "add": "add",
+        "getAllByState":"getAllByState/"
     },
     "leadVolunteer" : {
         "getAllByBranchid" : "getAllByBranch/", 
@@ -57,9 +59,18 @@
         "getAllRequestedToArchivePublicInfo" : "getAllRequestedToArchivePublicInfo",
         "getAllArchived" : "getAllArchived", 
         "getAllArchivedPublicInfo" : "getAllArchivedPublicInfo",
-        "add" : "add"
+        "add" : "add/"
     },
     "branch" : {
         "gelAll" : "gelAllBranches" 
+    },
+    "event":{
+        "event" : "event/",
+        "getAll": "getAll/",
+        "addEvent": "addEvent/",
+        "getAllByState": "getAllByState/",
+        "updateEvent": "updateEvent/",
+        "archiveEvent": "archiveEvent/",
+        "completeEvent": "completeEvent/"
     }
 }

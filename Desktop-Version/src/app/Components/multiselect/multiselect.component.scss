@@ -1,0 +1,80 @@
+@import '../../../styles.framework/colors.scss';
+.selectBoxHead{
+    position: relative;
+}
+.icon{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translate(0,-50%);
+    transition: all 0.2s ease-in-out;
+}
+.selectBoxContainer{
+    position: relative;
+    cursor: pointer;
+}
+.iconRotated{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translate(0,-50%) rotate(180deg);
+    transition: all 0.2s ease-in-out;
+}
+.selectBoxList{
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    top: 90px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: 0.2s all ease-in-out;
+    background: white;
+    border-radius: 5px;
+    max-height: 200px;
+}
+.selectBoxItem{
+    border-bottom: solid 3px $inputBorderColor;
+    cursor: pointer;
+    color: black;
+    padding: 10px;
+    &:last-child{
+        border-bottom: none;
+    }
+    &:hover > span{
+        display: block !important;
+    }
+}
+
+.disabledSelectBox{
+    background-color: #f0ecec;
+}
+
+.selectedItemBox{
+    background-color: $blue;
+    padding: 5px;
+    color: white;
+    border-radius: 3px;
+    margin-left: 3px;
+    margin-top: 3px;
+    display: inline-block;
+}
+
+.closeButton{
+    color: $red;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 2px;
+    font-weight: bold;
+    padding: 2px;
+}
+
+.selected{
+    animation-name: select;
+    animation-duration: 0.2s;
+}
+
+
+@keyframes select {
+    0%   {width: 30px;}
+    100% {width: 25px;}
+}

@@ -2,9 +2,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content modal-window">
       <div class="modal-header d-flex justify-content-center">
-        <h5 *ngIf="alertService.alertType == 0" class="modal-title" id="exampleModalLabel">خطأ</h5>
-        <h5 *ngIf="alertService.alertType == 1" class="modal-title" id="exampleModalLabel">تأكيد</h5>
-        <h5 *ngIf="alertService.alertType == 2" class="modal-title" id="exampleModalLabel">تحذير</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{alertService.header}}</h5>
       </div>
       <div class="modal-body text-center">
         {{alertService.alertBody}}
@@ -13,13 +11,6 @@
         <button *ngFor="let btn of alertService.alertButtons" type="button" class="btn btn-secondary w-50 modalButton"
           data-bs-dismiss="modal" (click)="btn.handler()">{{btn.name}}</button>
       </div>
-      <!--<div class="modal-footer d-flex flex-row-reverse flex-nowrap p-4" *ngIf="alertType == 1">
-        <button type="button" class="btn btn-primary w-50 modalButton" data-bs-dismiss="modal" (click)="onClickYes()">نعم</button>
-        <button type="button" class="btn btn-secondary w-50 modalButton" data-bs-dismiss="modal">لا</button>
-      </div>
-      <div class="modal-footer d-flex flex-row-reverse flex-nowrap p-4" *ngIf="alertType == 0 && alertType == 2">
-        <button type="button" class="btn btn-secondary w-50 modalButton" data-bs-dismiss="modal">موافق</button>
-      </div>-->
     </div>
   </div>
 </div>

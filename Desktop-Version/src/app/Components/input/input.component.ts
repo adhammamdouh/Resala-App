@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import InputProperties from './inputProperties';
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-input',
@@ -13,4 +14,5 @@ export class InputComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
 }

@@ -1,16 +1,16 @@
-<div class="selectBoxContainer">
+<div class="selectBoxContainer" style="cursor: pointer;">
     <label [fittext]="true" [maxFontSize]="18" [modelToWatch]="selectBoxProperties.label"  for="input" 
         class="form-label customLabel arabicFontBold inputsBlueLabel">{{selectBoxProperties.label}}</label>
-    <div class="selectBoxHead form-control inputStyle" (click)="toggleList()">
-        <img [ngClass]="{'icon': open === false , 'iconRotated' : open === true }" 
+    <div class="selectBoxHead form-control inputStyle" [ngClass]="{'disabledSelectBox': selectBoxProperties.disabled}" (click)="toggleList()">
+        <img [ngClass]="{'icon': !open , 'iconRotated' : open  }" 
         class="iconRotated" src="assets/Icons/DropdownArrow.svg"/>
-        {{selectedOption.text}}
+        {{selectBoxProperties.disabled? valueToObject(selectBoxProperties.defaultValue)[this.selectBoxProperties.objectDefine.text] : this.selectedOption[this.selectBoxProperties.objectDefine.text]}}
     </div>
     <div [style.display]="open?'block':'none'" class="selectBoxList inputStyle" >
-        <div class="selectBoxItem px-2" *ngFor="let option of selectBoxProperties.options" (click)="changeSelection(option)">{{option.text}}</div>
+        <div class="selectBoxItem px-2" *ngFor="let option of selectBoxProperties.options" (click)="changeSelection(option)">{{option[selectBoxProperties.objectDefine.text]}}</div>
     </div>
 </div>
 
-<form [formGroup]="selectBoxProperties.formGroup">
-    <input type="text" class="d-none" [formControlName]="selectBoxProperties.formControlName">
+<form [formGroup]="selectBoxProperties.formGroup" >
+    <input [readOnly]="selectBoxProperties.disabled"  class="d-none" [formControlName]="selectBoxProperties.formControlName">
 </form>

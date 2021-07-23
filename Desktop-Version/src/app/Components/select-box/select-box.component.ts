@@ -15,7 +15,7 @@ export class SelectBoxComponent implements OnInit {
   
   @Input() selectBoxProperties:selectBoxProperties;
 
-  selectedOption:SelectBoxOption;
+  selectedOption:any;
 
   constructor() { }
 
@@ -30,7 +30,7 @@ export class SelectBoxComponent implements OnInit {
     this.inside = false;
   }
   ngOnInit(): void {
-    this.changeSelectedValue(this.selectBoxProperties.options[this.selectBoxProperties.defaultValueIndex]);
+    this.changeSelection(this.valueToObject(this.selectBoxProperties.defaultValue));
   }
 
   openList():void {
@@ -41,21 +41,30 @@ export class SelectBoxComponent implements OnInit {
     this.open = false;
   }
 
-  changeSelection(optionValue:SelectBoxOption): void{
-    this.changeSelectedValue(optionValue);
+  changeSelection(option): void{
+    this.changeSelectedValue(option[this.selectBoxProperties.objectDefine.value]);
+    this.selectedOption = option
     this.closeList();
   }
 
-  changeSelectedValue(optionValue:SelectBoxOption): void{
-    this.selectedOption = optionValue
+  changeSelectedValue(optionValue): void{
     this.changeInputValue(optionValue);
   }
 
-  changeInputValue(optionValue:SelectBoxOption): void{
-    this.selectBoxProperties.formGroup.controls[this.selectBoxProperties.formControlName].setValue(optionValue.value);
+  changeInputValue(optionValue): void{
+    this.selectBoxProperties.formGroup.controls[this.selectBoxProperties.formControlName].setValue(optionValue);
   }
 
   toggleList():void{
+    if (this.selectBoxProperties.disabled) return;
     this.open? this.closeList() : this.openList();
+  }
+
+  valueToObject(value){
+    for (let i=0; i<this.selectBoxProperties.options.length; i++){
+      if (this.selectBoxProperties.options[i][this.selectBoxProperties.objectDefine.value] == value){
+        return this.selectBoxProperties.options[i];
+      }
+    }
   }
 }

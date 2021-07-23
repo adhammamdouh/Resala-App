@@ -1,11 +1,11 @@
-<div class="container upperContainer p-2">
+<div (click)="changeSelectedEvent()" class="container upperContainer p-2 mb-2" [ngClass]="{'activeCard': this.isThisActiveCard()}">
   <div class="d-flex w-100 h-100 position-auto" dir="rtl">
     <div class="d-flex flex-column ms-1 w-100">
       <div class="header">
-        قافلة الكومبو لقرية السنة القديمة
+        {{event.name}}
       </div>
       <div class="description">
-        (اطعام فقط) + (تكملة إعادة استكشاف)
+        {{event.description}}
       </div>
       <div class="container mt-2">
         <div class="row d-flex justify-content-around">
@@ -16,9 +16,9 @@
       </div>
     </div>
     <div class="dateCard align-self-center h-100 p-1 me-1 d-flex flex-column align-items-center">
-      <span class="day">15</span>
-      <span class="month">jan</span>
-      <span class="year">2020</span>
+      <span class="day">{{getDay(event.fromDate)}}</span>
+      <span class="month">{{getMonth(event.fromDate)}}</span>
+      <span class="year">{{getYear(event.fromDate)}}</span>
     </div>
   </div>
 </div>

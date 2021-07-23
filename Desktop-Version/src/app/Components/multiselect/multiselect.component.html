@@ -1,0 +1,23 @@
+<div class="selectBoxContainer" dir="rtl">
+    <label [fittext]="true" [maxFontSize]="18" [modelToWatch]="selectBoxProperties.label"  for="input" 
+        class="form-label customLabel arabicFontBold inputsBlueLabel">{{selectBoxProperties.label}}</label>
+    <div class="selectBoxHead form-control inputStyle" [ngClass]="{'disabledSelectBox': selectBoxProperties.disabled}" (click)="this.selectBoxProperties.disabled?this.closeList():this.openList()">
+        <img [ngClass]="{'icon': !open , 'iconRotated' : open  }" 
+        class="iconRotated" src="assets/Icons/DropdownArrow.svg"/>
+        <span *ngFor = "let selectedOption of selectBoxProperties.formGroup.controls[selectBoxProperties.formControlName].value" class="selectedItemBox">
+            {{selectedOption[selectBoxProperties.objectDefine.text]}}
+            <span (click)="this.selectBoxProperties.disabled?closeList():removeFromSelection(selectedOption)" class="closeButton">X</span>
+        </span>
+        <span style="font-weight: bold;" *ngIf="selectBoxProperties.formGroup.controls[selectBoxProperties.formControlName].value.length == 0">لم يتم إختيار شئ</span>
+    </div>
+    <div [style.display]="open?'block':'none'" class="selectBoxList inputStyle" >
+        <div class="selectBoxItem px-2 d-flex justify-content-between" *ngFor="let option of selectBoxProperties.options" (click)="isSelected(option)?removeFromSelection(option):addToSelect(option)">
+            {{option[selectBoxProperties.objectDefine.text]}}
+            <span [ngStyle]="{'display': isSelected(option)?'block':'none'}"><img [ngClass]="{'selected': isSelected(option)}" src="assets/Icons/check-mark-black-outline.svg" width="20px"/></span>
+        </div>
+    </div>
+</div>
+
+<form [formGroup]="selectBoxProperties.formGroup" >
+    <input [readOnly]="selectBoxProperties.disabled"  class="d-none" [formControlName]="selectBoxProperties.formControlName">
+</form>

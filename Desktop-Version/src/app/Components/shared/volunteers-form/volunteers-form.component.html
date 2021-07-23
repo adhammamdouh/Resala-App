@@ -1,107 +1,168 @@
+<!-- <button data-bs-toggle="modal" data-bs-target="#callDistribution">asdasd</button> -->
 <div class="mainContainer w-100 h-100">
-    <div class="head pe-4" dir="rtl">
-        <div class="title arabicFont">بيانات المتطوع</div>
+    <div class="head ps-4 pe-4 justify-content-between" dir="rtl">
+        <div class="title arabicFont">بيانات الحدث</div>
+        <div *ngIf="volunteersCRUD.selectedVolunteer != undefined && (volunteersCRUD.formMode==2 || volunteersCRUD.formMode==0) && volunteersCRUD.gridState==0">
+            <button class="deleteButton arabicFontBold ms-2" *ngIf="volunteersCRUD.formMode == 2 && privilegeHandler.isShowRequestToArchiveValid()" (click)="volunteersCRUD.requestArchive()"> <img src="assets/Icons/inbox.svg" style="margin-top: -5px;" width="27px"> طلب ارشيف</button>
+            <button class="modifyButton arabicFontBold ms-2" *ngIf="privilegeHandler.isUpdateVolunteerValid()" (click)="(volunteersCRUD.formMode != 0)?volunteersCRUD.activateEditMode() : volunteersCRUD.editVolunteer()"> <img src="assets/Icons/pen.svg" style="margin-top: -5px;" width="27px"> تعديل</button>
+            <button class="deleteButton arabicFontBold" *ngIf="volunteersCRUD.formMode == 0" (click)="volunteersCRUD.activateViewMode()"> الغاء</button>
+        </div>
+        <div *ngIf="volunteersCRUD.selectedVolunteer != undefined && (volunteersCRUD.formMode==2 || volunteersCRUD.formMode==0) && volunteersCRUD.gridState==1">
+            <button class="greenButton arabicFontBold ms-2" *ngIf="volunteersCRUD.formMode == 2" (click)="volunteersCRUD.activateVolunteer()"> <img src="assets/Icons/megaphone.svg" style="margin-top: -5px;" width="27px"> تنشيط</button>
+        </div>
+        <div *ngIf="volunteersCRUD.selectedVolunteer != undefined && (volunteersCRUD.formMode==2 || volunteersCRUD.formMode==0) && volunteersCRUD.gridState==2">
+            <button class="deleteButton arabicFontBold ms-2" *ngIf="volunteersCRUD.formMode == 2 && privilegeHandler.isAcceptToArchiveValid()" (click)="volunteersCRUD.activateVolunteer()"> <img src="assets/Icons/inbox.svg" style="margin-top: -5px;" width="27px"> قبول الطلب</button>
+            <button class="greenButton arabicFontBold ms-2" *ngIf="volunteersCRUD.formMode == 2 && privilegeHandler.isDeclineToArchiveValid()" (click)="volunteersCRUD.activateVolunteer()"> <img src="assets/Icons/megaphone.svg" style="margin-top: -5px;" width="27px"> رفض الطلب</button>
+        </div>
+        <div *ngIf="volunteersCRUD.formMode==1">
+            <button (click)="volunteersCRUD.addVolunteer()" class="greenButton arabicFontBold">+ اضافة</button>
+        </div>
     </div>
-    <div class="innerContainer w-100" dir="rtl">
+    <div class="innerContainer w-100" dir="rtl" *ngIf="volunteersCRUD.selectedVolunteer != undefined || volunteersCRUD.formMode == 1">
         <div class="row">
             <div class="col-sm-4">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.name"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.firstName"></app-input>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.nickName"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.midName"></app-input>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.birthDate"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.lastName"></app-input>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="mt-2">
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.nickName"></app-input>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="mt-2">
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.birthDate"></app-input>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6 col-xl-4">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.nationalID"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.nationalID"></app-input>
                 </div>
             </div>
             <div class="col-sm-6 col-xl-4">
                 <div class="mt-2">
-                    <app-select-box [selectBoxProperties]='volunteerForm.gender'></app-select-box>
+                    <app-select-box [selectBoxProperties]='volunteersCRUD.volunteerForm.gender'></app-select-box>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-4">
+            <div class="col-sm-12 col-xl-4">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.university"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.university"></app-input>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-12">
+            <div class="col-sm-12 col-xl-6">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.faculty"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.faculty"></app-input>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xl-6">
+                <div class="mt-2">
+                    <app-select-box [selectBoxProperties]="this.volunteersCRUD.volunteerForm.educationLevel"></app-select-box>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6 col-xl-4">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.phoneNumber"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.phoneNumber"></app-input>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-4">
+            <div class="col">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.joiningDate"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.joiningDate"></app-input>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-4">
+            <div *ngIf="volunteersCRUD.formMode == 2" class="col-sm-12 col-xl-4">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.age"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.age"></app-input>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-12">
+            <div class="col-sm-12 col-xl-12">
                 <div class="mt-2">
-                    <app-select-box [selectBoxProperties]='volunteerForm.tShirt'></app-select-box>
+                    <app-select-box [selectBoxProperties]='volunteersCRUD.volunteerForm.shirt'></app-select-box>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="mt-2">
-                    <app-select-box [selectBoxProperties]="volunteerForm.branch"></app-select-box>
+                    <app-select-box [selectBoxProperties]="volunteersCRUD.volunteerForm.branch"></app-select-box>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.apartmentNumber"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.apartmentNumber"></app-input>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.buildingNumber"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.buildingNumber"></app-input>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.streetName"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.streetName"></app-input>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mt-2">
-                    <app-input [inputProperties]="volunteerForm.neighborhoodName"></app-input>
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.neighborhoodName"></app-input>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mt-2">
+                    <app-select-box [selectBoxProperties]="volunteersCRUD.volunteerForm.governorate"></app-select-box>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mt-2">
+                    <app-select-box [selectBoxProperties]="volunteersCRUD.volunteerForm.miniCamp"></app-select-box>
+                </div>
+            </div>
+            <div *ngIf="volunteersCRUD.formMode == 2" class="col-sm-3">
+                <div class="mt-2">
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.presentCount"></app-input>
+                </div>
+            </div>
+            <div *ngIf="volunteersCRUD.formMode == 2" class="col-sm-3">
+                <div class="mt-2">
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.callsCount"></app-input>
+                </div>
+            </div>
+            <div *ngIf="volunteersCRUD.formMode == 2" class="col-sm-3">
+                <div class="mt-2">
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.responseCount"></app-input>
+                </div>
+            </div>
+            <div *ngIf="volunteersCRUD.formMode == 2" class="col-sm-3">
+                <div class="mt-2">
+                    <app-input [inputProperties]="volunteersCRUD.volunteerForm.ensureCount"></app-input>
                 </div>
             </div>
             <div class="col-sm-12">
-               <div class="mt-2">
-                    <app-select-box [selectBoxProperties]="volunteerForm.governorate"></app-select-box>
-               </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="mt-2">
-                <app-textarea [textAreaProperties]="volunteerForm.comments"></app-textarea>
+                <div class="mt-2">
+                    <app-textarea [textAreaProperties]="volunteersCRUD.volunteerForm.comments"></app-textarea>
+                </div>
             </div>
         </div>
     </div>
+    <div class="text-center arabicFontBold mt-4" *ngIf="volunteersCRUD.selectedVolunteer == undefined && this.volunteersCRUD.formMode==2">
+        لا يوجد بيانات
+    </div>
+    <div [ngClass]="{'flipperShow': volunteersCRUD.flipperStatus}" class="flipper arabicFont">تمت العملية بنجاح بنجاح</div>
 </div>
+<app-normal-alert></app-normal-alert>

@@ -67,3 +67,69 @@ input::-webkit-inner-spin-button {
     border: none;
     color: black;
 }
+.deleteButton{
+    background-color: $red;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+    color: white;
+    font-size: 25px;
+    &:focus{
+        &{
+            outline: none;
+        }
+    }
+}
+.modifyButton{
+    background-color: $yellow;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+    color: black;
+    font-size: 25px;
+    &:focus{
+        &{
+            outline: none;
+        }
+    }
+}
+
+.blueButton{
+    background-color: $blue;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+    color: white;
+    font-size: 25px;
+    &:focus{
+        &{
+            outline: none;
+        }
+    }
+}
+
+.greenButton{
+    background-color: $green;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+    color: white;
+    font-size: 25px;
+    &:focus{
+        &{
+            outline: none;
+        }
+    }
+}

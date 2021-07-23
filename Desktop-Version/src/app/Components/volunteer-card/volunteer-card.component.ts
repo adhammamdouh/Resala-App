@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { VolunteersCRUD } from 'src/app/Controllers/volunteerHandler/volunteers-handler.service';
+import Volunteer from 'src/app/Domains/Volunteer/Volunteer';
 
 @Component({
   selector: 'app-volunteer-card',
@@ -7,11 +9,16 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class VolunteerCardComponent implements OnInit {
 
-  constructor() { }
-  @Input() active = false;
-  @Input() first = false;
-  @Input() name = "محمد مصطفي";
+  constructor(private volunteersCRUD:VolunteersCRUD) { }
+  @Input() volunteer: Volunteer;
+  
   ngOnInit(): void {
+  
   }
-
+  changeSelectedVolunteer(){
+    this.volunteersCRUD.changeSelectedVolunteer(this.volunteer);
+  }
+  isThisActiveCard(){
+    return (this.volunteersCRUD.getCurrentSelectedVolunteer()['id'] == this.volunteer['id'])
+  }
 }

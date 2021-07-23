@@ -1,0 +1,29 @@
+<div class="modal fade-scale" id="callDistribution" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-window">
+        <div class="modal-header d-flex justify-content-center">
+          <h5 class="modal-title" id="exampleModalLabel">توزيع المكالمات</h5>
+        </div>
+        <div class="modal-body text-center" dir="rtl">
+          <div class="row">
+              <div class="col-6 text-end">
+                    <app-select-box [selectBoxProperties]="this.WESelectBoxProperties"></app-select-box>
+              </div>
+              <div class="col-6 text-end">
+                <app-select-box [selectBoxProperties]="this.orangeBoxProperties"></app-select-box>
+              </div>
+              <div class="col-6 text-end">
+                    <app-select-box [selectBoxProperties]="this.etisalatBoxProperties"></app-select-box>
+              </div>
+              <div class="col-6 text-end">
+                <app-select-box [selectBoxProperties]="this.vodafoneSelectBoxProperties"></app-select-box>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer d-flex flex-row-reverse justify-content-center flex-nowrap">
+          <button class="greenButton arabicFontBold col-5" data-bs-dismiss="modal">توزيع</button>
+          <button class="deleteButton arabicFontBold col-5" data-bs-dismiss="modal">إالغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>

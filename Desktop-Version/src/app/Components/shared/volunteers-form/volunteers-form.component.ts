@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CallStatus } from 'src/app/Enums/call-status.enum';
-import InputProperties from '../../input/inputProperties';
-import selectBoxProperties from '../../select-box/SelectBoxProperties';
-import { CallProperties } from '../call-card/call-properties';
 import * as bootstrap from 'bootstrap';
+import { ErrorHandlerService } from 'src/app/Controllers/alertHandler/alert-handler.service';
+import { PrivilegeHandlerService } from 'src/app/Controllers/PrivilegeHandler/privilege-handler.service';
+import { VolunteerFormMode } from 'src/app/Controllers/volunteerHandler/volunteerFormMode';
+import { VolunteersCRUD } from 'src/app/Controllers/volunteerHandler/volunteers-handler.service';
+import Volunteer from 'src/app/Domains/Volunteer/Volunteer';
 import VolunteerForm from '../../../SharedData/volunteerForm'
+
 
 @Component({
   selector: 'app-volunteers-form',
@@ -14,52 +15,22 @@ import VolunteerForm from '../../../SharedData/volunteerForm'
 })
 export class VolunteersFormComponent implements OnInit {
 
-  formTest = new FormGroup({
-    sex: new FormControl('', [Validators.required])
-  })
-  volunteerForm:VolunteerForm = new VolunteerForm();
-  inputTest: selectBoxProperties = {
-    label: 'النوع',
-    defaultValueIndex: 0,
-    options: [
-      {
-        text: 'ذكر',
-        value: 'male'
-      },
-      {
-        text: 'انثي',
-        value: 'female'
-      }
-    ],
-    formControlName: 'sex',
-    formGroup: this.formTest
-  };
-
-  callItem: CallProperties = {
-    name: '',
-    birthDate: new Date(),
-    callNumber: 1,
-    callStatus: CallStatus.active,
-    totalCallsCount: 1,
-    callResult: '',
-    eventAttend: '',
-    notes: '',
-    phoneNumber: '',
-  }
-  constructor() { }
+  constructor(public volunteersCRUD: VolunteersCRUD, 
+    public errorHandler:ErrorHandlerService,
+    public privilegeHandler:PrivilegeHandlerService) { }
 
   ngOnInit(): void {
     this.enablePopUps();
-    console.log(this.volunteerForm);
+    this.volunteersCRUD.initializeVolunteerForm()
   }
 
-  enablePopUps(){
+  enablePopUps() {
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
     var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
       return new bootstrap.Popover(popoverTriggerEl)
     })
   }
-
+  
 }
 
 

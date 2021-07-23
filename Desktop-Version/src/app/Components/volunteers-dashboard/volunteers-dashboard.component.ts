@@ -10,6 +10,7 @@ export class VolunteersDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

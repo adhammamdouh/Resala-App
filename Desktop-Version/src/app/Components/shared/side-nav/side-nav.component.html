@@ -3,7 +3,7 @@
         <span class="menuText arabicFontBold me-3 username">محمد مصطفي</span>
         <img class="img" src="assets/Images/profile.jpg" />
     </div>
-    <div class="mt-3 activeTab menuItem d-flex align-items-center justify-content-end">
+    <div routerLinkActive="activeTab" style="cursor: pointer;" routerLink="volunteers" class="mt-3 menuItem d-flex align-items-center justify-content-end">
         <span class="menuText arabicFontBold me-3 menuName">المتطوعين</span>
         <div class="iconContainer">
             <svg xmlns="http://www.w3.org/2000/svg" width="29.016" height="29.045" viewBox="0 0 29.016 29.045">
@@ -15,7 +15,7 @@
             </svg>
         </div>
     </div>
-    <div class="mt-3 menuItem d-flex align-items-center justify-content-end">
+    <div routerLinkActive="activeTab" style="cursor: pointer;" routerLink="/events" class="mt-3 menuItem d-flex align-items-center justify-content-end">
         <span class="menuText arabicFontBold me-3 menuName">الأحداث</span>
         <div class="iconContainer">
             <svg xmlns="http://www.w3.org/2000/svg" width="30.142" height="29" viewBox="0 0 30.142 29">
@@ -29,5 +29,8 @@
                 </g>
             </svg>
         </div>
+    </div>
+    <div (click)="logout()" style="cursor: pointer;" class="mt-3 menuItem d-flex align-items-center justify-content-end">
+        <span class="menuText arabicFontBold me-3 menuName">تسجيل الخروج</span>
     </div>
 </div>

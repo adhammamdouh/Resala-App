@@ -1,0 +1,102 @@
+<div class="mainContainer w-100 h-100">
+    <div class="head ps-4 pe-4 justify-content-between" dir="rtl">
+        <div class="title arabicFont">بيانات الحدث</div>
+        <div *ngIf="eventsCRUD.selectedEvent != undefined &&eventsCRUD.formMode==2">
+            <button *ngIf="privilegeHandler.isArchiveEventValid()" class="deleteButton arabicFontBold ms-2" (click)="eventsCRUD.deleteEvent()"> <img src="assets/Icons/trash-bin-closed (1).svg" style="margin-top: -5px;" width="27px"> حذف</button>
+            <button *ngIf="privilegeHandler.isUpdateEventValid()" class="modifyButton arabicFontBold ms-2" (click)="eventsCRUD.activateEditMode()"> <img src="assets/Icons/pen.svg" style="margin-top: -5px;" width="27px"> تعديل</button>
+            <button class="modifyButton arabicFontBold ms-2" *ngIf="!eventsCRUD.summaryFormDisplay && privilegeHandler.isSubmitAssignedCallsValid()" (click)="eventsCRUD.showSummaryForm()"> <img src="assets/Icons/eye-with-thick-outline-variant.svg" style="margin-top: -5px;" width="27px"> إظهار بيانات الحدث</button>
+            <button class="modifyButton arabicFontBold ms-2" *ngIf="eventsCRUD.summaryFormDisplay && privilegeHandler.isSubmitAssignedCallsValid()" (click)="eventsCRUD.hideSummaryForm()"> <img src="assets/Icons/eye-with-thick-outline-variant.svg" style="margin-top: -5px;" width="27px"> إخفاء بيانات الحدث</button>
+            <button class="greenButton arabicFontBold" *ngIf="(eventsCRUD.gridState == 0) && privilegeHandler.isCompleteEventValid()" (click)="eventsCRUD.completeEvent()"><img src="assets/Icons/check.svg" style="margin-top: -5px;" width="27px"> إكمال الحدث</button>
+        </div>
+        <div *ngIf="eventsCRUD.formMode==1 && privilegeHandler.isAddEventValid()">
+            <button (click)="eventsCRUD.addEvent()" class="greenButton arabicFontBold">+ اضافة</button>
+        </div>
+        <div *ngIf="eventsCRUD.formMode==0 && privilegeHandler.isUpdateEventValid()">
+            <button class="modifyButton arabicFontBold ms-2" (click)="eventsCRUD.editEvent()"> <img src="assets/Icons/pen.svg" style="margin-top: -5px;" width="27px"> تعديل</button>
+            <button class="deleteButton arabicFontBold ms-2" (click)="eventsCRUD.activateViewMode()">إلغاء</button>
+        </div>
+    </div>
+    <div class="innerContainer w-100" dir="rtl" *ngIf="eventsCRUD.selectedEvent != undefined || eventsCRUD.formMode == 1">
+        <div class="row">
+            <div class="col-12">
+                <div class="mt-2">
+                    <app-input [inputProperties]="eventsCRUD.eventsForm.eventName"></app-input>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mt-2">
+                    <app-select-box [selectBoxProperties]="eventsCRUD.eventsForm.hasCalls"></app-select-box>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mt-2">
+                    <app-select-box [selectBoxProperties]="eventsCRUD.eventsForm.sharable"></app-select-box>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="mt-2">
+                    <app-input [inputProperties]="eventsCRUD.eventsForm.from"></app-input>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="mt-2">
+                    <app-input [inputProperties]="eventsCRUD.eventsForm.to"></app-input>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="mt-2">
+                    <app-input [inputProperties]="eventsCRUD.eventsForm.invitationStartTime"></app-input>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="mt-2">
+                    <app-input [inputProperties]="eventsCRUD.eventsForm.invitationEndTime"></app-input>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="mt-2">
+                    <app-input [inputProperties]="eventsCRUD.eventsForm.feedBackStartTime"></app-input>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="mt-2">
+                    <app-input [inputProperties]="eventsCRUD.eventsForm.feedBackEndTime"></app-input>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="mt-2">
+                    <app-input [inputProperties]="eventsCRUD.eventsForm.notAttendStartTime"></app-input>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="mt-2">
+                    <app-input [inputProperties]="eventsCRUD.eventsForm.notAttendEndTime"></app-input>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="mt-2">
+                    <app-multiselect [selectBoxProperties]="eventsCRUD.eventsForm.branches"></app-multiselect>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mt-2">
+                    <app-textarea [textAreaProperties]="eventsCRUD.eventsForm.eventDescription"></app-textarea>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mt-2">
+                    <app-textarea [textAreaProperties]="eventsCRUD.eventsForm.eventText"></app-textarea>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row mt-4">
+            <div class="mt-3">
+                <app-call-card></app-call-card>
+            </div>
+        </div> -->
+    </div>
+    <div class="text-center arabicFontBold mt-4" *ngIf="eventsCRUD.selectedEvent == undefined && this.eventsCRUD.formMode==2">
+        لا يوجد بيانات
+    </div>
+    <div [ngClass]="{'flipperShow': eventsCRUD.flipperStatus}" class="flipper arabicFont">تمت اضافة البيانات بنجاح</div>
+</div>

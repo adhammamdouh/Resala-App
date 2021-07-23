@@ -1,4 +1,4 @@
 export default interface User {
-    username:string;
+    userName:string;
     password:string;
 }

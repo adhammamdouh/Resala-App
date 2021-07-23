@@ -1,4 +1,7 @@
 <form [formGroup]="textAreaProperties.formGroup">
-    <label for="comments"  class="form-label customLabel arabicFontBold inputsBlueLabel">{{textAreaProperties.label}}</label>
-    <textarea [placeholder]="textAreaProperties.placeHolder" [readonly]="textAreaProperties.disabled" [formControlName]="textAreaProperties.formControlName" class="form-control inputStyle" style="resize: none;" id="comments" rows="7"></textarea>
+    <label [fittext]="false" [minFontSize]="14" [maxFontSize]="18" [modelToWatch]="textAreaProperties.label"
+        class="form-label customLabel arabicFontBold inputsBlueLabel"
+        [ngClass]="textAreaProperties.formGroup.controls[textAreaProperties.formControlName].invalid && 
+        textAreaProperties.formGroup.controls[textAreaProperties.formControlName].touched? 'wrongInput': ''">{{textAreaProperties.label}}</label>
+    <textarea [readOnly]="textAreaProperties.disabled" [placeholder]="textAreaProperties.placeHolder" [readonly]="textAreaProperties.disabled" [formControlName]="textAreaProperties.formControlName" class="form-control inputStyle" style="resize: none;" rows="7"></textarea>
 </form>

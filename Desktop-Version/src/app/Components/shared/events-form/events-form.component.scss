@@ -9,7 +9,6 @@
     background-color: $blue;
     display: flex;
     align-items: center;
-
 }
 .title{
     font-size: 25px;
@@ -20,6 +19,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .innerContainer{
     box-sizing: border-box;
@@ -27,4 +27,5 @@
     overflow-y: auto;
     height: 90%;
     overflow-x: hidden;
+    color: white;
 }

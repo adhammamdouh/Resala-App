@@ -1,0 +1,10 @@
+<div class="d-flex flex-row-reverse pt-3 mainContainer">
+    <div class="shrink0 pb-3">
+        <app-events-grid *ngIf="!eventsCRUD.summaryFormDisplay"></app-events-grid>
+        <app-event-summary-form *ngIf="eventsCRUD.summaryFormDisplay"></app-event-summary-form>
+    </div>
+    <div class="w-100 h-100 me-3 form pb-3">
+        <app-events-form></app-events-form>
+    </div>
+</div>
+<app-normal-alert></app-normal-alert>

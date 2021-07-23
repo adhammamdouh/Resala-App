@@ -1,0 +1,18 @@
+<div class="gridContainer">
+    <div class="mb-4 mt-2">
+        <app-search></app-search>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+        <button *ngIf="privilegeHandler.isAddEventValid()" (click)="activateAddMode()" class="blueButton arabicFontBold">+</button>
+        <div class="col-10">
+            <app-state-bar [activeInput]="eventsCRUD.gridState" [states]="statesText" (switchingState)="onSwitchingState($event)"></app-state-bar>
+        </div>
+    </div>
+    <button class="sortingButton arabicFont ms-auto mt-2 mb-2">ترتيب <img src="../../../assets/Icons/descendant.svg"></button>
+    <div class="innerGridContainer w-100 h-75">
+        <div *ngIf="events == undefined || events.length == 0" class="text-center arabicFontBold">
+            لا يوجد اي بيانات
+        </div>
+        <app-event-card [event]="event" *ngFor="let event of events"></app-event-card>
+    </div>
+</div>

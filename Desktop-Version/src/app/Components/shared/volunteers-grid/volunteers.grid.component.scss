@@ -1,0 +1,22 @@
+@import "../../../../styles.framework/colors.scss";
+@import "../../../../styles.framework/properties.scss";
+.gridContainer{
+    width: var(--grid-width);
+    height: 100%;
+    box-sizing: border-box;
+    padding: 28px;
+    background-color: $loginBackgroundColor;
+    border-radius: var(--window-border-radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.innerGridContainer{
+    overflow-y: auto;
+    padding-right: 10px;
+}
+button{
+    &:focus{
+        outline: none;
+    }
+}

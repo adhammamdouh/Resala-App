@@ -6,12 +6,13 @@ import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChil
 })
 export class StateBarComponent implements OnInit{
   @Input() states:any = [];
+  @Input() activeInput;
   active:number;
   @Output() switchingState = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
-    this.active = this.states.length-1;
+    this.active = this.activeInput;
   }
 
   changeState(state){

@@ -62,3 +62,9 @@
   font-size: var(--h6);
 }
 
+.activeCard{
+  background-color: $blue !important;
+  &:hover{
+      transform: none;
+  }
+}

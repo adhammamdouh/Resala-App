@@ -1,0 +1,30 @@
+{   
+    "invalidLoginUsername": {
+        "status": 0,
+        "error": "برجاء التأكد من اسم المستخدم"
+    },
+    "invalidPassword":{
+        "status": 1,
+        "error": "برجاء التأكد من كلمة السر"
+    },
+    "missingFields":{
+        "status" : 2,
+        "error": "برجاء التأكد من جميع البيانات"
+    },
+    "archiveVolunteerWarning" : {
+        "status" : 3,
+        "error" : "هل انت متأكد من طلب ارشفة" 
+    },
+    "archiveEventWarning" : {
+        "status" : 4,
+        "error" : "هل انت متأكد من طلب ارشفة" 
+    },
+    "logoutWarning":{
+        "status" : 5,
+        "error" : "هل انت متأكد من تسجيل الخروج؟"  
+    },
+    "activateVolunteerWarning":{
+        "status" : 6,
+        "error" : "هل انت متأكد من تنشيط"  
+    }
+}

@@ -1,10 +1,12 @@
 import { FormGroup } from "@angular/forms";
-import SelectBoxOption from "./selectBoxOption";
+import SelectBoxValueValueSelector from "./selectBoxValueSelector";
 
 export default interface selectBoxProperties{
-    defaultValueIndex:number;
-    options:SelectBoxOption[];
+    defaultValue:number;
+    options:any[];
     label:string;
     formControlName:string;
     formGroup:FormGroup;
+    disabled:Boolean;
+    objectDefine: SelectBoxValueValueSelector;
 }

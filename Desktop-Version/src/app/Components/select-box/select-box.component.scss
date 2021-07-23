@@ -24,13 +24,16 @@
     z-index: 10;
     width: 100%;
     top: 90px;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     transition: 0.2s all ease-in-out;
     background: white;
     border-radius: 5px;
+    max-height: 200px;
 }
 .selectBoxItem{
     border-bottom: solid 3px $inputBorderColor;
+    color: black;
     padding: 10px;
     &:last-child{
         border-bottom: none;
@@ -39,4 +42,7 @@
         background: $blue;
         color: white;
     }
+}
+.disabledSelectBox{
+    background-color: #f0ecec;
 }
