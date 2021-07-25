@@ -61,6 +61,7 @@ export class SelectBoxComponent implements OnInit {
   }
 
   valueToObject(value){
+    debugger;
     for (let i=0; i<this.selectBoxProperties.options.length; i++){
       if (this.selectBoxProperties.options[i][this.selectBoxProperties.objectDefine.value] == value){
         return this.selectBoxProperties.options[i];

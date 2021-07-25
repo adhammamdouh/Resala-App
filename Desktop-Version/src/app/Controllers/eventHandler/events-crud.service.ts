@@ -16,6 +16,8 @@ import { Router } from '@angular/router';
 export class EventsCRUDService {
   nextEvents:ResalaEvent[];
   previousEvents:ResalaEvent[];
+  nextSearchedEvents:any[] = [];
+  previousSearchedEvents:any[] = [];
   gridState = 0;
   flipperStatus = false;
   selectedEvent:ResalaEvent;
@@ -162,5 +164,24 @@ export class EventsCRUDService {
         this.route.navigate(['loading']);
       }, 1000);
     })
+  }
+
+  search(value){
+    
+    this.nextSearchedEvents = this.filterDataOnQuery(this.nextEvents, value);
+    
+    this.previousSearchedEvents = this.filterDataOnQuery(this.previousEvents, value);
+
+  }
+
+  filterDataOnQuery(events, query){
+    let eventsFiltered = [];
+    if (events.length == 0) return;
+    events.forEach(element => {
+      if (element.name.includes(query)){
+        eventsFiltered.push(element);
+      }
+    });
+    return eventsFiltered;
   }
 }
