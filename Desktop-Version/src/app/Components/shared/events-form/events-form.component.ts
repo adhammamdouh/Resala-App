@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as bootstrap from 'bootstrap';
 import { EventsCRUDService } from 'src/app/Controllers/eventHandler/events-crud.service';
 import { PrivilegeHandlerService } from 'src/app/Controllers/PrivilegeHandler/privilege-handler.service';
-import EventsForm from 'src/app/SharedData/eventsForm';
+import { CommitteeService } from 'src/app/services/committee.service';
 @Component({
   selector: 'app-events-form',
   templateUrl: './events-form.component.html',
@@ -10,7 +10,7 @@ import EventsForm from 'src/app/SharedData/eventsForm';
 })
 export class EventsFormComponent implements OnInit {
 
-  constructor(public eventsCRUD:EventsCRUDService, public privilegeHandler: PrivilegeHandlerService) { }
+  constructor(public eventsCRUD:EventsCRUDService, public privilegeHandler: PrivilegeHandlerService, public comitteeService:CommitteeService) { }
   
   ngOnInit(): void {
     this.enablePopUps();

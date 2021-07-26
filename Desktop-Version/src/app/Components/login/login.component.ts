@@ -38,8 +38,10 @@ export class LoginComponent implements OnInit {
       this.displayLoginError(FrontEndErrors.invalidPassword);
     else {
       this.authService.authorize(this.getUserData()).subscribe((res: any) => {
+        let token = this.authService.parseJwt(res.message.token);
         this.authService.setToken(res.message.token);
-        this.authService.setUser(res.message);
+        localStorage.setItem('privileges',JSON.stringify(this.getPrivilegesArray(token.aud)));
+        this.authService.setUser(token);
         this.router.navigate(['loading'])
       }, (msg: any) => {
         this.displayLoginError(msg);
@@ -67,6 +69,15 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.controls.password.value
     }
     return user;
+  }
+
+  getPrivilegesArray(privileges: string) {
+    privileges = privileges.replace(/\[/g, '');
+    privileges = privileges.replace(/]/g, '');
+    privileges = privileges.replace(/ +/g, '');
+    const privilegesArr = privileges.split(',');
+
+    return privilegesArr;
   }
 
 }

@@ -74,11 +74,53 @@ export class ErrorHandlerService {
     }
   ]
 
+  activateVolunteerWarningButtons: AlertButton[] = [
+    {
+      name: "موافق",
+      handler: () => {
+        this.activateVolunteer();
+      }
+    },
+    {
+      name: "إالغاء",
+      handler: () => {
+      }
+    }
+  ]
+
+  acceptArchiveVolunteer: AlertButton[] = [
+    {
+      name: "موافق",
+      handler: () => {
+        this.acceptArchive();
+      }
+    },
+    {
+      name: "إالغاء",
+      handler: () => {
+      }
+    }
+  ]
+
   activateVolunteerWarning: AlertButton[] = [
     {
       name: "موافق",
       handler: () => {
-        this.archiveVolunteer();
+        this.activateVolunteer();
+      }
+    },
+    {
+      name: "إالغاء",
+      handler: () => {
+      }
+    }
+  ]
+
+  declineArchiveButton: AlertButton[] = [
+    {
+      name: "موافق",
+      handler: () => {
+        this.declineArchive();
       }
     },
     {
@@ -134,13 +176,28 @@ export class ErrorHandlerService {
         break;
       case StatusCode.FEArchiveEventWarning:
         this.event= data;
-        this.displayWarning(error.error +" "+ this.event.name + "؟", this.archiveVolunteerWarningButtons);
+        this.displayWarning(error.error +" "+ this.event.name + "؟", this.archiveEventWarningButtons);
         break;
       case StatusCode.FELogoutWarning:
         this.displayWarning(error.error, this.logoutWarningButtons);
         break;
       case StatusCode.FEActivateWarning:
-        this.displayWarning(error.error, this.logoutWarningButtons);
+        this.volunteer = data;
+        this.displayWarning(error.error, this.activateVolunteerWarningButtons);
+        break;
+      case StatusCode.FEDeclineArchive:
+        this.volunteer = data;
+        this.displayError(error.error, this.declineArchiveButton);
+        break;
+      case StatusCode.FEAcceptArchiveWarning:
+        this.volunteer = data;
+        this.displayWarning(error.error, this.acceptArchiveVolunteer);
+        break;
+      case StatusCode.createdBefore:
+        this.displayWarning(error.error.error, this.warningButtons);
+        break;
+      case 410:
+        this.displayWarning(error.error.error, this.warningButtons);
         break;
       default:
         break;
@@ -164,11 +221,33 @@ export class ErrorHandlerService {
   }
 
   activateVolunteer(){
-    
+    debugger;
+    this.restfulAPI.postRequest(this.getApiLinks.getActivateVolunteerLink(), {'id': this.volunteer.id}).subscribe((res)=>{
+      this.router.navigate(['loading'])
+    }, (err)=>{
+      this.handleError(err);
+    })
+  }
+
+  declineArchive(){
+    this.restfulAPI.postRequest(this.getApiLinks.declineArchive(), {'id': this.volunteer.id}).subscribe((res)=>{
+      this.router.navigate(['loading'])
+    }, (err)=>{
+      this.handleError(err);
+    })
   }
 
   deleteEvent(){
+    debugger;
     this.restfulAPI.postRequest(this.getApiLinks.getDeleteEventLink(), {'id': this.event.id}).subscribe((res)=>{
+      this.router.navigate(['loading'])
+    }, (err)=>{
+      this.handleError(err);
+    })
+  }
+
+  acceptArchive(){
+    this.restfulAPI.postRequest(this.getApiLinks.getAcceptArchiveLink(), {'id': this.volunteer.id}).subscribe((res)=>{
       this.router.navigate(['loading'])
     }, (err)=>{
       this.handleError(err);

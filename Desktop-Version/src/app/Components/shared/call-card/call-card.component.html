@@ -1,59 +1,55 @@
 <div class="container px-3 py-2 upperContainer"
-  [ngClass]="{'active': properties.callStatus === callStatus.active,
-              'inFocus': properties.callStatus === callStatus.inFocus,
-              'completed': properties.callStatus === callStatus.completed}">
+  [ngClass]="{'active': !completed,
+              'completed': completed}">
   <div class="d-flex">
     <div class="row w-100">
       <div class="row">
         <div class="col-6">
           <label for="name" class="form-label arabicFontBold inputsBlueLabel">الأسم</label>
-          <input type="text" class="form-control inputStyle" id="name">
+          <input type="text" class="form-control inputStyle" [value]="call.receiver.firstName + ' ' + call.receiver.midName + ' ' + call.receiver.lastName" readonly id="name">
         </div>
         <div class="col-3">
           <label for="name" class="form-label arabicFontBold inputsBlueLabel">رقم الهاتف</label>
-          <input type="text" class="form-control inputStyle" id="name">
+          <input type="text" readonly [value]="call.receiver.phoneNumber" class="form-control inputStyle" >
         </div>
         <div class="col-3">
           <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">تاريخ الميلاد</label>
-          <input type="date" dir="rtl" class="form-control inputStyle" id="joinedDate">
+          <input type="text" readonly dir="rtl" [value]="call.receiver.birthDate" class="form-control inputStyle">
         </div>
       </div>
       <div class="row d-flex align-items-end">
-        <div class="col-3">
-          <label for="name" class="form-label arabicFontBold inputsBlueLabel">نتيجة المكالمة</label>
-          <select id="sex" class="selectStyle inputStyle">
-              <option value="1">نعم</option>
-              <option value="2">لا</option>
-          </select>
-        </div>
-        <div class="col-3">
-          <label for="name" class="form-label arabicFontBold inputsBlueLabel">حضور القافلة</label>
-          <select id="sex" class="selectStyle inputStyle">
-              <option value="1">نعم</option>
-              <option value="2">لا</option>
-          </select>
+        <div class="col-6">
+          <app-select-box [selectBoxProperties]="callResult"></app-select-box>
         </div>
         <div class="col-6">
-          <label for="joinedDate" class="form-label arabicFontBold inputsBlueLabel">ملاحظات</label>
-          <input type="text" dir="rtl" class="form-control inputStyle" id="joinedDate">
+          <app-input [inputProperties]="comments"></app-input>
         </div>
       </div>
     </div>
     <div class="d-flex flex-column align-items-center" style="width: 100px;">
       <div
       class="cardNumberContainer d-flex flex-column p-1 position-relative"
-      [ngClass]="{'active': properties.callStatus === callStatus.active,
-                  'inFocus': properties.callStatus === callStatus.inFocus,
-                  'completed': properties.callStatus === callStatus.completed}" style="top: -9px;">
-        <span class="cardNumber">{{properties.callNumber}}</span>
-        <span>{{properties.totalCallsCount}}/</span>
+      [ngClass]="{'active': !completed,
+      'completed': completed}" style="top: -9px;">
+        <span class="cardNumber">{{index}}</span>
+        <span>{{total}}/</span>
       </div>
       <div class="w-100 h-100 d-flex flex-column align-items-end justify-content-between">
         <div class="callType w-100 text-center">
-          دعوة
+          {{call.callType.name}}
         </div>
-        <button class="btn btn-primary w-100">تسجيل</button>
-        <div *ngIf="isSubmitting" class="spinner-grow" role="status"></div>
+        <button [disabled]="callForm.invalid" *ngIf="!completed && eventsCrud.gridState == 0" (click)="sumbitCall()" class="btn mt-2 btn-primary w-100">
+          <div *ngIf="!isSubmitting">
+            تسجيل
+          </div>
+          <div *ngIf="isSubmitting" class="spinner-border"></div>
+        </button>
+        <button [disabled]="callForm.invalid" *ngIf="completed && eventsCrud.gridState == 0" (click)="sumbitCall()" class="btn mt-2 btn-warning w-100">
+          <div *ngIf="!isSubmitting">
+            تعديل
+          </div>
+          <div *ngIf="isSubmitting" class="spinner-border"></div>
+        </button>
       </div>
 
     </div>

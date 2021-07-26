@@ -10,10 +10,10 @@
 }
 
 .active {
-  border-color: $green;
+  border-color: $blue;
 
   &  .cardNumberContainer {
-    background-color: $green;
+    background-color: $blue;
   }
 }
 
@@ -26,10 +26,10 @@
 }
 
 .completed {
-  border-color: $blue;
+  border-color: $green;
 
   &  .cardNumberContainer {
-    background-color: $blue;
+    background-color: $green;
   }
 }
 

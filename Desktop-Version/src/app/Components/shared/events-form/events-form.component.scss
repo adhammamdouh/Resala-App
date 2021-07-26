@@ -9,6 +9,7 @@
     background-color: $blue;
     display: flex;
     align-items: center;
+    position: relative;
 }
 .title{
     font-size: 25px;
@@ -29,3 +30,9 @@
     overflow-x: hidden;
     color: white;
 }
+.btnContainer{
+    width: 75%;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+

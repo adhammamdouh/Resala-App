@@ -8,7 +8,10 @@ export enum StatusCode {
   FEArchiveEventWarning = 4,
   FELogoutWarning = 5,
   FEActivateWarning = 6,
+  FEAcceptArchiveWarning = 7,
+  FEDeclineArchive = 8,
   wrongUsernameOrPassword = 400,
   unauthorized = 401,
   internalServerError = 500,
+  createdBefore = 302
 }
