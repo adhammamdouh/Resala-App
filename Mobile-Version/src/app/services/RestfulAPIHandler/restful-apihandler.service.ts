@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { Observable } from 'rxjs';
 import * as keys from 'src/app/data/keys.json';
+import { AuthService } from '../AuthService/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,22 +11,23 @@ import * as keys from 'src/app/data/keys.json';
 export class RestfulAPIHandlerService {
 
   constructor(private http: HttpClient,
-              private storage: Storage) { }
+              private storage: Storage,
+              private auth: AuthService) { }
 
-  async get(url, token = true) {
-    return this.http.get(url, await this.getHttpHeaders(token));
+  get(url, token = true) {
+    return this.http.get(url, this.getHttpHeaders(token));
   }
 
-  async post(url, body, token = true) {
-    return this.http.post(url, body, await this.getHttpHeaders(token));
+  post(url, body, token = true) {
+    return this.http.post(url, body, this.getHttpHeaders(token));
   }
 
-  async put(url, body, token = true) {
-    return this.http.put(url, body, await this.getHttpHeaders(token));
+  put(url, body, token = true) {
+    return this.http.put(url, body, this.getHttpHeaders(token));
   }
 
-  async getHttpHeaders(tokenRequired: boolean) {
-    const token = await this.storage.get(keys.TOKEN);
+  getHttpHeaders(tokenRequired: boolean) {
+    const token = this.auth.token;
     let headers 
     if(tokenRequired) {
       headers = new HttpHeaders(

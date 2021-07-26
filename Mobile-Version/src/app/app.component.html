@@ -7,41 +7,48 @@
           class="ion-no-padding pt-2"> <!---->
           <div 
             class="menu-header p-2"
-            *ngIf="auth.user">
+            *ngIf="auth.getUser() != null">
             <ion-row> <!--{{auth.user.firstName}} {{auth.user.lastName}} -->
               <ion-col>
 
                 <!-- first name + middle name + last name -->
-                <ion-row>
+                <ion-row *ngIf="auth.getUser().first_name && auth.getUser().mid_name && auth.getUser().last_name">
                   <ion-col>
-                    {{auth.user.firstName}} {{auth.user.midName}} {{auth.user.lastName}}
+                    <ion-label class="defaultLabel fontH4">
+                      {{auth.getUser().first_name}} {{auth.getUser().mid_name}} {{auth.getUser().last_name}}
+                    </ion-label>
                   </ion-col>
                 </ion-row>
 
                 <!-- committe role-->
-                <ion-row>
+                <ion-row *ngIf="auth.getUser()">
                   <ion-col>
-                    {{auth.user.role.name}}
+                    <ion-label class="defaultLabel fontH4">
+                      {{auth.getUser().role_name}}
+                    </ion-label>
                   </ion-col>
                 </ion-row>
 
                 <!-- current committe -->
-                <ion-row>
+                <ion-row *ngIf="auth.getUser().myCommitteeName">
                   <ion-col>
-                    committe
+                    {{auth.getUser().myCommitteeName}}
                   </ion-col>
                 </ion-row>
 
               </ion-col>
               <ion-col 
                 class="d-flex flex-column justify-content-center"
-                size="auto">
-                {{auth.user.branch.name}}
+                size="auto"
+                *ngIf="auth.getUser().myBranch">
+                <ion-label class="defaultLabel fontH4">
+                  {{getBranch(auth.getUser().myBranch) | translate}}
+                </ion-label>
               </ion-col>
             </ion-row>
           </div>
 
-          <ion-row class="menu-item mt-2 p-2">
+          <ion-row class="menu-item mt-2 p-2" (click)="logout()">
             <ion-col class="d-flex flex-column justify-content-center">
               {{'MENU.logout' | translate }}
             </ion-col>

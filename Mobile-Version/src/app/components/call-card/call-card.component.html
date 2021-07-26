@@ -1,7 +1,7 @@
-<div class="position-relative mt-1 mbt-1" dir="rtl">
+<div class="position-relative mt-1 mbt-1" dir="rtl" style="z-index: 10;">
   <ion-grid class="position-absolute ion-no-padding h-100 d-flex flex-column justify-content-center align-items-start" style="z-index: 99;">
     <ion-row class="h-100 d-flex flex-column align-items-center justify-content-center">
-      <ion-col class="d-flex flex-column align-items-center justify-content-center callButton" (click)="callVolunteer()">
+      <ion-col class="d-flex flex-column align-items-center justify-content-center callButton" (click)="callVolunteer(call.receiver.phoneNumber)">
         <ion-icon name="call-outline" style="color: white;"></ion-icon>
       </ion-col>
       <!--<ion-col class="d-flex flex-column align-items-center justify-content-center callButton">
@@ -10,16 +10,16 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid #callCard class="position-relative cardContainer ion-no-padding" [ngClass]="{'completed': callProperties.status === callStatus.submitted}" style="z-index: 100;">
+  <ion-grid #callCard class="position-relative cardContainer ion-no-padding" [ngClass]="{'completed': call.completed}" style="z-index: 100;">
     <ion-row>
       <ion-col 
         class="cornerBorder" 
-        [ngClass]="{'cornerBorderCompleted': callProperties.status === callStatus.submitted}" size="auto"
+        [ngClass]="{'cornerBorderCompleted': call.completed}" size="auto"
         type="button" 
         data-bs-toggle="collapse" 
-        [attr.data-bs-target]="'#call' + callProperties.id" 
+        [attr.data-bs-target]="'#call' + call.id" 
         aria-expanded="false" 
-        [attr.aria-controls]="'call' + callProperties.id">
+        [attr.aria-controls]="'call' + call.id">
         <div  
           *ngIf="showLoading"
           class="d-flex flex-column align-items-center justify-content-center">
@@ -33,33 +33,30 @@
         
         <ion-grid>
           <ion-row 
-            type="button" 
-            data-bs-toggle="collapse" 
-            [attr.data-bs-target]="'#call' + callProperties.id" 
-            aria-expanded="false" 
-            [attr.aria-controls]="'call' + callProperties.id"> <!---->
+            > <!--type="button" 
+              data-bs-toggle="collapse" 
+              [attr.data-bs-target]="'#call' + call.id" 
+              aria-expanded="false" 
+              [attr.aria-controls]="'call' + call.id"-->
             <ion-col>
               <ion-label class="defaultLabel fontH4">
                 <ion-label (click)="showclose()" >
-                  ادغم ممدىك
+                  {{call.receiver.firstName}} {{call.receiver.midName}} {{call.receiver.lastName}}
                 </ion-label>
               </ion-label>
             </ion-col>
   
             <ion-col size="auto">
-              <ion-label class="defaultLabel fontH4" (click)="copyToClipboard()">
-                01100024081
+              <ion-label class="defaultLabel fontH4" (click)="copyToClipboard(call.receiver.phoneNumber)">
+                {{call.receiver.phoneNumber}}
               </ion-label>
             </ion-col>
           </ion-row>
           
-          <div  class="collapse" [attr.id]="'call' + callProperties.id"> <!--*ngIf="show"-->
+          <div  class="collapse" [attr.id]="'call' + call.id"> <!--*ngIf="show"-->
             <ion-row class="pb-1">
               <ion-col class="ps-1">
-                <app-select-box [selectBoxProperties]="inputTest"></app-select-box>
-              </ion-col>
-              <ion-col class="pe-1">
-                <app-select-box [selectBoxProperties]="inputTest"></app-select-box>
+                <app-select-box [selectBoxProperties]="callResultProperties"></app-select-box>
               </ion-col>
             </ion-row>
   
@@ -67,21 +64,26 @@
               <ion-col>
                 <app-text-area [(inputProperties)]="notesProperties"></app-text-area>
               </ion-col>
-              
             </ion-row>
     
             <ion-row>
-              <ion-col *ngIf="callProperties.callType === callType.feedback">
+              <!--<ion-col *ngIf="call.callType.id === callType.feedback">
                 <ion-button class="callCardBtn p-1 ion-no-margin" (click)="onEdit()">
                   <ion-label class="defaultLabel fontH4"><ion-label class="defaultLabel fonth4">{{'CALLCARD.edit' | translate}}</ion-label></ion-label>
                 </ion-button>
-              </ion-col>
+              </ion-col>-->
               <ion-col>
-                <ion-button 
+                <ion-button *ngIf="!call.completed"
                   class="callCardBtn p-1 ion-no-margin" 
-                  [disabled]="callProperties.status === callStatus.submitted"
-                  (click)="onSubmit()">
+                  (click)="onSubmit()"
+                  [disabled]="callForm.invalid">
                   <ion-label class="defaultLabel fontH4"><ion-label class="defaultLabel fonth4">{{'CALLCARD.submit' | translate}}</ion-label></ion-label>
+                </ion-button>
+                <ion-button *ngIf="call.completed"
+                  class="callCardBtn p-1 ion-no-margin" 
+                  (click)="onSubmit()"
+                  [disabled]="callForm.invalid">
+                  <ion-label class="defaultLabel fontH4"><ion-label class="defaultLabel fonth4">{{'CALLCARD.edit' | translate}}</ion-label></ion-label>
                 </ion-button>
               </ion-col>
             </ion-row>

@@ -1,4 +1,5 @@
 import { FormControl, FormGroup, Validators } from "@angular/forms"
+import { DateTimeProperties } from "src/app/components/date-time-picker/date-time-properties"
 import { InputProperties } from "src/app/components/input/input-properties"
 import selectBoxProperties from "src/app/components/select-box/selectBoxProperties"
 import { options } from "src/app/data/general-data.enum"
@@ -25,7 +26,9 @@ export class VolunteerForm {
         streetName: new FormControl('', [Validators.required]),
         neighborhoodName: new FormControl('', [Validators.required]),
         governorate: new FormControl('', [Validators.required]),
-        //comments: new FormControl('')
+        miniCamp: new FormControl('', [Validators.required]),
+        educationLevel: new FormControl('', [Validators.required]),
+        comments: new FormControl(''),
     })
       
     firstname: InputProperties = {placeholder: 'PLACEHOLDER.typeHere', 
@@ -66,14 +69,12 @@ export class VolunteerForm {
                                 formController: {formGroup: this.volunteerForm, formControllerName: 'nickName'}}
     
 
-    birthDate:InputProperties = { placeholder: 'PLACEHOLDER.typeHere', 
-                                value: '', 
-                                iconSrc: '', 
-                                title: 'VOLUNTEER_FORM.birthDate', 
-                                hasIcon: false, 
-                                type: 'date',
-                                disabled: false,
-                                formController: {formGroup: this.volunteerForm, formControllerName: 'birthDate'}};
+    birthDate:DateTimeProperties = { placeholder: 'PLACEHOLDER.typeHere', 
+                                    value: '', 
+                                    title: 'VOLUNTEER_FORM.birthDate', 
+                                    disabled: false,
+                                    format: 'DD-MM-YYYY',
+                                    formController: {formGroup: this.volunteerForm, formControllerName: 'birthDate'}};
 
     phoneNumber:InputProperties = { placeholder: 'PLACEHOLDER.typeHere', 
                                 value: '', 
@@ -93,11 +94,11 @@ export class VolunteerForm {
                                 disabled: false,
                                 formController: {formGroup: this.volunteerForm, formControllerName: 'nationalID'}}
 
-    gender:selectBoxProperties = { defaultValueIndex: 0, 
-                                    label: 'VOLUNTEER_FORM.gender', 
-                                    options: options.gender,
+    educationLevel:selectBoxProperties = { defaultValueIndex: 0, 
+                                    label: 'VOLUNTEER_FORM.educationLevel', 
+                                    options: options.educationLevel,
                                     selectedItemValue: null,
-                                    formController: {formGroup: this.volunteerForm, formControllerName: 'gender'}}
+                                    formController: {formGroup: this.volunteerForm, formControllerName: 'educationLevel'}}
     
 
     university:InputProperties = { placeholder: 'PLACEHOLDER.typeHere', 
@@ -119,13 +120,17 @@ export class VolunteerForm {
                             disabled: false,
                             formController: {formGroup: this.volunteerForm, formControllerName: 'faculty'}}
 
-    joiningDate:InputProperties = { placeholder: 'PLACEHOLDER.typeHere', 
+    gender:selectBoxProperties = { defaultValueIndex: 0, 
+                                label: 'VOLUNTEER_FORM.gender', 
+                                options: options.gender,
+                                selectedItemValue: null,
+                                formController: {formGroup: this.volunteerForm, formControllerName: 'gender'}}
+
+    joiningDate:DateTimeProperties = { placeholder: 'PLACEHOLDER.typeHere', 
                                         value: '', 
-                                        iconSrc: '', 
                                         title: 'VOLUNTEER_FORM.joiningDate', 
-                                        hasIcon: false, 
-                                        type: 'date',
                                         disabled: false,
+                                        format: 'DD-MM-YYYY',
                                         formController: {formGroup: this.volunteerForm, formControllerName: 'joiningDate'}}
 
     /*age:InputProperties = { placeholder: 'PLACEHOLDER.typeHere', 
@@ -191,15 +196,20 @@ export class VolunteerForm {
                                         selectedItemValue: null,
                                         formController: {formGroup: this.volunteerForm, formControllerName: 'governorate'}}
 
-      
-    /*public comments: InputProperties = { placeholder: 'PLACEHOLDER.typeHere', 
+    miniCamp: selectBoxProperties = { defaultValueIndex: 0, 
+                                        label: 'VOLUNTEER_FORM.miniCamp', 
+                                        options: options.answers,
+                                        selectedItemValue: null,
+                                        formController: {formGroup: this.volunteerForm, formControllerName: 'miniCamp'}}
+
+    comments: InputProperties = { placeholder: 'PLACEHOLDER.typeHere', 
                                             value: '', 
                                             iconSrc: '', 
                                             title: 'VOLUNTEER_FORM.comments', 
                                             hasIcon: false, 
                                             type: 'text',
                                             disabled: false,
-                                            formController: {formGroup: this.volunteerForm, formControllerName: 'neighborhoodName'}}*/
+                                            formController: {formGroup: this.volunteerForm, formControllerName: 'comments'}}
     
     constructor(volunteer: Volunteer = null) {
         if(volunteer) {
@@ -214,17 +224,21 @@ export class VolunteerForm {
             this.volunteerForm.controls['faculty'].setValue(volunteer.faculty);
             this.volunteerForm.controls['phoneNumber'].setValue(volunteer.phoneNumber);
             this.volunteerForm.controls['joiningDate'].setValue(volunteer.joinDate);
-            this.volunteerForm.controls['tShirt'].setValue(volunteer.tShirt);
+            this.volunteerForm.controls['tShirt'].setValue(volunteer.shirt.id);
             this.volunteerForm.controls['branch'].setValue(volunteer.branch);
             this.volunteerForm.controls['apartmentNumber'].setValue(volunteer.address.apartmentNumber);
             this.volunteerForm.controls['buildingNumber'].setValue(volunteer.address.buildingNumber);
             this.volunteerForm.controls['streetName'].setValue(volunteer.address.streetName);
             this.volunteerForm.controls['neighborhoodName'].setValue(volunteer.address.regionName);
             this.volunteerForm.controls['governorate'].setValue(volunteer.address.capital.id);
-            this.tShirt.selectedItemValue = volunteer.tShirt;
+            this.volunteerForm.controls['comments'].setValue(volunteer.comments);
+
+            this.miniCamp.selectedItemValue = volunteer.miniCamp;
+            this.tShirt.selectedItemValue = volunteer.shirt.id;
             this.gender.selectedItemValue = volunteer.gender;
             this.branch.selectedItemValue = volunteer.branch.id;
             this.governorate.selectedItemValue = volunteer.address.capital.id;
+            this.educationLevel.selectedItemValue = volunteer.educationLevel.id;
         }
     }
 
@@ -240,14 +254,17 @@ export class VolunteerForm {
         volunteer.faculty = this.volunteerForm.controls['faculty'].value;
         volunteer.phoneNumber = this.volunteerForm.controls['phoneNumber'].value;
         volunteer.joinDate = this.volunteerForm.controls['joiningDate'].value;
-        volunteer.tShirt = this.volunteerForm.controls['tShirt'].value;
+        volunteer.shirt.id = this.volunteerForm.controls['tShirt'].value;
         volunteer.branch.id = this.volunteerForm.controls['branch'].value;
         volunteer.address.apartmentNumber = this.volunteerForm.controls['apartmentNumber'].value;
         volunteer.address.buildingNumber = this.volunteerForm.controls['buildingNumber'].value;
         volunteer.address.streetName = this.volunteerForm.controls['streetName'].value;
         volunteer.address.regionName = this.volunteerForm.controls['neighborhoodName'].value;
         volunteer.address.capital.id = this.volunteerForm.controls['governorate'].value;
-        console.log(volunteer);
+        volunteer.miniCamp = this.volunteerForm.controls['miniCamp'].value;
+        volunteer.comments = this.volunteerForm.controls['comments'].value;
+        volunteer.educationLevel.id = this.volunteerForm.controls['educationLevel'].value;
+
         return volunteer;
     }  
 }

@@ -1,5 +1,5 @@
-export enum CallType {
-    invitation = 0,
-    feedback = 1,
-    acceptNotAttend = 2
+export enum CallTypes {
+    invitation = 1,
+    feedback = 2,
+    acceptNotAttend = 3
 }

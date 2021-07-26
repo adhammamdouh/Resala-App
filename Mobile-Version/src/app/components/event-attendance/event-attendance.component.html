@@ -15,7 +15,7 @@
       </ion-col>
     </ion-row>
     <ion-row class="answerContainer">
-      <ion-col *ngIf="volunteerFound === searchStatus.found">
+      <ion-col *ngIf="volunteerFound === searchStatus.found"> <!--*ngIf="volunteerFound === searchStatus.found"-->
 
         <ion-row>
           <ion-col>
@@ -23,9 +23,9 @@
               {{'EVENT_ATTENDANCE.name' | translate}}
             </ion-label>
           </ion-col>
-          <ion-col>
+          <ion-col *ngIf="searchedVolunteer">
             <ion-label class="defaultLabel fontH4">
-
+              {{searchedVolunteer.firstName}} {{searchedVolunteer.midName}} {{searchedVolunteer.lastName}}
             </ion-label>
           </ion-col>
         </ion-row>
@@ -36,9 +36,9 @@
               {{'EVENT_ATTENDANCE.birthDate' | translate}}
             </ion-label>
           </ion-col>
-          <ion-col>
+          <ion-col *ngIf="searchedVolunteer">
             <ion-label class="defaultLabel fontH4">
-
+              {{searchedVolunteer.birthDate | date: 'dd-MM-YYYY'}}
             </ion-label>
           </ion-col>
         </ion-row>
@@ -49,23 +49,23 @@
               {{'EVENT_ATTENDANCE.branch' | translate}}
             </ion-label>
           </ion-col>
-          <ion-col>
+          <ion-col *ngIf="searchedVolunteer">
             <ion-label class="defaultLabel fontH4">
-
+              {{searchedVolunteer.branch.name}}
             </ion-label>
           </ion-col>
         </ion-row>
 
         <ion-row>
           <ion-col>
-            <app-button [label]="'EVENT_ATTENDANCE.submit'">
+            <app-button [label]="'EVENT_ATTENDANCE.submit'" (click)="submitVolunteerAttendance()">
             </app-button>
           </ion-col>
         </ion-row>
         
       </ion-col>
 
-      <ion-col *ngIf="volunteerFound === searchStatus.notFound">
+      <ion-col *ngIf="volunteerFound === searchStatus.notFound"> <!--*ngIf="volunteerFound === searchStatus.notFound"-->
         <ion-row>
           <ion-col class="d-flex flex-column justify-content-center align-items-center">
             <ion-label class="defaultLabel fontH4">

@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { CallProperties } from 'src/app/components/call-card/call-properties';
 import { CallStatus } from 'src/app/components/call-card/call-status.enum';
-import { CallType } from 'src/app/components/call-card/call-type.enum';
+import Calls from 'src/app/domains/Call/Calls';
+import ResalaEvent from 'src/app/domains/ResalaEvent/ResalaEvent';
+import { Response } from 'src/app/domains/response';
+import { AuthService } from 'src/app/services/AuthService/auth.service';
+import { CallsCRUDService } from 'src/app/services/CallsCRUD/calls-crud.service';
+import { LoadingHandlerService } from 'src/app/services/LoadingHandler/loading-handler.service';
+import { ToastHandlerService, ToastMode } from 'src/app/services/ToastHandler/toast-handler.service';
 
 @Component({
   selector: 'app-calls',
@@ -9,47 +16,41 @@ import { CallType } from 'src/app/components/call-card/call-type.enum';
   styleUrls: ['./calls.page.scss'],
 })
 export class CallsPage implements OnInit {
+  @Input() event: ResalaEvent;
   start = 0;
   end = 20;
 
-  callProperties: CallProperties[] = []
+  callProperties: Calls[] = []
   tempCallProperties: CallProperties[] = []
-  constructor() { 
+  constructor(public callsCRUD: CallsCRUDService,
+              private auth: AuthService,
+              private toast: ToastHandlerService,
+              private modalCtrl: ModalController,
+              private loading: LoadingHandlerService) { 
     
   }
 
-  ngOnInit() {
-    for(let i = 0 ; i < 300 ; ++i) {
-      this.tempCallProperties.push({callType: CallType.invitation, status: CallStatus.active, id: i});
-      if(i < this.end)
-        this.callProperties.push({callType: CallType.invitation, status: CallStatus.active, id: i});
-    }
-  }
-
-  headerClicked() {
-    console.log('header Clicked')
-    //this.clipboard.copy('checking copying feature');
+  async ngOnInit() {
+    await this.getCalls();
   }
 
   loadData(event) {
     setTimeout(() => {
-      console.log('Done');
       event.target.complete();
       this.appendCalls(10);
-      // App logic to determine if all data is loaded
-      // and disable the infinite scroll
-      if (this.callProperties.length == 1000) {
+
+      if (this.callProperties.length == this.callsCRUD.calls.length) {
         event.target.disabled = true;
       }
-    }, 500);
+    }, 100);
   }
 
   appendCalls(count) {
-    this.start = this.end;
-    this.end = this.end + count;
+    this.start = this.end > this.callsCRUD.calls.length ? this.callsCRUD.calls.length : this.end;
+    this.end = (this.end + count > this.callsCRUD.calls.length) ? this.callsCRUD.calls.length : this.end + count;
 
     for(let i = this.start; i < this.end ; ++i) {
-      this.callProperties.push(this.tempCallProperties[i]);
+      this.callProperties.push(this.callsCRUD.calls[i]);
     }
   }
 
@@ -57,4 +58,24 @@ export class CallsPage implements OnInit {
     return itemObject.id;
   }
 
+  async getCalls() {
+    await this.loading.presentLoading();
+
+    this.callsCRUD.getCalls(this.event.id, this.auth.getUser().volunteer_id).subscribe(
+      async (res) => {
+      this.callProperties = res;
+      await this.loading.dismissLoading();
+    }, async (res) => {
+      await this.toast.presentToast(res.error.error, ToastMode.fail);
+      await this.modalCtrl.dismiss();
+      await this.loading.dismissLoading();
+    });
+  }
+
+  refreshCalls(ev) {
+    this.callsCRUD.refresh(this.event.id, this.auth.getUser().volunteer_id).subscribe((res) => {
+      this.callProperties = res;
+      ev.target.complete();
+    }, () => {ev.target.complete();})
+  }
 }

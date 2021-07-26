@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy, NavParams } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/lang/', '.json');
@@ -37,7 +38,9 @@ export function createTranslateLoader(http: HttpClient) {
             })],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
               Clipboard,
-              CallNumber],
+              CallNumber,
+              NativeAudio,
+              NavParams],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

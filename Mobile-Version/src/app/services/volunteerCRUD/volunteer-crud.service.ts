@@ -6,6 +6,9 @@ import { Response } from 'src/app/domains/response';
 import { FormGroup } from '@angular/forms';
 import Volunteer from 'src/app/domains/Volunteer/Volunteer';
 import { volunteerTabs } from 'src/app/pages/volunteers/volunteers.page';
+import { AuthService } from '../AuthService/auth.service';
+import { concat, forkJoin, from, interval, Observable, of } from 'rxjs';
+import { delay, map, take } from 'rxjs/operators';
 
 export enum Status {
   active = 1,
@@ -20,119 +23,139 @@ export class VolunteerCRUDService {
   public activeVolunteers: Volunteer[] = [];
   public inactiveVolunteers: Volunteer[] = [];
   public requestToVolunteers: Volunteer[] = []
-  private volunteersTemp: Volunteer[] = [];
+  private volunteerList = [[], [], [], []];
 
   constructor(private restfulAPI: RestfulAPIHandlerService,
-              private privilegeHandler: PrivilegeHandlerService) { }
+              private privilegeHandler: PrivilegeHandlerService,
+              private auth: AuthService) { }
 
-  async refresh(event = null, tab: volunteerTabs) {
-    switch(tab) {
-      case volunteerTabs.active:
-        await this.getActiveVolunteers(event);
-        break;
-      case volunteerTabs.inactive:
-        await this.getInactiveVolunteers(event);
-        break;
-      case volunteerTabs.archive:
-        await this.getRequestToArchiveVolunteers(event);
-        break;
-    }
+  refresh() {
+    const ref = forkJoin({
+      active: this.getActiveVolunteers(),
+      inactive: this.getInactiveVolunteers(),
+      requestToArchive: this.getRequestToArchiveVolunteers(),
+    });
+    return ref;
   }
 
-  copyListToTemp(volunteerList: Volunteer[]) {
-    this.volunteersTemp = volunteerList;
+  search(value) {
+    this.completeSearch();
+
+    for(let i = 0 ; i < this.activeVolunteers.length ; ++i) {
+      const currentVolunteer = this.activeVolunteers[i];
+      if(this.getVolunteerFullName(currentVolunteer).includes(value)) 
+        this.volunteerList[Status.active].push(currentVolunteer);
+      else if(currentVolunteer.branch.name.includes(value))
+        this.volunteerList[Status.active].push(currentVolunteer);
+    }
+
+    for(let i = 0 ; i < this.inactiveVolunteers.length ; ++i) {
+      const currentVolunteer = this.inactiveVolunteers[i];
+      if(this.getVolunteerFullName(currentVolunteer).includes(value)) 
+        this.volunteerList[Status.archive].push(currentVolunteer);
+      else if(currentVolunteer.branch.name.includes(value))
+        this.volunteerList[Status.archive].push(currentVolunteer);
+    }
+
+    for(let i = 0 ; i < this.requestToVolunteers.length ; ++i) {
+      const currentVolunteer = this.requestToVolunteers[i];
+      if(this.getVolunteerFullName(currentVolunteer).includes(value)) 
+        this.volunteerList[Status.requestToArchive].push(currentVolunteer);
+      else if(currentVolunteer.branch.name.includes(value))
+        this.volunteerList[Status.requestToArchive].push(currentVolunteer);
+    }
+    return this.volunteerList;
   }
 
-  search(value, volunteerList: Volunteer[], complete = false) {
-    if(complete) volunteerList = this.volunteersTemp;
-    else {
-      volunteerList = [];
-      for(let i = 0 ; i < this.volunteersTemp.length ; ++i) {
-        const currentVolunteer = this.volunteersTemp[i];
-        if(this.getVolunteerFullName(currentVolunteer).includes(value)) 
-          volunteerList.push(currentVolunteer);
-        else if(currentVolunteer.branch.name.includes(value))
-          volunteerList.push(currentVolunteer);
-      }
-    }
+  completeSearch() {
+    this.volunteerList = [[], [], [], []]
   }
 
   getVolunteerFullName(volunteer: Volunteer) {
     return volunteer.firstName + ' ' + volunteer.midName + ' ' + volunteer.lastName;
   }
 
-  async getActiveVolunteers(event = null) {
-    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid()) { this.closeRefresher(event); return};
-    const url = service.baseUrl + 'volunteer/getAllByState/' + Status.active;
-
-    const res = await this.restfulAPI.get(url);
-
-    res.subscribe((res: Response) => {
-      this.volunteersTemp = this.activeVolunteers = res.message;
-      this.closeRefresher(event);
-    });
-
+  copyToActiveVolunteers(volunteers: Volunteer[]) {
+    this.activeVolunteers = volunteers;
   }
 
-  async getInactiveVolunteers(event = null) {
-    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid()) { this.closeRefresher(event); return};
+  getActiveVolunteers() {
+    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid()) { return of(null) };
+    
+    const url = service.baseUrl + 'volunteer/getAllByState/' + Status.active;
+    return this.restfulAPI.get(url).pipe(
+      take(1),
+      map((msg: Response) => {
+        this.activeVolunteers = msg.message
+        return msg;
+      })
+    );
+  }
+
+  getInactiveVolunteers() {
+    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid()) { return of(null) };
     const url = service.baseUrl + 'volunteer/getAllByState/' + Status.archive;
 
-    const res = await this.restfulAPI.get(url);
-
-    res.subscribe((res: Response) => {
-      this.inactiveVolunteers = res.message;
-    });
-
-    this.closeRefresher(event);
+    return this.restfulAPI.get(url).pipe(
+      take(1),
+      map((msg: Response) => {
+        this.inactiveVolunteers = msg.message
+        return msg;
+      })
+    );
   }
 
-  async getRequestToArchiveVolunteers(event = null) {
-    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid() && !this.privilegeHandler.isShowRequestToArchiveValid()) { this.closeRefresher(event); return};
+  getRequestToArchiveVolunteers() {
+    if(!this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid() && !this.privilegeHandler.isShowRequestToArchiveValid()) { return of(null) };
 
     const url = service.baseUrl + 'volunteer/getAllByState/' + Status.requestToArchive;
-    const res = await this.restfulAPI.get(url);
-
-    res.subscribe((res: Response) => {
-      this.requestToVolunteers = res.message;
-    });
-
-    this.closeRefresher(event);
+    return this.restfulAPI.get(url).pipe(
+      take(1),
+      map((msg: Response) => {
+        this.requestToVolunteers = msg.message
+        return msg;
+      })
+    );
   }
 
   async createVolunteer(form: FormGroup) {
-    if(!this.privilegeHandler.isCreateVolunteerValid()) return;
+    if(!this.privilegeHandler.isCreateVolunteerValid()) return of(null);
 
     const volunteer = this.generateVolunteerObjFromForm(form);
     const url = service.baseUrl + 'volunteer/add';
 
+    
     const res = await this.restfulAPI.post(url, [volunteer]);
 
-    res.subscribe((res: Response) => {
-      this.requestToVolunteers = res.message;
-    })
+    return res;
   }
 
-  async updateVolunteer(volunteer: Volunteer) {
-    if(!this.privilegeHandler.isUpdateVolunteerValid()) return;
+  async getVolunteerByPhoneNumber(phoneNumber: string) {
+    //if(!this.privilegeHandler.isCreateVolunteerValid()) return;
+
+    const url = service.baseUrl + 'volunteer/getByPhoneNumber';
+    
+    const res = await this.restfulAPI.post(url, { phoneNumber: phoneNumber });
+
+    return res;
+  }
+
+  updateVolunteer(volunteer: Volunteer) {
+    if(!this.privilegeHandler.isUpdateVolunteerValid()) return of(null);
 
     const url = service.baseUrl + 'volunteer/update';
 
-    const res = await this.restfulAPI.put(url, volunteer);
-    res.subscribe((res: Response) => {
-      this.requestToVolunteers = res.message;
-    })
+    return this.restfulAPI.put(url, volunteer).pipe(
+      take(1),
+      map((msg: Response) => {
+        return msg;
+      })
+    );
   }
 
   generateVolunteerObjFromForm(form: FormGroup) {
-    let volunteer: Volunteer = {
-      id: 0,
-      networkType: {id: 0, name: ''},
-      role: {id: 0, name: '',},
-      privileges: [{id: 0, name: '', actions: [{id: 0, name: ''}]}],
-      user: {password: '', username: ''},
-      miniCamp: null,
-      volunteerKPI: {id: 0, callsCount: 0, presentCount: 0,ensureCount: 0, responseCount: 0},
+    let volunteer = {
+      miniCamp: false,
       firstName: form.get('firstname').value,
       midName: form.get('middlename').value,
       lastName: form.get('lastname').value,
@@ -144,7 +167,7 @@ export class VolunteerCRUDService {
       faculty: form.get('faculty').value,
       phoneNumber: form.get('phoneNumber').value,
       joinDate: form.get('joiningDate').value,
-      tShirt: form.get('tShirt').value,
+      shirt: {id: form.get('tShirt').value, name: ''},
       branch: {id: form.get('branch').value, name: ''},
       address: { 
                 id: 0,
@@ -155,16 +178,55 @@ export class VolunteerCRUDService {
                 additionalInfo: '',
                 capital: { id: form.get('governorate').value, name: ''},
                 },
-      educationLevel: null,
-      organization: null,
-      comments: null
+      educationLevel: {
+        id: form.get('educationLevel').value
+      },
+      comments: form.get('comments').value,
       }
 
     return volunteer;
   }
 
-  private closeRefresher(event = null) {
-    
-    if(event) {event.target.complete();}
+  async getMyCommitteeTeam() {
+    const res = await this.restfulAPI.get( service.baseUrl 
+                                            + 'leadVolunteer/getBranchCommitteeTeam');
+
+    return res;
+  }
+
+  requestToArchiveVolunteer(volunteerId) {
+    return this.restfulAPI.post(service.baseUrl + '/volunteer/requestToArchive', {id: volunteerId}).pipe(
+      take(1),
+      map((msg: Response) => {
+        return msg;
+      })
+    )
+  }
+
+  acceptToArchiveVolunteer(volunteerId) {
+    return this.restfulAPI.post(service.baseUrl + '/volunteer/acceptToArchive', {id: volunteerId}).pipe(
+      take(1),
+      map((msg: Response) => {
+        return msg;
+      })
+    )
+  }
+
+  declineToArchiveVolunteer(volunteerId) {
+    return this.restfulAPI.post(service.baseUrl + '/volunteer/declineToArchive', {id: volunteerId}).pipe(
+      take(1),
+      map((msg: Response) => {
+        return msg;
+      })
+    )
+  }
+
+  activateVolunteer(volunteerId) {
+    return this.restfulAPI.post(service.baseUrl + '/volunteer/activate', {id: volunteerId}).pipe(
+      take(1),
+      map((msg: Response) => {
+        return msg;
+      })
+    )
   }
 }

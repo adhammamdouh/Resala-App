@@ -5,7 +5,11 @@
 </ion-header>
 
 <ion-content>
-  <app-call-card *ngFor="let call of callProperties; trackBy:trackItems" [callProperties]="call"></app-call-card>
+  <ion-refresher slot="fixed" (ionRefresh)="refreshCalls($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <app-call-card *ngFor="let call of callProperties; trackBy:trackItems" [call]="call"></app-call-card>
 
   <ion-infinite-scroll threshold="10px" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content

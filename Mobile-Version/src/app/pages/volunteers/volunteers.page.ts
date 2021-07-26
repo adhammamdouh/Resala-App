@@ -1,9 +1,11 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, NavParams } from '@ionic/angular';
 import { TabProperty } from 'src/app/components/tabs/tab-property';
+import { Response } from 'src/app/domains/response';
+import Volunteer from 'src/app/domains/Volunteer/Volunteer';
 import { PrivilegeHandlerService } from 'src/app/services/PrivilegeService/privilege-handler.service';
-import { VolunteerCRUDService } from 'src/app/services/VolunteerCRUD/volunteer-crud.service';
+import { Status, VolunteerCRUDService } from 'src/app/services/VolunteerCRUD/volunteer-crud.service';
 
 export enum volunteerTabs {
   active = 0,
@@ -21,22 +23,34 @@ export class VolunteersPage implements OnInit {
   tabProperties:TabProperty = { selectedTabIndex: volunteerTabs.active, 
                                 tabs: [{name: 'TABS.active', index: volunteerTabs.active}, {name: 'TABS.inactive', index: volunteerTabs.inactive}]}
   
-  
   addButtonNavigationPageName: string = 'volunteer-form';
-  
+
+  activeVolunteers: Volunteer[] = this.volunteerCRUD.activeVolunteers;
+  inactiveVolunteers: Volunteer[] = this.volunteerCRUD.inactiveVolunteers;
+  requestToArcVolunteers: Volunteer[] = this.volunteerCRUD.requestToVolunteers;
+
+  searchingMode: boolean = false;
+
   constructor(private navCtrl: NavController,
               public privilegeHandler: PrivilegeHandlerService,
               public volunteerCRUD: VolunteerCRUDService,
-              private zone: NgZone) { }
+              private zone: NgZone,
+              private navParams: NavParams) { }
 
   async ngOnInit() {
-    if(this.privilegeHandler.isShowRequestToArchiveValid())
+    if(this.privilegeHandler.isShowRequestToArchiveValid()) {
       this.tabProperties.tabs.push({name: 'TABS.archive', index: volunteerTabs.archive});
+    }
     
-    await this.volunteerCRUD.getActiveVolunteers();
-    await this.volunteerCRUD.getInactiveVolunteers();
-    await this.volunteerCRUD.getRequestToArchiveVolunteers();
+    this.volunteerCRUD.getActiveVolunteers().subscribe((msg: Response) => {this.activeVolunteers = msg.message});
+    this.volunteerCRUD.getInactiveVolunteers().subscribe((msg: Response) => {this.inactiveVolunteers = msg.message});
+    this.volunteerCRUD.getRequestToArchiveVolunteers().subscribe((msg: Response) => {this.requestToArcVolunteers = msg.message});
+  }
 
+  
+  ionViewWillEnter() {
+    console.log("test", this.navParams.get('refresh'));
+    console.log('df');
   }
 
   openVolunteerData(volunteer) {
@@ -51,55 +65,43 @@ export class VolunteersPage implements OnInit {
     //this.router.navigate(['volunteer-data'])
   }
 
-  async refreshVolunteers(ev, tab: volunteerTabs) {
-    this.volunteerCRUD.refresh(ev, tab);
-    //ev.target.complete();
+  refreshVolunteers(ev, tab: volunteerTabs) {
+    this.volunteerCRUD.refresh().subscribe(() => {
+      this.activeVolunteers = this.volunteerCRUD.activeVolunteers;
+      this.inactiveVolunteers = this.volunteerCRUD.inactiveVolunteers;
+      this.requestToArcVolunteers = this.volunteerCRUD.requestToVolunteers;
+      ev.target.complete();
+    }, () => {ev.target.complete();}
+    );
   }
 
-  /*onSearchStart(ev: TabProperty) {
-    switch(ev.selectedTabIndex) {
-      case volunteerTabs.active:
-        this.volunteerCRUD.copyListToTemp(this.volunteerCRUD.activeVolunteers);
-        break;
-      case volunteerTabs.inactive:
-        this.volunteerCRUD.copyListToTemp(this.volunteerCRUD.inactiveVolunteers);
-        break;
-      case volunteerTabs.archive:
-        this.volunteerCRUD.copyListToTemp(this.volunteerCRUD.requestToVolunteers);
-        break;
-    }
+  onSearchStart(ev: TabProperty) {
+    const listTemp = this.volunteerCRUD.search(ev);
   }
 
-  //value, volunteerList: Volunteer[], tab: volunteerTabs, complete = false
   searchVolunteers(ev) {
-    switch(this.tabProperties.selectedTabIndex) {
-      case volunteerTabs.active:
-        this.volunteerCRUD.search(ev, this.volunteerCRUD.activeVolunteers);
-        break;
-      case volunteerTabs.inactive:
-        this.volunteerCRUD.search(ev, this.volunteerCRUD.inactiveVolunteers);
-        break;
-      case volunteerTabs.archive:
-        this.volunteerCRUD.search(ev, this.volunteerCRUD.requestToVolunteers);
-        break;
-    }
+    this.searchingMode = true;
+    const listTemp = this.volunteerCRUD.search(ev);
+    this.activeVolunteers = listTemp[Status.active];
+    this.inactiveVolunteers = listTemp[Status.archive];
+    this.requestToArcVolunteers = listTemp[Status.requestToArchive];
   }
 
   completeVolunteersSearching() {
-    switch(this.tabProperties.selectedTabIndex) {
-      case volunteerTabs.active:
-        this.volunteerCRUD.search('', this.volunteerCRUD.activeVolunteers, true);
-        break;
-      case volunteerTabs.inactive:
-        this.volunteerCRUD.search('', this.volunteerCRUD.inactiveVolunteers, true);
-        break;
-      case volunteerTabs.archive:
-        this.volunteerCRUD.search('', this.volunteerCRUD.requestToVolunteers, true);
-        break;
-    }
-  }*/
+    this.searchingMode = false;
+    this.volunteerCRUD.completeSearch();
+
+    this.activeVolunteers = this.volunteerCRUD.activeVolunteers;
+    this.inactiveVolunteers = this.volunteerCRUD.inactiveVolunteers;
+    this.requestToArcVolunteers = this.volunteerCRUD.requestToVolunteers;
+
+  }
   
   trackItems(index: number, itemObject: any) {
     return itemObject.id;
+  }
+
+  private closeRefresher(event = null) {
+    if(event) {event.target.complete();}
   }
 }

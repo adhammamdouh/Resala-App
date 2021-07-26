@@ -18,16 +18,12 @@ export class PrivilegeHandlerService {
     }*/
   }
   
-  fillRoles(privilege: Privilege[] = []) {
-
+  fillRoles(privilege: string[] = []) {
     for(let i = 0 ; i < privilege.length ; ++i) {
-      for( let k = 0 ; k < privilege[i].actions.length; ++k) {
-        for(let j = 0; j < AccessRightsRolls.accessRightsStr.length ;++j) {
-          if(privilege[i].actions[k].name === AccessRightsRolls.accessRightsStr[j]) {
-            console.log(privilege[i].actions[k].name);
-            this.roles[accessRights[AccessRightsRolls.accessRightsStr[j]]] = true;
-            break;
-          }
+      for(let j = 0; j < AccessRightsRolls.accessRightsStr.length ;++j) {
+        if(privilege[i] === AccessRightsRolls.accessRightsStr[j]) {
+          this.roles[accessRights[AccessRightsRolls.accessRightsStr[j]]] = true;
+          break;
         }
       }
       
@@ -38,6 +34,10 @@ export class PrivilegeHandlerService {
       //this.roles[accessRights[Privilege.accessRightsStr[i]]] = true;
       console.log(this.roles[accessRights[AccessRightsRolls.accessRightsStr[i]]]);
     }*/
+  }
+
+  resetRoles() {
+    this.roles = [];
   }
 
   isGetByVolunteersStatusPrivilegeValid() {

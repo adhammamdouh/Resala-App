@@ -3,7 +3,7 @@ import { FormController } from "../form-controller";
 import SelectBoxOption from "./selectBoxOption";
 
 export default interface selectBoxProperties{
-    defaultValueIndex: number;
+    defaultValueIndex: any;
     selectedItemValue: any;
     options:SelectBoxOption[];
     label:string;

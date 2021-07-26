@@ -43,9 +43,7 @@
     "CALLCARD": {
         "name": "الاسم",
         "phone": "رقم الهاتف",
-        "date": "تاريخ الميلاد",
-        "result": "نتيجة المكالمة",
-        "attendance": "حضور القافلة",
+        "callResult": "نتيجة المكالمة",
         "notes": "ملاحظات",
         "submit": "تسجيل",
         "edit": "تعديل"
@@ -56,7 +54,10 @@
         "edit": "تعديل البيانات",
         "assignCalls": "توزيع المكالمات",
         "completeEvent": "اتمام الحدث",
-        "submitVolunteersAttendance": "تسجيل حضور المتطوعين"
+        "submitVolunteersAttendance": "تسجيل حضور المتطوعين",
+        "acceptArchive": "تأكيد الارشيف",
+        "declineArchive": "رفض الارشيف",
+        "activate": "تنشيط"
     },
     "GENDER": {
         "male": "ذكر",
@@ -104,7 +105,9 @@
     "ANSWERS": {
         "yes": "نعم",
         "no": "لا",
-        "ok": "موافق"
+        "ok": "موافق",
+        "cancel": "الغاء",
+        "done": "تم"
     },
     "VOLUNTEER_FORM": {
         "firstname": "الاسم الاول",
@@ -128,7 +131,9 @@
         "governorate": "اسم المحافظة",
         "comments": "تعليقات",
         "edit": "تعديل",
-        "add": "اضافة"
+        "add": "اضافة",
+        "educationLevel": "المستوي التعليمي",
+        "miniCamp": "ميني كامب"
     },
     "EVENT_FORM": {
         "name": "اسم الحدث",
@@ -136,12 +141,19 @@
         "shareable": "قابل للمشاركة",
         "from": "من",
         "to": "الي",
-        "callsStartDate": "موعد بدء المكالمات",
+        "invitationStartTime": "موعد بدأ مكالمات الدعوة",
+        "invitationEndTime": "موعد انتهاء مكالمات الدعوة",
+        "feedBackStartTime": "موهد بدأ مكالمات الفيدباك",
+        "feedBackEndTime": "موعد انتهاء مكالمات الفيدباك",
+        "notAttendStartTime": "موعد بدأ مكالمات الاكيد و مجاش",
+        "notAttendEndTime": "موعد انتهاء مكالمات الاكيد و مجاش",
         "description": "وصف الحدث",
-        "script": "نص الحدث"
+        "script": "نص الحدث",
+        "branches": "الفروع"
     },
     "PLACEHOLDER": {
-        "typeHere": "أكتب هنا ..."
+        "typeHere": "أكتب هنا ...",
+        "chooseDate": "اختار التاريخ"
     },
     "LOADING": {
         "message": "من فضلك انتظر ..."
@@ -163,5 +175,38 @@
         "volunteerAttendance": "حضور المتطوعين",
         "pleaseAddVolunteerFirst": "من فضلك قم باضافة المتطوع اولا!",
         "submit": "تسجيل"
+    },
+    "TSHIRT": {
+        "had": "عنده",
+        "hadNot": "معندوش",
+        "need": "عايز"
+    },
+    "CALL_RESULT": {
+        "confirmed": "اكد",
+        "probably": "احتمال",
+        "rejected": "رفض",
+        "noAnswer": "لم يرد",
+        "wrongNumber": "الرقم غلط",
+        "closed": "مغلق",
+        "unavailable": "غير متاح",
+        "firstTime": "اول مره"
+    },
+    "NO_AVAILABLE_DATA": "!لا يوجد بيانات",
+    "ASSIGN_CALLS": {
+        "distributeCalls": "توزيع المكالمات",
+        "saveDistribute": "حفظ التوزيع",
+        "confirmDistribute": "تأكيد التوزيع",
+        "equallyDistributed": "توزيع موزون",
+        "cancel": "الغاء",
+        "distribute": "توزيع",
+        "warning": "أحذر اذا قمت بالضغط علي زر توزيع فلا يمكنك الرجوع فالعاملية."
+    },
+    "EDUCATION_LEVEL": {
+        "secondary": "اعدادى",
+        "highSchool": "ثانوى عام",
+        "workHighSchool": "ثانوى مهنى",
+        "university": "جامعة",
+        "institute": "معهد",
+        "graduated": "خريج"
     }
 }

@@ -18,3 +18,23 @@
     --color: white;
     color: white;
 }*/
+
+.toastContainer {
+    display: flex;
+    text-align: center;
+}
+
+.toastSuccess {
+    --color: white;
+    --background: var(--green);
+}
+
+.toastFail {
+    --color: white;
+    --background: var(--red);
+}
+
+.toastMessage {
+    --color: white;
+    --background: var(--dark-blue);
+}

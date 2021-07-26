@@ -23,8 +23,6 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
   }
   openAdvancedSearch() {
     this.isAdvancedSearchOpened = !this.isAdvancedSearchOpened;
-    console.log(this.isAdvancedSearchOpened);
-
   }
 
   onClick() {

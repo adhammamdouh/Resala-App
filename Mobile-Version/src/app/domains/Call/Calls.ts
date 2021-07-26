@@ -6,19 +6,28 @@ import CallType from "./CallType";
 import NetworkType from "./NetworkType";
 
 export default interface Calls {
-    id:Number;
+    id:number;
     invitationComment:String;
     feedBackComment:String;
     notAttendComment:String;
     resalaEvent:ResalaEvent;
+
     caller:Volunteer;
     receiver:Volunteer;
     callType:CallType;
+
     networkType:NetworkType;
-    invitationTime:Date;
-    feedBackTime:Date;
-    notAttendTime:Date;
+    
+    invitationUnEditableBefore:Date;
+    feedBackUnEditableBefore:Date;
+    notAttendUnEditableBefore:Date;
+    
     timeUnEditableBefore:Date;
-    callResult:CallResult;
+    
+    feedBackCallResult:CallResult;
+    notAttendCallResult:CallResult;
+    invitationCallResult:CallResult;
+
     branch:Branch;
+    completed: boolean;
 }

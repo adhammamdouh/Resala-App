@@ -5,10 +5,13 @@ import VolunteerKPI from "../KPI/VolunteerKPI";
 import Organization from "../Organization";
 import Privilege from "../Privilege/Privilege";
 import User from "../User";
+import EducationLevel from "./EducationalLevel";
 import Role from "./Role";
+import Shirt from "./shirt";
+import VolunteerStatus from "./VolunteerStatus";
 
 export default interface Volunteer{
-    id:Number;
+    id:number;
     address:Address;
     faculty:string;
     nationalId:string;
@@ -20,7 +23,7 @@ export default interface Volunteer{
     phoneNumber:string;
     joinDate:Date;
     birthDate:Date;
-    tShirt:number; //new
+    shirt:Shirt; //new
     miniCamp:boolean; //new
     volunteerKPI:VolunteerKPI;
     user:User;
@@ -30,7 +33,9 @@ export default interface Volunteer{
     privileges:Privilege[];
     gender: number;
     organization: Organization; //new
-    educationLevel: string; //new
+    educationLevel: EducationLevel; //new
     comments: string; //new
+    volunteerStatus: VolunteerStatus;
+    age: number;
     //eventAttendances:Array<EventAttendance>[];
 }

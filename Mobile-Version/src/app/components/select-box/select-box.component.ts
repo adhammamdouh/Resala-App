@@ -31,15 +31,14 @@ export class SelectBoxComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.selectBoxProperties.formController.formGroup.controls[this.selectBoxProperties.formController.formControllerName].value)
-    if(this.selectBoxProperties.selectedItemValue != null)
+    if(this.selectBoxProperties.selectedItemValue) {
       for(let i = 0 ; i < this.selectBoxProperties.options.length; ++i) {
         if(this.selectBoxProperties.selectedItemValue === this.selectBoxProperties.options[i].value) {
           this.changeSelectedValue(this.selectBoxProperties.options[i]);
           break;
         }
       }
-      
+    }
     else
       this.changeSelectedValue(this.selectBoxProperties.options[this.selectBoxProperties.defaultValueIndex]);
   }

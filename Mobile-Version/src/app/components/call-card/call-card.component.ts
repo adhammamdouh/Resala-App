@@ -8,10 +8,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { InputProperties } from '../input/input-properties';
 import selectBoxProperties from '../select-box/selectBoxProperties';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CallType } from './call-type.enum';
+import { CallTypes } from './call-type.enum';
 import { CallProperties } from './call-properties';
 import { CallStatus } from './call-status.enum';
 import { options } from 'src/app/data/general-data.enum';
+import Calls from 'src/app/domains/Call/Calls';
+import { ToastHandlerService, ToastMode } from 'src/app/services/ToastHandler/toast-handler.service';
+import { CallsCRUDService } from 'src/app/services/CallsCRUD/calls-crud.service';
+import { Response } from 'src/app/domains/response';
 
 @Component({
   selector: 'app-call-card',
@@ -19,94 +23,94 @@ import { options } from 'src/app/data/general-data.enum';
   styleUrls: ['./call-card.component.scss'],
 })
 export class CallCardComponent implements OnInit, AfterViewInit {
-  callType = CallType;
+  callType = CallTypes;
   callStatus = CallStatus;
 
   @ViewChild('callCard', {read: ElementRef}) btn: ElementRef;
-  @Input() callProperties: CallProperties = {id: 0, callType: CallType.invitation, status: CallStatus.active};
+  @Input() call: Calls;
 
   swappableElement: SwappableElement = new SwappableElement();
-  notesProperties: InputProperties = {placeholder: '',
+
+  showLoading: boolean = false;
+  show = false;
+
+  callForm = new FormGroup({
+    callResult: new FormControl('', [Validators.required]),
+    comment: new FormControl('', [Validators.required]),
+  })
+  
+  callResultProperties: selectBoxProperties = {label: 'CALLCARD.callResult',
+                                                defaultValueIndex: 0,
+                                                selectedItemValue: null,
+                                                options: options.callResults,
+                                                formController: {formGroup: this.callForm, formControllerName: 'callResult'}};
+
+  notesProperties: InputProperties = {placeholder: 'PLACEHOLDER.typeHere',
                                       value: '',
                                       iconSrc: '',
                                       title: 'CALLCARD.notes',
                                       hasIcon: false,
                                       type: '',
                                       disabled: false,
-                                      formController: null}
-  showLoading: boolean = false;
-  show = false;
+                                      formController: {formGroup: this.callForm, formControllerName: 'comment'}};
 
-  formTest = new FormGroup({
-    gender: new FormControl('', [Validators.required])
-  })
-
-  inputTest: selectBoxProperties = {
-    label: 'النوع',
-    defaultValueIndex: 0,
-    selectedItemValue: null,
-    options: options.gender,
-    formController: {formGroup: this.formTest, formControllerName: 'gender'}
-  };
-
-  callForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    hasCalls: new FormControl('', [Validators.required]),
-    shareable: new FormControl('', [Validators.required]),
-    from: new FormControl('', [Validators.required]),
-    to: new FormControl('', [Validators.required]),
-    callsStartDate: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
-    script: new FormControl('', [Validators.required])
-})
-  
   constructor(private alertHandler: AlertHandlerService,
               private callNumber: CallNumber,
               private clipboard: Clipboard,
               private toastCtrl: ToastController,
               private translate: TranslateService,
-              private cd: ChangeDetectorRef) { }
+              private cd: ChangeDetectorRef,
+              private toast: ToastHandlerService,
+              private callsCRUD: CallsCRUDService) { }
   
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.initiateFormValues();
+  }
 
   ngAfterViewInit() {
     this.swappableElement.applySwapGesture(this.btn, directions.horizontal, 0.5, 0, -44, false);
-    /*this.swappableElement.onSwapCompelete.subscribe((msg: boolean) => {
-      this.swapCompleted.emit(msg);
-    })*/
   }
 
-  callVolunteer() {
-    this.callNumber.callNumber("01100024081", true)
+  initiateFormValues() {
+    switch(this.call.callType.id) {
+      case this.callType.invitation:
+        this.callResultProperties.selectedItemValue = this.call.invitationCallResult.id;
+        this.callForm.controls['comment'].setValue(this.call.invitationComment);
+        break;
+      case this.callType.feedback:
+        this.callResultProperties.selectedItemValue = this.call.feedBackCallResult.id;
+        this.callForm.controls['comment'].setValue(this.call.feedBackComment);
+        break;
+      case this.callType.acceptNotAttend:
+        this.callResultProperties.selectedItemValue = this.call.notAttendCallResult.id;
+        this.callForm.controls['comment'].setValue(this.call.notAttendComment);
+        break;
+    }
+  }
+
+  callVolunteer(phoneNumber) {
+    this.callNumber.callNumber(phoneNumber, true)
     .then(res => this.alertHandler.displayAlert("yes"))
     .catch(err => this.alertHandler.displayAlert("no"));
   }
 
-  copyToClipboard() {
-    //this.showCopyConfirmationToast()
-    this.clipboard.copy('01100024081').then(async () => { await this.showCopyConfirmationToast()})
+  copyToClipboard(phoneNumber) {
+    this.clipboard.copy(phoneNumber).then(async () => { await this.toast.presentToast(phoneNumber + ' ' + this.translate.instant('COPIDEDTOCLIPBOARD'), ToastMode.success)})
   } 
-  
-  async showCopyConfirmationToast() {
-    const toast = await this.toastCtrl.create({
-      message: '01100024081' + ' ' + this.translate.instant('COPIDEDTOCLIPBOARD'),
-      duration: 1000,
-      mode: 'ios',
-      cssClass: 'toastModal',
-    });
 
-    toast.present();
-  }
-
-  onSubmit() {
+  async onSubmit() {
     this.controlLoading(true)
-    setTimeout(() => 
-    {
-        this.callProperties.status = this.callStatus.submitted;
-        this.controlLoading(false);
-    },
-    5000);
+    const res = await this.callsCRUD.submitCall(this.call.id, this.call.callType, this.callForm.controls['callResult'].value, this.callForm.controls['comment'].value);
+    
+    res.subscribe(async (res: Response) => {
+      this.controlLoading(false);
+      this.call.completed = true;
+      await this.toast.presentToast(res.message, ToastMode.success)
+    }, async (res) => {
+      this.controlLoading(false);
+      await this.toast.presentToast(res.error.error, ToastMode.fail)
+    })
   }
 
   onEdit() {
