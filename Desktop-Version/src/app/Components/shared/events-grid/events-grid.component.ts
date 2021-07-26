@@ -12,6 +12,7 @@ export class EventsGridComponent implements OnInit {
   
   statesText = [];
   events:ResalaEvent[];
+  searchMode = false;
   constructor(public eventsCRUD:EventsCRUDService, 
               public privilegeHandler:PrivilegeHandlerService) { }
   ngOnInit(): void {
@@ -66,5 +67,11 @@ export class EventsGridComponent implements OnInit {
 
   activateAddMode(){
     this.eventsCRUD.activateAddMode();
+  }
+
+  search(event){
+    if(event.length != 0) this.searchMode = true;
+    else this.searchMode = false;
+    this.eventsCRUD.search(event);
   }
 }

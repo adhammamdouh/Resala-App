@@ -1,6 +1,6 @@
 <div class="gridContainer">
     <div class="mb-4 mt-2">
-        <app-search></app-search>
+        <app-search (onEntering)="search($event)"></app-search>
     </div>
     <div class="d-flex justify-content-between align-items-center">
         <button *ngIf="privilegeHandler.isCreateVolunteerValid()" (click)="activateAddMode()" class="blueButton arabicFontBold">+</button>
@@ -9,22 +9,40 @@
         </div>
     </div>
     <button class="sortingButton arabicFont ms-auto mt-2 mb-2">ترتيب <img src="../../../assets/Icons/descendant.svg"></button>
-    <div *ngIf="volunteersCRUD.gridState==0" class="innerGridContainer w-100 h-75">
+    <div *ngIf="volunteersCRUD.gridState==0 && searchMode == false" class="innerGridContainer w-100 h-75">
         <div *ngIf="volunteersCRUD.activeVolunteers == undefined || volunteersCRUD.activeVolunteers.length == 0" class="text-center arabicFontBold">
             لا يوجد اي بيانات
         </div>
         <app-volunteer-card *ngFor="let volunteer of volunteersCRUD.activeVolunteers" [volunteer]="volunteer" ></app-volunteer-card>
     </div>
-    <div *ngIf="volunteersCRUD.gridState==1" class="innerGridContainer w-100 h-75">
+    <div *ngIf="volunteersCRUD.gridState==1 && searchMode == false" class="innerGridContainer w-100 h-75">
         <div *ngIf="volunteersCRUD.archivedVolunteers == undefined" class="text-center arabicFontBold">
             لا يوجد اي بيانات
         </div>
         <app-volunteer-card *ngFor="let volunteer of volunteersCRUD.archivedVolunteers" [volunteer]="volunteer" ></app-volunteer-card>
     </div>
-    <div *ngIf="volunteersCRUD.gridState==2" class="innerGridContainer w-100 h-75">
+    <div *ngIf="volunteersCRUD.gridState==2 && searchMode == false" class="innerGridContainer w-100 h-75">
         <div *ngIf="volunteersCRUD.archivedVolunteers == undefined" class="text-center arabicFontBold">
             لا يوجد اي بيانات
         </div>
         <app-volunteer-card *ngFor="let volunteer of volunteersCRUD.requestedToBeArchivedVolunteers" [volunteer]="volunteer" ></app-volunteer-card>
+    </div>
+    <div *ngIf="volunteersCRUD.gridState==0 && searchMode == true" class="innerGridContainer w-100 h-75">
+        <div *ngIf="volunteersCRUD.activeSearchedVolunteers == undefined" class="text-center arabicFontBold">
+            لا يوجد اي بيانات
+        </div>
+        <app-volunteer-card *ngFor="let volunteer of volunteersCRUD.activeSearchedVolunteers" [volunteer]="volunteer" ></app-volunteer-card>
+    </div>
+    <div *ngIf="volunteersCRUD.gridState==1 && searchMode == true" class="innerGridContainer w-100 h-75">
+        <div *ngIf="volunteersCRUD.archivedSearchedVolunteers == undefined" class="text-center arabicFontBold">
+            لا يوجد اي بيانات
+        </div>
+        <app-volunteer-card *ngFor="let volunteer of volunteersCRUD.archivedSearchedVolunteers" [volunteer]="volunteer" ></app-volunteer-card>
+    </div>
+    <div *ngIf="volunteersCRUD.gridState==2 && searchMode == true" class="innerGridContainer w-100 h-75">
+        <div *ngIf="volunteersCRUD.requestedToBeArchivedSearchedVolunteers == undefined" class="text-center arabicFontBold">
+            لا يوجد اي بيانات
+        </div>
+        <app-volunteer-card *ngFor="let volunteer of volunteersCRUD.requestedToBeArchivedSearchedVolunteers" [volunteer]="volunteer" ></app-volunteer-card>
     </div>
 </div>

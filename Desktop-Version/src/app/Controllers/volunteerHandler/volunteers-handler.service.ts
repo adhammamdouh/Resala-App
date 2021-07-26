@@ -17,6 +17,9 @@ export class VolunteersCRUD {
   flipperStatus = false;
   activeVolunteers:Volunteer[];
   archivedVolunteers:Volunteer[];
+  activeSearchedVolunteers:Volunteer[] = [];
+  archivedSearchedVolunteers:Volunteer[] = [];
+  requestedToBeArchivedSearchedVolunteers:Volunteer[] = [];
   requestedToBeArchivedVolunteers:Volunteer[];
   gridState = 0;
   selectedVolunteer:Volunteer;
@@ -156,5 +159,26 @@ export class VolunteersCRUD {
 
   activateVolunteer(){
     this.errorHandler.handleError(FrontEndErrors.activateVolunteerWarning, this.selectedVolunteer);
+  }
+
+  search(value){
+    
+    this.activeSearchedVolunteers = this.filterDataOnQuery(this.activeVolunteers, value);
+    
+    this.archivedSearchedVolunteers = this.filterDataOnQuery(this.archivedVolunteers, value);
+    
+    this.requestedToBeArchivedSearchedVolunteers = this.filterDataOnQuery(this.requestedToBeArchivedVolunteers, value);
+    
+  }
+
+  filterDataOnQuery(volunteers, query){
+    let volunteersFiltered = [];
+    if (volunteers.length == 0) return;
+    volunteers.forEach(element => {
+      if (element.firstName.includes(query) || element.midName.includes(query) || element.lastName.includes(query)){
+        volunteersFiltered.push(element);
+      }
+    });
+    return volunteersFiltered;
   }
 }

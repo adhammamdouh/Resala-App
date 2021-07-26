@@ -10,6 +10,7 @@ import Volunteer from 'src/app/Domains/Volunteer/Volunteer';
 })
 export class VolunteersGridComponent implements OnInit {
   statesText = []
+  searchMode = false;
   constructor(public volunteersCRUD:VolunteersCRUD, public privilegeHandler:PrivilegeHandlerService) { }
   ngOnInit(): void {
     if (this.privilegeHandler.isGetByVolunteersStatusPrivilegeValid()){
@@ -75,5 +76,11 @@ export class VolunteersGridComponent implements OnInit {
 
   activateAddMode(){
     this.volunteersCRUD.activateAddMode();
+  }
+
+  search(event){
+    if(event.length != 0) this.searchMode = true;
+    else this.searchMode = false;
+    this.volunteersCRUD.search(event);
   }
 }
