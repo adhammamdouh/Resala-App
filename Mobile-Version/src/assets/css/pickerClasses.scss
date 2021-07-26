@@ -1,0 +1,32 @@
+.pickerContainer .picker-wrapper {
+    background-color: var(--background-default);
+    border-top-color: var(--light-gray);
+}
+
+.pickerContainer .picker-above-highlight {
+    --background: var(--background-default);
+    border-color: var(--background-default);
+    background: linear-gradient(to bottom, var(--background, var(--background-default, #000)) 20%, rgba(var(--background-rgb, var(--ion-background-color-rgb, 255, 255, 255)), 0.05) 100%)
+}
+
+.pickerContainer .picker-below-highlight {
+    --background: var(--background-default);
+    border-color: var(--background-default);
+    background: linear-gradient(to top, var(--background, var(--ion-background-color, #000)) 30%, rgba(var(--background-rgb, var(--ion-background-color-rgb, 255, 255, 255)), 0.05) 100%);;
+}
+
+.pickerContainer .picker-col {
+    border: 1px solid var(--light-gray);
+}
+
+.pickerContainer .picker-opt {
+    color: var(--light-gray);
+}
+
+.pickerContainer .picker-button {
+    color: var(--dark-green);
+}
+
+.pickerContainer .picker-toolbar {
+    border-color:  var(--light-gray);
+}

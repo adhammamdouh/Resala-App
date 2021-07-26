@@ -1,0 +1,41 @@
+<form *ngIf="selectBoxProperties.formController; else inputNoForm" [formGroup]="selectBoxProperties.formController.formGroup">
+  <ion-grid class="max-component-container ion-no-padding margin-h" dir="rtl">
+    <ion-row 
+      class="max-width w-100"
+      [ngClass]="{'invalidInput': isInvalidInput()}">
+        <ion-col class="ion-no-padding">
+          <ion-item mode="ios" class="multiSelectBox" lines="none" [ngClass]="{'invalidInput': isInvalidInput()}">
+            <ion-label position="floating" >{{selectBoxProperties.label | translate}}</ion-label>
+            <ion-select 
+              mode="ios"
+              [interfaceOptions]="customAlertOptions"
+              multiple="true"
+              [formControlName]="selectBoxProperties.formController.formControllerName"
+              [cancelText]="'ANSWERS.cancel' | translate" [okText]="'ANSWERS.ok' | translate">
+              <ion-select-option *ngFor="let branch of selectBoxProperties.options" [value]="branch.value">{{branch.text | translate}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+<ng-template #inputNoForm>
+  <ion-grid class="max-component-container ion-no-padding margin-h" dir="rtl">
+    <ion-row class="max-width w-100">
+        <ion-col class="ion-no-padding">
+          <ion-item mode="ios" class="multiSelectBox" lines="none" [ngClass]="{'invalidInput': isInvalidInput()}">
+            <ion-label position="floating" >{{selectBoxProperties.label | translate}}</ion-label>
+            <ion-select 
+              mode="ios"
+              [interfaceOptions]="customAlertOptions"
+              multiple="true"
+              [formControlName]="selectBoxProperties.formController.formControllerName"
+              [cancelText]="'ANSWERS.cancel' | translate" [okText]="'ANSWERS.ok' | translate">
+              <ion-select-option *ngFor="let branch of selectBoxProperties.options" [value]="branch.value">{{branch.text | translate}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</ng-template>

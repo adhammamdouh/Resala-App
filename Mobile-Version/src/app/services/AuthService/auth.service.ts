@@ -10,46 +10,88 @@ import { VolunteerCRUDService } from '../VolunteerCRUD/volunteer-crud.service';
 import { LoadingHandlerService } from '../LoadingHandler/loading-handler.service';
 import * as keys from 'src/app/data/keys.json';
 import { Storage } from '@ionic/storage-angular';
+import LeadVolunteer from 'src/app/domains/Volunteer/LeadVolunteer';
+import User from 'src/app/domains/User';
+import { ToastHandlerService, ToastMode } from '../ToastHandler/toast-handler.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject, from, observable, Observable, of } from 'rxjs';
+import { Platform } from '@ionic/angular';
+import { take, map, switchMap } from 'rxjs/operators';
+
+const helper = new JwtHelperService();
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  token: string = ''
-  user: Volunteer;
+  public user: Observable<any>;
+  private userData =  new BehaviorSubject(null);
+  public token = '';
 
-  constructor(private restfulAPI: RestfulAPIHandlerService,
-              private router: Router,
+  constructor(private router: Router,
               private privilegeHandler: PrivilegeHandlerService,
-              private volunteerCRUD: VolunteerCRUDService,
               private loadingHandler: LoadingHandlerService,
-              private storage: Storage) { }
+              private storage: Storage,
+              private toast: ToastHandlerService,
+              private plt: Platform,
+              private http: HttpClient) {
+                this.loadStoredToken();
+               }
   
-  async loadUser() {
-    const user: Volunteer = await this.storage.get(keys.USER)
-    console.log(user);
-    this.privilegeHandler.fillRoles(user.privileges);
+  loadStoredToken() {
+    let platfromObs = from(this.plt.ready());
+    this.user = platfromObs.pipe(
+      switchMap(() => {
+        return from(this.storage.get(keys.TOKEN));
+      }),
+      map(token => {
+        if(token) {
+          let decoded = helper.decodeToken(token);
+          this.userData.next(decoded);
+          this.token = token;
+          this.privilegeHandler.fillRoles(this.getPrivilegesArray(this.getUser().aud));
+          return true;
+        } else { 
+          return null;
+        }
+      })
+    );
   }
   
-  async login(username, password) {
-    await this.loadingHandler.presentLoading();
-    const res = await this.restfulAPI.post(
-      service.baseUrl + service.login, 
-      {username: username, password: password}, false);
-
-    res.subscribe((res) => {this.onLoginSuccess(res)}, (res) => { this.onLoginFail(res) });
+  login(credentials: {username: string; password: string }){
+    return this.http.post(service.baseUrl + service.login, {userName: credentials.username, password: credentials.password}).pipe(
+      take(1),
+      map((res: Response) => {
+        return res.message.token;
+      }),
+      switchMap(token => {
+        let decoded = helper.decodeToken(token);
+        this.userData.next(decoded)
+        this.token = token;
+        this.privilegeHandler.fillRoles(this.getPrivilegesArray(this.getUser().aud));
+        let storageObs = from(this.storage.set(keys.TOKEN, token)); 
+        return storageObs;
+      })
+    );
   }
 
-  async onLoginSuccess(respones: any) {
-    console.log(respones);
-    this.user = respones.message.user;
+  getUser() {
+    return this.userData.getValue();
+  }
+
+  /*async onLoginSuccess(respones: any) {
+    this.user = respones.message;
     this.token = respones.message.token;
-    
-    await this.storage.set(keys.TOKEN, this.token);
-    await this.storage.set(keys.USER, this.user);
     console.log(this.user);
-    this.privilegeHandler.fillRoles(this.user.privileges);
+
+    await this.storage.set(keys.TOKEN, this.token).then(async() => {
+      await this.storage.set(keys.USER, this.user).then(async() => {
+        await this.storage.set(keys.LOGIN_STATUS, true);
+      })
+    });
+    
+    this.privilegeHandler.fillRoles(this.user.user.privileges);
 
     await this.router.navigate(['home']);
     await this.loadingHandler.dismissLoading();
@@ -57,11 +99,27 @@ export class AuthService {
 
   async onLoginFail(respones: any) {
     console.log("insideLoginFail", respones.error);
-
+    this.toast.presentToast(respones.error.error, ToastMode.fail);
     await this.loadingHandler.dismissLoading();
+  }*/
+
+  getPrivilegesArray(privileges: string) {
+    
+    privileges = privileges.replace(/\[/g, '');
+    privileges = privileges.replace(/\]/g, '');
+    privileges = privileges.replace(/ +/g, '');
+    const privilegesArr = privileges.split(',');
+    
+    return privilegesArr;
   }
 
-  async logout() {
-    await this.storage.clear();
+  logout() {
+    this.privilegeHandler.resetRoles();
+    this.storage.clear().then(() => {
+      this.router.navigateByUrl('/login');
+      this.privilegeHandler.resetRoles();
+      this.userData.next(null);
+    });
+    return of(null);
   }
 }

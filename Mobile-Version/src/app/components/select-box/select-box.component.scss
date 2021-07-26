@@ -20,7 +20,7 @@
 }
 .selectBoxList{
     position: absolute;
-    z-index: 10;
+    z-index: 1000;
     width: 100%;
     top: 70px;
     overflow: hidden;
@@ -31,7 +31,7 @@
     background-color: var(--header-default-background) !important;
     border-radius: var(--default-border-radius) !important;
     overflow-y: scroll;
-    max-height: 200px;
+    max-height: 130px;
 }
 .selectBoxItem{
     border-bottom: solid 3px var(--light-gray);

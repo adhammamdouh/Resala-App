@@ -1,8 +1,8 @@
 import { CallStatus } from "./call-status.enum";
-import { CallType } from "./call-type.enum";
+import { CallTypes } from "./call-type.enum";
 
 export interface CallProperties {
     id: number;
-    callType: CallType;
+    callType: CallTypes;
     status: CallStatus;
 }

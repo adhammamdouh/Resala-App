@@ -1,0 +1,40 @@
+<form *ngIf="dateTimeProperties.formController; else inputNoForm" [formGroup]="dateTimeProperties.formController.formGroup">
+  <ion-grid class="max-component-container ion-no-padding margin-h"
+      dir="rtl">
+      <ion-row 
+          class="max-width w-100">
+          <ion-col class="ion-no-padding">
+            <ion-item class="dateTimeContainer" [ngClass]="{'invalidInput': isInvalidInput()}" lines="none">
+              <ion-label position="floating">{{dateTimeProperties.title | translate}}</ion-label>
+              <ion-datetime 
+                mode="ios" 
+                [pickerOptions]="customPickerOptions"
+                [formControlName]="dateTimeProperties.formController.formControllerName" 
+                [displayFormat]="dateTimeProperties.format" 
+                [placeholder]="dateTimeProperties.placeholder | translate"
+                [cancelText]="'ANSWERS.cancel' | translate" [doneText]="'ANSWERS.done' | translate"></ion-datetime>
+            </ion-item>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</form>
+
+<!--YYYY-MM-DD HH:mm-->
+
+<ng-template #inputNoForm>
+  <ion-grid class="max-component-container ion-no-padding margin-h" dir="rtl">
+      <ion-row class="max-width w-100">
+          <ion-col class="ion-no-padding">
+            <ion-item class="dateTimeContainer" [ngClass]="{'invalidInput': isInvalidInput()}" lines="none">
+              <ion-label position="floating">{{dateTimeProperties.title | translate}}</ion-label>
+              <ion-datetime 
+                mode="ios" 
+                [pickerOptions]="customPickerOptions"
+                [displayFormat]="dateTimeProperties.format" 
+                [placeholder]="dateTimeProperties.placeholder | translate"
+                [value]="dateTimeProperties.value"></ion-datetime>
+            </ion-item>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</ng-template>

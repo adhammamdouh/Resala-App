@@ -6,32 +6,41 @@
         [addButtonNavigationPageName]="addButtonNavigationPageName"
         [showAddButton]="privilegeHandler.isCreateVolunteerValid()"
         (onSearch)="searchVolunteers($event)"
-        (onSearchComplete)="completeVolunteersSearching()"
-        (onSearchStart)="onSearchStart($event)"></app-main-page-bar>
+        (onSearchComplete)="completeVolunteersSearching()"></app-main-page-bar>
   </ion-header>
 <ion-content>
     <ion-refresher slot="fixed" (ionRefresh)="refreshVolunteers($event, tabProperties.selectedTabIndex)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
 
-    <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.active">
-        <app-volunteer-card 
-            *ngFor="let volunteer of volunteerCRUD.activeVolunteers; trackBy:trackItems"
+    <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.active" class="w-100 h-100">
+        <div *ngIf="(searchingMode ? activeVolunteers : volunteerCRUD.activeVolunteers).length > 0 else noDataComp">
+            <app-volunteer-card 
+            *ngFor="let volunteer of (searchingMode ? activeVolunteers : volunteerCRUD.activeVolunteers); trackBy:trackItems"
             [volunteer]="volunteer"
             (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
+        </div>
     </div>
 
-    <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.inactive">
-        <app-volunteer-card 
-            *ngFor="let volunteer of volunteerCRUD.inactiveVolunteers; trackBy:trackItems"
-            [volunteer]="volunteer"
-            (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
+    <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.inactive" class="w-100 h-100">
+        <div *ngIf="(searchingMode ? inactiveVolunteers : volunteerCRUD.inactiveVolunteers).length > 0 else noDataComp">
+            <app-volunteer-card 
+                *ngFor="let volunteer of (searchingMode ? inactiveVolunteers : volunteerCRUD.inactiveVolunteers); trackBy:trackItems"
+                [volunteer]="volunteer"
+                (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
+        </div>
     </div >
         
-    <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.archive">
-        <app-volunteer-card 
-        *ngFor="let volunteer of volunteerCRUD.requestToVolunteers; trackBy:trackItems"
-        [volunteer]="volunteer"
-        (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
+    <div *ngIf="tabProperties.selectedTabIndex === volunteerTabsTemp.archive" class="w-100 h-100">
+        <div *ngIf="(searchingMode ? requestToArcVolunteers : volunteerCRUD.requestToVolunteers).length > 0 else noDataComp">
+            <app-volunteer-card 
+            *ngFor="let volunteer of (searchingMode ? requestToArcVolunteers : volunteerCRUD.requestToVolunteers); trackBy:trackItems"
+            [volunteer]="volunteer"
+            (onSwap)="openVolunteerData(volunteer)"></app-volunteer-card>
+        </div>
     </div>
+
+    <ng-template class="w-100 h-100" #noDataComp>
+        <app-no-available-data></app-no-available-data>      
+    </ng-template>
 </ion-content>

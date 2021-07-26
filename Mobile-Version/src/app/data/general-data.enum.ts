@@ -57,19 +57,60 @@ export enum governorates {
     newValley = 27
 }
 
+export enum volunteerStatus {
+    active = 1,
+    inactive = 2,
+    requestedToArchive = 3
+}
+
+export enum callResults {
+    confirmed = 1,
+    probably = 2,
+    rejected = 3,
+    noAnswer = 4,
+    wrongNumber = 5,
+    closed = 6,
+    unavailable = 7,
+    firstTime = 8,
+}
+
 export interface textValue {
     text: string,
     value: any
 }
 
+export enum educationLevel {
+    secondary = 1,
+    highSchool = 2,
+    workHighSchool = 3,
+    university = 4,
+    institute = 5,
+    graduated = 6
+}
+
 
 export class options {
+    public static educationLevel: textValue[] = [{text: 'EDUCATION_LEVEL.secondary', value: educationLevel.secondary},
+                                                 {text: 'EDUCATION_LEVEL.highSchool', value: educationLevel.highSchool},
+                                                 {text: 'EDUCATION_LEVEL.workHighSchool', value: educationLevel.workHighSchool},
+                                                 {text: 'EDUCATION_LEVEL.university', value: educationLevel.university},
+                                                 {text: 'EDUCATION_LEVEL.institute', value: educationLevel.institute},
+                                                 {text: 'EDUCATION_LEVEL.graduated', value: educationLevel.graduated}]
+
+    public static callResults: textValue[] = [  {text: 'CALL_RESULT.confirmed', value: callResults.confirmed},
+                                                {text: 'CALL_RESULT.probably', value: callResults.probably},
+                                                {text: 'CALL_RESULT.rejected', value: callResults.rejected},
+                                                {text: 'CALL_RESULT.noAnswer', value: callResults.noAnswer},
+                                                {text: 'CALL_RESULT.wrongNumber', value: callResults.wrongNumber},
+                                                {text: 'CALL_RESULT.closed', value: callResults.closed},
+                                                {text: 'CALL_RESULT.unavailable', value: callResults.unavailable},
+                                                {text: 'CALL_RESULT.firstTime', value: callResults.firstTime}]
     public static answers: textValue[] = [{text: 'ANSWERS.yes', value: true},
                                           {text: 'ANSWERS.no', value: false}];
     
-    public static tShirt: textValue[] = [{text: 'TESHIRT.has', value: 0},
-                                         {text: 'TESHIRT.doesnotHas', value: 1},
-                                         {text: 'TESHIRT.need', value: 2}]
+    public static tShirt: textValue[] = [{text: 'TSHIRT.had', value: 1},
+                                         {text: 'TSHIRT.hadNot', value: 2},
+                                         {text: 'TSHIRT.need', value: 3}]
 
     public static ok: textValue[] = [{text: 'ANSWERS.ok', value: answers.ok}];
 
@@ -121,15 +162,15 @@ export enum accessRights {
     ROLE_GET_ALL_VOLUNTEERS_PUBLIC_INFO = 1,
     ROLE_GET_VOLUNTEERS_BY_MY_BRANCH_ID,
     ROLE_GET_VOLUNTEERS_PUBLIC_INFO_BY_MY_BRANCH,
-    ROLE_CREATE_VOLUNTEER,  //
-    ROLE_UPDATE_VOLUNTEER,  //
-    ROLE_REQUEST_TO_ARCHIVE_VOLUNTEER,  //
-    ROLE_ACCEPT_TO_ARCHIVE_VOLUNTEER,   ///
-    ROLE_DECLINE_TO_ARCHIVE_VOLUNTEER,  ///
+    ROLE_CREATE_VOLUNTEER,  //TEAM LEADER TEAM MEMBER
+    ROLE_UPDATE_VOLUNTEER,  //TEAM LEADER TEAM MEMBER
+    ROLE_REQUEST_TO_ARCHIVE_VOLUNTEER,  //TEAM LEADER TEAM MEMBER
+    ROLE_ACCEPT_TO_ARCHIVE_VOLUNTEER,   ///CEO
+    ROLE_DECLINE_TO_ARCHIVE_VOLUNTEER,  ///CEO
 
-    ROLE_GET_ALL_VOLUNTEERS_BY_STATUS,
+    ROLE_GET_ALL_VOLUNTEERS_BY_STATUS, //CEO
     ROLE_GET_ALL_VOLUNTEERS_PUBLIC_INFO_BY_STATUS,
-    ROLE_GET_ALL_VOLUNTEERS_BY_STATUS_AND_MY_BRANCH,
+    ROLE_GET_ALL_VOLUNTEERS_BY_STATUS_AND_MY_BRANCH, //TEAM LEADER TEAM MEMBER
     ROLE_GET_ALL_VOLUNTEERS_PUBLIC_INFO_BY_STATUS_AND_MY_BRANCH,
     ROLE_GET_ALL_LEAD_VOLUNTEERS,
     ROLE_GET_ALL_LEAD_VOLUNTEERS_PUBLIC_INFO,
@@ -140,26 +181,39 @@ export enum accessRights {
     ROLE_GET_ALL_LEAD_VOLUNTEERS_BY_STATE_AND_MY_BRANCH,
     ROLE_GET_ALL_LEAD_VOLUNTEERS_PUBLIC_INFO_BY_STATE_AND_MY_BRANCH,
 
-    ROLE_GET_ALL_EVENTS,    
-    ROLE_GET_EVENTS_BY_MY_BRANCH,   
-    ROLE_ADD_EVENT, //
-    ROLE_ARCHIVE_EVENT, 
-    ROLE_COMPLETE_EVENT,
-    ROLE_UPDATE_EVENT,
-    ROLE_GET_ASSIGNED_CALLS,    
-    ROLE_SUBMIT_ASSIGNED_CALLS, 
+    ROLE_GET_ALL_EVENTS,   //CEO 
+    ROLE_GET_EVENTS_BY_MY_BRANCH,  //TEAM LEADER TEAM MEMBER 
+    ROLE_ADD_EVENT, //CEO
+    ROLE_ARCHIVE_EVENT,  //CEO
+    ROLE_COMPLETE_EVENT, //CEO
+    ROLE_UPDATE_EVENT, //CEO
+    ROLE_GET_ASSIGNED_CALLS,    //TEAM MEMBER TEAM LEADER
+    ROLE_SUBMIT_ASSIGNED_CALLS, //TEAM MEMBER TEAM LEADER
 
-    ROLE_GET_All_EVENTS_BY_STATE,
+    ROLE_GET_All_EVENTS_BY_STATE, //CEO
     ROLE_GET_All_SHAREABLE_EVENTS_BY_STATE,
-    ROLE_GET_All_EVENTS_BY_STATE_AND_MY_BRANCH,
+    ROLE_GET_All_EVENTS_BY_STATE_AND_MY_BRANCH, //TEAM LEADER TEAM MEMBER
     ROLE_GET_All_SHAREABLE_EVENTS_BY_STATE_AND_MY_BRANCH,
 
-    ROLE_ASSIGN_CALLS,  
+    ROLE_ASSIGN_CALLS, //TEAM LEADER  
 
-    ROLE_MAKE_EVENT_ATTENDANCE_TO_VOLUNTEER,    
+    ROLE_MAKE_EVENT_ATTENDANCE_TO_VOLUNTEER,   //TEAM LEADER TEAM MEMBER 
     ROLE_CREATE_LEAD_VOLUNTEER,     
-    ROLE_GET_ALL_COMMITTEE_TEAM,    
-    ROLE_GET_NETWORK_TYPE_ASSIGNED_TO_VOLUNTEERS
+    ROLE_GET_MY_BRANCH_COMMITTEE_TEAM,   //TEAM LEADER 
+    ROLE_GET_NETWORK_TYPE_ASSIGNED_TO_VOLUNTEERS, //TEAM LEADER
+
+    ROLE_CREATE_CLOUD,
+    ROLE_GENERATE_VOLUNTEERS_KPIS,
+    ROLE_GENERATE_LEAD_VOLUNTEERS_KPIS,
+    ROLE_GENERATE_EVENTS_KPIS,
+    ROLE_CREATE_USER,
+    ROLE_ASSIGN_USER_PRIVILEGES,
+    ROLE_CREATE_PRIVILEGES,
+    ROLE_ASSIGN_ACTIONS_TO_PRIVILEGES,
+    ROLE_GET_ALL_BRANCHES,
+    ROLE_GET_ALL_COMMITTEES,
+    ROLE_GET_VOLUNTEER_BY_PHONE_NUMBER, //TEAM LEADER TEAM MEMBER
+    ROLE_ACTIVATE_VOLUNTEER
 }
 
 export class AccessRightsRolls {
@@ -200,7 +254,19 @@ export class AccessRightsRolls {
         'ROLE_ASSIGN_CALLS',
         'ROLE_MAKE_EVENT_ATTENDANCE_TO_VOLUNTEER',
         'ROLE_CREATE_LEAD_VOLUNTEER',
-        'ROLE_GET_ALL_COMMITTEE_TEAM',
-        'ROLE_GET_NETWORK_TYPE_ASSIGNED_TO_VOLUNTEERS'
+        'ROLE_GET_MY_BRANCH_COMMITTEE_TEAM',
+        'ROLE_GET_NETWORK_TYPE_ASSIGNED_TO_VOLUNTEERS',
+        'ROLE_CREATE_CLOUD',
+        'ROLE_GENERATE_VOLUNTEERS_KPIS',
+        'ROLE_GENERATE_LEAD_VOLUNTEERS_KPIS',
+        'ROLE_GENERATE_EVENTS_KPIS',
+        'ROLE_CREATE_USER',
+        'ROLE_ASSIGN_USER_PRIVILEGES',
+        'ROLE_CREATE_PRIVILEGES',
+        'ROLE_ASSIGN_ACTIONS_TO_PRIVILEGES',
+        'ROLE_GET_ALL_BRANCHES',
+        'ROLE_GET_ALL_COMMITTEES',
+        'ROLE_GET_VOLUNTEER_BY_PHONE_NUMBER',
+        'ROLE_ACTIVATE_VOLUNTEER'
     ]
 }

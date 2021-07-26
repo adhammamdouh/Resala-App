@@ -5,14 +5,22 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid class="ion-no-margin h-100">
-    <ion-row *ngFor="let networkType of networkTypes" class="w-100">
+  <ion-grid class="ion-no-margin h-100" dir="rtl" *ngIf="preProcessingComplete">
+    <ion-row *ngFor="let selectBox of selectBoxes; let i = index" class="w-100">
       <ion-col>
         <ion-row>
           <ion-col class="ion-no-padding">
-            <app-select-box [selectBoxProperties]="selectBoxes[0]"></app-select-box>
+            <app-select-box [selectBoxProperties]="selectBox"></app-select-box>
           </ion-col>
         </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <app-button [label]="'ASSIGN_CALLS.saveDistribute'" (click)="assignNetwork()"></app-button>
+      </ion-col>
+      <ion-col>
+        <app-button [label]="'ASSIGN_CALLS.confirmDistribute'" (click)="confirmNetworkDistribution()"></app-button>
       </ion-col>
     </ion-row>
   </ion-grid>

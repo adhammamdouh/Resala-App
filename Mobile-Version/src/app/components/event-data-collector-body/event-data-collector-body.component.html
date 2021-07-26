@@ -11,7 +11,7 @@
             {{'ُEVENTPAGEDATA.startDate' | translate}} :
           </ion-label>
           <ion-label>
-            {{event.callsStartTime | date: 'hh:mm dd-MM-yyyy'}}
+            {{event.invitationStartTime | date: 'hh:mm dd-MM-yyyy'}}
           </ion-label>
         </ion-label>
       </ion-col>
@@ -47,7 +47,7 @@
 
         <ion-row class="gridContainer">
           <ion-col>
-            <ion-label class="defaultLabel fontH4">
+            <ion-label class="defaultLabel fontH4 containSpaceText">
               {{event.script}}
             </ion-label>
           </ion-col>

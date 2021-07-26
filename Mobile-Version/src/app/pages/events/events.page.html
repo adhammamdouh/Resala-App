@@ -3,7 +3,9 @@
     [(tabProperties)]="tabProperties" 
     [title]="'TABS.events' | translate"
     [addButtonNavigationPageName]="addButtonNavigationPageName"
-    [showAddButton]="privilegeHandler.isAddEventValid()"></app-main-page-bar>
+    [showAddButton]="privilegeHandler.isAddEventValid()"
+    (onSearch)="searchEvent($event)"
+    (onSearchComplete)="completeEventSearching()"></app-main-page-bar>
 </ion-header>
 
 <ion-content>
@@ -11,16 +13,24 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <div *ngIf="tabProperties.selectedTabIndex === eventTabsTemp.previous">
-    <app-event-card 
-      *ngFor="let event of eventCRUD.completedEvents; trackBy:trackItems"
-      [event]="event" (onSwap)="openEventData(event)" [index]="event.id"></app-event-card>
+  <div class="w-100 h-100" *ngIf="tabProperties.selectedTabIndex === eventTabsTemp.previous">
+    <div *ngIf="(searchingMode ? completedEvents : eventCRUD.completedEvents).length > 0 else noDataComp">
+      <app-event-card 
+        *ngFor="let event of (searchingMode ? completedEvents : eventCRUD.completedEvents); trackBy:trackItems"
+        [event]="event" (onSwap)="openEventData(event)" [index]="event.id"></app-event-card>
+    </div>
   </div>
 
-  <div *ngIf="tabProperties.selectedTabIndex === eventTabsTemp.upcoming">
-    <app-event-card 
-      *ngFor="let event of eventCRUD.activeEvents; trackBy:trackItems"
-      [event]="event" (onSwap)="openEventData(event)" [index]="event.id"></app-event-card>
+  <div class="w-100 h-100" *ngIf="tabProperties.selectedTabIndex === eventTabsTemp.upcoming">
+    <div *ngIf="(searchingMode ? activeEvents : eventCRUD.activeEvents).length > 0 else noDataComp">
+      <app-event-card 
+        *ngFor="let event of (searchingMode ? activeEvents : eventCRUD.activeEvents); trackBy:trackItems"
+        [event]="event" (onSwap)="openEventData(event)" [index]="event.id"></app-event-card>
+    </div>
   </div>
+
+  <ng-template class="w-100 h-100" #noDataComp>
+    <app-no-available-data></app-no-available-data>      
+  </ng-template>
 
 </ion-content>

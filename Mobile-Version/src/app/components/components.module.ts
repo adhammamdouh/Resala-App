@@ -23,6 +23,9 @@ import { VolunteerDataCollectorHeaderComponent } from './volunteer-data-collecto
 import { VolunteerDataCollectorBodyComponent } from './volunteer-data-collector-body/volunteer-data-collector-body.component';
 import { AssignCallsComponent } from './assign-calls/assign-calls.component';
 import { EventAttendanceComponent } from './event-attendance/event-attendance.component';
+import { MuliSelectBoxComponent } from './muli-select-box/muli-select-box.component';
+import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
+import { NoAvailableDataComponent } from './no-available-data/no-available-data.component';
 
 @NgModule({
   declarations: [TitleBarComponent,
@@ -43,7 +46,10 @@ import { EventAttendanceComponent } from './event-attendance/event-attendance.co
                 VolunteerDataCollectorHeaderComponent,
                 VolunteerDataCollectorBodyComponent,
                 AssignCallsComponent,
-                EventAttendanceComponent
+                EventAttendanceComponent,
+                MuliSelectBoxComponent,
+                DateTimePickerComponent,
+                NoAvailableDataComponent,
               ],
   exports: [TitleBarComponent,
             SearchBarComponent,
@@ -64,7 +70,9 @@ import { EventAttendanceComponent } from './event-attendance/event-attendance.co
             VolunteerDataCollectorBodyComponent,
             AssignCallsComponent,
             EventAttendanceComponent,
-            
+            MuliSelectBoxComponent,
+            DateTimePickerComponent,
+            NoAvailableDataComponent
           ],
   imports: [IonicModule.forRoot(), CommonModule, FormsModule, TranslateModule, ReactiveFormsModule]
 })

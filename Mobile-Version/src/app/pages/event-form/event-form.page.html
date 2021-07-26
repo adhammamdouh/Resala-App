@@ -1,11 +1,11 @@
 <ion-header>
-  <app-title-bar [title]="'test'" [showBackIcon]="true"></app-title-bar>
+  <app-title-bar [title]="'حدث'" [showBackIcon]="true"></app-title-bar>
 </ion-header>
 
 <ion-content>
   <ion-grid class="p-1" dir="rtl">
     <form class="d-flex flex-column justify-content-center align-items-center"
-      [formGroup]="eventFormAtt.eventForm" (ngSubmit)="isAddForm ? addEvent() : editEvent()">
+      [formGroup]="eventFormAtt.eventForm" (ngSubmit)="mode === 'add' ? addEvent() : editEvent()">
       <ion-row class="max-width w-100">
         <ion-col class="p-1">
           <app-input [(inputProperties)]="eventFormAtt.name"></app-input>
@@ -23,16 +23,37 @@
 
       <ion-row class="max-width w-100">
         <ion-col class="p-1">
-          <app-input [(inputProperties)]="eventFormAtt.from"></app-input>
+          <app-date-time-picker [(dateTimeProperties)]="eventFormAtt.from"></app-date-time-picker>
         </ion-col>
         <ion-col class="p-1">
-          <app-input [(inputProperties)]="eventFormAtt.to"></app-input>
+          <app-date-time-picker [(dateTimeProperties)]="eventFormAtt.to"></app-date-time-picker>
         </ion-col>
       </ion-row>
 
       <ion-row class="max-width w-100">
         <ion-col class="p-1">
-          <app-input [(inputProperties)]="eventFormAtt.callsStartDate"></app-input>
+          <app-date-time-picker [(dateTimeProperties)]="eventFormAtt.invitationStartTime"></app-date-time-picker>
+        </ion-col>
+        <ion-col class="p-1">
+          <app-date-time-picker [(dateTimeProperties)]="eventFormAtt.invitationEndTime"></app-date-time-picker>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="max-width w-100">
+        <ion-col class="p-1">
+          <app-date-time-picker [(dateTimeProperties)]="eventFormAtt.feedBackStartTime"></app-date-time-picker>
+        </ion-col>
+        <ion-col class="p-1">
+          <app-date-time-picker [(dateTimeProperties)]="eventFormAtt.feedBackEndTime"></app-date-time-picker>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="max-width w-100">
+        <ion-col class="p-1">
+          <app-date-time-picker [(dateTimeProperties)]="eventFormAtt.notAttendStartTime"></app-date-time-picker>
+        </ion-col>
+        <ion-col class="p-1">
+          <app-date-time-picker [(dateTimeProperties)]="eventFormAtt.notAttendEndTime"></app-date-time-picker>
         </ion-col>
       </ion-row>
 
@@ -50,9 +71,25 @@
 
       <ion-row class="max-width w-100">
         <ion-col class="p-1">
-          <app-button [label]="'fdjslkafjdlks'" [type]="'submit'" [disabled]="eventFormAtt.eventForm.invalid"></app-button>
+          <app-muli-select-box [selectBoxProperties]="eventFormAtt.branches"></app-muli-select-box>
         </ion-col>
       </ion-row>
+
+      <ion-row class="max-width w-100">
+        <ion-col class="p-1">
+          <app-button 
+            [label]="'VOLUNTEER_FORM.edit'" 
+            [type]="'submit'" 
+            [disabled]="eventFormAtt.eventForm.invalid"
+            *ngIf="mode === 'edit'"></app-button>
+          <app-button 
+            [label]="'VOLUNTEER_FORM.add'" 
+            [type]="'submit'" 
+            [disabled]="eventFormAtt.eventForm.invalid"
+            *ngIf="mode === 'add'"></app-button>
+        </ion-col>
+      </ion-row>
+      
     </form>
   </ion-grid>
   

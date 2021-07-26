@@ -18,8 +18,24 @@
 
 .alertContainer .alert-button {
     border-color: var(--default-border-color);
+    color: var(--dark-green);
 }
 
-ion-backdrop {
-    opacity: 0;
+.alertContainer .alert-checkbox-label {
+    color: var(--light-gray);
+}
+
+.rightToLeft .alert-checkbox-label {
+    text-align: end;
+}
+
+.rightToLeft .alert-button-inner {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+
+[aria-checked=true].sc-ion-alert-ios .alert-checkbox-icon.sc-ion-alert-ios {
+    border-color: var(--dark-green);
+    background-color: var(--dark-green);
 }
