@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import ResalaEvent from 'src/app/domains/ResalaEvent/ResalaEvent';
 import { Response } from 'src/app/domains/response';
 import Volunteer from 'src/app/domains/Volunteer/Volunteer';
@@ -41,7 +43,9 @@ export class EventAttendanceComponent implements OnInit {
               private loading: LoadingHandlerService,
               private eventCRUD: EventCRUDService,
               private auth: AuthService,
-              private toast: ToastHandlerService) { }
+              private toast: ToastHandlerService,
+              private router: Router,
+              private modalCtrl: ModalController) { }
 
   ngOnInit() {
   }
@@ -77,6 +81,16 @@ export class EventAttendanceComponent implements OnInit {
       await this.loading.dismissLoading();
       await this.toast.presentToast(res.error.error, ToastMode.fail)
     })
+  }
+
+  goToAddVolunteer() {
+    const navigationExtras: NavigationExtras =  {
+      queryParams: {
+        mode: JSON.stringify('add'),
+      }
+    };
+    this.modalCtrl.dismiss();
+    this.router.navigate(['volunteer-form'], navigationExtras);
   }
 
 }
