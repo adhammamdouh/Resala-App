@@ -91,8 +91,8 @@ export class CallCardComponent implements OnInit, AfterViewInit {
 
   callVolunteer(phoneNumber) {
     this.callNumber.callNumber(phoneNumber, true)
-    .then(res => this.alertHandler.displayAlert("yes"))
-    .catch(err => this.alertHandler.displayAlert("no"));
+    .then(res => this.toast.presentToast('نجح', ToastMode.success))
+    .catch(err => this.toast.presentToast('خطأ', ToastMode.success));
   }
 
   copyToClipboard(phoneNumber) {
