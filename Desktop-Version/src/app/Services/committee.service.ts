@@ -65,9 +65,12 @@ export class CommitteeService {
           }
         });
         this.initializeSelectBox(we || this.comitteeTeam[0].id, vodafone || this.comitteeTeam[0].id, etisalat || this.comitteeTeam[0].id, orange || this.comitteeTeam[0].id);
-      } else {
+      } else if (this.comitteeTeam.length != 0) {
         this.distributedButNotConfirmed = false;
+        debugger;
         this.initializeSelectBox(this.comitteeTeam[0].id, this.comitteeTeam[0].id, this.comitteeTeam[0].id, this.comitteeTeam[0].id);
+      } else {
+        this.showCalls = false;
       }
       this.loading = false;
     }, (err)=>{

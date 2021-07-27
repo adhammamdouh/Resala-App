@@ -7,7 +7,7 @@
                 <button class="modifyButton arabicFontBold me-2" *ngIf="!eventsCRUD.summaryFormDisplay && privilegeHandler.isSubmitAssignedCallsValid()" (click)="eventsCRUD.showSummaryForm()"> <img src="assets/Icons/eye-with-thick-outline-variant.svg" style="margin-top: -5px;" width="27px"> إظهار بيانات الحدث</button>
                 <button class="modifyButton arabicFontBold me-2" *ngIf="eventsCRUD.summaryFormDisplay && privilegeHandler.isSubmitAssignedCallsValid()" (click)="eventsCRUD.hideSummaryForm()"> <img src="assets/Icons/eye-with-thick-outline-variant.svg" style="margin-top: -5px;" width="27px"> إخفاء بيانات الحدث</button>
                 <button class="greenButton arabicFontBold me-2" *ngIf="(eventsCRUD.gridState == 0) && privilegeHandler.isCompleteEventValid() " (click)="eventsCRUD.completeEvent()"><img src="assets/Icons/check.svg" style="margin-top: -5px;" width="27px"> إكمال الحدث</button>
-                <button class="modifyButton arabicFontBold" (click)="this.comitteeService.getAssignedNetworkToEvents()" *ngIf="privilegeHandler.isAssignCallsValid() && eventsCRUD.gridState != 1"><img src="assets/Icons/phone-call.svg" style="margin-top: -5px;" width="27px"> توزيع<img></button>
+                <button class="modifyButton arabicFontBold" (click)="this.comitteeService.getAssignedNetworkToEvents()" *ngIf="privilegeHandler.isAssignCallsValid() && eventsCRUD.gridState != 1 && comitteeService.comitteeTeam.length != 0"><img src="assets/Icons/phone-call.svg" style="margin-top: -5px;" width="27px"> توزيع<img></button>
             </div>
             <div *ngIf="eventsCRUD.formMode==1 && privilegeHandler.isAddEventValid()">
                 <button (click)="eventsCRUD.addEvent()" class="greenButton arabicFontBold">+ اضافة</button>
