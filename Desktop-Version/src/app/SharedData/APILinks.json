@@ -32,9 +32,11 @@
         "getAllArchivedPublicInfo": "getAllArchivedPublicInfo",
         "update": "update",
         "add": "add",
-        "getAllByState":"getAllByState/"
+        "getAllByState":"getAllByState/",
+        "activate": "activate"
     },
     "leadVolunteer" : {
+        "leadVolunteer": "leadVolunteer/",
         "getAllByBranchid" : "getAllByBranch/", 
         "getAllByBranch" : "getAllByBranch",
         "getAllPublicInfoByBranchid" : "getAllPublicInfoByBranch/",
@@ -59,7 +61,8 @@
         "getAllRequestedToArchivePublicInfo" : "getAllRequestedToArchivePublicInfo",
         "getAllArchived" : "getAllArchived", 
         "getAllArchivedPublicInfo" : "getAllArchivedPublicInfo",
-        "add" : "add/"
+        "add" : "add/",
+        "getBranchCommitteeTeam": "getBranchCommitteeTeam/"
     },
     "branch" : {
         "gelAll" : "gelAllBranches" 
@@ -72,5 +75,16 @@
         "updateEvent": "updateEvent/",
         "archiveEvent": "archiveEvent/",
         "completeEvent": "completeEvent/"
+    },
+    "networkType":{
+        "networkType": "networkType/",
+        "getNetworkAssignedToVolunteer": "getNetworkAssignedToVolunteer/",
+        "assignNetworkAssignedToVolunteer": "assignNetworkAssignedToVolunteer/"
+    },
+    "calls":{
+        "calls": "calls/",
+        "confirmAssignedCalls": "confirmAssignedCalls/",
+        "getAssignedCalls": "getAssignedCalls/",
+        "submitAssignedCalls": "submitAssignedCalls/"
     }
 }

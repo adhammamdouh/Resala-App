@@ -9,6 +9,7 @@ import { ErrorHandlerService } from '../alertHandler/alert-handler.service';
 import { FormService } from 'src/app/Services/form.service';
 import EventSummaryForm from 'src/app/SharedData/eventSummaryForm';
 import { Router } from '@angular/router';
+import { EventCallsService } from 'src/app/services/event-calls.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +20,13 @@ export class EventsCRUDService {
   nextSearchedEvents:any[] = [];
   previousSearchedEvents:any[] = [];
   gridState = 0;
+  loadingCalls = true;
   flipperStatus = false;
   selectedEvent:ResalaEvent;
   eventsForm:EventsForm = new EventsForm();
   summaryForm:EventSummaryForm = new EventSummaryForm();
   summaryFormDisplay = false;
+  selectedEventCalls = [];
   formMode:EventFormMode = EventFormMode.viewMode;
   constructor(private restfulAPI:RestfulAPIService, private formService:FormService, private getApiLinks:GetAPILinksService, private errorHandler:ErrorHandlerService, private route:Router) { 
   }
@@ -78,6 +81,7 @@ export class EventsCRUDService {
     switch (this.formMode) {
       case EventFormMode.viewMode:
         this.eventsForm.initializeViewForm(this.selectedEvent);
+        if (this.selectedEvent)this.getCallsForEvent(this.selectedEvent.id);
         break;
       case EventFormMode.editMode:
         this.eventsForm.initializeEditForm(this.selectedEvent);
@@ -118,6 +122,8 @@ export class EventsCRUDService {
         this.activateViewMode();
         this.route.navigate(['loading']);
       }, (msg)=>{
+        msg.error.error = msg.error.error[0].value;
+        console.log(msg);
         this.errorHandler.handleError(msg);
       })
     }
@@ -183,5 +189,25 @@ export class EventsCRUDService {
       }
     });
     return eventsFiltered;
+  }
+
+  getCallsForEvent(id){
+    this.loadingCalls = true;
+    this.restfulAPI.postRequest(this.getApiLinks.getEventCalls(), {
+      "event":{
+          "id": id
+      },
+      "volunteer":
+      {
+          "id": JSON.parse(localStorage.getItem('user'))['volunteer_id']
+      }
+  }).subscribe((res:any)=>{
+      this.selectedEventCalls = res.message;
+      this.loadingCalls = true;
+    }, (err)=>{
+      console.log(err);
+      this.loadingCalls = false;
+      this.selectedEventCalls = []
+    })
   }
 }

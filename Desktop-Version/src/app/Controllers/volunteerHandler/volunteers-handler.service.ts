@@ -161,6 +161,10 @@ export class VolunteersCRUD {
     this.errorHandler.handleError(FrontEndErrors.activateVolunteerWarning, this.selectedVolunteer);
   }
 
+  declineArchive(){
+    this.errorHandler.handleError(FrontEndErrors.declineArchive, this.selectedVolunteer);
+  }
+
   search(value){
     
     this.activeSearchedVolunteers = this.filterDataOnQuery(this.activeVolunteers, value);
@@ -180,5 +184,9 @@ export class VolunteersCRUD {
       }
     });
     return volunteersFiltered;
+  }
+
+  acceptArchiving(){
+    this.errorHandler.handleError(FrontEndErrors.archiveVolunteer, this.selectedVolunteer);
   }
 }

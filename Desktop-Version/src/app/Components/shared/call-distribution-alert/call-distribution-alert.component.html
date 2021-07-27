@@ -1,29 +1,34 @@
-<div class="modal fade-scale" id="callDistribution" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content modal-window">
-        <div class="modal-header d-flex justify-content-center">
-          <h5 class="modal-title" id="exampleModalLabel">توزيع المكالمات</h5>
-        </div>
-        <div class="modal-body text-center" dir="rtl">
-          <div class="row">
-              <div class="col-6 text-end">
-                    <app-select-box [selectBoxProperties]="this.WESelectBoxProperties"></app-select-box>
-              </div>
-              <div class="col-6 text-end">
-                <app-select-box [selectBoxProperties]="this.orangeBoxProperties"></app-select-box>
-              </div>
-              <div class="col-6 text-end">
-                    <app-select-box [selectBoxProperties]="this.etisalatBoxProperties"></app-select-box>
-              </div>
-              <div class="col-6 text-end">
-                <app-select-box [selectBoxProperties]="this.vodafoneSelectBoxProperties"></app-select-box>
-              </div>
+<div class="bg" *ngIf="this.committeeService.showCalls">
+ <div class="modalContent">
+    <div class="d-flex justify-content-center">
+      <h5>توزيع المكالمات</h5>
+    </div>
+    <div class="text-center h-100 d-flex align-content-between" dir="rtl">
+      <div class="row" *ngIf = "!this.committeeService.loading">
+          <div class="col-6 text-end">
+                <app-select-box [selectBoxProperties]="this.committeeService.WESelectBoxProperties"></app-select-box>
           </div>
-        </div>
-        <div class="modal-footer d-flex flex-row-reverse justify-content-center flex-nowrap">
-          <button class="greenButton arabicFontBold col-5" data-bs-dismiss="modal">توزيع</button>
-          <button class="deleteButton arabicFontBold col-5" data-bs-dismiss="modal">إالغاء</button>
-        </div>
+          <div class="col-6 text-end">
+            <app-select-box [selectBoxProperties]="this.committeeService.orangeBoxProperties"></app-select-box>
+          </div>
+          <div class="col-6 text-end mt-2">
+                <app-select-box [selectBoxProperties]="this.committeeService.etisalatBoxProperties"></app-select-box>
+          </div>
+          <div class="col-6 text-end mt-2">
+            <app-select-box [selectBoxProperties]="this.committeeService.vodafoneSelectBoxProperties"></app-select-box>
+          </div>
+          <div *ngIf="this.committeeService.distributedButNotConfirmed" class="col-12 mt-3 text-center">
+            <app-state-bar [activeInput]="committeeService.distState"  (switchingState)="onSwtich($event)" [states]="['توزيع موزون', 'توزيع عادي']"></app-state-bar>
+          </div>
+      </div>
+      <div class="m-auto" *ngIf="this.committeeService.loading">
+        <div class="load m-auto"></div>
       </div>
     </div>
-  </div>
+    <div class="modal-footer d-flex flex-row-reverse justify-content-center flex-nowrap">
+      <button class="greenButton arabicFontBold col-5" (click)="this.committeeService.submitCalls()" *ngIf="!this.committeeService.distributedButNotConfirmed && !this.committeeService.loading">توزيع</button>
+      <button class="modifyButton arabicFontBold col-5" (click)="this.committeeService.confirmAssign()" *ngIf="this.committeeService.distributedButNotConfirmed && !this.committeeService.loading">تأكيد التوزيع</button>
+      <button class="deleteButton arabicFontBold col-5" (click)="this.committeeService.close()">إالغاء</button>
+    </div>
+ </div>
+</div>

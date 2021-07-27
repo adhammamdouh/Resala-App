@@ -11,8 +11,8 @@
             <button class="greenButton arabicFontBold ms-2" *ngIf="volunteersCRUD.formMode == 2" (click)="volunteersCRUD.activateVolunteer()"> <img src="assets/Icons/megaphone.svg" style="margin-top: -5px;" width="27px"> تنشيط</button>
         </div>
         <div *ngIf="volunteersCRUD.selectedVolunteer != undefined && (volunteersCRUD.formMode==2 || volunteersCRUD.formMode==0) && volunteersCRUD.gridState==2">
-            <button class="deleteButton arabicFontBold ms-2" *ngIf="volunteersCRUD.formMode == 2 && privilegeHandler.isAcceptToArchiveValid()" (click)="volunteersCRUD.activateVolunteer()"> <img src="assets/Icons/inbox.svg" style="margin-top: -5px;" width="27px"> قبول الطلب</button>
-            <button class="greenButton arabicFontBold ms-2" *ngIf="volunteersCRUD.formMode == 2 && privilegeHandler.isDeclineToArchiveValid()" (click)="volunteersCRUD.activateVolunteer()"> <img src="assets/Icons/megaphone.svg" style="margin-top: -5px;" width="27px"> رفض الطلب</button>
+            <button class="deleteButton arabicFontBold ms-2" *ngIf="volunteersCRUD.formMode == 2 && privilegeHandler.isAcceptToArchiveValid()" (click)="volunteersCRUD.acceptArchiving()"> <img src="assets/Icons/inbox.svg" style="margin-top: -5px;" width="27px"> قبول الطلب</button>
+            <button class="greenButton arabicFontBold ms-2" *ngIf="volunteersCRUD.formMode == 2 && privilegeHandler.isDeclineToArchiveValid()" (click)="volunteersCRUD.declineArchive()"> <img src="assets/Icons/megaphone.svg" style="margin-top: -5px;" width="27px"> رفض الطلب</button>
         </div>
         <div *ngIf="volunteersCRUD.formMode==1">
             <button (click)="volunteersCRUD.addVolunteer()" class="greenButton arabicFontBold">+ اضافة</button>

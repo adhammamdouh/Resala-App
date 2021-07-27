@@ -17,7 +17,7 @@
     },
     "archiveEventWarning" : {
         "status" : 4,
-        "error" : "هل انت متأكد من طلب ارشفة" 
+        "error" : "هل انت متأكد من حذف " 
     },
     "logoutWarning":{
         "status" : 5,
@@ -25,6 +25,14 @@
     },
     "activateVolunteerWarning":{
         "status" : 6,
-        "error" : "هل انت متأكد من تنشيط"  
+        "error" : "هل انت متأكد من تنشيط المتطوع؟"  
+    },
+    "archiveVolunteer":{
+        "status" : 7,
+        "error" : "هل انت متأكد من ارشفة المتطوع؟"  
+    },
+    "declineArchive":{
+        "status": 8,
+        "error": "هل انت متأكد من رفض الطلب؟"
     }
 }
